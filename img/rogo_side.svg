@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.63 40.48">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        font-family: NotoSansJP-Medium, 'Noto Sans JP';
+        font-weight: 500;
+      }
+
+      .cls-8 {
+        letter-spacing: .12em;
+      }
+
+      .cls-8, .cls-9 {
+        font-family: NotoSansJP-SemiBold, 'Noto Sans JP';
+        font-weight: 600;
+      }
+
+      .cls-10 {
+        font-family: Helvetica-Bold, Helvetica;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .cls-10, .cls-11, .cls-12 {
+        fill: #e1e1e1;
+      }
+
+      .cls-11 {
+        font-size: 13.77px;
+      }
+
+      .cls-2 {
+        letter-spacing: .08em;
+      }
+
+      .cls-13 {
+        letter-spacing: .14em;
+      }
+
+      .cls-3 {
+        letter-spacing: .05em;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.3em;
+      }
+
+      .cls-14 {
+        letter-spacing: .1em;
+      }
+
+      .cls-15 {
+        letter-spacing: .08em;
+      }
+
+      .cls-16 {
+        letter-spacing: .06em;
+      }
+
+      .cls-17 {
+        letter-spacing: .12em;
+      }
+
+      .cls-5 {
+        letter-spacing: .18em;
+      }
+
+      .cls-6 {
+        letter-spacing: .2em;
+      }
+
+      .cls-7 {
+        letter-spacing: .16em;
+      }
+    </style>
+  </defs>
+  <g>
+    <text class="cls-11" transform="translate(-6.56 33.18) scale(1 .9)"><tspan class="cls-8" x="0" y="0">【</tspan><tspan class="cls-2" x="15.37" y="0">メ</tspan><tspan class="cls-4" x="30.19" y="0">デ</tspan><tspan class="cls-1" x="44.04" y="0">ィ</tspan><tspan class="cls-5" x="57.21" y="0">ア</tspan><tspan class="cls-7" x="73.4" y="0"> </tspan><tspan class="cls-6" x="78.65" y="0"> </tspan><tspan class="cls-5" x="84.45" y="0">チ</tspan><tspan class="cls-3" x="100.64" y="0">ー</tspan><tspan class="cls-6" x="115.05" y="0">ム</tspan><tspan class="cls-9" x="131.19" y="0">】</tspan></text>
+    <circle class="cls-12" cx="70.79" cy="28.43" r="1"/>
+  </g>
+  <text class="cls-10" transform="translate(1.26 17.48) scale(1 .9)"><tspan class="cls-16" x="0" y="0">n</tspan><tspan class="cls-15" x="13.42" y="0">i</tspan><tspan class="cls-17" x="20.57" y="0">s</tspan><tspan class="cls-13" x="34.1" y="0">et</tspan><tspan class="cls-14" x="57.48" y="0">e</tspan><tspan class="cls-13" x="70.6" y="0">x</tspan><tspan class="cls-17" x="84.53" y="0">t</tspan><tspan class="cls-15" x="93.59" y="0">u</tspan><tspan class="cls-17" x="107.4" y="0">re</tspan></text>
+</svg>
