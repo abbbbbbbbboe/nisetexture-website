@@ -51,14 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
       frameRatios: [16,12,10,8,8,8,10,12,16]
     }
   ];
-
- let totalImages = 0;   // 全画像枚数
+let totalImages = 0;   // 全画像枚数
 let loadedImages = 0;  // 読み込み済みカウンタ
 const allFrames = {};  // 各コンテナのフレーム配列を保持
 
-// --------------------------
-// 総画像数を計算（全コンテナ合計）
-// --------------------------
+// まず総画像数を計算
 configs.forEach(cfg => {
   totalImages += cfg.frames;
 });
@@ -73,19 +70,7 @@ configs.forEach(cfg => {
   const folderToUse = isMobile() && cfg.mobileFolder ? cfg.mobileFolder : cfg.folder;
   const parentFolder = isMobile() ? "mobile_title_koma" : "title_koma";
 
-  // -----------------------------
-  // 追加箇所①：ロード中用 placeholder を一斉に表示
-  // -----------------------------
-  // 全7エリア同時に1枚目を表示するため、先に placeholder を作成
-  const placeholderImg = new Image();
-  placeholderImg.src = `img/${parentFolder}/${folderToUse}/1.png`; // ロード中に表示
-  placeholderImg.classList.add("frame", "active"); // active にして表示
-  container.appendChild(placeholderImg);
-  frames.push(placeholderImg); // 後で frames に追加して切り替え可能にする
-
-  // -----------------------------
-  // 画像プリロード（placeholder も含めて）
-  // -----------------------------
+  // 画像プリロード
   for (let i = 1; i <= cfg.frames; i++) {
     const img = new Image();
     img.src = `img/${parentFolder}/${folderToUse}/${i}.png`;
@@ -93,9 +78,8 @@ configs.forEach(cfg => {
 
     img.onload = () => {
       loadedImages++;
-      // 変更箇所②：全画像ロード完了で一斉に初期化
       if (loadedImages === totalImages) {
-        initAll(); // 全エリア一斉にフレーム切替開始
+        initAll(); // 全画像ロード完了で一斉に初期化
       }
     };
 
@@ -105,7 +89,7 @@ configs.forEach(cfg => {
 });
 
 // --------------------------
-// 変更箇所③：全コンテナ一斉初期化
+// 全コンテナ一斉初期化
 // --------------------------
 function initAll() {
   configs.forEach(cfg => {
@@ -113,23 +97,16 @@ function initAll() {
     let currentIndex = 0;
     let pendingIndex = -1;
 
-    // 変更箇所④：placeholderを含めてフレームの active を整理
-    frames.forEach((f, idx) => {
-      if (idx === 0) f.classList.add("active"); // 最初のフレームを表示
-      else f.classList.remove("active");
-    });
+    // 最初のフレームを表示
+    frames[0].classList.add("active");
 
-    // -------------------------------
     // モバイルなら自動ループ
-    // -------------------------------
     if (isMobile()) {
       startMobileLoop(frames, 400);
       return;
     }
 
-    // -------------------------------
     // frameRatios を正規化
-    // -------------------------------
     const totalRatio = cfg.frameRatios.reduce((a, b) => a + b, 0);
     const normalizedRanges = [];
     let acc = 0;
@@ -138,9 +115,7 @@ function initAll() {
       acc += r;
     }
 
-    // -------------------------------
     // マウス位置でフレーム切替
-    // -------------------------------
     window.addEventListener("mousemove", e => {
       const xRatio = e.clientX / window.innerWidth;
       let index = cfg.frames - 1;
