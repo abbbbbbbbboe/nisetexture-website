@@ -3,43 +3,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const configs = [
     {
       id: "komaimageContainer1",
-      folder: "ni2",
+      folder: "ni",
+      mobileFolder: "mobile_ni",
       frames: 9,
       frameRatios: [15,12,10,9,8,9,10,12,15] // 横幅の割合
     },
     {
       id: "komaimageContainer2",
-      folder: "se2",
+      folder: "se",
+      mobileFolder: "mobile_se",
       frames: 9,
       frameRatios: [15.5,12,10,8.5,8,8.5,10,12,15.5]
     },
     {
       id: "komaimageContainer3",
-      folder: "te2",
+      folder: "te",
+      mobileFolder: "mobile_te",
       frames: 9,
       frameRatios: [18,15,8,5,8,5,8,15,18]
     },
     {
       id: "komaimageContainer4",
-      folder: "ku2",
+      folder: "ku",
+      mobileFolder: "mobile_ku",
       frames: 9,
       frameRatios: [14.5,12,10.5,9,8,9,10.5,12,14.5]
     },
     {
       id: "komaimageContainer5",
-      folder: "su2",
+      folder: "su",
+      mobileFolder: "mobile_su",
       frames: 9,
       frameRatios: [17,13,9,7,8,7,9,13,17]
     },
     {
       id: "komaimageContainer6",
-      folder: "ti2",
+      folder: "ti",
+      mobileFolder: "mobile_ti",
       frames: 9,
       frameRatios: [16.5,11,10,8.5,8,8.5,10,11,16.5]
     },
     {
       id: "komaimageContainer7",
-      folder: "ya2",
+      folder: "ya",
+      mobileFolder: "mobile_ya",
       frames: 9,
       frameRatios: [16,12,10,8,8,8,10,12,16]
     }
@@ -52,17 +59,36 @@ document.addEventListener("DOMContentLoaded", () => {
     let imagesLoaded = 0;
 
     // 画像プリロード
-    for (let i = 1; i <= cfg.frames; i++) {
-      const img = new Image();
-      img.src = `img/${cfg.folder}/${i}.png`;
-      img.classList.add("frame");
-      img.onload = () => {
-        imagesLoaded++;
-        if (imagesLoaded === cfg.frames) init();
-      };
-      frames.push(img);
-      container.appendChild(img);
-    }
+  // ここでフォルダを選択！
+const folderToUse = isMobile() && cfg.mobileFolder
+  ? cfg.mobileFolder
+  : cfg.folder;
+
+// 画像プリロード
+// PC / モバイルで親フォルダを切り替える
+const parentFolder = isMobile()
+  ? "mobile_title_koma"
+  : "title_koma";
+
+// 画像プリロード
+for (let i = 1; i <= cfg.frames; i++) {
+  const img = new Image();
+
+  // PC:    img/title_koma/ya2/1.png
+  // mobile: img/mobile_title_koma/ya2/1.png
+  img.src = `img/${parentFolder}/${folderToUse}/${i}.png`;
+
+  img.classList.add("frame");
+
+  img.onload = () => {
+    imagesLoaded++;
+    if (imagesLoaded === cfg.frames) init();
+  };
+
+  frames.push(img);
+  container.appendChild(img);
+}
+
 
     // frames.reverse(); // 左端で最後のフレーム、右端で最初のフレーム表示
 
