@@ -6,6 +6,7 @@ const contents = {
       title: "Profile",
       title_en: "Profile",
       media: ["nise"],
+      media_mobile: ["mobile_nise"],
       text_jp: `単純・退屈で繰り返される、日常の行為や生活の作業を、ニセテクスチャ（物や事における偽物の質感、手触り、表面の様子）によって覆い隠す・反転させることを目的に、
       2024年より活動を開始したゲイジュツ・チーム。オオタソラと小林玲衣奈が参加。主な活動は飲み会をした後にその街を一晩中歩くこと。趣味は街にある木材が本物か確認すること。`,
       text_en: `An art team that began its activities in 2024 with the aim of concealing and reversing simple, monotonous, and repetitive everyday actions and routines through “fake textures” — simulated surfaces, 
@@ -20,6 +21,7 @@ const contents = {
       title: "オオタソラ",
        title_en: "ota sora",
       media: ["ota"],
+      media_mobile: ["mobile_ota"],
        text_jp: `1998年福岡生まれ。<br>武蔵野美術大学 造形学部 基礎デザイン学科 卒業。<br>webサイト、グラフィックデザイン、映像の制作を主に行う。ドットやパターンの表現に興味がある。<br>
        なるべく道具や構造から作るように意識して制作する。`,
       text_en: `Born in Fukuoka in 1998.<br> Graduated from Musashino Art University, Faculty of Design, Department of Basic Design. <br>Primarily creates web, graphic design, and video content.
@@ -35,6 +37,7 @@ const contents = {
       title: "小林玲衣奈",
        title_en: "kobayashi reina",
       media: ["koba"],
+      media_mobile: ["mobile_koba"],
     text_jp: `1998年、愛知県名古屋市生まれ。<br>2023年、情報科学芸術大学院大学［IAMAS］修士課程修了。<br>風景に関心があり、ささやかなものを集めたりまとめたりすることで、物事を見出そうとする。`,
       text_en: `Born in 1998 in Nagoya, Aichi Prefecture.Completed the Master’s Program at the Institute of Advanced Media Arts and Sciences (IAMAS) in 2023.<br>With a deep interest in landscapes, she seeks to discover meaning by collecting and assembling subtle, everyday fragments.`,
             links: {
@@ -49,6 +52,7 @@ const contents = {
       title: "Statement",
       title_en: "Statement",
       media: ["statement"],
+      media_mobile: ["mobile_statement"],
    text_jp: `私たちはあらゆる場面でのハラスメントを許容しません。`,
       text_en: `We will not tolerate discrimination or harassment of any kind.`,
             links: {
@@ -212,8 +216,8 @@ applyRandomSpacingToMobileAreaTitles()
   // ================================
 if (isMobile() && targetItem.useSlider) {
 
-  const folder = targetItem.media[0];
-  const frameCount = 9;
+  const folder = targetItem.media_mobile[0];
+  const frameCount = 5;
 
   // 前回と違う番号を選ぶ
   let rand;
@@ -227,12 +231,12 @@ if (isMobile() && targetItem.useSlider) {
   const img = new Image();
 
   // まず JPG
-  img.src = `img/${folder}/${rand}.jpg`;
+  img.src = `img/mobile/${folder}/${rand}.jpg`;
 
   // JPG ダメなら PNG
   img.onerror = () => {
     img.onerror = null;
-    img.src = `img/${folder}/${rand}.png`;
+    img.src = `img/mobile/${folder}/${rand}.png`;
   };
 
   img.classList.add("mobile-random-image");
@@ -247,8 +251,8 @@ if (isMobile() && targetItem.useSlider) {
       container.className = "member-slider";
       imageContainer.appendChild(container);
 
-      const frameCount = 9;
-      const frameRatios = [17, 12, 6, 4, 3, 6, 9, 18, 25];
+      const frameCount = 5;
+      const frameRatios = [6, 4, 3, 6, 9,];
       const cumulative = [];
       const total = frameRatios.reduce((a, b) => a + b, 0);
       let sum = 0;
@@ -265,12 +269,12 @@ if (isMobile() && targetItem.useSlider) {
   const img = new Image();
 
   // まず jpg を試す
-  img.src = `img/${folder}/${i}.jpg`;
+  img.src = `img/pc/${folder}/${i}.jpg`;
 
   // jpg がなかったら png に切り替える
   img.onerror = () => {
     img.onerror = null; // 無限ループ防止
-    img.src = `img/${folder}/${i}.png`;
+    img.src = `img/pc/${folder}/${i}.png`;
   };
 
   img.classList.add("frame");

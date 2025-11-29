@@ -27,16 +27,16 @@ window.addEventListener('orientationchange', setVh);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-     if (isMobile()) {
-    if (!hasSelectedPost()) {
-      activeSection = "list";
-    } else {
-      activeSection = "text";
-    }
+  //    if (isMobile()) {
+  //   if (!hasSelectedPost()) {
+  //     activeSection = "list";
+  //   } else {
+  //     activeSection = "text";
+  //   }
  
  
-    updateMobileView();
-  }
+  //   updateMobileView();
+  // }
 
   if (document.querySelector(".list-container")) {
     initBlog();
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hash) {
     const post = blogContents.posts.find(p => p.id === hash);
     if (post) {
-      displayText(post.textBlocks, post.images);
+      displayText(post.textBlocks, post.images, post);
       displayImages(post.images);
       updateTextAreaTitle();
       applyRandomSpacingToAreaTitles();
@@ -100,7 +100,7 @@ window.addEventListener("hashchange", () => {
   if (!post) return;
 
   // 表示更新
-  displayText(post.textBlocks, post.images);
+  displayText(post.textBlocks, post.images, post);
   displayImages(post.images);
 updateTextAreaTitle();
 applyRandomSpacingToAreaTitles();
@@ -165,7 +165,7 @@ function setupClickHandler() {
         
     }
 
-    displayText(post.textBlocks, post.images);
+    displayText(post.textBlocks, post.images, post);
     displayImages(post.images);
     updateTextAreaTitle();
     applyRandomSpacingToAreaTitles();
@@ -177,11 +177,51 @@ function setupClickHandler() {
 }
 
 
-function displayText(blocks, images) {
+
+//   const isMobile = window.innerWidth <= 768;
+// let title = null;
+//   if (title.trim()) {
+//   title = document.createElement('div');
+//   title.className = 'mobile_title';
+
+//   // モバイル → タイトル + テキスト
+//   // PC → テキストのみ
+//   if (isMobile) {
+//     title.innerHTML = `
+//       <p class="title">${posts.title || ""}</p>
+//       <p class="category">${posts.category || ""}</p>
+//       <p class="date">${posts.date || ""}</p>
+//     `;
+//   } else {
+//     title.innerHTML = ``;
+//   }
+
+//   textContainer.appendChild(title);
+// }
+
+function displayText(blocks, images, post) {
   textsContainer.innerHTML = "";
   createScrollTopButton(textsContainer);
 
   let currentButtonGroup = null;
+
+ // =========================================================
+  // ★ モバイル版：本文の前にタイトル・カテゴリ・日付を挿入
+  // =========================================================
+  if (isMobile()) {
+    const titleP = document.createElement("p");
+    titleP.className = "mobile_text_title";
+    titleP.innerHTML = `+&thinsp;${post.title || ""}&ensp;+`;
+    textsContainer.appendChild(titleP);
+
+    const categoryP = document.createElement("p");
+    categoryP.className = "mobile_text_category_data";
+    categoryP.innerHTML =`(${post.date || ""}) &emsp; * ${post.category || ""}`;
+    textsContainer.appendChild(categoryP);
+    //"*" + post.category + "&emsp;" +"(" + post.date + ")" || ""
+
+    
+  }
 
   blocks.forEach(block => {
 

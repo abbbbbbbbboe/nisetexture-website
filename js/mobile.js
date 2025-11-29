@@ -150,8 +150,8 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
-       attachScrollStep()
-    adjustMediaSizes()
+       attachScrollStep();
+    adjustMediaSizes();
     };
     nextBtn.onclick = () => {
       activeSection = "text";
@@ -159,8 +159,8 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
-       attachScrollStep()
-    adjustMediaSizes()
+       attachScrollStep();
+    adjustMediaSizes();
     };
   }
 

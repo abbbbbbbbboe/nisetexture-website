@@ -41,18 +41,18 @@ function hasSelectedPost() {
 // ===============================
 // 🔷 初期ロード
 // ===============================
-// document.addEventListener("DOMContentLoaded", () => {
-//   if (isMobile()) {
-//     if (!hasSelectedPost()) {
-//       activeSection = "list";
-//     } else {
-//       activeSection = "text";
-//     }
+document.addEventListener("DOMContentLoaded", () => {
+  if (isMobile()) {
+    if (!hasSelectedPost()) {
+      activeSection = "list";
+    } else {
+      activeSection = "text";
+    }
  
  
-//     updateMobileView();
-//   }
-// });
+    updateMobileView();
+  }
+});
 
 // ===============================
 // 🔷 メイン切り替え処理
@@ -109,8 +109,14 @@ function updateNavButtons() {
          
         
       };
-      
     }
+  }
+
+  if (activeSection === "image") {
+    // image = 左→list / 右→text
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+
   }
 
 
