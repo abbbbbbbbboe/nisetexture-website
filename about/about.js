@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeSection = "list";   // ← 初期状態を list に指定
     updateMobileView();       // ← 表示を反映
   }
+  attachScrollStep();
 });
 
 
@@ -538,6 +539,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (initialHash) {
     showAboutCategory(initialHash);
   }
+  attachScrollStep();
 });
 
 

@@ -1,8 +1,17 @@
 // blogcontents.js
 //テキストレギュレーション
-//テキストテンプレ　{ type: "p", text: "これは最初の段落です。" },
+//テキストテンプレ　
+// { type: "p", text: "これは最初の段落です。" class:""},
 //class: ["large-space-1"]一段開ける　class: "large-space-2"二段開ける
-//ボタンテンプレ { "type": "button", "targetId": 5, "label": "写真3" }, 
+//イメージテンプレ
+//{ src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },
+//src:リンク| caption:写真の下に表示されるテキスト| id:ボタンと関連つけるための数字
+//ボタンテンプレ  
+// { "type": "button", "targetId": 5, "label": "写真3" }, 
+// ここにPC版はイメージエリアの写真をスクロールするためのボタンが入る。モバイル版はここに写真が入る
+//targetId:表示させるimagesのid | label:ボタンに表示するテキスト。書かなければimegesのcaptionが入る
+
+
 export const blogContents = {
   posts: [
      {
@@ -12,7 +21,7 @@ export const blogContents = {
       date: "2025-11-26",
       images: [
         { src: "img/5.png", caption: "写真1", id: 1 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },
+        { src: "https://soundcloud.com/tofubeats/throw-your-laptop-on-the-fire-2025-mix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "写真2", id: 2 },
         { src: "img/5.png", caption: "写真1", id: 3 },
         { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 4 },
         { src: "img/5.png", caption: "写真1", id: 5 },
@@ -22,7 +31,7 @@ export const blogContents = {
       ],
       textBlocks: [
         { type: "p", text: `こんにちは<a href="../index.html" target="_blank">ニセテクスチャ</a>です。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2" ]},
-        { "type": "button", "targetId": 6, },
+        { "type": "button", "targetId":2, },
     
 
         { type: "p", text: `私たちの飲み会ではつまらなさを全面的に受け入れ、だらだらと長時間行うことを信条としています。飲み会を開くことを目的としていますが、たまに飲みながら打ち合わせをして、活動の相談をはじめ、最近あったことを話したり、悪口をこぼしたりします。打ち合わせのために飲み会をしているのか、飲み会のために打ち合わせをしているのか、ジョッキとジョッキを持つ手との境目くらい分からなくなります。`, class: ["large-space-1"]},
@@ -74,13 +83,13 @@ export const blogContents = {
 
         { type: "p", text: `元々空洞のような時間ですから、話し足りなさや寂しさと言った感情はあるようでないもので、朝まで歩いたからといって「朝だな」以上の感動や達成した成果などがあるわけではなく、ただひたすらにだらだらと飲み歩いたに過ぎないのです。そうこれは、結局のところ宴、祭りといった架空の儀式、<a href="https://www.uta-net.com/song/54556/" target="_blank"> 世迷言（よまいごと）</a>を吐き出すための箱、客観的な事実では無駄な時間でしかないのです`, class: ["large-space-1"] },
 
-        { type: "p", text: `ここまででニセテクスチャの主な活動について知っていただけたことかと思いますので、お酒タバコは20歳から、適度にお水も飲みながら、読んだみなさまもぜひ飲み会にご参加ください(｀･ω･´)`, class: ["large-space-1"] },
+        { type: "p", text: `ここまででニセテクスチャの主な活動について知っていただけたことかと思いますので、お酒タバコは20歳から、適度にお水も飲みながら、読んだみなさまもぜひ飲み会にご参加ください(｀･ω･´)`, class: ["large-space-2"] },
        
 
        { type: "p", text: `【link_list】`,class: ["index"]  },
         { type: "a", text: `酔うってどういうこと？|酔いの仕組みとアルコール代謝|サッポロホールディングス`,link: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html", class: ["link-list"] },
         { type: "a", text: `アルコール｜厚生労働省`,link: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html", class: ["link-list"] },
-        { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`,link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list"] },
+        { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`,link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list", "large-space-2"] },
 
          { type: "p", text: `【credit】`,class: ["index"]  },
         { type: "p", text: `声：朗読順`, class: ["credit"] },
@@ -88,7 +97,7 @@ export const blogContents = {
         { type: "p", text: `・WAKO 西村多和子`, class: ["credit"] },
         { type: "p", text: `・`, class: ["credit"] },
         { type: "p", text: `・平岡せいこ`, class: ["credit"] },
-        { type: "p", text: `・難波優太`, class: ["credit", "large-space-1"] },
+        { type: "p", text: `・難波優太`, class: ["credit", "large-space-2"] },
         
       ]
     },
@@ -96,7 +105,7 @@ export const blogContents = {
       id: "AboutOurActivities2",
       category: "diary",
       title: "test",
-      date: "2025-11-262",
+      date: "2025-11-22",
       images: [
         { src: "img/background8.png", caption: "写真1", id: 1 },
         { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },

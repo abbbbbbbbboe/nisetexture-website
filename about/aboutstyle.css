@@ -63,6 +63,7 @@ header {
   /* background: #3b3b3b; */
    /* background-image: url("img/background6.png"); */
   background-size: 100%;
+  border-bottom: 1px solid #b4b4b4;
 }
 
 .head1{
@@ -208,7 +209,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 4fr 4fr ;
   height: 100%;
-  border-top: 1px solid #b4b4b4;
+  
 }
 
 
@@ -712,12 +713,15 @@ color: #e1e1e1;
   width: 0px;
 
 }
-
 header {
   height:107px;
+  width: 100%;
   display: flex;
   flex-direction: column;
- 
+ position: fixed;
+z-index: 9999;
+background-color: #454c50;
+
 
 }
 
@@ -842,10 +846,12 @@ border-left: 0px ;
     border-top: 1px solid #b4b4b4;
     /* margin: 0 0 0 auto; */
 }
-
   main{
     grid-template-columns:none;
   overflow-y: hidden;
+  position: relative;
+  top: 107px;
+  display: block;
   }
 
   
@@ -958,7 +964,7 @@ padding-right: 10px;
 
 
 .text-container{
-  padding:0 10px 0 40px;
+  padding:0 10px 210px 40px;
 }
 
 .text-area p{
@@ -1069,7 +1075,7 @@ padding: 0 7px 0 10px;
 /* ボタン */
 .mobile-nav-btn {
   position: absolute;
-  top: 1px;
+  top: 107px;
   height: 105px;
 width: 35px;
   z-index: 999;

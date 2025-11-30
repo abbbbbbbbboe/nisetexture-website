@@ -327,7 +327,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // スクロール制御（コンテナ単位、最後のステップで止める）
 // ==========================
 function attachScrollStep() {
-  document.querySelectorAll('.list-container, .image-container, .text-container').forEach(container => {
+  document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
     if (container.dataset.scrollAttached === "true") return;
     container.dataset.scrollAttached = "true";
 
@@ -381,7 +381,7 @@ function attachScrollStep() {
     let accum = 0; // 指の移動累積
 
     // ★ 発火トリガーを 17px にする（ここが重要）
-    const trigger = 17;
+    const trigger = 10;
 
     container.addEventListener("touchstart", (e) => {
       lastY = e.touches[0].clientY;

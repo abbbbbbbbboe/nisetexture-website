@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       activeSection = "image";
     }
+     
      updateMobileView();       
-     attachScrollStep()
-    adjustMediaSizes()
+    
+    adjustMediaSizes();
+    attachScrollStep();
   }
 });
 
@@ -215,6 +217,7 @@ function adjustTopSpacerHeight() {
   // 残りの高さをtop-spacerにセット
   const remainingHeight = windowHeight - otherHeight;
   topSpacer.style.height = remainingHeight > 0 ? `${remainingHeight}px` : "0px";
+  
 }
 
 // DOM読み込み時とリサイズ時に実行

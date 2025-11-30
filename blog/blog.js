@@ -348,55 +348,108 @@ else if (block.type === "a") {
  
 }
 
+ // =========================================================
+      //モバイル用のtextareaの画像表示の際の関数
+      // =========================================================
 function createMediaElement(item) {
   const file = item.src;
   const mediaId = item.id;
-  let element;
+  let wrapper = document.createElement("div");
+  wrapper.className = "media-wrapper";
 
-  // YouTube
+  // --- YouTube ---
   if (file.includes("youtube.com") || file.includes("youtu.be")) {
     const embedUrl = file.includes("embed") ? file : convertToYouTubeEmbed(file);
-    element = document.createElement("iframe");
-    element.src = embedUrl;
-    element.setAttribute("allowfullscreen", "");
-    element.dataset.id = mediaId;
+    const iframe = document.createElement("iframe");
+    iframe.src = embedUrl;
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.dataset.id = mediaId;
+    wrapper.appendChild(iframe);
   }
 
-  // Vimeo
+  // --- Vimeo ---
   else if (file.includes("vimeo.com")) {
     const embedUrl = convertToVimeoEmbed(file);
-    element = document.createElement("iframe");
-    element.src = embedUrl;
-    element.setAttribute("allowfullscreen", "");
-    element.dataset.id = mediaId;
+    const iframe = document.createElement("iframe");
+    iframe.src = embedUrl;
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.dataset.id = mediaId;
+    wrapper.appendChild(iframe);
   }
 
-  // MP4
+  // --- SoundCloud ---
+  else if (file.includes("soundcloud.com")) {
+    const embedUrl = convertToSoundCloudEmbed(file);
+
+    // 透明 iframe を作成（モバイルのオーバーレイ消すため）
+    const iframe = document.createElement("iframe");
+    iframe.src = embedUrl;
+    // iframe.style.width = "0";
+    // iframe.style.height = "0";
+    // iframe.style.opacity = "0";
+    // iframe.style.border = "0";
+    iframe.dataset.id = mediaId;
+
+    wrapper.appendChild(iframe);
+
+    // // --- カスタム UI ---
+    // const ui = document.createElement("div");
+    // ui.className = "soundcloud-ui";
+
+    // const title = document.createElement("div");
+    // title.className = "soundcloud-title";
+    // title.textContent = item.title || "SoundCloud Track";
+
+    // const playBtn = document.createElement("button");
+    // playBtn.className = "sc-play-btn";
+    // playBtn.textContent = "▶︎ PLAY";
+
+    // const pauseBtn = document.createElement("button");
+    // pauseBtn.className = "sc-pause-btn";
+    // pauseBtn.textContent = "⏸ PAUSE";
+
+    // ui.appendChild(title);
+    // ui.appendChild(playBtn);
+    // ui.appendChild(pauseBtn);
+
+    // wrapper.appendChild(ui);
+
+    // --- Widget API 接続 ---
+    // setTimeout(() => {
+    //   if (typeof SC !== "undefined" && SC.Widget) {
+    //     const widget = SC.Widget(iframe);
+    //     playBtn.onclick = () => widget.play();
+    //     pauseBtn.onclick = () => widget.pause();
+    //   }
+    // }, 200);
+  }
+
+  // --- MP4 ---
   else if (file.endsWith(".mp4")) {
-    element = document.createElement("video");
-    element.src = file;
-    element.controls = true;
-    element.playsInline = true;
-    element.dataset.id = mediaId;
+    const video = document.createElement("video");
+    video.src = file;
+    video.controls = true;
+    video.playsInline = true;
+    video.dataset.id = mediaId;
+    wrapper.appendChild(video);
   }
 
-  // 画像
+  // --- 画像 ---
   else {
-    element = document.createElement("img");
-    element.src = file;
-    element.alt = item.caption || "";
-    element.dataset.id = mediaId;
+    const img = document.createElement("img");
+    img.src = file;
+    img.alt = item.caption || "";
+    img.dataset.id = mediaId;
+    wrapper.appendChild(img);
   }
-
-  // ここで PC版のための flash 用 wrapper も再利用できる
-  const wrapper = document.createElement("div");
-  wrapper.className = "media-wrapper";
-  wrapper.appendChild(element);
 
   return wrapper;
 }
 
 
+ // =========================================================
+      //imageareaの画像表示の関数
+      // =========================================================
 function displayImages(images) {
   
   imageContainer.innerHTML = "";
@@ -404,10 +457,12 @@ function displayImages(images) {
   images.forEach((item, idx) => {
     const file = item.src;
     const mediaId = item.id ?? idx;
+    
 
     // ⭐ wrapper を作成（フラッシュはこれにつける）
     const wrapper = document.createElement("div");
     wrapper.className = "media-wrapper";
+    
     wrapper.dataset.id = mediaId; // これで wrapper も検索可能に
     wrapper.style.position = "relative";
     wrapper.style.overflow = "hidden"; // ← フラッシュをきれいに見せるため必須
@@ -434,6 +489,19 @@ function displayImages(images) {
                 frameborder="0"
                 allowfullscreen
                 data-id="${mediaId}">
+        </iframe>`;
+    }
+
+      // ⭐⭐⭐ --- SoundCloud (追加) --- ⭐⭐⭐
+    else if (file.includes("soundcloud.com")) {
+      const embedUrl = convertToSoundCloudEmbed(file); // 追加
+      innerHTML = `
+        <iframe 
+          width="100%" 
+          height="80px" 
+        
+          src="${embedUrl}"
+          data-id="${mediaId}">
         </iframe>`;
     }
 
@@ -567,6 +635,14 @@ function convertToVimeoEmbed(url) {
   return `https://player.vimeo.com/video/${videoId}`;
 }
 
+// function convertToSoundCloudEmbed(url) {
+//   const encoded = encodeURIComponent(url);
+//   return `https://w.soundcloud.com/player/?url=${encoded}&color=%23ff5500&inverse=false&auto_play=false&show_user=true`;
+// }
+
+function convertToSoundCloudEmbed(url) {
+  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=false&hide_related=true&visual=true`;
+}
 
 
 
@@ -658,12 +734,12 @@ function attachScrollStep() {
 
       // PC / Mobile で切替
       if (isMobile) {
-        if (container === imageContainer) return { trigger: 17, step: 35 };
-        if (container === textsContainer) return { trigger: 17, step:  35};
-        if (container === listContainer)  return { trigger: 17, step: 35 };
+        if (container === imageContainer) return { trigger: 10, step: 35 };
+        if (container === textsContainer) return { trigger: 10, step:  35};
+        if (container === listContainer)  return { trigger: 10, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
-        if (container === textsContainer) return { trigger: 80, step: 80 };
+        if (container === textsContainer) return { trigger: 10, step: 80 };
         if (container === listContainer)  return { trigger: 40, step: 40 };
       }
 

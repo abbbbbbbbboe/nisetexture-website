@@ -84,10 +84,10 @@ text_en: `A group exhibition by nisetexture and <a href="https://kenjimonden.com
       category: "exhibition, project, site",
       place: "Tokyo, Japan",
       media: [
-         "img/rebootplan1.jpg",
-        "img/testimg.JPG",
-        "img/BMXGraffiti7.jpg",
-        "img/between2.jpg",
+         "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
         "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs", // ← YouTube埋め込み例
         "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs"
       ],
@@ -110,10 +110,10 @@ text_en: `Extracting daily actions and routines from their original context and 
       place: "Tokyo, Japan",
       media: [
         "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs", 
-        "img/between2.jpg",
-        "img/testimg.JPG",
-        "img/BMXGraffiti7.jpg",
-        "img/rebootplan1.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
         // ← YouTube埋め込み例
         "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs"
       ],

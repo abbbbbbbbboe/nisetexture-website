@@ -1167,6 +1167,9 @@ width:100%;
 .page-top .list-area{
   height: auto;
 }
+.page-top .list-container{
+  padding-bottom: 0;
+}
 
 .page-top .image-area{
   margin-bottom: 35px;
@@ -1249,7 +1252,7 @@ position: relative;
     height: 100%;
      padding-left:30px;
 padding-right: 10px;
-
+padding-bottom: 280px;
 }
 
 .list-item {
@@ -1283,7 +1286,7 @@ border-right: 1px solid #b4b4b4 ;
 }
 
 .list-container-spacer{
-  height: 140px;
+  height: 0px;
 }
 
 .image-container{
@@ -1305,7 +1308,7 @@ border-right: 1px solid #b4b4b4 ;
 
 
 .text-container{
-  padding:0 10px 0 40px;
+  padding:0 10px 140px 40px;
 }
 
 .text-area p{
@@ -1342,15 +1345,17 @@ background-color: #adadad;
 margin: 0;
 padding-bottom: 0;
 margin-left: -13px;
+/* margin-bottom: 140px; */
 }
 .text-ja p{
 letter-spacing: 0.3rem;
+/* margin-bottom: 70px; */
 
 }
 
 .text-en{
   margin-top:35px;
-  margin-bottom: 30px;
+  /* margin-bottom: 140px; */
   padding-bottom: 0;
   margin-left: -13px;
 }

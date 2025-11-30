@@ -642,7 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showCategory('archive', currentIndex, currentArchiveFilters.length ? currentArchiveFilters : 'all');
   }
 
-
+attachScrollStep();
 });
 
 
