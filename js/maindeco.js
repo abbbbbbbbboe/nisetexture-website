@@ -336,7 +336,7 @@ function attachScrollStep() {
     const getStep = () => {
       const isImg = container.classList.contains('image-container');
       if (window.innerWidth <= 768) {
-        return isImg ? 35 : 35;   // Mobile
+        return isImg ? 105 : 35;   // Mobile
       } else {
         return isImg ? 120 : 40;  // PC
       }

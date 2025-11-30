@@ -703,22 +703,38 @@ function attachScrollStep() {
     );
 
     // ==========================
-    // 📱 Mobile: touch
+    // 📱 Mobile: touchmove（これが重要！）
     // ==========================
-    let touchStartY = 0;
+    let lastY = 0;
+    let accum = 0; // accumulate movement
 
-    container.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
+    container.addEventListener("touchstart", (e) => {
+      lastY = e.touches[0].clientY;
+      accum = 0;
     });
 
-    container.addEventListener('touchend', (e) => {
-      const endY = e.changedTouches[0].clientY;
-      const diff = touchStartY - endY;
+    container.addEventListener("touchmove", (e) => {
+      e.preventDefault();  // 通常スクロールを無効化（必須）
+      const currentY = e.touches[0].clientY;
+      const diff = lastY - currentY;
 
-      if (Math.abs(diff) < 10) return; // small move ignore
+      accum += diff;
+      lastY = currentY;
 
-      const direction = diff > 0 ? 1 : -1;
-      scrollToStep(direction);
+      const step = getStep();
+
+      // 一定距離に到達したらステップ発火
+      if (Math.abs(accum) >= step) {
+        const direction = accum > 0 ? 1 : -1;
+        scrollToStep(direction);
+
+        // 余剰分を残して自然な連続動作を作る
+        accum = accum % step;
+      }
+    }, { passive: false });
+
+    container.addEventListener("touchend", () => {
+      accum = 0;
     });
   });
 }
