@@ -649,15 +649,6 @@ function attachScrollStep() {
 
     let isScrolling = false;
 
-    // const getStep = () => {
-    //   const isImg = container.classList.contains('image-container');
-    //   if (window.innerWidth <= 768) {
-    //     return isImg ? 105 : 35;   // Mobile
-    //   } else {
-    //     return isImg ? 120 : 40;  // PC
-    //   }
-    // };
-
     const getStep = (container) => {
   if (window.innerWidth <= 768) { // Mobile
     if (container === imageContainer) return 105;
@@ -703,10 +694,10 @@ function attachScrollStep() {
     );
 
     // ==========================
-    // 📱 Mobile: touchmove（これが重要！）
+    // 📱 Mobile: touchmove（これが重要）
     // ==========================
     let lastY = 0;
-    let accum = 0; // accumulate movement
+    let accum = 0; // accumulated movement
 
     container.addEventListener("touchstart", (e) => {
       lastY = e.touches[0].clientY;
@@ -714,21 +705,21 @@ function attachScrollStep() {
     });
 
     container.addEventListener("touchmove", (e) => {
-      e.preventDefault();  // 通常スクロールを無効化（必須）
+      e.preventDefault(); // 通常のスクロールを無効化
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
 
       accum += diff;
       lastY = currentY;
 
-      const step = getStep();
+      const step = getStep(container);
 
-      // 一定距離に到達したらステップ発火
+      // 指が step 以上動いたらステップスクロール
       if (Math.abs(accum) >= step) {
         const direction = accum > 0 ? 1 : -1;
         scrollToStep(direction);
 
-        // 余剰分を残して自然な連続動作を作る
+        // 余りだけ残す（連続動作を滑らかにする）
         accum = accum % step;
       }
     }, { passive: false });

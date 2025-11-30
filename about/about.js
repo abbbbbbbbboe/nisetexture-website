@@ -702,10 +702,10 @@ function attachScrollStep() {
     );
 
  // ==========================
-    // 📱 Mobile: touchmove（これが重要！）
+    // 📱 Mobile: touchmove でステップスクロール
     // ==========================
     let lastY = 0;
-    let accum = 0; // accumulate movement
+    let accum = 0;
 
     container.addEventListener("touchstart", (e) => {
       lastY = e.touches[0].clientY;
@@ -713,7 +713,8 @@ function attachScrollStep() {
     });
 
     container.addEventListener("touchmove", (e) => {
-      e.preventDefault();  // 通常スクロールを無効化（必須）
+      e.preventDefault(); // モバイルの通常スクロール無効
+
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
 
@@ -722,12 +723,12 @@ function attachScrollStep() {
 
       const step = getStep();
 
-      // 一定距離に到達したらステップ発火
+      // 指が step 分動いたらスクロール
       if (Math.abs(accum) >= step) {
         const direction = accum > 0 ? 1 : -1;
         scrollToStep(direction);
 
-        // 余剰分を残して自然な連続動作を作る
+        // 余り分を残すことでスムーズに連続発火
         accum = accum % step;
       }
     }, { passive: false });
