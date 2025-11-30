@@ -336,7 +336,7 @@ function attachScrollStep() {
     const getStep = () => {
       const isImg = container.classList.contains('image-container');
       if (window.innerWidth <= 768) {
-        return isImg ? 105 : 35;   // Mobile
+        return isImg ? 35 : 35;   // Mobile
       } else {
         return isImg ? 120 : 40;  // PC
       }
@@ -374,11 +374,14 @@ function attachScrollStep() {
       { passive: false }
     );
 
-   // ==========================
-    // 📱 Mobile: touchmove（これが重要！）
+    // ==========================
+    // 📱 Mobile: touchmove
     // ==========================
     let lastY = 0;
-    let accum = 0; // accumulate movement
+    let accum = 0; // 指の移動累積
+
+    // ★ 発火トリガーを 17px にする（ここが重要）
+    const trigger = 17;
 
     container.addEventListener("touchstart", (e) => {
       lastY = e.touches[0].clientY;
@@ -386,22 +389,21 @@ function attachScrollStep() {
     });
 
     container.addEventListener("touchmove", (e) => {
-      e.preventDefault();  // 通常スクロールを無効化（必須）
+      e.preventDefault();  // 通常スクロール無効（必須）
+
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
 
       accum += diff;
       lastY = currentY;
 
-      const step = getStep();
-
-      // 一定距離に到達したらステップ発火
-      if (Math.abs(accum) >= step) {
+      // ★ 17px 以上動いたらステップを発火！
+      if (Math.abs(accum) >= trigger) {
         const direction = accum > 0 ? 1 : -1;
         scrollToStep(direction);
 
-        // 余剰分を残して自然な連続動作を作る
-        accum = accum % step;
+        // 余剰を残すことで連続ステップが可能に
+        accum = accum % trigger;
       }
     }, { passive: false });
 
@@ -410,6 +412,7 @@ function attachScrollStep() {
     });
   });
 }
+
 
 // ==========================
 // スクロールトップボタン

@@ -713,25 +713,26 @@ function attachScrollStep() {
     });
 
     container.addEventListener("touchmove", (e) => {
-      e.preventDefault(); // モバイルの通常スクロール無効
+  e.preventDefault(); // 標準スクロール無効
 
-      const currentY = e.touches[0].clientY;
-      const diff = lastY - currentY;
+  const currentY = e.touches[0].clientY;
+  const diff = lastY - currentY;
 
-      accum += diff;
-      lastY = currentY;
+  accum += diff;
+  lastY = currentY;
 
-      const step = getStep();
+  const step = getStep();   // ← 実際に動く量（例：35px）
+  const trigger = 17;       // ← 指を何px動かしたら発火するか
 
-      // 指が step 分動いたらスクロール
-      if (Math.abs(accum) >= step) {
-        const direction = accum > 0 ? 1 : -1;
-        scrollToStep(direction);
+  if (Math.abs(accum) >= trigger) {
+    const direction = accum > 0 ? 1 : -1;
 
-        // 余り分を残すことでスムーズに連続発火
-        accum = accum % step;
-      }
-    }, { passive: false });
+    scrollToStep(direction);  // step(35px) で動く
+
+    // 余りを残す（滑らか連続ステップのため）
+    accum = accum % trigger;
+  }
+}, { passive: false });
 
     container.addEventListener("touchend", () => {
       accum = 0;

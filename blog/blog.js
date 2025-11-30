@@ -649,25 +649,33 @@ function attachScrollStep() {
 
     let isScrolling = false;
 
-    const getStep = (container) => {
-  if (window.innerWidth <= 768) { // Mobile
-    if (container === imageContainer) return 105;
-    if (container === textsContainer) return 70;
-    if (container === listContainer) return 35;
-  } else { // PC
-    if (container === imageContainer) return 120;
-    if (container === textsContainer) return 80;
-    if (container === listContainer) return 40;
-  }
-};
+    // --------------------------------------------------
+    // 👇 トリガー距離（指がこれだけ動いたら反応する）
+    //    スクロール幅（実際に移動する量）
+    // --------------------------------------------------
+    const getTriggerAndStep = (container) => {
+      const isMobile = window.innerWidth <= 768;
+
+      // PC / Mobile で切替
+      if (isMobile) {
+        if (container === imageContainer) return { trigger: 17, step: 35 };
+        if (container === textsContainer) return { trigger: 17, step:  35};
+        if (container === listContainer)  return { trigger: 17, step: 35 };
+      } else {
+        if (container === imageContainer) return { trigger: 120, step: 120 };
+        if (container === textsContainer) return { trigger: 80, step: 80 };
+        if (container === listContainer)  return { trigger: 40, step: 40 };
+      }
+
+      return { trigger: 20, step: 40 }; // fallback
+    };
 
     const maxScroll = () => container.scrollHeight - container.clientHeight;
 
-    const scrollToStep = (direction) => {
+    const scrollToStep = (direction, step) => {
       if (isScrolling) return;
       isScrolling = true;
 
-      const step = getStep(container);
       let target = container.scrollTop + direction * step;
 
       const lastStepTop = Math.floor(maxScroll() / step) * step;
@@ -680,22 +688,32 @@ function attachScrollStep() {
       setTimeout(() => { isScrolling = false; }, 120);
     };
 
-    // ==========================
+    // ==================================================
     // 🖱 PC: wheel
-    // ==========================
+    // ==================================================
+    let wheelAccum = 0;
+
     container.addEventListener(
       'wheel',
       (e) => {
         e.preventDefault();
-        const direction = e.deltaY > 0 ? 1 : -1;
-        scrollToStep(direction);
+
+        const { trigger, step } = getTriggerAndStep(container);
+
+        wheelAccum += e.deltaY;
+
+        if (Math.abs(wheelAccum) >= trigger) {
+          const direction = wheelAccum > 0 ? 1 : -1;
+          scrollToStep(direction, step);
+          wheelAccum = 0;  // リセット
+        }
       },
       { passive: false }
     );
 
-    // ==========================
-    // 📱 Mobile: touchmove（これが重要）
-    // ==========================
+    // ==================================================
+    // 📱 Mobile: touchmove
+    // ==================================================
     let lastY = 0;
     let accum = 0; // accumulated movement
 
@@ -705,22 +723,23 @@ function attachScrollStep() {
     });
 
     container.addEventListener("touchmove", (e) => {
-      e.preventDefault(); // 通常のスクロールを無効化
+      e.preventDefault();
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
 
       accum += diff;
       lastY = currentY;
 
-      const step = getStep(container);
+      const { trigger, step } = getTriggerAndStep(container);
 
-      // 指が step 以上動いたらステップスクロール
-      if (Math.abs(accum) >= step) {
+      // 指が trigger 以上動いたらステップスクロール
+      if (Math.abs(accum) >= trigger) {
         const direction = accum > 0 ? 1 : -1;
-        scrollToStep(direction);
 
-        // 余りだけ残す（連続動作を滑らかにする）
-        accum = accum % step;
+        scrollToStep(direction, step);
+
+        // 余りだけ残す
+        accum = accum % trigger;
       }
     }, { passive: false });
 
@@ -729,6 +748,7 @@ function attachScrollStep() {
     });
   });
 }
+
 
 // ==========================
 // スクロールトップボタン
