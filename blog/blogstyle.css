@@ -23,31 +23,7 @@
 }
 
 
-:root {
-  --backgroundcolor: #454c50;
-  --color: #e1e1e1;
-  --btn-color: #b6b6b9;
-  --link-color: #dfdfdf;
-  --menu-color: #c9c9c9;
-  --area-title-color: #828287;
-  --caption-color: var(--background-border-color);
-  --background-border-color: #78787b;
-  --listitem-color: #c9c9c9;
-   --a-border-color:#adadad;
 
-  --fontw1: 100;
-  --fontw2: 200;
-  --fontw3: 300;
-  --fontw4: 400;
-  --fontw5: 500;
-  --fontw6: 600;
-
-
-
-  --border: 1px solid var(--background-border-color);
-  --border-light: 1px solid #adadad;
-
-}
 
 
 body {
@@ -507,7 +483,7 @@ main {
 
 .caption {
   font-size: 0.8em;
-  color: var(--background-border-color);
+  color: var(--caption-color);
   line-height: 40px;
   margin-bottom: 45px;
   transform: scale(1, 0.9);
@@ -657,13 +633,15 @@ img.preview {
 
 .text-area a:hover {
   color: var(--backgroundcolor);
+  font-weight: var(--fontw3);
   /* ← 文字色の変更はここ！ */
 }
 
 .text-area a:hover::before {
-  background: var(--backgroundcolor);
+  background: var(--color);
   /* ホバー時の背景色 */
   color: var(--backgroundcolor);
+  border: 1px solid  var(--color);
 }
 
 
@@ -1147,7 +1125,7 @@ img.preview {
 
 
   .text-container {
-    padding: 0 10px 210px 40px;
+    padding: 0 10px 210px 30px;
   }
 
   .mobile_text_title {
@@ -1162,8 +1140,9 @@ img.preview {
   .text-area p {
     font-size: 1em;
     line-height: 35px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     font-weight: var(--fontw3);
+    width: 103%;
   }
 
   .text-area a {

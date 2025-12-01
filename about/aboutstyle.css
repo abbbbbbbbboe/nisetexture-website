@@ -23,31 +23,7 @@
   font-weight: var(--fontw6);
 }
 
-:root {
-  --backgroundcolor: #454c50;
-  --color: #e1e1e1;
-  --btn-color: #b6b6b9;
-  --link-color: #dfdfdf;
-  --menu-color: #c9c9c9;
-  --area-title-color: #828287;
-  --caption-color: #b4b4b4;
-  --background-border-color: #78787b;
-  --listitem-color: #c9c9c9;
-  --a-border-color:#adadad;
 
-  --fontw1: 100;
-  --fontw2: 200;
-  --fontw3: 300;
-  --fontw4: 400;
-  --fontw5: 500;
-  --fontw6: 600;
-
-
-
-  --border: 1px solid var(--background-border-color);
-  --border-light: 1px solid #adadad;
-
-}
 
 
 body {
@@ -91,7 +67,7 @@ button {
 
 .text-links a:hover {
   color: var(--backgroundcolor);
-
+font-weight: var(--fontw3);
 }
 
 header {
@@ -645,7 +621,7 @@ button {
   /* font-family: "IBM Plex Serif", serif; */
   font-style: italic;
   color: var(--color);
-  font-weight: 200;
+  font-weight: var(--fontw2);
   font-size: 1em;
 }
 

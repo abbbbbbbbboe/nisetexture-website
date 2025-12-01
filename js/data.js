@@ -29,7 +29,11 @@ nisetexture presented a video installation, an exhibition of the work’s struct
 text_credit: `さかな`,
        links: {
     "Website": "https://aaploit.com/hyperLOG",
-   "place": "https://aaploit.com/"
+   "place": "https://aaploit.com/",
+    "urate": "https://aaploit.com/hyperLOG",
+   "ビングルーム・トレーニング#映像の展示、作品構造図の展示、作品を別の場所から見るという配信をしました": "https://aaploit.com/",
+    "所から見るという配信をし": "https://aaploit.com/hyperLOG",
+   "ikari/hikarinohouhe": "https://aaploit.com/"
   }
 },
     {

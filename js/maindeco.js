@@ -381,7 +381,7 @@ function attachScrollStep() {
     let accum = 0; // 指の移動累積
 
     // ★ 発火トリガーを 17px にする（ここが重要）
-    const trigger = 10;
+    const trigger = 7;
 
     container.addEventListener("touchstart", (e) => {
       lastY = e.touches[0].clientY;

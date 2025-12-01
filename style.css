@@ -23,30 +23,7 @@
   font-weight: 600;
 }
 
-:root {
-  --backgroundcolor: #454c50;
-  --color: #e1e1e1;
-  --btn-color: #b6b6b9;
-  --link-color: #dfdfdf;
-  --menu-color: #c9c9c9;
-  --area-title-color: #828287;
-  --caption-color: #b4b4b4;
-  --background-border-color: #78787b;
-   --a-border-color:#adadad;
 
-  --fontw1: 100;
-  --fontw2: 200;
-  --fontw3: 300;
-  --fontw4: 400;
-  --fontw5: 500;
-  --fontw6: 600;
-
-
-
-  --border: 1px solid var(--background-border-color);
-  --border-light: 1px solid #adadad;
-
-}
 
 
 body {
@@ -271,19 +248,19 @@ button {
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
 }
 
-.menu button {
+/* .menu button {
   background: none;
-  /* border: none; */
+  
   font-size: 1em;
   color: var(--menu-color);
   font-weight: var(--fontw3);
-}
+} */
 
 .menu button.active {
   color: var(--color);
 }
 
-.btn {
+.menu button, .btn {
   background: none;
   border: none;
   font-size: 1em;
@@ -292,7 +269,7 @@ button {
   line-height: 40px;
   text-decoration: none;
   color: var(--menu-color);
-  font-weight: var(--fontw3);
+  font-weight: var(--fontw4);
 }
 
 .btn:hover,
@@ -326,12 +303,13 @@ button {
 
 #archive-sort-buttons {
   border-left: var(--border);
-  padding-top: 5px;
+  /* padding-top: 5px; */
 }
 
 #archive-sort-buttons button {
   /* line-height: 40px; */
   margin-left: 30px;
+  font-weight: var(--fontw2);
 }
 
 #archive-sort-buttons button.on {
@@ -363,7 +341,7 @@ button {
 /* リスト用 */
 .list-item.active .list-title {
   color: var(--color);
-  font-weight: var(--fontw6);
+  font-weight: var(--fontw8);
   letter-spacing: 0.5rem;
 }
 
@@ -597,6 +575,10 @@ img.preview {
 
   position: relative;
 }
+  .text-lang-wrapper{
+    position: relative;
+    padding-top: 40px;
+  }
 
 
 .lang-toggle-btn {
@@ -611,10 +593,11 @@ img.preview {
   font-size: 0.9em;
   font-weight: var(--fontw3);
   position: absolute;
-  top: 47px;
-  right: 60px;
+  top: 7px;
+  right: 20px;
   color: var(--backgroundcolor);
   background-color: var(--btn-color);
+  z-index: 999;
 
 }
 
@@ -626,7 +609,7 @@ img.preview {
 
 
 .page-top .lang-toggle-btn {
-  top: 7px;
+  top: 47px;
 }
 
 .text-area p {
@@ -639,9 +622,10 @@ img.preview {
   letter-spacing: 0.3rem;
   font-weight: var(--fontw2);
   color: var(--color);
+  
 }
 
-.text-area a {
+/* .text-area a {
   margin-top: 7px;
   line-height: 24px;
   text-decoration: none;
@@ -662,23 +646,70 @@ img.preview {
   background-color: var(--color);
   border: 1px solid var(--color);
 
+} */
+
+
+.text-area a, .text-links a {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 40px;
+  border-radius: 20px;
+  color:  var(--color);
+  text-decoration: none;
+  font-weight: var(--fontw2);
 }
+
+.text-area a::before,.text-links a::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  right: 7px;
+  bottom: 7px;
+  border-radius: 13px;
+  /* 20px - 7px = 13px */
+  background: #00000000;
+  /* 内側背景 */
+  border: 1px solid  var(--a-border-color);
+
+  transition-property: background, color;
+
+  z-index: -1;
+  /* 背景にする */
+     
+}
+
+.text-area a:hover , .text-links a:hover{
+  color: var(--backgroundcolor);
+  font-weight: var(--fontw3);
+  /* ← 文字色の変更はここ！ */
+}
+
+.text-area a:hover::before ,.text-links a:hover::before{
+  background: var(--color);
+  /* ホバー時の背景色 */
+  color: var(--backgroundcolor);
+  border: 1px solid  var(--color);
+}
+
 
 .text-container {
   padding: 0 40px;
   display: block;
-  position: relative;
+  /* position: relative; */
 }
+
+
 
 .text-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 10px;
-  margin-top: 7px;
-  padding-bottom: 47px;
+
+  /* padding-bottom: 40px; */
 }
 
-.text-links a,
+
 .preview-text a {
 
   line-height: 24px;
@@ -695,23 +726,23 @@ img.preview {
   font-size: 1em;
 }
 
-.text-links a:hover {
+/* .text-links a:hover {
   color: var(--backgroundcolor);
   background-color: var(--color);
   border: 1px solid var(--color);
-  font-weight: var(--fontw2);
+  font-weight: var(--fontw3);
 
-}
+} */
 
 .text-ja {
-  margin: 0;
-  padding-bottom: 80px;
+ 
+ 
   margin-left: -5px;
 }
 
 .text-en {
   margin-left: -5px;
-  padding-bottom: 40px;
+  
 }
 
 .text-credit {
@@ -1386,26 +1417,43 @@ img.preview {
 
   /* 最後のエリアは右のボーダーなし */
 
-
+.text-lang-wrapper{
+    
+    padding-top: 0px;
+  }
   .text-container {
-    padding: 0 10px 140px 40px;
+    padding: 0 10px 140px 30px;
   }
 
   .text-area p {
     font-size: 1em;
     line-height: 35px;
     font-weight: var(--fontw3);
+    width: 103%;
   }
 
   .text-area a {
-    line-height: 20px;
-    margin-top: 7px;
+    line-height: 35px;
+    /* margin-top: 7px; */
     font-weight: var(--fontw3);
+    padding:0 10px;
+    margin:0 5px
   }
+
+  .text-area a::before,.text-links a::before {
+     content: "";
+      top: 5px;
+  left: 0px;
+  right: 0px;
+  bottom: 5px;
+     z-index: 1;
+  }
+
+
 
   .lang-toggle-btn {
     border: 1px solid var(--btn-color);
-    top: 75px;
+    top: 5px;
     right: 30px;
     color: #545454;
     background-color: var(--btn-color);
@@ -1420,13 +1468,13 @@ img.preview {
   }
 
   .page-top .lang-toggle-btn {
-    top: 5px;
+    top: 40px;
   }
 
   .text-ja {
     margin: 0;
     padding-bottom: 0;
-    margin-left: -13px;
+    /* margin-left: -10px; */
     /* margin-bottom: 140px; */
   }
 
@@ -1440,7 +1488,7 @@ img.preview {
     margin-top: 35px;
     /* margin-bottom: 140px; */
     padding-bottom: 0;
-    margin-left: -13px;
+    /* margin-left: -10px; */
   }
 
   .text-en p {
@@ -1449,7 +1497,7 @@ img.preview {
 
   .text-credit {
     margin-top: 35px;
-    margin-left: -13px;
+    /* margin-left: -13px; */
   }
 
   .mobile-jp-title {
@@ -1468,22 +1516,22 @@ img.preview {
 
   .text-links {
 
-    gap: 13px 15px;
+    
     line-height: 35px;
     display: flex;
     letter-spacing: 0.1rem;
-    margin: 0 30px 40px -2px;
+    margin: 0 30px 35px 10px;
     padding-bottom: 0;
   }
 
   .text-links a {
-    margin-top: 7px;
-    line-height: 20px;
+    
+    line-height: 35px;
     text-decoration: none;
 
     display: inline-block;
    
-    border-radius: 11px;
+  
     padding: 0 7px 0 10px;
 
     font-weight: var(--fontw3);
@@ -1506,10 +1554,9 @@ img.preview {
 
   }
 
-  .text-links a,
+
   .youtube a {
     animation: linkanime 5s step-start infinite;
-
     animation-name: linkanime;
   }
 

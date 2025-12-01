@@ -211,7 +211,7 @@ function displayText(blocks, images, post) {
   if (isMobile()) {
     const titleP = document.createElement("p");
     titleP.className = "mobile_text_title";
-    titleP.innerHTML = `+&thinsp;${post.title || ""}&ensp;+`;
+    titleP.innerHTML = `+&ensp;${post.title || ""}&ensp;+`;
     textsContainer.appendChild(titleP);
 
     const categoryP = document.createElement("p");
@@ -734,9 +734,9 @@ function attachScrollStep() {
 
       // PC / Mobile で切替
       if (isMobile) {
-        if (container === imageContainer) return { trigger: 10, step: 35 };
-        if (container === textsContainer) return { trigger: 10, step:  35};
-        if (container === listContainer)  return { trigger: 10, step: 35 };
+        if (container === imageContainer) return { trigger: 7, step: 35 };
+        if (container === textsContainer) return { trigger: 7, step:  35};
+        if (container === listContainer)  return { trigger: 7, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
         if (container === textsContainer) return { trigger: 10, step: 80 };

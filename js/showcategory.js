@@ -266,6 +266,11 @@ function renderFull(data, options = {}) {
   textContainer.appendChild(emptyLinkSpace);
 }
 
+// === ▼ 言語切り替え一式をまとめる親要素を作成 ▼ ===
+const langWrapper = document.createElement('div');
+langWrapper.className = "text-lang-wrapper";
+// ====================================================
+
 // === 言語切り替えボタン ===
 const langBtn = document.createElement('button');
 langBtn.className = "text-section lang-toggle-btn";
@@ -274,7 +279,8 @@ langBtn.className = "text-section lang-toggle-btn";
 let activeLanguage = window.activeLanguage || "ja";
 window.activeLanguage = activeLanguage;
 
-textContainer.appendChild(langBtn);
+// 🔻 textContainer に入れず、langWrapper に追加
+langWrapper.appendChild(langBtn);
 
 
  // --- 日本語テキスト ---
@@ -297,7 +303,8 @@ if (jpFull.trim()) {
     jaSection.innerHTML = `<p>${jpFull}</p>`;
   }
 
-  textContainer.appendChild(jaSection);
+   // 🔻 textContainer → langWrapper
+  langWrapper.appendChild(jaSection);
 }
 
 // --- 英語テキスト ---
@@ -317,8 +324,12 @@ if (enFull.trim()) {
     enSection.innerHTML = `<p>${enFull}</p>`;
   }
 
-  textContainer.appendChild(enSection);
+   // 🔻 textContainer → langWrapper
+  langWrapper.appendChild(enSection);
 }
+// === ▼ ここで初めて textContainer に追加して1まとめにする ▼ ===
+textContainer.appendChild(langWrapper);
+// =================================================================
 
     // --- クレジット ---
   const creditFull = data.text_credit || "";

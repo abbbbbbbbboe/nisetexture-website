@@ -664,7 +664,7 @@ function attachScrollStep() {
     const getStep = () => {
       const isImg = container.classList.contains('image-container');
       if (window.innerWidth <= 768) {
-        return isImg ? 105 : 35;   // Mobile
+        return isImg ? 35 : 35;   // Mobile
       } else {
         return isImg ? 120 : 40;  // PC
       }
@@ -723,7 +723,7 @@ function attachScrollStep() {
   lastY = currentY;
 
   const step = getStep();   // ← 実際に動く量（例：35px）
-  const trigger = 17;       // ← 指を何px動かしたら発火するか
+  const trigger = 6;       // ← 指を何px動かしたら発火するか
 
   if (Math.abs(accum) >= trigger) {
     const direction = accum > 0 ? 1 : -1;
