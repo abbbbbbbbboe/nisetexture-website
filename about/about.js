@@ -602,8 +602,7 @@ newHeight = newHeight - 1; if (newHeight < 1) newHeight = 1;
   el.style.display = 'block';
   el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
-  el.style.borderLeft = '1px solid #b4b4b4';
-  el.style.borderRight = '1px solid #b4b4b4';
+  
 
     // ✅ 親の member-slider 高さも設定
   const parentSlider = el.closest('.member-slider');

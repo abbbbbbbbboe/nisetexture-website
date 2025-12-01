@@ -49,11 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       activeSection = "image";
     }
-     
      updateMobileView();       
-    
+     attachScrollStep();
     adjustMediaSizes();
-    attachScrollStep();
   }
 });
 
@@ -71,7 +69,7 @@ function updateMobileView() {
     imageArea.style.display = "";
     textArea.style.display  = "";
     prevBtn.style.display = "none";
-    nextBtn.style.display = "none";
+    nextBtn.style.display = "none";  
     return;
   }
 
@@ -123,7 +121,6 @@ function updateNavButtons() {
        // archiveページかつ作品未選択なら右ボタン非表示
     if (currentPage === "archive" && currentIndex === null) {
       nextBtn.style.display = "none";
-       prevBtn.style.display = "none";
     } else {
         prevBtn.style.display = "none";
       nextBtn.style.display = "";

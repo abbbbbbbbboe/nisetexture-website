@@ -9,7 +9,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b4b4b4;
+  background: var(--background-border-color);
   min-height: 40px;
 }
 
@@ -18,8 +18,8 @@
 }
 
 ::selection {
-  background-color: #e1e1e1;
-  color: #454c50;
+  background-color: var(--color);
+  color: var(--backgroundcolor);
   font-weight: 600;
 }
 
@@ -31,7 +31,8 @@
   --menu-color: #c9c9c9;
   --area-title-color: #828287;
   --caption-color: #b4b4b4;
---background-border-color: #78787b;
+  --background-border-color: #78787b;
+   --a-border-color:#adadad;
 
   --fontw1: 100;
   --fontw2: 200;
@@ -40,10 +41,10 @@
   --fontw5: 500;
   --fontw6: 600;
 
-  
+
 
   --border: 1px solid var(--background-border-color);
-  --border-light: 1px solid #e1e1e1;
+  --border-light: 1px solid #adadad;
 
 }
 
@@ -161,7 +162,7 @@ header {
   text-decoration: none;
 
   display: inline-block;
-  border: var(--border);
+ border: 1px solid var(--a-border-color);
   border-radius: 12px;
   padding: 0 7px 0 10px;
   /* font-family: "IBM Plex Serif", serif; */
@@ -345,7 +346,7 @@ button {
 .archive-filter-reset {
   height: 29px;
   width: 29px;
-  border: var(--border);
+  border: 1px solid var(--a-border-color);
   border-radius: 50%;
   /* margin-top: 7px; */
 }
@@ -684,7 +685,7 @@ img.preview {
   text-decoration: none;
 
   display: inline-block;
-  border: 1px solid var(--color);
+  border: 1px solid var(--a-border-color);
   border-radius: 13px;
   padding: 0 7px 0 10px;
   /* font-family: "IBM Plex Serif", serif; */
@@ -1048,7 +1049,7 @@ img.preview {
     text-decoration: none;
 
     display: inline-block;
-    border: 1px solid var(--color);
+   
     border-radius: 10px;
     padding: 0 5px 0 5px;
     /* font-family: "IBM Plex Serif", serif; */
@@ -1093,7 +1094,7 @@ img.preview {
     line-height: 35px;
     text-decoration: none;
     color: var(--color);
-    font-weight:var(--fontw6);
+    font-weight: var(--fontw6);
   }
 
   .ebb {
@@ -1188,9 +1189,9 @@ img.preview {
 
 
 
-.list-item:hover {
-  color: var(--btn-color);
-}
+  .list-item:hover {
+    color: var(--btn-color);
+  }
 
 
   .scroll-extra {
@@ -1481,7 +1482,7 @@ img.preview {
     text-decoration: none;
 
     display: inline-block;
-    border: 1px solid var(--color);
+   
     border-radius: 11px;
     padding: 0 7px 0 10px;
 
@@ -1517,10 +1518,10 @@ img.preview {
   .mobile-nav-btn {
     position: absolute;
     top: 106px;
-    height: 206px;
+    height: 106px;
     width: 34px;
     z-index: 999;
-    background-color: var(--backgroundcolor);;
+    background-color: var(--backgroundcolor);
     writing-mode: vertical-rl;
     text-decoration: none;
     color: var(--color);
@@ -1538,8 +1539,10 @@ img.preview {
 
   .mobile-nav-btn-text {
     color: var(--area-title-color);
-    font-weight:  var(--fontw5);
+    font-weight: var(--fontw5);
     font-size: 20px;
+    display: inline-block;
+    height: auto;
   }
 
   /* 左右に配置 */
