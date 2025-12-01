@@ -598,7 +598,7 @@ font-weight: 300;
   
   /* flex-shrink: 0; 高さ縮小防止 */
   transform: scale(0.9, 1);
-  font-weight: 200;
+  font-weight: 300;
   
 }
 
@@ -1014,14 +1014,14 @@ letter-spacing: 0.2rem;
 }
 
 .mobile-jp-title{
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   letter-spacing: 0.6rem !important;
 
  
 }
 
 .mobile-en-title{
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   letter-spacing: 0.4rem !important;
  font-size: 1.1em !important;
 
