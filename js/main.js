@@ -480,6 +480,12 @@ function generateArchiveList() {
 
     // click → showCategory()
     div.addEventListener('click', () => {
+const previewtext = document.querySelector('.preview-text-wrapper'); // class
+
+if (previewtext) {
+  previewtext.innerHTML = '';
+}
+
       currentIndex = i;
 
       showCategory('archive', i, currentArchiveFilters.length ? currentArchiveFilters : 'all');
