@@ -400,6 +400,7 @@ main {
   z-index: 10;
   box-sizing: content-box;
   margin: 0 auto 0 0;
+  z-index: 20;
 }
 
 .area-title h1 {
@@ -414,7 +415,7 @@ main {
   font-weight: var(--fontw5);
 
   transform: scale(1, 0.95);
-
+z-index: 200;
 }
 
 .list-container,
@@ -549,10 +550,10 @@ main {
 img.preview {
   position: absolute;
   /* エリアの上に重ねる */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top:80px;
+  left: 20%;
+  width: 80%;
+  height: calc(100%-80px);
   object-fit: cover;
   /* エリア全体をカバー、長辺はトリミング */
   z-index: 10;
@@ -562,6 +563,7 @@ img.preview {
   border: none;
 
 }
+
 
 
 
@@ -649,7 +651,7 @@ img.preview {
 } */
 
 
-.text-area a, .text-links a {
+.text-area a{
   position: relative;
   display: inline-block;
   padding: 0 20px;
@@ -658,9 +660,12 @@ img.preview {
   color:  var(--color);
   text-decoration: none;
   font-weight: var(--fontw2);
+  font-style: italic;
+  z-index: 2;
+  letter-spacing: 0.3rem;
 }
 
-.text-area a::before,.text-links a::before {
+.text-area a::before {
   content: "";
   position: absolute;
   top: 7px;
@@ -675,22 +680,24 @@ img.preview {
 
   transition-property: background, color;
 
-  z-index: -1;
+  z-index: 1;
   /* 背景にする */
      
 }
 
-.text-area a:hover , .text-links a:hover{
+.text-area a:hover{
   color: var(--backgroundcolor);
   font-weight: var(--fontw3);
   /* ← 文字色の変更はここ！ */
+  z-index: 2;
 }
 
-.text-area a:hover::before ,.text-links a:hover::before{
+.text-area a:hover::before{
   background: var(--color);
   /* ホバー時の背景色 */
   color: var(--backgroundcolor);
   border: 1px solid  var(--color);
+   z-index: -1;
 }
 
 
@@ -724,6 +731,7 @@ img.preview {
   color: var(--color);
   font-weight: var(--fontw2);
   font-size: 1em;
+  
 }
 
 /* .text-links a:hover {
@@ -766,15 +774,25 @@ img.preview {
   /* 高さ縮小防止 */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
-  font-weight: var(--fontw1);
+  font-weight: var(--fontw2);
+  background-color: var(--backgroundcolor);
+ 
+  background: repeating-linear-gradient(to bottom,
+      var(--preview-text-backgroundcolor),
+      var(--preview-text-backgroundcolor) 39px,
+      transparent 39px,
+      transparent 40px);
 
 }
+
+
 
 .preview-text a {
   color: var(--color);
   margin-right: 5px;
   margin-left: 5px;
   padding: 0 7px 0 10px;
+  font-weight: var(--fontw3);
 }
 
 .preview-text.text-en {
@@ -1103,6 +1121,10 @@ img.preview {
     display: flex;
     gap: 20px;
     margin-left: 20px;
+  }
+
+  .menu button, .btn{
+    line-height: 35px;
   }
 
   .btn {
@@ -1436,17 +1458,18 @@ img.preview {
     line-height: 35px;
     /* margin-top: 7px; */
     font-weight: var(--fontw3);
-    padding:0 10px;
-    margin:0 5px
+    /* padding:0 10px; */
+    margin:0 5px;
+     transform: scale(1, 0.95);
   }
 
-  .text-area a::before,.text-links a::before {
+  .text-area a::before{
      content: "";
-      top: 5px;
-  left: 0px;
-  right: 0px;
+    top: 5px;
+  
   bottom: 5px;
      z-index: 1;
+    
   }
 
 
@@ -1520,11 +1543,11 @@ img.preview {
     line-height: 35px;
     display: flex;
     letter-spacing: 0.1rem;
-    margin: 0 30px 35px 10px;
+    margin: 0 10px 35px 10px;
     padding-bottom: 0;
   }
 
-  .text-links a {
+  /* .text-links a {
     
     line-height: 35px;
     text-decoration: none;
@@ -1536,7 +1559,7 @@ img.preview {
 
     font-weight: var(--fontw3);
     font-size: 15px;
-  }
+  } */
 
   @keyframes linkanime {
 

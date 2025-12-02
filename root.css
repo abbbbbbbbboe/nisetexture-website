@@ -1,14 +1,15 @@
 :root {
   --backgroundcolor: #454c50;
+  --preview-text-backgroundcolor: #454c50e6;
   --color: #e1e1e1;
   --btn-color: #b6b6b9;
   --link-color: #dfdfdf;
   --menu-color: #b8b8b8;
   --area-title-color: #828287;
   --caption-color: #b4b4b4;
-  --background-border-color: #78787b;
+  --background-border-color: #86868a;
   --listitem-color: #c9c9c9;
-   --a-border-color:#adadad;
+  --a-border-color:#adadad;
 
   --fontw1: 100;
   --fontw2: 200;

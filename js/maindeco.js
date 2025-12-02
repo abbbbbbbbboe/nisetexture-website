@@ -317,101 +317,128 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ==========================
-// スクロール制御（コンテナ単位、最後のステップで止める）
-// ==========================
+// // ==========================
+// // スクロール制御（コンテナ単位、最後のステップで止める）
+// // ==========================
 
 
+// function attachScrollStep() {
+//   document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
+//     if (container.dataset.scrollAttached === "true") return;
+//     container.dataset.scrollAttached = "true";
 
-// ==========================
-// スクロール制御（コンテナ単位、最後のステップで止める）
-// ==========================
-function attachScrollStep() {
-  document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
-    if (container.dataset.scrollAttached === "true") return;
-    container.dataset.scrollAttached = "true";
+//     let isScrolling = false;
 
-    let isScrolling = false;
+//     const getStep = () => {
+//       const isImg = container.classList.contains('image-container');
+//       if (window.innerWidth <= 768) {
+//         return isImg ? 35 : 35;   // Mobile 固定35px
+//       } else {
+//         return isImg ? 120 : 40;  // PC
+//       }
+//     };
 
-    const getStep = () => {
-      const isImg = container.classList.contains('image-container');
-      if (window.innerWidth <= 768) {
-        return isImg ? 35 : 35;   // Mobile
-      } else {
-        return isImg ? 120 : 40;  // PC
-      }
-    };
+//     const maxScroll = () =>
+//       container.scrollHeight - container.clientHeight;
 
-    const maxScroll = () => container.scrollHeight - container.clientHeight;
+//     const scrollToStep = (direction) => {
+//       if (isScrolling) return;
+//       isScrolling = true;
 
-    const scrollToStep = (direction) => {
-      if (isScrolling) return;
-      isScrolling = true;
+//       const step = getStep();
+//       let target = container.scrollTop + direction * step;
 
-      const step = getStep();
-      let target = container.scrollTop + direction * step;
+//       // 最終ステップ調整
+//       const lastStepTop = Math.floor(maxScroll() / step) * step;
+//       if (target > lastStepTop) target = lastStepTop;
+//       if (target < 0) target = 0;
 
-      const lastStepTop = Math.floor(maxScroll() / step) * step;
-      if (target > lastStepTop) target = lastStepTop;
-      if (target < 0) target = 0;
+//       target = Math.round(target / step) * step;
 
-      target = Math.round(target / step) * step;
-      container.scrollTo({ top: target, behavior: 'auto' });
+//       container.scrollTo({ top: target, behavior: 'auto' });
 
-      setTimeout(() => { isScrolling = false; }, 120);
-    };
+//       setTimeout(() => { isScrolling = false; }, 80);
+//     };
 
-    // ==========================
-    // 🖱 PC: wheel
-    // ==========================
-    container.addEventListener(
-      'wheel',
-      (e) => {
-        e.preventDefault();
-        const direction = e.deltaY > 0 ? 1 : -1;
-        scrollToStep(direction);
-      },
-      { passive: false }
-    );
 
-    // ==========================
-    // 📱 Mobile: touchmove
-    // ==========================
-    let lastY = 0;
-    let accum = 0; // 指の移動累積
+//     // ==========================
+//     // PC: wheel
+//     // ==========================
+//     container.addEventListener(
+//       'wheel',
+//       (e) => {
+//         e.preventDefault();
+//         const direction = e.deltaY > 0 ? 1 : -1;
+//         scrollToStep(direction);
+//       },
+//       { passive: false }
+//     );
 
-    // ★ 発火トリガーを 17px にする（ここが重要）
-    const trigger = 7;
+//     // ==========================
+//     // Mobile: touch
+//     // ==========================
+//     let lastY = 0;
+//     let accum = 0;
+//     const trigger = 17;
 
-    container.addEventListener("touchstart", (e) => {
-      lastY = e.touches[0].clientY;
-      accum = 0;
-    });
+//     // **慣性疑似スクロール用**
+//     let inertiaInterval = null;
+//     let inertiaVelocity = 0;
 
-    container.addEventListener("touchmove", (e) => {
-      e.preventDefault();  // 通常スクロール無効（必須）
+//     const startInertia = () => {
+//       clearInterval(inertiaInterval);
 
-      const currentY = e.touches[0].clientY;
-      const diff = lastY - currentY;
+//       inertiaInterval = setInterval(() => {
+//         // 速度がほぼ0 → 停止
+//         if (Math.abs(inertiaVelocity) < 0.05) {
+//           clearInterval(inertiaInterval);
+//           return;
+//         }
 
-      accum += diff;
-      lastY = currentY;
+//         const direction = inertiaVelocity > 0 ? 1 : -1;
+//         scrollToStep(direction);
 
-      // ★ 17px 以上動いたらステップを発火！
-      if (Math.abs(accum) >= trigger) {
-        const direction = accum > 0 ? 1 : -1;
-        scrollToStep(direction);
+//         // 摩擦で減衰
+//         inertiaVelocity *= 0.87;
+//       }, 60); // 60msごとに "カタカタ" 移動
+//     };
 
-        // 余剰を残すことで連続ステップが可能に
-        accum = accum % trigger;
-      }
-    }, { passive: false });
 
-    container.addEventListener("touchend", () => {
-      accum = 0;
-    });
-  });
-}
+//     container.addEventListener("touchstart", (e) => {
+//       lastY = e.touches[0].clientY;
+//       accum = 0;
+//       inertiaVelocity = 0;
+//       clearInterval(inertiaInterval);
+//     });
+
+//     container.addEventListener("touchmove", (e) => {
+//       e.preventDefault();
+//       const currentY = e.touches[0].clientY;
+//       const diff = lastY - currentY;
+
+//       accum += diff;
+//       lastY = currentY;
+
+//       // 慣性用速度に加算
+//       inertiaVelocity = diff * 0.23;
+
+//       if (Math.abs(accum) >= trigger) {
+//         const direction = accum > 0 ? 1 : -1;
+//         scrollToStep(direction);
+//         accum = accum % trigger;
+//       }
+//     }, { passive: false });
+
+//     container.addEventListener("touchend", () => {
+//       // 指離したら慣性ステップスクロール開始
+//       if (Math.abs(inertiaVelocity) > 0.5) {
+//         startInertia();
+//       }
+//       accum = 0;
+//     });
+//   });
+// }
+
 
 
 // ==========================

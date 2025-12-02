@@ -1147,8 +1147,17 @@ img.preview {
 
   .text-area a {
     line-height: 35px;
-
+transform: scale(1, 0.95);
   }
+
+   .text-area a::before{
+     content: "";
+      top: 5px;
+  
+  bottom: 5px;
+     z-index: 1;
+  }
+
 
   .lang-toggle-btn {
     border: 1px solid var(--btn-color);

@@ -261,7 +261,7 @@ function renderFull(data, options = {}) {
 
   // 高さ設定（PC 40px / モバイル 35px）
   const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
-  emptyLinkSpace.style.height = isMobileDevice ? "70px" : "80px";
+  emptyLinkSpace.style.height = isMobileDevice ? "35px" : "40px";
 
   textContainer.appendChild(emptyLinkSpace);
 }
@@ -527,8 +527,18 @@ itemEl.addEventListener('mouseenter', e => {
 // ==========================
 itemEl.addEventListener('mouseleave', e => {
   // プレビュー関連を削除
-  imageArea.querySelectorAll('img.preview').forEach(el => el.remove());
+  
+page.querySelectorAll('img.preview').forEach(el => el.remove());
   document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
+
+
+  // --- scroll-top-btn を再表示 ---
+  document.querySelectorAll('.scroll-top-btn').forEach(btn => {
+    const container = btn.parentElement;
+    btn.style.display = container.scrollTop > 120 ? 'block' : 'none';
+  });
+
+  if (currentIndex === origIndex) return;
 
    const textContainer = textArea.querySelector('.text-container');
   if (textContainer) {
@@ -539,12 +549,6 @@ itemEl.addEventListener('mouseleave', e => {
   // 元の本文・補助を再表示
   textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
     el.style.visibility = '';
-  });
-
-  // --- scroll-top-btn を再表示 ---
-  document.querySelectorAll('.scroll-top-btn').forEach(btn => {
-    const container = btn.parentElement;
-    btn.style.display = container.scrollTop > 120 ? 'block' : 'none';
   });
 
   // ✅ フラグで復元処理をスキップ

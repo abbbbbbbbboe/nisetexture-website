@@ -715,115 +715,115 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ==========================
-// スクロール制御（コンテナ単位、最後のステップで止める）
-// ==========================
-function attachScrollStep() {
-  document.querySelectorAll('.list-container, .image-container, .text-container').forEach(container => {
-    if (container.dataset.scrollAttached === "true") return;
-    container.dataset.scrollAttached = "true";
+// // ==========================
+// // スクロール制御（コンテナ単位、最後のステップで止める）
+// // ==========================
+// function attachScrollStep() {
+//   document.querySelectorAll('.list-container, .image-container, .text-container').forEach(container => {
+//     if (container.dataset.scrollAttached === "true") return;
+//     container.dataset.scrollAttached = "true";
 
-    let isScrolling = false;
+//     let isScrolling = false;
 
-    // --------------------------------------------------
-    // 👇 トリガー距離（指がこれだけ動いたら反応する）
-    //    スクロール幅（実際に移動する量）
-    // --------------------------------------------------
-    const getTriggerAndStep = (container) => {
-      const isMobile = window.innerWidth <= 768;
+//     // --------------------------------------------------
+//     // 👇 トリガー距離（指がこれだけ動いたら反応する）
+//     //    スクロール幅（実際に移動する量）
+//     // --------------------------------------------------
+//     const getTriggerAndStep = (container) => {
+//       const isMobile = window.innerWidth <= 768;
 
-      // PC / Mobile で切替
-      if (isMobile) {
-        if (container === imageContainer) return { trigger: 7, step: 35 };
-        if (container === textsContainer) return { trigger: 7, step:  35};
-        if (container === listContainer)  return { trigger: 7, step: 35 };
-      } else {
-        if (container === imageContainer) return { trigger: 120, step: 120 };
-        if (container === textsContainer) return { trigger: 10, step: 80 };
-        if (container === listContainer)  return { trigger: 40, step: 40 };
-      }
+//       // PC / Mobile で切替
+//       if (isMobile) {
+//         if (container === imageContainer) return { trigger: 7, step: 35 };
+//         if (container === textsContainer) return { trigger: 7, step:  35};
+//         if (container === listContainer)  return { trigger: 7, step: 35 };
+//       } else {
+//         if (container === imageContainer) return { trigger: 120, step: 120 };
+//         if (container === textsContainer) return { trigger: 10, step: 80 };
+//         if (container === listContainer)  return { trigger: 40, step: 40 };
+//       }
 
-      return { trigger: 20, step: 40 }; // fallback
-    };
+//       return { trigger: 20, step: 40 }; // fallback
+//     };
 
-    const maxScroll = () => container.scrollHeight - container.clientHeight;
+//     const maxScroll = () => container.scrollHeight - container.clientHeight;
 
-    const scrollToStep = (direction, step) => {
-      if (isScrolling) return;
-      isScrolling = true;
+//     const scrollToStep = (direction, step) => {
+//       if (isScrolling) return;
+//       isScrolling = true;
 
-      let target = container.scrollTop + direction * step;
+//       let target = container.scrollTop + direction * step;
 
-      const lastStepTop = Math.floor(maxScroll() / step) * step;
-      if (target > lastStepTop) target = lastStepTop;
-      if (target < 0) target = 0;
+//       const lastStepTop = Math.floor(maxScroll() / step) * step;
+//       if (target > lastStepTop) target = lastStepTop;
+//       if (target < 0) target = 0;
 
-      target = Math.round(target / step) * step;
-      container.scrollTo({ top: target, behavior: 'auto' });
+//       target = Math.round(target / step) * step;
+//       container.scrollTo({ top: target, behavior: 'auto' });
 
-      setTimeout(() => { isScrolling = false; }, 120);
-    };
+//       setTimeout(() => { isScrolling = false; }, 120);
+//     };
 
-    // ==================================================
-    // 🖱 PC: wheel
-    // ==================================================
-    let wheelAccum = 0;
+//     // ==================================================
+//     // 🖱 PC: wheel
+//     // ==================================================
+//     let wheelAccum = 0;
 
-    container.addEventListener(
-      'wheel',
-      (e) => {
-        e.preventDefault();
+//     container.addEventListener(
+//       'wheel',
+//       (e) => {
+//         e.preventDefault();
 
-        const { trigger, step } = getTriggerAndStep(container);
+//         const { trigger, step } = getTriggerAndStep(container);
 
-        wheelAccum += e.deltaY;
+//         wheelAccum += e.deltaY;
 
-        if (Math.abs(wheelAccum) >= trigger) {
-          const direction = wheelAccum > 0 ? 1 : -1;
-          scrollToStep(direction, step);
-          wheelAccum = 0;  // リセット
-        }
-      },
-      { passive: false }
-    );
+//         if (Math.abs(wheelAccum) >= trigger) {
+//           const direction = wheelAccum > 0 ? 1 : -1;
+//           scrollToStep(direction, step);
+//           wheelAccum = 0;  // リセット
+//         }
+//       },
+//       { passive: false }
+//     );
 
-    // ==================================================
-    // 📱 Mobile: touchmove
-    // ==================================================
-    let lastY = 0;
-    let accum = 0; // accumulated movement
+//     // ==================================================
+//     // 📱 Mobile: touchmove
+//     // ==================================================
+//     let lastY = 0;
+//     let accum = 0; // accumulated movement
 
-    container.addEventListener("touchstart", (e) => {
-      lastY = e.touches[0].clientY;
-      accum = 0;
-    });
+//     container.addEventListener("touchstart", (e) => {
+//       lastY = e.touches[0].clientY;
+//       accum = 0;
+//     });
 
-    container.addEventListener("touchmove", (e) => {
-      e.preventDefault();
-      const currentY = e.touches[0].clientY;
-      const diff = lastY - currentY;
+//     container.addEventListener("touchmove", (e) => {
+//       e.preventDefault();
+//       const currentY = e.touches[0].clientY;
+//       const diff = lastY - currentY;
 
-      accum += diff;
-      lastY = currentY;
+//       accum += diff;
+//       lastY = currentY;
 
-      const { trigger, step } = getTriggerAndStep(container);
+//       const { trigger, step } = getTriggerAndStep(container);
 
-      // 指が trigger 以上動いたらステップスクロール
-      if (Math.abs(accum) >= trigger) {
-        const direction = accum > 0 ? 1 : -1;
+//       // 指が trigger 以上動いたらステップスクロール
+//       if (Math.abs(accum) >= trigger) {
+//         const direction = accum > 0 ? 1 : -1;
 
-        scrollToStep(direction, step);
+//         scrollToStep(direction, step);
 
-        // 余りだけ残す
-        accum = accum % trigger;
-      }
-    }, { passive: false });
+//         // 余りだけ残す
+//         accum = accum % trigger;
+//       }
+//     }, { passive: false });
 
-    container.addEventListener("touchend", () => {
-      accum = 0;
-    });
-  });
-}
+//     container.addEventListener("touchend", () => {
+//       accum = 0;
+//     });
+//   });
+// }
 
 
 // ==========================

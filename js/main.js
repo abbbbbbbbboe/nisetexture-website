@@ -6,6 +6,7 @@ const menuButtons = document.querySelectorAll('.menu button');
 const listArea = document.querySelector('.list-area');
 const imageArea = document.querySelector('.image-area');
 const textArea = document.querySelector('.text-area');
+const page = document.querySelector('.page');
 const listContainer = document.querySelector('.list-container');
 const imageContainer = document.querySelector('.image-container');
 const textsContainer = document.querySelector('.text-container');
@@ -273,7 +274,7 @@ if (textContainer) {
   // ================================
   function renderPreview(data) {
      if (isMobile()) return;
-    imageArea.querySelectorAll('img.preview').forEach(el => el.remove());
+  page.querySelectorAll('img.preview').forEach(el => el.remove());
   document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
   textArea.querySelectorAll('.scroll-extra').forEach(el => el.remove());
 
@@ -289,18 +290,19 @@ if (textContainer) {
     img.alt = data.title;
     img.classList.add('preview');
 
-    const rect = imageArea.getBoundingClientRect();
+    const rect = page.getBoundingClientRect();
+    const listrect = listArea.getBoundingClientRect();
     img.style.position = 'fixed';
-    img.style.top = (rect.top + 40) + 'px';
-    img.style.left = rect.left + 'px';
-    img.style.width = (rect.width - 1) + 'px';
-    img.style.height = (rect.height - 40) + 'px';
+    img.style.top = (rect.top) + 'px';
+    img.style.left = listrect.width + 'px';
+    img.style.width = (rect.width - listrect.width) + 'px';
+    img.style.height = (rect.height) + 'px';
     img.style.objectFit = 'cover';
     img.style.zIndex = '999';
     img.style.pointerEvents = 'none';
     img.style.filter = 'grayscale(90%)';
     
-    imageArea.appendChild(img);
+    page.appendChild(img);
   }
 
   // --- プレビュー短文を生成 ---
@@ -372,8 +374,10 @@ const enPreview = getFirstSentenceWithHTML(enText);
   wrapper.style.pointerEvents = 'none';
   wrapper.style.display = 'flex';
   wrapper.style.flexDirection = 'column';
-  wrapper.style.fontWeight = '100';
   wrapper.style.margin = '0';
+  // wrapper.style.mixBlendMode = 'difference';
+  wrapper.style.color = '#000';
+  
   
   if (jpPreview.trim()) {
     const pJp = document.createElement('p');
@@ -411,7 +415,7 @@ function attachArchiveHoverEvents() {
     itemEl.addEventListener('mouseleave', () => {
       
       // プレビューを消す処理（あなたの既存コードに合わせる）
-      imageArea.querySelectorAll('img.preview').forEach(el => el.remove());
+      page.querySelectorAll('img.preview').forEach(el => el.remove());
       document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
       
       // 消した後、右側の通常テキストを再表示
@@ -481,10 +485,11 @@ function generateArchiveList() {
     // click → showCategory()
     div.addEventListener('click', () => {
 const previewtext = document.querySelector('.preview-text-wrapper'); // class
-
 if (previewtext) {
   previewtext.innerHTML = '';
 }
+page.querySelectorAll('img.preview').forEach(el => el.remove());
+
 
       currentIndex = i;
 
