@@ -18,9 +18,9 @@ let listContainer = listArea.querySelector('.list-container');
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
-        if (container === imageContainer) return { trigger: 15, step: 35 };
-        if (container === textsContainer) return { trigger: 15, step: 35 };
-        if (container === listContainer)  return { trigger: 15, step: 35 };
+        if (container === imageContainer) return { trigger: 10, step: 35 };
+        if (container === textsContainer) return { trigger: 10, step: 35 };
+        if (container === listContainer)  return { trigger: 10, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
         if (container === textsContainer) return { trigger: 10,  step: 80 };
@@ -79,38 +79,46 @@ let listContainer = listArea.querySelector('.list-container');
 
     // ★ 疑似慣性スクロール用
     let inertiaVelocity = 0;      // 現在の慣性の速度
-    let inertiaInterval = null;   // カタカタ実行タイマー
+    
 
     // -------- inertia start ---------
-    const startInertia = (step) => {
-      clearInterval(inertiaInterval);
+// ==========================
+// Mobile: Inertia Scroll
+// ==========================
 
-      inertiaInterval = setInterval(() => {
+let inertiaTimer = null;
 
-        // 速度が小さくなったら終了
-        if (Math.abs(inertiaVelocity) < 0.05) {
-          clearInterval(inertiaInterval);
-          return;
-        }
+const startInertia = (step) => {
+  clearTimeout(inertiaTimer);
 
-        const direction = inertiaVelocity > 0 ? 1 : -1;
-        scrollToStep(direction, step);
+  const loop = () => {
+    if (Math.abs(inertiaVelocity) < 0.05) return;
 
-        // 慣性の減衰（ゆっくり止まる）
-        inertiaVelocity *= 0.86;   // ← 減衰速度（0.90〜0.96 が自然）
+    const direction = inertiaVelocity > 0 ? 1 : -1;
 
-      }, 60); // 60msごとにカタッカタッと進む
-    };
+    scrollToStep(direction, step);   // ← ★ step を必ず渡す！
+
+    inertiaVelocity *= 0.9;
+
+    const speed = Math.min(Math.max(20, 200 - Math.abs(inertiaVelocity) * 150), 200);
+
+    inertiaTimer = setTimeout(loop, speed);
+  };
+
+  loop();
+};
+
+
     // --------------------------------
 
-    container.addEventListener("touchstart", (e) => {
-      lastY = e.touches[0].clientY;
-      accum = 0;
+   container.addEventListener("touchstart", (e) => {
+  lastY = e.touches[0].clientY;
+  accum = 0;
 
-      // 慣性を止める
-      inertiaVelocity = 0;
-      clearInterval(inertiaInterval);
-    });
+  // 慣性を止める
+  inertiaVelocity = 0;
+  clearTimeout(inertiaTimer);  // ← これが正しい！
+});
 
     container.addEventListener("touchmove", (e) => {
       e.preventDefault();
