@@ -2,7 +2,7 @@
 // スクロール制御（コンテナ単位、最後のステップで止める）
 // ==========================
 function attachScrollStep() {
-  document.querySelectorAll('.list-container, .image-container, .text-container').forEach(container => {
+  document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
     if (container.dataset.scrollAttached === "true") return;
     container.dataset.scrollAttached = "true";
 
