@@ -680,7 +680,7 @@ button {
 
   body {
     font-size: 15px;
-
+overflow: hidden;
   }
 
   ::-webkit-scrollbar {
@@ -724,11 +724,13 @@ button {
     background-size: contain;
   }
 
-  .rogo:hover {
-    height: 24px;
-    margin-top: 3px;
-    margin-left: 37px;
+   .rogo:hover {
+    height: 27px;
+    width: 160px;
+    margin-top: 6px;
+    margin-left: 15px;
     stroke-width: 3px;
+
     background-repeat: no-repeat;
     background-size: contain;
   }

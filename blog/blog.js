@@ -5,6 +5,7 @@ const textArea = document.querySelector('.text-area');
 const listContainer = document.querySelector('.list-container');
 const imageContainer = document.querySelector('.image-container');
 const textsContainer = document.querySelector('.text-container');
+const listItem = document.querySelector('.list-item');
 const filterArea = document.getElementById('archive-sort-buttons');
 
 let currentIndex = null;
@@ -27,31 +28,16 @@ window.addEventListener('orientationchange', setVh);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  //    if (isMobile()) {
-  //   if (!hasSelectedPost()) {
-  //     activeSection = "list";
-  //   } else {
-  //     activeSection = "text";
-  //   }
- 
- 
-  //   updateMobileView();
-  // }
-
   if (document.querySelector(".list-container")) {
     initBlog();
      attachScrollStep();
   }
 
-   initBlog();
   const hash = location.hash.replace("#", "");
   if (hash) {
     const post = blogContents.posts.find(p => p.id === hash);
     if (post) {
-      displayText(post.textBlocks, post.images, post);
-      displayImages(post.images);
-      updateTextAreaTitle();
-      applyRandomSpacingToAreaTitles();
+     
       // attachJumpHandlers();
       const targetItem = listContainer.querySelector(`.list-item[data-post-id="${hash}"]`);
       if (targetItem) {
@@ -59,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
         allItems.forEach(el => el.classList.remove("active"));
         targetItem.classList.add("active");
       }
+
+       displayText(post.textBlocks, post.images, post);
+    
+      displayImages(post.images);
+      updateTextAreaTitle();
+      applyRandomSpacingToAreaTitles();
+    
     }
   }
 applyRandomSpacingToMenu();
@@ -154,9 +147,7 @@ function setupClickHandler() {
       .forEach(el => el.classList.remove("active"));
     item.classList.add("active");
 
-    // スクロールリセット
-    if (textsContainer) textsContainer.scrollTop = 0;
-    if (imageContainer) imageContainer.scrollTop = 0;
+    
 
     if (isMobile()) {
       activeSection = "text";
@@ -167,6 +158,11 @@ function setupClickHandler() {
 
     displayText(post.textBlocks, post.images, post);
     displayImages(post.images);
+
+    // スクロールリセット
+    if (textsContainer) textsContainer.scrollTop = 0;
+    if (imageContainer) imageContainer.scrollTop = 0;
+
     updateTextAreaTitle();
     applyRandomSpacingToAreaTitles();
     applyRandomSpacingToMobileAreaTitles();
@@ -199,11 +195,69 @@ function setupClickHandler() {
 //   textContainer.appendChild(title);
 // }
 
+// function createButton(item) {
+//   const btn = document.createElement("button");
+//   btn.classList.add("skip-btn");
+
+//     btn.dataset.id = item.id;
+
+//   // PC とモバイルで出すラベルを切り替え
+//   const isMobile = window.innerWidth <= 768;
+//   const label = isMobile && item.mobile_label
+//     ? item.mobile_label
+//     : item.label;
+
+//   btn.textContent = label || "";
+
+//   btn.addEventListener("click", () => {
+//     console.log(item.id + " clicked");
+//   });
+
+//   return btn;
+// }
+// window.addEventListener("resize", updateButtons);
+
+// function updateButtons() {
+//   document.querySelectorAll(".skip-btn").forEach((btn) => {
+//     const id = btn.dataset.id;
+//     const item = contents.find(c => c.id === id);
+
+//     const isMobile = window.innerWidth <= 768;
+//     const label = isMobile && item.mobile_label
+//       ? item.mobile_label
+//       : item.label;
+
+//     btn.textContent = label;
+//   });
+// }
+
+
 function displayText(blocks, images, post) {
   textsContainer.innerHTML = "";
+  
   createScrollTopButton(textsContainer);
 
   let currentButtonGroup = null;
+
+// ★ PC版・モバイル版それぞれでスキップパネルを準備
+let skipPanel = document.createElement("div");
+
+
+if (isMobile()) {
+  skipPanel.className = "skip-button-panel-mobile"; 
+  textsContainer.appendChild(skipPanel);
+} else {
+  document.querySelectorAll('.skip-button-panel').forEach(el => el.remove());
+skipPanel.className = "skip-button-panel";
+
+// ★ PC版：.list-item.active の “下” に入れる
+const activeItem = listContainer.querySelector(".list-item.active");
+if (activeItem) {
+  activeItem.insertAdjacentElement("afterend", skipPanel);
+}
+
+}
+
 
  // =========================================================
   // ★ モバイル版：本文の前にタイトル・カテゴリ・日付を挿入
@@ -222,6 +276,7 @@ function displayText(blocks, images, post) {
 
     
   }
+  
 
   blocks.forEach(block => {
 
@@ -340,6 +395,70 @@ else if (block.type === "a") {
 
       currentButtonGroup.appendChild(btn);
     }
+
+ // ────────────────────────────────
+// ▶ SKIP BUTTON（PC・モバイル両対応版）
+// ────────────────────────────────
+else if (block.type === "skipbutton") {
+
+  // ★ scroll target（PC/モバイル共通）
+  const mark = document.createElement("div");
+  mark.className = "skip-target";
+  mark.dataset.skipId = block.id;
+  textsContainer.appendChild(mark);
+  const markP = document.createElement("p");
+  markP.className = "skip-target-text";
+  markP.textContent =  block.text ? block.text : "";
+  mark.appendChild(markP);
+
+  // ★ スクロール対象を決める
+  const scrollContainer = textsContainer; // モバイルもPCもtext-containerをスクロール
+
+  // =============================================
+  // ★ モバイル版：本文内にシンプルボタン挿入
+  // =============================================
+  if (isMobile()) {
+    const btn = document.createElement("button");
+    btn.className = "mobile-skip-btn";
+
+    // ← モバイル用ラベル（なければPC用labelかデフォルト）
+    let label = block.mobile_label || block.label;
+btn.textContent = label ? label + "↓" : "↓";
+
+    btn.addEventListener("click", () => {
+      scrollContainer.scrollTo({
+        behavior: 'auto',
+        top: mark.offsetTop
+      });
+    });
+
+    skipPanel.appendChild(btn);
+
+    return; // ← PC側の処理は行わない
+  }
+
+  // =============================================
+  // ★ PC版：右側パネルにボタン追加（従来通り）
+  // =============================================
+  const sb = document.createElement("button");
+  sb.className = "skip-btn";
+  sb.textContent = block.label ? "…" + block.label : "";
+
+  sb.dataset.id = block.id;
+
+  sb.addEventListener("click", () => {
+    scrollContainer.scrollTo({
+      behavior: 'auto',
+      top: mark.offsetTop
+      
+    });
+  });
+
+  skipPanel.appendChild(sb);
+}
+
+
+
     attachJumpHandlers();
 
   });
@@ -497,12 +616,13 @@ function displayImages(images) {
       const embedUrl = convertToSoundCloudEmbed(file); // 追加
       innerHTML = `
         <iframe 
-          width="100%" 
+          width="80%" 
           height="80px" 
         
           src="${embedUrl}"
           data-id="${mediaId}">
-        </iframe>`;
+        </iframe>
+        `;
     }
 
     // --- MP4 Video ---
@@ -641,7 +761,7 @@ function convertToVimeoEmbed(url) {
 // }
 
 function convertToSoundCloudEmbed(url) {
-  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=false&hide_related=true&visual=true`;
+  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=false&hide_related=true&visual=true&color=454c50`;
 }
 
 
@@ -687,6 +807,11 @@ function applyRandomSpacingToAreaTitles() {
 // listタイトルに適用
 // ==========================
 function applyRandomSpacingToListArea() {
+  const skipBtn = listArea.querySelector('.skip-btn');
+  if (skipBtn) return;
+
+  if (!imageContainer) return;
+
   document.querySelectorAll('.list-area button,.list-area p').forEach(list => {
     const originalText = list.textContent;
     list.innerHTML = randomLetterSpacing(originalText);

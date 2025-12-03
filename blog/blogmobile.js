@@ -128,6 +128,7 @@ function updateNavButtons() {
     
     prevBtn.onclick = () => {
       activeSection = "list";
+      // document.querySelectorAll('.skip-button-panel-mobile').forEach(el => el.remove());
       updateMobileView();
       
       //  adjustMediaSizes();

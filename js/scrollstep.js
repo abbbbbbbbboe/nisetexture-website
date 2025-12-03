@@ -23,7 +23,7 @@ let listContainer = listArea.querySelector('.list-container');
         if (container === listContainer)  return { trigger: 10, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
-        if (container === textsContainer) return { trigger: 10,  step: 80 };
+        if (container === textsContainer) return { trigger: 20,  step: 40 };
         if (container === listContainer)  return { trigger: 40,  step: 40 };
       }
 
