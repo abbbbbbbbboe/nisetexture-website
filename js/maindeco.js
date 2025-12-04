@@ -158,6 +158,8 @@ function resizeMediaToFitArea(el, areaWidth) {
   newHeight = newHeight - 1;
   if (newHeight < 1) newHeight = 1;
 
+  newWidth = Math.floor(newWidth);
+
   // 適用
   el.style.width = `${newWidth}px`;
   el.style.height = `${newHeight}px`;
@@ -288,9 +290,9 @@ function applyRandomSpacingToAreaTitles() {
 // listタイトルに適用
 // ==========================
 function applyRandomSpacingToListArea() {
-  document.querySelectorAll('.list-area button,.list-area p').forEach(list => {
+  document.querySelectorAll('.list-title').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText);
+    list.innerHTML = randomLetterSpacing(originalText, 2, 3);
   });
 }
 

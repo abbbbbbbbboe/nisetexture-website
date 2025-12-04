@@ -180,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateMobileView();       // ← 表示を反映
   }
   attachScrollStep();
+  createScrollTopButton(listContainer, textContainer, imageContainer);
 });
 
 
@@ -190,8 +191,9 @@ const menuButtons = document.querySelectorAll('.menu button');
 const listArea = document.querySelector('.list-area');
 const imageArea = document.querySelector('.image-area');
 const textArea = document.querySelector('.text-area');
-let textContainer = textArea.querySelector('.text-container');
-let imageContainer = imageArea.querySelector('.image-container');
+const listContainer = listArea.querySelector('.list-container');
+const textContainer = textArea.querySelector('.text-container');
+const imageContainer = imageArea.querySelector('.image-container');
 
 function showAboutCategory(category) {
   const items = contents.about;
@@ -477,8 +479,8 @@ attachScrollStep();
 addMobileNavButtons();
 updateMobileView();
 // ★★ ADD END ★★
-applyRandomSpacingToMobileAreaTitles()
-
+applyRandomSpacingToMobileAreaTitles();
+createScrollTopButton(listContainer, textContainer, imageContainer);
   
 }
 
@@ -595,6 +597,8 @@ const step = isMobile() ? 35 : 40;
   // ✅ ここではもう縦-1pxしない（上で処理済み）
 // ✅ 縦を1px減らす 
 newHeight = newHeight - 1; if (newHeight < 1) newHeight = 1;
+
+newWidth = Math.floor(newWidth);
   // スタイル適用
   el.style.width = `${newWidth}px`;
   el.style.height = `${newHeight}px`;
@@ -809,7 +813,7 @@ function applyRandomSpacingToMenu() {
 function applyRandomSpacingToAreaTitles() {
   document.querySelectorAll('.area-title h1').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText, minSpacing = 1, maxSpacing = 2.5);
+    title.innerHTML = randomLetterSpacing(originalText, 1, 2.5);
   });
 }
 
@@ -819,7 +823,7 @@ function applyRandomSpacingToAreaTitles() {
 function applyRandomSpacingToListArea() {
   document.querySelectorAll('.list-area button,.list-area p').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText);
+    title.innerHTML = randomLetterSpacing(originalText,1, 1.5);
   });
 }
 
@@ -829,7 +833,7 @@ function applyRandomSpacingToListArea() {
 function applyRandomSpacingToMobileAreaTitles() {
   document.querySelectorAll('.mobile-nav-btn span').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText, minSpacing = 1, maxSpacing = 2.5);
+    title.innerHTML = randomLetterSpacing(originalText,1, 2.5);
   });
 }
 
@@ -847,54 +851,61 @@ window.addEventListener('DOMContentLoaded', () => {
 // ランダムスペーシング関数↑ここまで
 // ==========================
 
-
 // ==========================
-// スクロールトップボタン（全エリア共通）
+// スクロールトップボタン
 // ==========================
+function createScrollTopButton(container) {
+  if (container.querySelector('.scroll-top-btn')) return;
 
-document.querySelectorAll('.list-area, .image-area, .text-area').forEach(area => {
-  // ボタン作成
   const btn = document.createElement('button');
   btn.textContent = '↑';
   btn.className = 'scroll-top-btn';
-  document.body.appendChild(btn);
-
-  // 初期非表示
+  container.appendChild(btn); // container 内に追加
+    // 初期非表示
   btn.style.display = 'none';
-  btn.style.width = '32px';
-  btn.style.height = '32px';
-  btn.style.borderRadius = '50%';
+ 
   btn.style.border = '1px solid #b4b4b4';
-  btn.style.background = '#3b3b3b';
+ 
   btn.style.color = '#e1e1e1';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
-  btn.style.fontSize = '1.5em';
-  btn.style.fontWeight = '100';
-
+ 
   // スクロール監視
-  area.addEventListener('scroll', () => {
+  container.addEventListener('scroll', () => {
     // 一定量スクロールしたら表示
-    if (area.scrollTop > 120) {
+    if (container.scrollTop > 120) {
       btn.style.display = 'block';
     } else {
       btn.style.display = 'none';
     }
 
     // エリア右下にボタンを配置（fixedで追従）
-    const rect = area.getBoundingClientRect();
+    const rect = container.getBoundingClientRect();
     btn.style.position = 'fixed';
-    btn.style.top = (84) + 'px'; // 10pxマージン
-    btn.style.left = (rect.right - 56) + 'px';
+ 
+
+  if (!isMobile()) {
+    btn.style.left = '';
+    btn.style.right = (window.innerWidth - rect.right + 30) + 'px'; // 右端からの余白
+  } else {
+    // モバイル
+    if (activeSection === 'list') {
+   btn.style.left = '';
+    btn.style.right = (window.innerWidth - rect.right + 8) + 'px'; // 右端からの余白
+    } else {
+     btn.style.left = (rect.left + 8) + 'px'; // 16pxは画面端からの余白
+    btn.style.right = ''; // 念のため右は空に
+    }
+  }
   });
 
-  // クリックでスクロールトップ
   btn.addEventListener('click', () => {
-  area.scrollTo({ top: 0 });
-});
-});
+    container.scrollTo({ top: 0 });
+  });
+}
 
 
 // 初期設定
 applyRandomSpacingToMenu();
+
 

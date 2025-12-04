@@ -443,7 +443,7 @@ function generateArchiveList() {
 
     // まず基本情報を入れる
     div.innerHTML = `
-      <div class="list-title">+&thinsp;${randomLetterSpacing(item.title)}&ensp;+</div>
+      <div class="list-title">+&ensp;${randomLetterSpacing(item.title)}&ensp;+</div>
       <div class="list-meta">
         <span class="list-date">(${item.date || ''})</span>
         <br>

@@ -107,7 +107,9 @@ applyRandomSpacingToAreaTitles();
 
 
 
-
+// ================================
+// 左リスト作成
+// ================================
 
 function buildList(posts) {
   
@@ -118,14 +120,33 @@ createScrollTopButton(listContainer);
     div.className = "list-item";
     div.dataset.postId = post.id;
     div.innerHTML = `
-      <div class="list-title">+&thinsp;${randomLetterSpacing(post.title)}&ensp;+</div>
+    <div class="list-category list-meta">【${post.category || ''}】</div><br>
+      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title)}&ensp;+</span></div>
       <div class="list-meta">
         <span class="list-date">(${post.date || ''})</span>
-        <br>
-        <span class="list-category">*${post.category || ''}</span>
+      <span class="list-tag"></span>
+        
       </div>
     `;
     listContainer.appendChild(div);
+
+    // list-tag の中を取得
+const tagContainer = div.querySelector('.list-tag');
+
+// 配列があればタグを追加
+(post.tag || []).forEach(t => {
+  const tagSpan = document.createElement("span");
+  tagSpan.className = "tag";
+  tagSpan.textContent = "#" + t;
+  tagContainer.appendChild(tagSpan);
+  
+});
+// ★ list-tagのクリックを list-item に伝えない
+//タグでソートする場合はこれを解除
+// tagContainer.addEventListener("click", (e) => {
+//   e.stopPropagation();
+// });
+
     const spacer = document.createElement("div");
       spacer.className = "list-item-spacer";
       listContainer.appendChild(spacer);
@@ -147,6 +168,7 @@ function setupClickHandler() {
       .forEach(el => el.classList.remove("active"));
     item.classList.add("active");
 
+   
     
 
     if (isMobile()) {
@@ -164,9 +186,9 @@ function setupClickHandler() {
     if (imageContainer) imageContainer.scrollTop = 0;
 
     updateTextAreaTitle();
+    
     applyRandomSpacingToAreaTitles();
     applyRandomSpacingToMobileAreaTitles();
-
     // ハッシュ更新は最後（または少し遅らせる）
     setTimeout(() => { location.hash = postId; }, 0);
   });
@@ -263,17 +285,37 @@ if (activeItem) {
   // ★ モバイル版：本文の前にタイトル・カテゴリ・日付を挿入
   // =========================================================
   if (isMobile()) {
+    
+  const categoryP = document.createElement("p");
+    categoryP.className = "mobile_text_category";
+    categoryP.innerHTML =`【${post.category || ""}】`;
+    textsContainer.appendChild(categoryP);
+
     const titleP = document.createElement("p");
     titleP.className = "mobile_text_title";
     titleP.innerHTML = `+&ensp;${post.title || ""}&ensp;+`;
     textsContainer.appendChild(titleP);
 
-    const categoryP = document.createElement("p");
-    categoryP.className = "mobile_text_category_data";
-    categoryP.innerHTML =`(${post.date || ""}) &emsp; * ${post.category || ""}`;
-    textsContainer.appendChild(categoryP);
-    //"*" + post.category + "&emsp;" +"(" + post.date + ")" || ""
+  
 
+    //"*" + post.category + "&emsp;" +"(" + post.date + ")" || ""
+ const dateP = document.createElement("p");
+    dateP.className = "mobile_text_data";
+    dateP.innerHTML =`(${post.date || ""}) `;
+    textsContainer.appendChild(dateP);
+
+const wrapper = document.createElement("p");
+wrapper.className = "mobile_text_tag";
+
+// post.tag が配列なら、その中身を1つずつ div にして追加
+(post.tag || []).forEach(t => {
+  const tagDiv = document.createElement("div");
+  tagDiv.className = "tag";
+  tagDiv.textContent = "#" + t;
+  wrapper.appendChild(tagDiv);
+});
+
+textsContainer.appendChild(wrapper);
     
   }
   
@@ -810,11 +852,11 @@ function applyRandomSpacingToListArea() {
   const skipBtn = listArea.querySelector('.skip-btn');
   if (skipBtn) return;
 
-  if (!imageContainer) return;
+  // if (!imageContainer) return;
 
-  document.querySelectorAll('.list-area button,.list-area p').forEach(list => {
+  document.querySelectorAll('.list-area span,.list-area p').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText);
+    list.innerHTML = randomLetterSpacing(originalText, 2, 3);
   });
 }
 
@@ -932,7 +974,7 @@ window.addEventListener('DOMContentLoaded', () => {
 //       lastY = currentY;
 
 //       const { trigger, step } = getTriggerAndStep(container);
-
+    
 //       // 指が trigger 以上動いたらステップスクロール
 //       if (Math.abs(accum) >= trigger) {
 //         const direction = accum > 0 ? 1 : -1;
@@ -991,9 +1033,9 @@ function createScrollTopButton(container) {
     // モバイル
     if (activeSection === 'list') {
    btn.style.left = '';
-    btn.style.right = (window.innerWidth - rect.right + 7) + 'px'; // 右端からの余白
+    btn.style.right = (window.innerWidth - rect.right + 8) + 'px'; // 右端からの余白
     } else {
-     btn.style.left = (rect.left + 7) + 'px'; // 16pxは画面端からの余白
+     btn.style.left = (rect.left + 8) + 'px'; // 16pxは画面端からの余白
     btn.style.right = ''; // 念のため右は空に
     }
   }
@@ -1061,6 +1103,8 @@ function resizeMediaToFitArea(el, areaWidth) {
   newHeight = newHeight - 1;
   if (newHeight < 1) newHeight = 1;
 
+  newWidth = Math.floor(newWidth);
+
   // 適用
   el.style.width = `${newWidth}px`;
   el.style.height = `${newHeight}px`;
@@ -1116,3 +1160,6 @@ function adjustMediaSizes() {
 
 
 window.addEventListener('resize', adjustMediaSizes);
+
+
+

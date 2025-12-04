@@ -34,7 +34,7 @@ body {
 
   background: var(--backgroundcolor);
   color: var(--color);
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
 
@@ -227,7 +227,15 @@ main {
 .menu span {
   transform: scale(0.9, 1);
 }
-
+.scroll-top-btn {
+  background-color: var(--backgroundcolor);
+  width: 32px;
+  height: 32px;
+  top: 84px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: var(--fontw1);
+}
 button {
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
   cursor: pointer
@@ -347,7 +355,7 @@ button {
 
   width: 100%;
   /* overflow-y: auto; 各エリアを縦スクロール可能に */
-  height: calc(100vh - 81px);
+  height: calc(100dvh - 81px);
   ;
   /* 親要素内で高さを固定 */
   box-sizing: border-box;
@@ -680,7 +688,7 @@ button {
 
   body {
     font-size: 15px;
-overflow: hidden;
+
   }
 
   ::-webkit-scrollbar {
@@ -817,7 +825,21 @@ overflow: hidden;
     top: 107px;
     display: block;
   }
+  
+  .scroll-top-btn {
+    width: 20px;
+    height: 60px;
+    top: 251px;
 
+    line-height: 28px !important;
+    letter-spacing: 0 !important;
+    border-radius: 13px;
+    font-size: 1.5em;
+    font-weight: var(--fontw1);
+    /* text-indent: -1px; */
+
+
+  }
 
   .list-area,
   .image-area,
@@ -831,7 +853,7 @@ overflow: hidden;
     /* background: #454c50; */
     width: 100%;
     /* overflow-y: auto; 各エリアを縦スクロール可能に */
-    height: calc(100vh - 106px);
+    height: calc(100dvh - 106px);
     ;
     /* 親要素内で高さを固定 */
     box-sizing: border-box;

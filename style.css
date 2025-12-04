@@ -35,7 +35,7 @@ body {
   background: var(--backgroundcolor);
 
   color: var(--color);
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
 
@@ -382,7 +382,7 @@ main {
 
   width: 100%;
   /* overflow-y: auto; 各エリアを縦スクロール可能に */
-  height: calc(100vh - 81px);
+  height: calc(100dvh - 81px);
   /* 親要素内で高さを固定 */
   box-sizing: border-box;
   /* パディングを含めて高さを計算 */
@@ -999,7 +999,7 @@ img.preview {
   body {
     font-size: 15px;
     /* overflow: hidden; */
-    overflow: hidden;
+    
   }
 
   ::-webkit-scrollbar {
@@ -1206,7 +1206,7 @@ img.preview {
     /* background: #454c50; */
     width: 100%;
     /* overflow-y: auto; 各エリアを縦スクロール可能に */
-    height: calc(100vh - 106px);
+    height: calc(100dvh - 106px);
     /* 親要素内で高さを固定 */
     box-sizing: border-box;
     /* パディングを含めて高さを計算 */

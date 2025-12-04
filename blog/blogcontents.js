@@ -16,9 +16,10 @@ export const blogContents = {
   posts: [
      {
       id: "AboutOurActivities",
-      category: "diary",
+      category: "特集",
       title: "私たちの活動について",
       date: "2025-11-26",
+      tag:["about", "news"],
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
         { src: "https://soundcloud.com/tofubeats/throw-your-laptop-on-the-fire-2025-mix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
@@ -53,7 +54,7 @@ export const blogContents = {
         { type: "p", text: `まさに張子のように空洞化した飲み会は、確かにあの居酒屋のカウンターや半個室で訳の分からない言葉で罵り合ったり、絶品だった料理があった可能性も常に内包したメディアになりうるのです`, class: ["large-space-1"] },
         
         { type: "p", text: `何事も経験に基づいて型を決めると悩むことが減り、手順に沿って淡々と進めれば、求めているものが手に入ることに気がつきます。` },
-        { type: "p", text: `しかしながら、型を事前に決めてしまうことは、その内容を突き詰める時には有効ですが、方法以前の他の可能性を無かったことにすることにもなるのです`, class: ["large-space-1"] },
+        { type: "p", text: `しかしながら、型を事前に決めてしまうことは、その内容を突き詰める時には有効ですが、方法以前の他の可能性を無かったことにすることにもなるのです。`, class: ["large-space-1"] },
 
 
         {type: "skipbutton",id: "skip3",label: "section 3",mobile_label: "3", text:"section 3" },
@@ -73,7 +74,7 @@ export const blogContents = {
         { type: "p", text: `やがてアルコールは分解され、いつかは集まった人間も散っていきますが、飲み会がただそのものとして存在しているのではなく、日常の一連の流れの中にあり、はたまた、厚生労働省が「節度ある適度な飲酒」を進めるように、肝臓は日頃から大切にしなければいけないようです。`, class: ["large-space-1"] },
 
         { type: "p", text: `しかしながら、飲み会においてそんなことは二の次で、露悪的な“ノミュニケーション”を行う没入と、翌朝の俯瞰を繰り返すことが大切なのかもしれません。` },
-        { type: "p", text: `翌朝はあくまでも俯瞰という冷静さを保ち、罵ったことや泣いてしまったことを決して反省しないほうが良いでしょう。飲み会において反省性は集団としての地盤を固めるものではなく、むしろ酩酊した足場を切り崩す可能性を孕みます`, class: ["large-space-1"] },
+        { type: "p", text: `翌朝はあくまでも俯瞰という冷静さを保ち、罵ったことや泣いてしまったことを決して反省しないほうが良いでしょう。飲み会において反省性は集団としての地盤を固めるものではなく、むしろ酩酊した足場を切り崩す可能性を孕みます。`, class: ["large-space-1"] },
 
         { type: "p", text: `つまり、中身のない混乱した状態をつくることで秩序が反転するのです。`, class: ["large-space-1"] },
 
@@ -110,6 +111,7 @@ export const blogContents = {
       category: "diary",
       title: "test",
       date: "2025-11-22",
+       tag:["about", "contents"],
       images: [
         { src: "img/background8.png", caption: "写真1", id: 1 },
         { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },

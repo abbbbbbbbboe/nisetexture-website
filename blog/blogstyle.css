@@ -32,7 +32,7 @@ body {
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
   background: var(--backgroundcolor);
   color: var(--color);
-  height: 100vh;
+ 
   display: flex;
   flex-direction: column;
 }
@@ -47,9 +47,7 @@ button,
   color: var(--color);
 }
 
-.scroll-top-btn {
-  background-color: var(--backgroundcolor);
-}
+
 
 p {
   color: var(--color);
@@ -69,6 +67,8 @@ header {
   flex-direction: column;
   background-size: 100%;
   border-bottom: 1px solid var(--background-border-color);
+   top: 0;
+  left: 0;
 }
 
 .head1 {
@@ -269,6 +269,7 @@ button {
 }
 
 .scroll-top-btn {
+  background-color: var(--backgroundcolor);
   width: 32px;
   height: 32px;
   top: 84px;
@@ -277,24 +278,6 @@ button {
   font-weight: var(--fontw1);
 }
 
-.list-item {
-  font-weight: var(--fontw3);
-}
-
-.list-item:hover{
-  color: var(--color);
-}
-
-.list-item .active .list-title, .list-item.active .list-meta{
-  color: var(--color);
-}
-
-/* リスト用 */
-.list-item.active .list-title {
-  color: var(--color);
-  font-weight: var(--fontw6);
-  letter-spacing: 0.5rem;
-}
 
 .mobile-nav-btn {
   display: none;
@@ -321,7 +304,7 @@ main {
       var(--background-border-color) 40px);
   width: 100%;
   /* overflow-y: auto; 各エリアを縦スクロール可能に */
-  height: calc(100vh - 81px);
+  height: calc(100dvh - 81px);
   /* 親要素内で高さを固定 */
   box-sizing: border-box;
   /* パディングを含めて高さを計算 */
@@ -388,6 +371,31 @@ main {
   letter-spacing: 0.3rem;
 }
 
+.list-item {
+  font-weight: var(--fontw3);
+}
+
+.list-item:hover{
+  color: var(--color);
+}
+
+.list-item .active .list-title, .list-item.active .list-meta{
+  color: var(--color);
+}
+
+/* リスト用 */
+.list-item.active .list-title {
+  color: var(--color);
+  font-weight: var(--fontw5);
+  letter-spacing: 0.3rem;
+}
+
+.list-item.active .list-category {
+  color: var(--color);
+  font-weight: var(--fontw8);
+  letter-spacing: 0.3rem;
+}
+
 
 
 
@@ -397,6 +405,9 @@ main {
 
 }
 
+.list-category{
+  font-weight: var(--fontw4);
+}
 
 .list-title {
   font-size: 1em;
@@ -546,7 +557,7 @@ img.preview {
   display: flex;
   flex-direction: column;
   /* 必須：縦並び */
-  overflow-y: auto;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -936,7 +947,7 @@ font-weight: var(--fontw2);
 
   body {
     font-size: 15px;
-    overflow: hidden;
+   
 
   }
 
@@ -1083,6 +1094,7 @@ font-weight: var(--fontw2);
   main {
     grid-template-columns: none;
     overflow-y: hidden;
+    height: calc(100dvh - 106px);
   }
 
   .scroll-top-btn {
@@ -1112,8 +1124,8 @@ font-weight: var(--fontw2);
     /* background: #454c50; */
     width: 100%;
     /* overflow-y: auto; 各エリアを縦スクロール可能に */
-    height: calc(100vh - 106px);
-    ;
+    
+    
     /* 親要素内で高さを固定 */
     box-sizing: border-box;
     /* パディングを含めて高さを計算 */
@@ -1213,15 +1225,31 @@ font-weight: var(--fontw2);
   .text-container {
     padding: 0 10px 210px 30px;
   }
-
+.mobile_text_category {
+    
+    font-weight: var(--fontw2) !important;
+    letter-spacing: 0.5em !important;
+  }
   .mobile_text_title {
     font-weight: var(--fontw6) !important;
   }
 
-  .mobile_text_category_data {
-    margin-bottom: 35px;
-    font-weight: var(--fontw4) !important;
+  .mobile_text_data {
+   
+    font-weight: var(--fontw2) !important;
   }
+
+  .mobile_text_tag{
+     display: flex;
+  gap: 20px;
+  line-height: 35px;
+   margin-bottom: 35px;
+  }
+.tag{
+ width:fit-content;
+ line-height: 35px;
+}
+
 
   .text-area p {
     font-size: 1em;
