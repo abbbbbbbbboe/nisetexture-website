@@ -130,7 +130,7 @@ text_en: `Extracting daily actions and routines from their original context and 
     "映像作品《Reboot Plan》別カット"
   ],
       text_jp: `ドドドド<br>日常の行為やルーティンの動きを取り出し、元の場所から別の場所に配置する。そして、皿洗い、会話、食事、視聴といった要素を変換し、反転やすり替えをしながら、レイヤーのように重ね合わせることで、本来のかたちからわずかにズレた、ハリボテのようなものを作りあげる。`,
-text_en: `Extracting daily actions and routines from their original context and repositioning them elsewhere, the work transforms elements such as dishwashing, conversation, eating, and watching. Through inversion and substitution, it layers them like strata, creating a form slightly detached from its original state—a kind of facade.`,
+
 }
   ]
 };

@@ -124,7 +124,7 @@ createScrollTopButton(listContainer);
       <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title)}&ensp;+</span></div>
       <div class="list-meta">
         <span class="list-date">(${post.date || ''})</span>
-      <span class="list-tag"></span>
+      <div class="list-tag"></div>
         
       </div>
     `;
@@ -135,7 +135,7 @@ const tagContainer = div.querySelector('.list-tag');
 
 // 配列があればタグを追加
 (post.tag || []).forEach(t => {
-  const tagSpan = document.createElement("span");
+  const tagSpan = document.createElement("div");
   tagSpan.className = "tag";
   tagSpan.textContent = "#" + t;
   tagContainer.appendChild(tagSpan);
@@ -342,6 +342,25 @@ textsContainer.appendChild(wrapper);
       textsContainer.appendChild(p);
     }
 
+        // --------------------------
+    // ▶ 通常の段落 <li>
+    // --------------------------
+    if (block.type === "li") {
+      currentButtonGroup = null;
+
+      const li = document.createElement("li");
+      p.innerHTML = block.text;   // ← a タグ対応
+    // ← クラスが配列か文字列かを判定して追加
+  if (block.class) {
+    if (Array.isArray(block.class)) {
+      block.class.forEach(c => p.classList.add(c));
+    } else {
+      p.classList.add(block.class);
+    }
+  }
+
+      textsContainer.appendChild(li);
+    }
 // --------------------------
 // ▶ Aタグ
 // --------------------------
@@ -379,9 +398,22 @@ else if (block.type === "a") {
     else if (block.type === "divider") {
       currentButtonGroup = null;
 
-      const div = document.createElement("div");
-      div.className = "divider-line";
-      textsContainer.appendChild(div);
+     
+  // 親要素
+  const wrapper = document.createElement("div");
+  wrapper.className = "divider-line";
+
+  // 内側の border 要素
+  const inner = document.createElement("div");
+  inner.className = "line";
+
+  // 親に子を入れる
+  wrapper.appendChild(inner);
+
+  // 画面に追加
+  textsContainer.appendChild(wrapper)
+
+      
     }
 
 

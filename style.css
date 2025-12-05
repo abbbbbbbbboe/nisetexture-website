@@ -262,7 +262,7 @@ button {
 
 .menu button, .btn {
   background: none;
-  border: none;
+  /* border: none; */
   font-size: 1em;
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
 
@@ -310,6 +310,7 @@ button {
   /* line-height: 40px; */
   margin-left: 30px;
   font-weight: var(--fontw2);
+  line-height: 0;
 }
 
 #archive-sort-buttons button.on {
@@ -319,14 +320,16 @@ button {
 
 .archive-filter {
   border: none;
+  width: fit-content;
 }
 
 .archive-filter-reset {
-  height: 29px;
-  width: 29px;
+  height: 28px;
+  width: 28px;
+  
   border: 1px solid var(--a-border-color);
   border-radius: 50%;
-  /* margin-top: 7px; */
+  margin-top: 6px;
 }
 
 
@@ -1322,6 +1325,10 @@ img.preview {
     /* overflow: visible !important; */
   }
 
+  .mobile-image-area-title{
+    line-height: 35px;
+    margin-left: 10px;
+  }
   #wrapper {
     height: 70px;
     margin-top: 0px;

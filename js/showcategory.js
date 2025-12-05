@@ -191,12 +191,20 @@ function renderFull(data, options = {}) {
   // ================================
   // 🔹 IMAGEエリア更新
   // ================================
-  
+  const isMobile = window.innerWidth <= 768;
   imageContainer.innerHTML = '';
 
   // 🔹 スクロールトップボタン
   createScrollTopButton(imageContainer);
-
+if (isMobile) {
+   const imageAreaTitle = document.createElement('div');
+   imageAreaTitle.className = 'mobile-image-area-title';
+    imageAreaTitle.innerHTML = `
+      <p class="mobile-jp-title">+&ensp;${data.title || ""}&ensp;+</p>
+     
+    `;
+    imageContainer.appendChild(imageAreaTitle);
+  }
   // --- メディア描画 ---
   data.media.forEach((file, i) => {
     let elementHTML = '';
@@ -284,7 +292,7 @@ langWrapper.appendChild(langBtn);
 
 
  // --- 日本語テキスト ---
-const isMobile = window.innerWidth <= 768;
+
 const jpFull = data.text_jp || data.text_ja || data.text || "";
 let jaSection = null;
 
@@ -326,6 +334,10 @@ if (enFull.trim()) {
 
    // 🔻 textContainer → langWrapper
   langWrapper.appendChild(enSection);
+}
+
+if (!enSection) {
+  langBtn.remove();
 }
 // === ▼ ここで初めて textContainer に追加して1まとめにする ▼ ===
 textContainer.appendChild(langWrapper);
