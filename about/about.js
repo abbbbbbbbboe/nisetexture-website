@@ -129,6 +129,7 @@ function updateNavButtons() {
       nextBtn.style.display = "";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
+        stopInertiaAndRound(listContainer);
         activeSection = "image";
        updateMobileView();
       applyRandomSpacingToListArea();
@@ -145,12 +146,14 @@ function updateNavButtons() {
     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text</span>`;
 
     prevBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
       activeSection = "list";
       updateMobileView();
       applyRandomSpacingToListArea();
       applyRandomSpacingToMobileAreaTitles();
     };
     nextBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
       activeSection = "text";
       updateMobileView();
       applyRandomSpacingToListArea();
@@ -163,6 +166,7 @@ function updateNavButtons() {
     prevBtn.style.display = "";
     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">image</span>`;
     prevBtn.onclick = () => {
+      stopInertiaAndRound(textContainer);
       activeSection = "image";
       updateMobileView();
       applyRandomSpacingToListArea();

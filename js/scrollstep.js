@@ -1,3 +1,7 @@
+
+// スクロール処理ファイルの冒頭
+window.inertiaTimer = null;
+window.inertiaVelocity = 0;
 // ==========================
 // スクロール制御（コンテナ単位、最後のステップで止める）
 // ==========================
@@ -18,21 +22,25 @@ let listContainer = listArea.querySelector('.list-container');
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
-        if (container === imageContainer) return { trigger: 10, step: 35 };
-        if (container === textsContainer) return { trigger: 10, step: 35 };
-        if (container === listContainer)  return { trigger: 10, step: 35 };
+        if (container === imageContainer) return { trigger: 11, step: 35 };
+        if (container === textsContainer) return { trigger: 11, step: 35 };
+        if (container === listContainer)  return { trigger: 11, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
-        if (container === textsContainer) return { trigger: 20,  step: 40 };
+        if (container === textsContainer) return { trigger: 40,  step: 40 };
         if (container === listContainer)  return { trigger: 40,  step: 40 };
       }
 
-      return { trigger: 20, step: 40 }; // fallback
+      return { trigger: 40, step: 40 }; // fallback
     };
 
     const maxScroll = () => container.scrollHeight - container.clientHeight;
 
     const scrollToStep = (direction, step) => {
+
+        
+  
+
       if (isScrolling) return;
       isScrolling = true;
 
@@ -56,6 +64,7 @@ let listContainer = listArea.querySelector('.list-container');
     container.addEventListener(
       'wheel',
       (e) => {
+       
         e.preventDefault();
 
         const { trigger, step } = getTriggerAndStep(container);
@@ -78,7 +87,7 @@ let listContainer = listArea.querySelector('.list-container');
     let accum = 0;
 
     // ★ 疑似慣性スクロール用
-    let inertiaVelocity = 0;      // 現在の慣性の速度
+       // 現在の慣性の速度
     
 
     // -------- inertia start ---------
@@ -86,27 +95,26 @@ let listContainer = listArea.querySelector('.list-container');
 // Mobile: Inertia Scroll
 // ==========================
 
-let inertiaTimer = null;
+
 
 const startInertia = (step) => {
-  clearTimeout(inertiaTimer);
+  clearTimeout(window.inertiaTimer);
 
   const loop = () => {
-    if (Math.abs(inertiaVelocity) < 0.05) return;
+    if (Math.abs(window.inertiaVelocity) < 0.05) return;
 
-    const direction = inertiaVelocity > 0 ? 1 : -1;
+    const direction = window.inertiaVelocity > 0 ? 1 : -1;
+    scrollToStep(direction, step);
 
-    scrollToStep(direction, step);   // ← ★ step を必ず渡す！
+    window.inertiaVelocity *= 0.9;
 
-    inertiaVelocity *= 0.9;
-
-    const speed = Math.min(Math.max(20, 200 - Math.abs(inertiaVelocity) * 150), 200);
-
-    inertiaTimer = setTimeout(loop, speed);
+    const speed = Math.min(Math.max(20, 200 - Math.abs(window.inertiaVelocity) * 150), 200);
+    window.inertiaTimer = setTimeout(loop, speed);
   };
 
   loop();
 };
+
 
 
     // --------------------------------
@@ -121,6 +129,7 @@ const startInertia = (step) => {
 });
 
     container.addEventListener("touchmove", (e) => {
+         
       e.preventDefault();
 
       const currentY = e.touches[0].clientY;
@@ -154,4 +163,23 @@ const startInertia = (step) => {
       accum = 0;
     });
   });
+}
+
+function getTriggerAndStepGlobal(container) {
+  const isMobile = window.innerWidth <= 768;
+  const stepSize = 35; // デフォルト
+
+  // ここで container に応じた step を返す
+  if (isMobile) return { trigger: 10, step: 35 };
+  else return { trigger: 40, step: 40 };
+}
+
+function stopInertiaAndRound(container) {
+  window.inertiaVelocity = 0;
+  clearTimeout(window.inertiaTimer);
+
+  const { step } = getTriggerAndStepGlobal(container); // 現在のステップサイズを取得
+  const current = container.scrollTop;
+  const rounded = Math.round(current / step) * step;
+  container.scrollTop = rounded; // 位置を丸める
 }

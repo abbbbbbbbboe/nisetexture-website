@@ -11,6 +11,7 @@ const listContainer = document.querySelector('.list-container');
 const imageContainer = document.querySelector('.image-container');
 const textsContainer = document.querySelector('.text-container');
 const filterArea = document.getElementById('archive-sort-buttons');
+let skipScrolling = false;
 
 let currentIndex = null;
 let currentArchiveFilters = []; 

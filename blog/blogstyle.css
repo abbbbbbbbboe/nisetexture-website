@@ -304,7 +304,7 @@ main {
       var(--background-border-color) 40px);
   width: 100%;
   /* overflow-y: auto; 各エリアを縦スクロール可能に */
-  height: calc(100dvh - 81px);
+  height: calc(100vh - 81px);
   /* 親要素内で高さを固定 */
   box-sizing: border-box;
   /* パディングを含めて高さを計算 */
@@ -314,10 +314,10 @@ main {
 }
 
 .area-title {
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   left: 0;
-  height: 40px;
+  /* height: 40px; */
   width: 100%;
   z-index: 10;
   box-sizing: content-box;
@@ -555,6 +555,16 @@ img.preview {
 }
 
 
+.image-container, .media-wrapper {
+  box-sizing: border-box;
+}
+.media-wrapper img, .media-wrapper video, .media-wrapper iframe {
+  display: block;
+  width: auto;      /* JS が width を上書きするのでデフォルトは auto */
+  max-width: 100%;  /* 親より大きくならないための保険 */
+  height: auto;     /* 高さは JS で固定します */
+}
+
 
 /* 最後のエリアは右のボーダーなし */
 .text-area {
@@ -616,7 +626,43 @@ img.preview {
 }
 
 
-.text-area a {
+/* .text-area a {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 40px;
+  border-radius: 20px;
+  color:  var(--color);
+  text-decoration: none;
+ 
+  font-style: italic;
+} */
+
+.inline-link{
+  position: relative;
+  display: inline-block;
+  margin-left: -4px;
+  padding: 0 5px 0 6px;
+  line-height: 22px;
+  /* border-radius: 20px; */
+  color:  var(--color);
+  /* text-decoration-style: dashed; */
+  /* text-underline-offset: 5px; */
+
+  text-decoration: none;
+  border-bottom: 1px dashed  var(--a-border-color);
+  /* overflow: hidden; 重要：疑似要素がはみ出さないように */
+  font-style: italic;
+  box-sizing: border-box;
+  
+}
+
+.inline-link:hover{
+  font-weight: var(--fontw6);
+border-bottom: 1px solid  var(--a-border-color);
+}
+
+.link-list{
   position: relative;
   display: inline-block;
   padding: 0 20px;
@@ -628,7 +674,7 @@ img.preview {
   font-style: italic;
 }
 
-.text-area a::before {
+.link-list::before {
   content: "";
   position: absolute;
   top: 7px;
@@ -647,13 +693,13 @@ img.preview {
   /* 背景にする */
 }
 
-.text-area a:hover {
+.link-list:hover {
   color: var(--backgroundcolor);
   font-weight: var(--fontw3);
   /* ← 文字色の変更はここ！ */
 }
 
-.text-area a:hover::before {
+.link-list:hover::before {
   background: var(--color);
   /* ホバー時の背景色 */
   color: var(--backgroundcolor);
@@ -965,8 +1011,12 @@ font-weight: var(--fontw2);
   transform: scale(1, 0.9);
   color:var(--skip-target-color);
   font-weight: var(--fontw5);
+  line-height: 40px;
 }
 
+.skip-target-text{
+  line-height: 40px;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -1285,19 +1335,25 @@ font-weight: var(--fontw2);
     width: 103%;
   }
 
-  .text-area a {
+  .link-list {
     line-height: 35px;
 transform: scale(1, 0.95);
   }
 
-   .text-area a::before{
+   .link-list::before{
      content: "";
       top: 5px;
   
   bottom: 5px;
      /* z-index: 1; */
   }
-
+.inline-link{
+  line-height: 20px;
+  transform: scale(0.9, 1);
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 0 3px 0 3px;
+}
 
   .lang-toggle-btn {
     border: 1px solid var(--btn-color);

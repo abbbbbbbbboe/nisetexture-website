@@ -76,7 +76,7 @@ function updateMobileView() {
 
   
   const textsContainer = document.querySelector('.text-container');
-  if (textsContainer) textsContainer.scrollTop = 0;
+  // if (textsContainer) textsContainer.scrollTop = 0;
   updateNavButtons();
  
 }
@@ -100,6 +100,9 @@ function updateNavButtons() {
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text | image</span>`;
       
       nextBtn.onclick = () => {
+        const listContainer = document.querySelector('.list-container');
+        stopInertiaAndRound(listContainer);
+   
         activeSection = "text";
         
       
@@ -127,6 +130,8 @@ function updateNavButtons() {
     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">list</span>`;
     
     prevBtn.onclick = () => {
+      const textsContainer = document.querySelector('.text-container');
+stopInertiaAndRound(textsContainer);
       activeSection = "list";
       // document.querySelectorAll('.skip-button-panel-mobile').forEach(el => el.remove());
       updateMobileView();
@@ -166,17 +171,5 @@ window.addEventListener("hashchange", () => {
  
 });
 
-function updateTextAreaTitle() {
- const titleEl = document.querySelector('.area-title-imagetext h1');
-  if (!titleEl) return;
 
-  if (isMobile()) {
-    titleEl.textContent = "text | image";   // ← モバイル表記
-    
-  } else {
-    titleEl.textContent = "text";           // ← PC表記
-  }
-  
-}
-window.addEventListener("resize", updateTextAreaTitle);
 

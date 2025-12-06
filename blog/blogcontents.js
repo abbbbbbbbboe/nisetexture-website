@@ -13,12 +13,43 @@
 
 
 export const blogContents = {
+  globalHyperlinks: {
+    basic: [
+      { word: "ニセテクスチャ", href: "https://nisetexture.com/" },
+      { word: "通信", href: "https://ja.wikipedia.org/wiki/%E9%80%9A%E4%BF%A1" },
+      { word: "飲み会", href: "https://note.com/wakusei2nduno/n/nd8f850fbde4d" },
+      { word: "つまらなさ", href: "https://x.com/haraajukku/status/1853686504809443769" },
+      { word: "ジョッキ", href: "https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%BC%E3%83%AB%E3%82%B8%E3%83%A7%E3%83%83%E3%82%AD#/media/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:BIER_IM_EG.jpg" },
+      { word: "陽気", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1363737843" },
+      { word: "涙", href: "https://ja.wikipedia.org/wiki/%E6%B6%99" },
+      { word: "武勇伝", href: "https://sayapea.exblog.jp/439216/" },
+      { word: "スピリッツ", href: "https://www.suntory.co.jp/wnb/guide/spirits/01/" },
+      { word: "解散", href: "https://youtu.be/CrVR1YEQP2k?si=QiyftNrTtO7COP4N" },
+      { word: "張子", href: "https://goodjobstore.jp/collections/%E3%81%AF%E3%82%8A%E3%81%93" },
+      { word: "空洞", href: "https://youtu.be/mKUhq7SYouA?si=5MkAMTYIA7JC5-3i" },
+      { word: "内包", href: "https://www.weblio.jp/content/%E5%86%85%E5%8C%85" },
+      { word: "型", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13247187703" },
+      { word: "青菜炒め", href: "https://misenyaba.owst.jp/foods" },
+      { word: "循環", href: "https://www.rd.ntt/se/media/article/0044.html" },
+      { word: "フィクション", href: "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" },
+      { word: "ノンフィクション", href: "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" },
+      { word: "露悪", href: "https://dic.nicovideo.jp/a/%E9%9C%B2%E6%82%AA" },
+      { word: "俯瞰", href: "https://www.google.com/maps" },
+      { word: "酩酊", href: "https://www.iwate.med.or.jp/hanamaki/P-9.html" },
+      { word: "世迷言", href: "https://www.uta-net.com/song/54556/" },
+      { word: "(｀･ω･´)", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1357121248" },
+      
+    ],
+    musicLinks: [
+
+    ]
+  },
   posts: [
     {
-      id: "02",
+      id: "001",
       category: "特集",
       title: "私たちの活動について",
-      date: "2025-11-26",
+      date: "2025-12-25",
       tag: ["about", "news"],
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
@@ -27,7 +58,7 @@ export const blogContents = {
       textBlocks: [
         { "type": "button", "targetId": 1, "label": "読み上げ音声" },
 
-        { type: "p", text: `こんにちは<a href="../index.html" target="_blank">ニセテクスチャ</a>です。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2"] },
+        { type: "p", text: `こんにちはニセテクスチャです。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2"] },
 
 
         { type: "skipbutton", id: "skip1", label: "section 1", mobile_label: "1", text: "section 1" },
@@ -59,7 +90,7 @@ export const blogContents = {
 
         { type: "skipbutton", id: "skip3", label: "section 3", mobile_label: "3", text: "section 3" },
 
-        { type: "p", text: `他の可能性を横目に、飲み会を突き詰めたい私たちは、瓶ビールがあれば頼み、人数分のグラスを注文します。すいませ〜ん！注文いいですか？瓶ビールと青菜炒め、チャーハン、チャーシューもお願いします！それとグラスは二つで！えーっとキリンで！お願いしまーす。瓶ビールのラベルを上にして、両手で丁寧に相手のグラスに注ぎます。おしぼりを瓶の下に添えるとなおgoodです`, class: ["large-space-1"] },
+        { type: "p", text: `他の可能性を横目に、飲み会を突き詰めたい私たちは、瓶ビールがあれば頼み、人数分のグラスを注文します。すいませ〜ん！注文いいですか？瓶ビールと青菜炒め、チャーハン、チャーシューもお願いします！それとグラスは二つで！えーっとキリンで！お願いしまーす。瓶ビールのラベルを上にして、両手で丁寧に相手のグラスに注ぎます。おしぼりを瓶の下に添えるとなおgoodです.`, class: ["large-space-1"] },
 
         { type: "p", text: `注ぐ時や注がれる時って、なんか言葉にもなってないような音が口からこぼれませんか？` },
         { type: "p", text: `まだ、未経験の皆さんは一度実践してみましょう！何事においても実践と思考の循環こそが一番重要なことです。`, class: ["large-space-1"] },
@@ -83,11 +114,11 @@ export const blogContents = {
 
         { type: "p", text: `ところで、飲み会の終わり頃ってどうしても話し足りなくて、寂しくなったりして、この時間が永遠に続けばいいのになって思ってしまった時は、粘って粘って、始発まで飲んだり歩いたりする訳です。電車が動き出すまで、その街にあるものや人、生き物とかをじろじろみて歩き回ります。秋や春先に朝まで歩く際は、ぜひ上着を忘れずにしてください。`, class: ["large-space-1"] },
 
-        { type: "p", text: `元々空洞のような時間ですから、話し足りなさや寂しさと言った感情はあるようでないもので、朝まで歩いたからといって「朝だな」以上の感動や達成した成果などがあるわけではなく、ただひたすらにだらだらと飲み歩いたに過ぎないのです。そうこれは、結局のところ宴、祭りといった架空の儀式、<a href="https://www.uta-net.com/song/54556/" target="_blank"> 世迷言（よまいごと）</a>を吐き出すための箱、客観的な事実では無駄な時間でしかないのです`, class: ["large-space-1"] },
+        { type: "p", text: `元々空洞のような時間ですから、話し足りなさや寂しさと言った感情はあるようでないもので、朝まで歩いたからといって「朝だな」以上の感動や達成した成果などがあるわけではなく、ただひたすらにだらだらと飲み歩いたに過ぎないのです。そうこれは、結局のところ宴、祭りといった架空の儀式、世迷言（よまいごと）を吐き出すための箱、客観的な事実では無駄な時間でしかないのです`, class: ["large-space-1"] },
 
         { type: "p", text: `ここまででニセテクスチャの主な活動について知っていただけたことかと思いますので、お酒タバコは20歳から、適度にお水も飲みながら、読んだみなさまもぜひ飲み会にご参加ください(｀･ω･´)`, class: ["large-space-2"] },
 
-{ type: "divider"},
+        { type: "divider" },
 
         { type: "button", "targetId": 2, "label": "説明音声" },
 
@@ -106,23 +137,27 @@ export const blogContents = {
         { type: "p", text: `・平岡せいこ`, class: ["credit"] },
         { type: "p", text: `・難波優太`, class: ["credit", "large-space-2"] },
 
-      ]
+      ],
+
+      postHyperlinks: [
+        
+        { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
+        { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
+        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" },
+         { word: "通信", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
+      ],
+
+      // ③ この投稿で使いたい global のセット
+      hyperlinkGroups: ["basic"],
     },
     {
-      id: "01",
+      id: "000",
       category: "告知",
       title: "広告募集",
       date: "2025-11-22",
       tag: ["news"],
       images: [
-        { src: "img/background8.png", caption: "写真1", id: 1 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },
-        { src: "img/background8.png", caption: "写真1", id: 3 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 4 },
-        { src: "img/5.png", caption: "写真1", id: 5 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 6 },
-        { src: "img/background8.png", caption: "写真1", id: 7 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 8 }
+        { src: "img/5.png", caption: "写真1", id: 1 },
       ],
       textBlocks: [
         { type: "p", text: `ニセテクスチャのwebサイトに掲載する広告を募集します。` },
@@ -134,76 +169,48 @@ export const blogContents = {
 
         { type: "p", text: `このwebサイトは、PVみたいな数字を持つことはできないと思いますが、64文字ぴったりであなたのテキストを掲載してみませんか？広告のみならず、誰かや自分に宛てたメモやメッセージも載せることが可能です。`, class: "large-space-2" },
 
+        { type: "divider" },
+
         { type: "skipbutton", id: "skip1", label: "1.掲載場所", mobile_label: "1" },
         { type: "p", text: `1.掲載場所`, class: "index" },
         { type: "p", text: `PC : ページの右上のスクロールテキストエリア` },
-        { type: "p", text: `モバイル : ページ上部のスクロールテキストエリア`, class: "large-space-1" },
+        { type: "p", text: `モバイル : ページ上部のスクロールテキストエリア`, class: "large-space-2" },
 
-        { type: "skipbutton", id: "skip2", label: "2.掲載料金（価格）", mobile_label: "2" },
-        { type: "p", text: `2.掲載料金（価格）`, class: "index" },
-        { type: "p", text: `100円（税別）／月額` },
-        { type: "p", text: `500円（税別）／6ヶ月 *お得` },
-        { type: "p", text: `1000円（税別）／12ヶ月 *お得`, class: "large-space-1" },
+        { type: "skipbutton", id: "skip2", label: "2.料金", mobile_label: "2" },
+        { type: "p", text: `2.料金`, class: "index" },
+        { type: "p", text: `300円（税別）／月額`, class: "large-space-1" },
+        { type: "p", text: `継続して掲載いただくとお得です！` },
+        { type: "p", text: `1000円（税別）／6ヶ月` },
+        { type: "p", text: `3000円（税別）／12ヶ月`, class: "large-space-2" },
 
-        { type: "skipbutton", id: "skip3", label: "3.掲載期間", mobile_label: "3" },
-        { type: "p", text: `3.掲載期間`, class: "index" },
+        { type: "skipbutton", id: "skip3", label: "3.期間", mobile_label: "3" },
+        { type: "p", text: `3.期間`, class: "index" },
         { type: "p", text: `基本：1ヶ月〜<br>数日間も可能です。応相談` },
-        { type: "p", text: `途中解約の場合は、掲載を取りやめますが、日割り等での払い戻しはありません。数ヶ月契約の場合は翌月以降の掲載料は返金いたします。` },
-        {
-          type: "p", 
-          text: `6ヶ月契約の場合<br>
-                ・一月目で解約　400円返金<br>
-                ・二月目で解約　300円返金<br>
-                ・三月目で解約　200円返金<br>
-                ・四月目で解約　300円返金<br>
-                ・五月目で解約　返金なし<br>
-                ・六月目で解約　返金なし<br>`, 
-          class: "large-space-1"
-        },
-        {
-          type: "p",
-          text: `12ヶ月契約の場合<br>
-                ・一月目で解約　900円返金<br>
-                ・二月目で解約　800円返金<br>
-                ・三月目で解約　700円返金<br>
-                ・四月目で解約　600円返金<br>
-                ・五月目で解約　500円返金<br>
-                ・六月目で解約　400円返金<br>
-                ・七月目で解約　300円返金<br>
-                ・八月目で解約　200円返金<br>
-                ・九月目で解約　100円返金<br>
-                ・十月目で解約　返金なし<br>
-                ・十一月目で解約　返金なし<br>
-                ・十二月目で解約　返金なし<br>`,
-          class: "large-space-1"
-        },
+        { type: "p", text: `途中解約の場合は、掲載を取りやめますが、日割り等での払い戻しはありません。数ヶ月契約の場合は翌月以降の掲載料は返金いたします。`, class: "large-space-2" },
 
-        { type: "skipbutton", id: "skip4", label: "4.広告の形式", mobile_label: "4" },
-        { type: "p", text: `4.広告の形式`, class: "index" },
+        { type: "skipbutton", id: "skip4", label: "4.形式", mobile_label: "4" },
+        { type: "p", text: `4.形式`, class: "index" },
         { type: "p", text: `形式 : テキスト` },
         { type: "p", text: `文字数<br>日本語 : 64文字丁度<br>英語 : 30単語丁度` },
-        { type: "p", text: `テキストのみでも可能です。テキストにリンクをつけることも可能です。`, class: "large-space-1" },
+        { type: "p", text: `テキストのみでも可能です。テキストにリンクをつけることも可能です。`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip5", label: "5.掲載できないもの", mobile_label: "5" },
-        { type: "p", text: `5.掲載料金（価格）`, class: "index" },
-        { type: "p", text: `公序良俗に反する内容<br>虚偽情報<br>差別的表現、差別を助長するもの<br>その他、不適切と判断した広告` },
-        { type: "p", text: `掲載不可の内容についてはお申し込み時に判断いたします`, class: "large-space-1" },
+        { type: "p", text: `5.掲載できないもの`, class: "index" },
+        { type: "p", text: `公序良俗に反する内容<br>虚偽情報<br>差別的表現、差別を助長するもの<br>その他、不適切と判断した広告`, class: "large-space-1" },
+        { type: "p", text: `掲載不可の内容についてはお申し込み時に判断いたします`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip6", label: "6.申し込み方法", mobile_label: "6" },
         { type: "p", text: `6.申し込み方法`, class: "index" },
-        { type: "p", text: `mail:nise.texture[a]gmail.com` },
-        { type: "p", text: `[a]は@に変更してください。` },
-        { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-1" },
+        { type: "p", text: `下記メールアドレス宛にご連絡ください。` },
+        { type: "p", text: `nise.texture[a]gmail.com` },
+        { type: "p", text: `*[a]は@に変更してください。`, class: "large-space-1" },
+        { type: "p", text: `お問い合わせの際、以下の内容も合わせてお送りください。` },
+        { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-2" }
 
-        { type: "skipbutton", id: "skip7", label: "7.掲載料金（価格）", mobile_label: "7" },
-        { type: "p", text: `7.掲載料金（価格）`, class: "index" },
-        { type: "p", text: `銀行振込`, class: "large-space-1" },
+      ],
 
-        { type: "skipbutton", id: "skip8", label: "8.注意事項", mobile_label: "8" },
-        { type: "p", text: `8.注意事項`, class: "index" },
-        { type: "p", text: ``, class: "large-space-1" },
-
-      ]
+      // ③ この投稿で使いたい global のセット
+      hyperlinkGroups: ["basic"],
     },
     {
       id: "post3",
@@ -211,8 +218,9 @@ export const blogContents = {
       title: "初めての投稿",
       date: "2025-11-26",
       images: [
-        { src: "img/background8.png", caption: "写真1", id: 1 },
-        { src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 }
+        { src: "img/5.png", caption: "写真1", id: 1 },
+        { src: "img/5.png", caption: "写真1", id: 1 },
+
       ],
       textBlocks: [
         { type: "p", text: "これは最初の段落です。" },
@@ -230,7 +238,7 @@ export const blogContents = {
         { type: "p", text: "作品の説明テキストです。" }
       ],
       images: [
-        { src: "img/post2-1.jpg", caption: "", id: 1 }
+        { src: "img/5.png", caption: "", id: 1 }
       ]
     }
   ]
