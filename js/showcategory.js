@@ -200,7 +200,7 @@ if (isMobile) {
    const imageAreaTitle = document.createElement('div');
    imageAreaTitle.className = 'mobile-image-area-title';
     imageAreaTitle.innerHTML = `
-      <p class="mobile-jp-title">+&ensp;${data.title || ""}&ensp;+</p>
+      <p>+&ensp;${data.title || ""}&ensp;+</p>
      
     `;
     imageContainer.appendChild(imageAreaTitle);

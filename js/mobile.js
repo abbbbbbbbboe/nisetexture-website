@@ -81,6 +81,7 @@ function updateMobileView() {
     textArea.style.display  = "";
     prevBtn.style.display   = "none";
     nextBtn.style.display   = "none";
+    
     return;
   }
  
@@ -123,7 +124,7 @@ function updateNavButtons() {
       nextBtn.style.display = "none";
     } else {
         prevBtn.style.display = "none";
-      nextBtn.style.display = "";
+      nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
         stopInertiaAndRound(listContainer);
@@ -140,8 +141,8 @@ function updateNavButtons() {
 
   if (activeSection === "image") {
     // image = 左→list / 右→text
-    prevBtn.style.display = "";
-    nextBtn.style.display = "";
+    prevBtn.style.display = "block";
+    nextBtn.style.display = "block";
      prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">title</span>`;
     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text</span>`;
 
@@ -169,7 +170,7 @@ function updateNavButtons() {
 
   if (activeSection === "text") {
     // text = 右ボタンなし / 左→image
-    prevBtn.style.display = "";
+    prevBtn.style.display = "block";
     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">image</span>`;
     prevBtn.onclick = () => {
       stopInertiaAndRound(textsContainer);

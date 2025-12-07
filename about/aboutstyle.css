@@ -825,7 +825,7 @@ button {
     top: 107px;
     display: block;
   }
-  
+
   .scroll-top-btn {
     width: 20px;
     height: 60px;
@@ -1080,7 +1080,7 @@ button {
     font-weight: var(--fontw5);
     font-size: 17px;
     line-height: 35px;
-    display: block;
+    display: none;
 
   }
 

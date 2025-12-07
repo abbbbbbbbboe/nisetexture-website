@@ -12,6 +12,11 @@
 //targetId:表示させるimagesのid | label:ボタンに表示するテキスト。書かなければimegesのcaptionが入る
 
 
+//ハイパーリンク
+//globalHyperlinks:は汎用的に使える。各post内のhyperlinkGroups:にセット名 ["basic"],を書くと反映される。
+//各ポスト内のpostHyperlinks:にリンクを設定するとこのポスト内でのみリンクが反映される。
+
+
 export const blogContents = {
   globalHyperlinks: {
     basic: [
@@ -56,12 +61,13 @@ export const blogContents = {
         { src: "https://soundcloud.com/tofubeats/throw-your-laptop-on-the-fire-2025-mix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
       ],
       textBlocks: [
+        { type: "skipbutton", id: "skip1", label: "読み上げ音声", mobile_label: "読" },
         { "type": "button", "targetId": 1, "label": "読み上げ音声" },
 
         { type: "p", text: `こんにちはニセテクスチャです。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2"] },
 
-
-        { type: "skipbutton", id: "skip1", label: "section 1", mobile_label: "1", text: "section 1" },
+        
+        { type: "skipbutton", id: "skip2", label: "section 1", mobile_label: "1", text: "section 1" },
 
         { type: "p", text: `私たちの飲み会ではつまらなさを全面的に受け入れ、だらだらと長時間行うことを信条としています。飲み会を開くことを目的としていますが、たまに飲みながら打ち合わせをして、活動の相談をはじめ、最近あったことを話したり、悪口をこぼしたりします。打ち合わせのために飲み会をしているのか、飲み会のために打ち合わせをしているのか、ジョッキとジョッキを持つ手との境目くらい分からなくなります。`, class: ["large-space-1"] },
 
@@ -70,7 +76,7 @@ export const blogContents = {
         { type: "p", text: `泣くだけでは解決にならないので、何のために集まったか分からなくなった飲み会のために、だらだらとする飲み会は繰り返されます。そんな不毛で必要な我々の活動の骨組みと言っても過言ではない飲み会の精神（スピリット）がいかなるものか泣きながら書き記していこうと思います。`, class: ["large-space-1"] },
 
 
-        { type: "skipbutton", id: "skip2", label: "section 2", mobile_label: "2", text: "section 2" },
+        { type: "skipbutton", id: "skip3", label: "section 2", mobile_label: "2", text: "section 2" },
 
         { type: "p", text: `やはり大切なのはとことん飲み、酔うことです。` },
         { type: "p", text: `ここでのとことんとは、単にたくさん飲むということだけでなく、臓という臓にアルコールの魂を染み込ませることです。守る立場や理屈などは基本的にないのですが、飲み会の後のことをあまり考えない方がよく染み込みます。` },
@@ -88,7 +94,7 @@ export const blogContents = {
         { type: "p", text: `しかしながら、型を事前に決めてしまうことは、その内容を突き詰める時には有効ですが、方法以前の他の可能性を無かったことにすることにもなるのです。`, class: ["large-space-1"] },
 
 
-        { type: "skipbutton", id: "skip3", label: "section 3", mobile_label: "3", text: "section 3" },
+        { type: "skipbutton", id: "skip4", label: "section 3", mobile_label: "3", text: "section 3" },
 
         { type: "p", text: `他の可能性を横目に、飲み会を突き詰めたい私たちは、瓶ビールがあれば頼み、人数分のグラスを注文します。すいませ〜ん！注文いいですか？瓶ビールと青菜炒め、チャーハン、チャーシューもお願いします！それとグラスは二つで！えーっとキリンで！お願いしまーす。瓶ビールのラベルを上にして、両手で丁寧に相手のグラスに注ぎます。おしぼりを瓶の下に添えるとなおgoodです.`, class: ["large-space-1"] },
 
@@ -110,7 +116,7 @@ export const blogContents = {
         { type: "p", text: `つまり、中身のない混乱した状態をつくることで秩序が反転するのです。`, class: ["large-space-1"] },
 
 
-        { type: "skipbutton", id: "skip4", label: "section 4", mobile_label: "4", text: "section 4" },
+        { type: "skipbutton", id: "skip5", label: "section 4", mobile_label: "4", text: "section 4" },
 
         { type: "p", text: `ところで、飲み会の終わり頃ってどうしても話し足りなくて、寂しくなったりして、この時間が永遠に続けばいいのになって思ってしまった時は、粘って粘って、始発まで飲んだり歩いたりする訳です。電車が動き出すまで、その街にあるものや人、生き物とかをじろじろみて歩き回ります。秋や春先に朝まで歩く際は、ぜひ上着を忘れずにしてください。`, class: ["large-space-1"] },
 
@@ -118,17 +124,19 @@ export const blogContents = {
 
         { type: "p", text: `ここまででニセテクスチャの主な活動について知っていただけたことかと思いますので、お酒タバコは20歳から、適度にお水も飲みながら、読んだみなさまもぜひ飲み会にご参加ください(｀･ω･´)`, class: ["large-space-2"] },
 
-        { type: "divider" },
+        { "type": "button", "targetId": 1, "label": "読み上げ音声" },
 
+        { type: "divider" },
+{ type: "skipbutton", id: "skip6", label: "説明音声", mobile_label: "説" },
         { type: "button", "targetId": 2, "label": "説明音声" },
 
-        { type: "skipbutton", id: "skip5", label: "link_list", mobile_label: "l" },
+        { type: "skipbutton", id: "skip7", label: "link_list", mobile_label: "l" },
         { type: "p", text: `【link_list】`, class: ["index"] },
         { type: "a", text: `酔うってどういうこと？|酔いの仕組みとアルコール代謝|サッポロホールディングス`, link: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html", class: ["link-list"] },
         { type: "a", text: `アルコール｜厚生労働省`, link: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html", class: ["link-list"] },
         { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`, link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list", "large-space-2"] },
 
-        { type: "skipbutton", id: "skip6", label: "credit", mobile_label: "c" },
+        { type: "skipbutton", id: "skip8", label: "credit", mobile_label: "c" },
         { type: "p", text: `【credit】`, class: ["index"] },
         { type: "p", text: `声：朗読順`, class: ["credit"] },
         { type: "p", text: `・吉月ひさたか`, class: ["credit"] },
@@ -143,8 +151,7 @@ export const blogContents = {
         
         { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
         { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
-        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" },
-         { word: "通信", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
+        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
       ],
 
       // ③ この投稿で使いたい global のセット

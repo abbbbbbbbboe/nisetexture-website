@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
 // ===============================
 // 🔷 メイン切り替え処理
 // ===============================
@@ -75,8 +77,7 @@ function updateMobileView() {
   textArea.style.display  = activeSection === "text"  ? "" : "none";
 
   
-  const textsContainer = document.querySelector('.text-container');
-  // if (textsContainer) textsContainer.scrollTop = 0;
+  
   updateNavButtons();
  
 }
@@ -96,7 +97,7 @@ function updateNavButtons() {
     } else {
       // 記事選択時 → textへ
       prevBtn.style.display = "none";
-      nextBtn.style.display = "";
+      nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text | image</span>`;
       
       nextBtn.onclick = () => {
@@ -125,7 +126,7 @@ function updateNavButtons() {
 
 
   if (activeSection === "text") {
-    prevBtn.style.display = "";
+    prevBtn.style.display = "block";
 
     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">list</span>`;
     

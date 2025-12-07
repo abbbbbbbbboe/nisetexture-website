@@ -1,29 +1,30 @@
 :root {
-  --backgroundcolor: #454c50;
-  --preview-text-backgroundcolor: #454c50e6;
-  --color: #e1e1e1;
-  --btn-color: #b6b6b9;
-  --link-color: #dfdfdf;
-  --menu-color: #b8b8b8;
-  --area-title-color: #828287;
-  --caption-color: #b4b4b4;
-  --skip-target-color: #65696e;
-  --background-border-color: #86868a;
-  --listitem-color: #c9c9c9;
-  --a-border-color:#adadad;
 
-  --fontw1: 100;
-  --fontw2: 200;
-  --fontw3: 300;
-  --fontw4: 400;
-  --fontw5: 500;
-  --fontw6: 600;
-  --fontw7: 700;
-  --fontw8: 800;
+    --backgroundcolor: #454c50;
+    --preview-text-backgroundcolor: #454c50e6;
+    --skip-target-color: #65696e;
+    --area-title-color: #828287;
+    --background-border-color: #86868a;
+    --btn-color: #b6b6b9;
+    --menu-color: #b8b8b8;
+    --caption-color: #b4b4b4;
+    --a-border-color: #adadad;
+    --listitem-color: #c9c9c9;
+    --link-color: #dfdfdf;
+    --color: #e1e1e1;
+
+    --fontw1: 100;
+    --fontw2: 200;
+    --fontw3: 300;
+    --fontw4: 400;
+    --fontw5: 500;
+    --fontw6: 600;
+    --fontw7: 700;
+    --fontw8: 800;
 
 
 
-  --border: 1px solid var(--background-border-color);
-  --border-light: 1px solid #adadad;
+    --border: 1px solid var(--background-border-color);
+    --border-light: 1px solid #adadad;
 
 }

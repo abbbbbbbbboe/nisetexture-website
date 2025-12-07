@@ -206,25 +206,29 @@ function applyHyperlinksToText(text, links, usedWords) {
   for (const link of links) {
     if (!link.word || !link.href) continue;
 
-    // ★ すでに記事中で使われた語句はスキップ
+    // すでに記事中で使われた語句はスキップ
     if (usedWords.has(link.word)) continue;
 
     // 正規表現エスケープ
     const escaped = link.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-    // 最初の 1 回だけヒット
     const re = new RegExp(escaped);
 
     // マッチしなければ次へ
     if (!re.test(newText)) continue;
 
-    // 1 回だけ置換
+    // ★ クラス名を source で自動切り替え
+    const className =
+      link.source === "post"
+        ? "inline-link-post"   // 記事固有リンク
+        : "inline-link";       // グローバルリンク
+
+    // 置換
     newText = newText.replace(
       re,
-      `<a href="${link.href}" target="_blank" class="inline-link">${link.word}</a>`
+      `<a href="${link.href}" target="_blank" class="${className}">${link.word}</a>`
     );
 
-    // ★ 記事全体でこの語句が使われたと記録
+    // 使用済みに登録
     usedWords.add(link.word);
   }
 
@@ -235,21 +239,32 @@ function applyHyperlinksToText(text, links, usedWords) {
 
 
 
+
 function collectHyperlinks(post) {
   let links = [];
 
-    // ② 次に記事固有リンク（postHyperlinks）
-  //    → 同じ word があればこちらが後に来て優先される
+   // ② 記事固有 postHyperlinks
   if (post.postHyperlinks) {
-    links.push(...post.postHyperlinks);
+    links.push(
+      ...post.postHyperlinks.map(l => ({
+        ...l,
+        source: "post"    // ← ★ 追加！
+      }))
+    );
   }
 
-  // ① 先に globalHyperlinks を入れる
-  //    → あとで postHyperlinks が同じ単語なら上書きされる
+  // ① globalHyperlinks
   if (post.hyperlinkGroups) {
     post.hyperlinkGroups.forEach(groupName => {
       const group = blogContents.globalHyperlinks[groupName];
-      if (group) links.push(...group);
+      if (group) {
+        links.push(
+          ...group.map(l => ({
+            ...l,
+            source: "global"   // ← ★ 追加！
+          }))
+        );
+      }
     });
   }
 

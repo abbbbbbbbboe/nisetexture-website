@@ -19,19 +19,24 @@ function attachScrollStep() {
         let textsContainer = textArea.querySelector('.text-container');
 let imageContainer = imageArea.querySelector('.image-container');
 let listContainer = listArea.querySelector('.list-container');
+let pageTop = listArea.querySelector('.page-top');
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
         if (container === imageContainer) return { trigger: 11, step: 35 };
         if (container === textsContainer) return { trigger: 11, step: 35 };
         if (container === listContainer)  return { trigger: 11, step: 35 };
+        if (container === pageTop)  return { trigger: 11, step: 35 };
       } else {
         if (container === imageContainer) return { trigger: 120, step: 120 };
         if (container === textsContainer) return { trigger: 40,  step: 40 };
         if (container === listContainer)  return { trigger: 40,  step: 40 };
       }
-
-      return { trigger: 40, step: 40 }; // fallback
+if (isMobile) {
+      return { trigger: 11, step: 35 }; // fallback
+      } else {
+        return { trigger: 40, step: 40 };
+      }
     };
 
     const maxScroll = () => container.scrollHeight - container.clientHeight;

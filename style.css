@@ -1329,6 +1329,12 @@ img.preview {
     line-height: 35px;
     margin-left: 10px;
   }
+.mobile-image-area-title p{
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  transform: scale(1, 0.9);
+}
+
   #wrapper {
     height: 70px;
     margin-top: 0px;
@@ -1434,6 +1440,9 @@ img.preview {
 
   }
 
+  
+
+
   .caption {
     font-size: 0.8em;
     color: #b4b4b4;
@@ -1448,7 +1457,7 @@ img.preview {
   /* 最後のエリアは右のボーダーなし */
 
 .text-lang-wrapper{
-    
+    margin-left: 5px;
     padding-top: 0px;
   }
   .text-container {
@@ -1517,6 +1526,7 @@ img.preview {
 
   .text-en {
     margin-top: 35px;
+    margin-left: 5px;
     /* margin-bottom: 140px; */
     padding-bottom: 0;
     /* margin-left: -10px; */
@@ -1528,19 +1538,21 @@ img.preview {
 
   .text-credit {
     margin-top: 35px;
-    /* margin-left: -13px; */
+    margin-left: 5px;
   }
 
   .mobile-jp-title {
     font-weight: var(--fontw5) !important;
-    letter-spacing: 0.6rem !important;
+    letter-spacing: 0.4rem !important;
 
 
   }
 
+
+
   .mobile-en-title {
     font-weight: var(--fontw4) !important;
-    letter-spacing: 0.4rem !important;
+    letter-spacing: 0.3rem !important;
     font-size: 1.1em !important;
 
   }
@@ -1611,7 +1623,7 @@ img.preview {
     font-weight: var(--fontw5);
     font-size: 17px;
     line-height: 35px;
-    display: block;
+    display: none;
 
   }
 
