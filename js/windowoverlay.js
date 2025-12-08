@@ -282,12 +282,21 @@ function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
 
     // 現在ページの階層の深さを返す
 function getPathDepth() {
-    const path = window.location.pathname; // 例: /about/index.html
-    const segments = path.split("/").filter(p => p.length > 0);
+    let path = window.location.pathname;
 
-    // ファイル名(index.htmlなど)を除いた階層数を返す
-    return segments.length - 1;
+    // 末尾の "/" を強制削除（例: /about/ → /about）
+    if (path.endsWith("/")) path = path.slice(0, -1);
+
+    const segments = path.split("/").filter(s => s.length > 0);
+
+    // 最後の要素がファイル名か判定（ . が含まれているか ）
+    const last = segments[segments.length - 1];
+    const isFile = last && last.includes(".");
+
+    // ファイル名はカウントしない
+    return isFile ? segments.length - 1 : segments.length;
 }
+
 
 // 深さに応じて "../" を付ける
 function applyBaseToPaths(paths) {
@@ -338,7 +347,7 @@ const topImage     = applyBaseToFile("img/rogo_side.svg");
 enableIdleOverlay(
     isMobile() ? mobileImages : pcImages,
     topImage,
-    15000
+    5000
 );
 
 
