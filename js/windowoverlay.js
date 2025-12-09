@@ -1,4 +1,95 @@
 
+ // ===========================================
+    // ④ 実行（読み込む画像だけ指定する）
+    // ===========================================
+
+    // 現在ページの階層の深さを返す
+function getPathDepth() {
+    let path = window.location.pathname;
+
+    // 末尾の "/" を強制削除（例: /about/ → /about）
+    if (path.endsWith("/")) path = path.slice(0, -1);
+
+    const segments = path.split("/").filter(s => s.length > 0);
+
+    // 最後の要素がファイル名か判定（ . が含まれているか ）
+    const last = segments[segments.length - 1];
+    const isFile = last && last.includes(".");
+
+    // ファイル名はカウントしない
+    return isFile ? segments.length - 1 : segments.length;
+}
+
+
+// 深さに応じて "../" を付ける
+function applyBaseToPaths(paths) {
+    const depth = getPathDepth();
+    const base = "../".repeat(depth); // depth=1 → "../" がつく
+
+    return paths.map(p => base + p);
+}
+
+// 1ファイルだけの補正
+function applyBaseToFile(path) {
+    const depth = getPathDepth();
+    const base = "../".repeat(depth);
+    return base + path;
+}
+
+
+    const pcImagesRaw = [
+        "img/window/pc/1.png",
+        "img/window/pc/2.png",
+        "img/window/pc/3.png",
+        "img/window/pc/4.png",
+        "img/window/pc/5.png",
+        "img/window/pc/6.png",
+        "img/window/pc/7.png",
+        "img/window/pc/8.png",
+        "img/window/pc/9.png"
+    ];
+
+    const mobileImagesRaw = [
+           "img/window/pc/1.png",
+        "img/window/pc/2.png",
+        "img/window/pc/3.png",
+        "img/window/pc/4.png",
+        "img/window/pc/5.png",
+        "img/window/pc/6.png",
+        "img/window/pc/7.png",
+        "img/window/pc/8.png",
+        "img/window/pc/9.png"
+    ];
+
+
+    // ===============================
+// 画像をプリロードする関数
+// ===============================
+function preloadImages(imagePaths) {
+    return Promise.all(
+        imagePaths.map(src => {
+            return new Promise(resolve => {
+                const img = new Image();
+                img.onload = () => resolve(src);      // ロード成功
+                img.onerror = () => resolve(src);     // 失敗しても先に進む
+                img.src = src;
+            });
+        })
+    );
+}
+// 階層に応じて補正したパスを作成
+const pcImages    = applyBaseToPaths(pcImagesRaw);
+const mobileImages = applyBaseToPaths(mobileImagesRaw);
+const topImage     = applyBaseToFile("img/rogo_side.svg");
+
+const idleImages = isMobile() ? mobileImages : pcImages;
+
+// 先にプリロード
+preloadImages(idleImages).then(() => {
+    enableIdleOverlay(idleImages, topImage, 2000);
+});
+
+
 function startClock(clockElement) {
     function update() {
         const now = new Date();
@@ -123,13 +214,11 @@ function createIdleOverlay(imagePaths, topImagePath) {
         } else {
             topImgCss = `
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      
       z-index: 20;  /* ← これが上のレイヤー */
       width: auto;
-      max-width: 100vw;
-      max-height: 100vh;
+      max-width: 80vw;
+     
       object-fit: contain;
       pointer-events: none;  /* クリックを通す（任意） */
       overflow: hidden;
@@ -173,7 +262,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
         color: var(--color);
         z-index: 30;
         font-family: "IBM Plex Serif", "IBM Plex Sans JP", sans-serif;
-        font-weight:var(--fontw2);
+        font-weight:var(--fontw4);
         font-style: italic;
         pointer-events: none;
         letter-spacing: 0.5rem;
@@ -276,79 +365,7 @@ function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
 
 
 
-    // ===========================================
-    // ④ 実行（読み込む画像だけ指定する）
-    // ===========================================
-
-    // 現在ページの階層の深さを返す
-function getPathDepth() {
-    let path = window.location.pathname;
-
-    // 末尾の "/" を強制削除（例: /about/ → /about）
-    if (path.endsWith("/")) path = path.slice(0, -1);
-
-    const segments = path.split("/").filter(s => s.length > 0);
-
-    // 最後の要素がファイル名か判定（ . が含まれているか ）
-    const last = segments[segments.length - 1];
-    const isFile = last && last.includes(".");
-
-    // ファイル名はカウントしない
-    return isFile ? segments.length - 1 : segments.length;
-}
-
-
-// 深さに応じて "../" を付ける
-function applyBaseToPaths(paths) {
-    const depth = getPathDepth();
-    const base = "../".repeat(depth); // depth=1 → "../" がつく
-
-    return paths.map(p => base + p);
-}
-
-// 1ファイルだけの補正
-function applyBaseToFile(path) {
-    const depth = getPathDepth();
-    const base = "../".repeat(depth);
-    return base + path;
-}
-
-
-    const pcImagesRaw = [
-        "img/window/pc/1.png",
-        "img/window/pc/2.png",
-        "img/window/pc/3.png",
-        "img/window/pc/4.png",
-        "img/window/pc/5.png",
-        "img/window/pc/6.png",
-        "img/window/pc/7.png",
-        "img/window/pc/8.png",
-        "img/window/pc/9.png"
-    ];
-
-    const mobileImagesRaw = [
-           "img/window/pc/1.png",
-        "img/window/pc/2.png",
-        "img/window/pc/3.png",
-        "img/window/pc/4.png",
-        "img/window/pc/5.png",
-        "img/window/pc/6.png",
-        "img/window/pc/7.png",
-        "img/window/pc/8.png",
-        "img/window/pc/9.png"
-    ];
-
-// 階層に応じて補正したパスを作成
-const pcImages    = applyBaseToPaths(pcImagesRaw);
-const mobileImages = applyBaseToPaths(mobileImagesRaw);
-const topImage     = applyBaseToFile("img/rogo_side.svg");
-
-// enableIdleOverlay 実行
-enableIdleOverlay(
-    isMobile() ? mobileImages : pcImages,
-    topImage,
-    5000
-);
+   
 
 
 //    "img/window/mobile/1.png",
