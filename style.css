@@ -358,6 +358,7 @@ button {
 
 .mobile-nav-btn {
   display: none;
+
 }
 
 main {
@@ -547,6 +548,7 @@ z-index: 200;
 .image-area iframe {
   display: block;
   box-sizing: content-box;
+  object-fit: cover;
 }
 
 /* ホバー用プレビュー画像 */
@@ -708,6 +710,7 @@ img.preview {
   padding: 0 40px;
   display: block;
   /* position: relative; */
+  padding-bottom: 160px;
 }
 
 
@@ -760,6 +763,10 @@ img.preview {
 
   margin-bottom: 80px;
   color: var(--color);
+  margin-top:40px;
+}
+.credit-top{
+  font-weight: var(--fontw4);
 }
 
 .text-credit a {
@@ -781,8 +788,8 @@ img.preview {
   background-color: var(--backgroundcolor);
  
   background: repeating-linear-gradient(to bottom,
-      var(--preview-text-backgroundcolor),
-      var(--preview-text-backgroundcolor) 39px,
+      var(--backgroundcolor),
+      var(--backgroundcolor) 39px,
       transparent 39px,
       transparent 40px);
 
@@ -1260,7 +1267,6 @@ img.preview {
   /*  */
   .area-title {
     font-weight: var(--fontw4);
-
     height: 34px;
     line-height: 35px;
     margin: 0 auto 0 0;

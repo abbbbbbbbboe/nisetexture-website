@@ -348,7 +348,7 @@ textContainer.appendChild(langWrapper);
   if (creditFull.trim()) {
     const creditSection = document.createElement('div');
     creditSection.className = 'text-section text-credit';
-    creditSection.innerHTML = `<p>credit<br>${creditFull}</p>`;
+    creditSection.innerHTML = `<p><span class="credit-top">credit</span><br>${creditFull}</p>`;
     textContainer.appendChild(creditSection);
   }
 

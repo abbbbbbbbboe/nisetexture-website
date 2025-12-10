@@ -1,6 +1,63 @@
 const contents = {
   archive: [
-    {
+    
+   {
+      id: "openWebsite",
+      title: "webサイト公開",
+      title_en: "Open website",
+      date: "2025.12.25",
+      category: "news,website",
+      place: "tokyo,aaploit",
+      media: [
+        "workimg/hyperlog/hyperlog2.jpg",
+        "workimg/hyperlog/hyperlog1.jpg",
+        "workimg/hyperlog/hyperlog3.jpg",
+        "workimg/hyperlog/hyperlog4.jpg",
+        "https://youtu.be/FvWRGIJsiaE?si=FP_535e-OSIgRdKp"
+      ],
+      captions: [
+    "リビングルーム・トレーニング#1＆構造図",
+    "リビングルーム・トレーニング#1",
+    "リビングルーム・トレーニング#1",
+    "リビングルーム・トレーニング#1構造図",
+    "配信『「リビングルーム・トレーニング キッチン#1」を見る』"
+    
+  ],
+      text_jp: `私たちのwebサイトを公開しました！これから、活動のアーカイブをここに載せていきます。<br>それに伴い、ニセテ通信に「私たちの活動について」というテキストを掲載しました。読み上げの音声もあるので、ぜひご覧ください。`,
+text_en: `Our website is now live! We'll be posting archives of our activities here going forward. <br>Along with this, we've published a text titled “About Our Activities” in the Nisete Newsletter. An audio version is also available, so please take a look.`,
+text_credit: ``,
+       links: {
+    "Website": "https://nisetexture.com",
+ 
+  }
+},{
+      id: "psemac2025",
+      title: `【不採用】<br>令和7年度<br>国内クリエイター発表支援プログラム`,
+      title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
+      date: "2025.5.29",
+      category: "competition",
+      place: "",
+      media: [
+        "workimg/competition/competition_samune-no_a.png",
+        "https://youtu.be/ZJcfGl9oPQs"
+      ],
+      captions: [
+    "　",
+    "自己PR動画"
+    
+  ],
+      text_jp: `文化庁メディア芸術クリエイター育成支援事業における、国内クリエイター発表支援プログラムに「『リビングルーム・トレーニング』発表プロジェクト」を応募しました。
+残念ながら採択には至りませんでした。`,
+text_en: `I submitted “Living Room Training Presentation Project”  to the Domestic Creator Presentation Support Program of the Agency for Cultural Affairs’ Media Arts Creator Development Support Project.
+Unfortunately, it was not selected.`,
+
+       links: {
+        "企画書": "https://docs.google.com/presentation/d/1P6K32BFetL3x3mNxTTieWASZGmA7460r-tqYmnIBzEA/edit?usp=sharing",
+    "Website": "https://creators.j-mediaarts.bunka.go.jp/2025-entry"
+   
+  }
+},
+{
       id: "hyperlog",
       title: "hyperLOG",
       title_en: "hyperLOG",
@@ -26,17 +83,14 @@ const contents = {
 映像の展示、作品構造図の展示、作品を別の場所から見るという配信をしました。`,
 text_en: `A group exhibition curated by <a href="https://okoshimadoka.com/about">Okoshi Madoka</a> and held at applaudit.
 nisetexture presented a video installation, an exhibition of the work’s structural diagram, and a live stream that allowed the work to be viewed from a different location.`,
-text_credit: `さかな`,
+text_credit: `テクニカルサポート：<br>嶋晏澄<br>樋口聡一郎`,
        links: {
     "Website": "https://aaploit.com/hyperLOG",
    "place": "https://aaploit.com/",
-    "urate": "https://aaploit.com/hyperLOG",
-   "ビングルーム・トレーニング#映像の展示、作品構造図の展示、作品を別の場所から見るという配信をしました": "https://aaploit.com/",
-    "所から見るという配信をし": "https://aaploit.com/hyperLOG",
-   "ikari/hikarinohouhe": "https://aaploit.com/"
+   
   }
 },
-    {
+ {
       id: "hikari",
       title: "光の方へ",
       title_en: "Towards the Light",
@@ -66,14 +120,14 @@ text_credit: `さかな`,
     "配信「リビングルーム・トレーニング　五目焼きそば、ビール（録音）」"
   ],
      text_jp: `ニセテクスチャと<a href="https://kenjimonden.com/">門田健嗣</a>によるグループ展。<br>ニセテクスチャは生活の行為を取り出し、パフォーマンスへ変換し都市や街に再配置た作品を展示しました。それを撮影という行為で一方的な視線として映すことで、繰り返し続く閉じた環境を外側から描き出すことを試みます。<br>門田健嗣は、建築的構築性を持つ物体と映像が交錯し、相互に影響し合いながら構築される共生環境に関心を持ち、映像に「光らしさ」を求めることで、これらを生成する手法を模索します。
-              <br>
+              <br><br>
               「光の方へ」というタイトルにあるように、映像の要素である「光」に対して、それぞれのアプローチで表現を試みます。そこには、生活の中で行われる作業や住居などのモチーフが、制作を通じて洗練され、変形しながら浮かび上がります。映像を単なる記録メディアではなく、それぞれのモチーフが光として表出するような作品を展示しました。`,
 text_en: `A group exhibition by nisetexture and <a href="https://kenjimonden.com/">Monden Kenji</a>.
           Nisetexture exhibited works that extracted acts of daily life, transformed them into performances, and repositioned them within cities and streets. By capturing these through the act of photography as a one-sided gaze, it attempts to depict the closed, repetitive environment from the outside.<br>
-          Kenshi Kadota explores symbiotic environments where architecturally constructed objects and moving images intersect and mutually influence each other. By seeking “light-like qualities” in his footage, he investigates methods to generate these environments.<br>
+          Kenshi Kadota explores symbiotic environments where architecturally constructed objects and moving images intersect and mutually influence each other. By seeking “light-like qualities” in his footage, he investigates methods to generate these environments.<br><br>
 
           As suggested by the title “Towards the Light,” each artist attempts expression through their own approach to “light,” an element of video. Within this, motifs such as tasks performed in daily life and dwellings emerge, refined and transformed through the creative process. The exhibition featured works where video was not merely a recording medium, but where each motif manifested as light.`,
-
+text_credit: `デザイン：新`,
        links: {
     "Website": "https://towards-the-light.notion.site/",
     "place": "https://www.moto-eigakan.com/",
@@ -82,55 +136,32 @@ text_en: `A group exhibition by nisetexture and <a href="https://kenjimonden.com
   }
 },
 {
-  id: "C",
-      title: "hyper log",
-      date: "2025.10.10",
-      category: "exhibition, project, site",
-      place: "Tokyo, Japan",
+      id: "psemac2024",
+      title: "【不採用】令和6年度国内クリエイター発表支援プログラム",
+      title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
+      date: "2024.5.30",
+      category: "competition",
+      place: "",
       media: [
-         "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs", // ← YouTube埋め込み例
-        "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs"
+        "workimg/competition/competition_samune-no_a.png",
+        "https://youtu.be/Y7xAR7hBGYs?si=em1NhIUqMhf-rT40"
       ],
-           captions: [
-    "展示風景（Tokyo, 2024）",
-    "BMXとグラフィティ",
-    "リブートプラン・ドローイング",
-    "between シリーズより",
-    "映像作品《Reboot Plan》",
-    "映像作品《Reboot Plan》別カット"
+      captions: [
+    "　",
+    "自己PR動画"
+    
   ],
-      text_jp: `ハイパーログ<br>日常の行為やルーティンの動きを取り出し、元の場所から別の場所に配置する。そして、皿洗い、会話、食事、視聴といった要素を変換し、反転やすり替えをしながら、レイヤーのように重ね合わせることで、本来のかたちからわずかにズレた、ハリボテのようなものを作りあげる。`,
-text_en: `Extracting daily actions and routines from their original context and repositioning them elsewhere, the work transforms elements such as dishwashing, conversation, eating, and watching. Through inversion and substitution, it layers them like strata, creating a form slightly detached from its original state—a kind of facade.`,
-},
-{
-  id: "D",
-      title: "ドドドド",
-      date: "2025.10.10",
-      category: "exhibition, video",
-      place: "Tokyo, Japan",
-      media: [
-        "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs", 
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        // ← YouTube埋め込み例
-        "https://youtu.be/TIcB-RKa-7o?si=aF-BBSNER7-zjxGs"
-      ],
-                 captions: [
-    "展示風景（Tokyo, 2024）",
-    "BMXとグラフィティ",
-    "リブートプラン・ドローイング",
-    "between シリーズより",
-    "映像作品《Reboot Plan》",
-    "映像作品《Reboot Plan》別カット"
-  ],
-      text_jp: `ドドドド<br>日常の行為やルーティンの動きを取り出し、元の場所から別の場所に配置する。そして、皿洗い、会話、食事、視聴といった要素を変換し、反転やすり替えをしながら、レイヤーのように重ね合わせることで、本来のかたちからわずかにズレた、ハリボテのようなものを作りあげる。`,
+      text_jp: `文化庁メディア芸術クリエイター育成支援事業における、国内クリエイター発表支援プログラムに「オールライト!『クールなループ、生活の成果、』」を応募しました。
+残念ながら採択には至りませんでした。`,
+text_en: `I submitted All Light"Cool Loops, Life Brights," to the Domestic Creator Presentation Support Program of the Agency for Cultural Affairs’ Media Arts Creator Development Support Project.
+Unfortunately, it was not selected.`,
 
+       links: {
+        "企画書": "https://drive.google.com/file/d/1xfUZTEu-pL9g0SMdFZQ8ivqVSr8nJ34w/view?usp=sharing",
+    "Website": "https://creators.j-mediaarts.bunka.go.jp/news/15226"
+   
+  }
 }
+
   ]
 };

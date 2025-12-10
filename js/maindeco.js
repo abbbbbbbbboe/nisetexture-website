@@ -35,7 +35,7 @@ currentPage = btn.dataset.category; // ← これが重要！！
 
 
 
-adjustMobilePageTopLayout();
+// adjustMobilePageTopLayout();
     updateMobileView();
     adjustMediaSizes();
     attachScrollStep();
@@ -292,7 +292,7 @@ function applyRandomSpacingToAreaTitles() {
 function applyRandomSpacingToListArea() {
   document.querySelectorAll('.list-title').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText, 2, 3);
+    list.innerHTML = randomLetterSpacing(originalText, 2, 2.5);
   });
 }
 

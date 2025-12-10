@@ -442,15 +442,21 @@ function generateArchiveList() {
     div.dataset.index = i;
     div.dataset.id = item.id;
 
+    
+
     // まず基本情報を入れる
     div.innerHTML = `
       <div class="list-title">+&ensp;${randomLetterSpacing(item.title)}&ensp;+</div>
       <div class="list-meta">
         <span class="list-date">(${item.date || ''})</span>
         <br>
-        <span class="list-category">*${item.category || ''}</span>
+          <span class="list-category">
+      ${item.category
+        ? item.category.split(",").map(cat => `*${cat}`).join(" ")
+        : ""}
+    </span>
         <br>
-        <span class="list-place">@${item.place || ''}</span>
+         ${item.place ? `<span class="list-place">@${item.place}</span>` : ""}
       </div>
     `;
 
@@ -655,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 attachScrollStep();
+updateMobileView();
 });
 
 

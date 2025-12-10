@@ -15,29 +15,31 @@ function attachScrollStep() {
     // --------------------------------------------------
     // スクロールごとの trigger（発火距離）と step（移動量）
     // --------------------------------------------------
-    const getTriggerAndStep = (container) => {
-        let textsContainer = textArea.querySelector('.text-container');
-let imageContainer = imageArea.querySelector('.image-container');
-let listContainer = listArea.querySelector('.list-container');
-let pageTop = listArea.querySelector('.page-top');
-      const isMobile = window.innerWidth <= 768;
+const getTriggerAndStep = (container) => {
+  const type = container.dataset.scrolltype;
+  const isMobile = window.innerWidth <= 768;
 
-      if (isMobile) {
-        if (container === imageContainer) return { trigger: 11, step: 35 };
-        if (container === textsContainer) return { trigger: 11, step: 35 };
-        if (container === listContainer)  return { trigger: 11, step: 35 };
-        if (container === pageTop)  return { trigger: 11, step: 35 };
-      } else {
-        if (container === imageContainer) return { trigger: 120, step: 120 };
-        if (container === textsContainer) return { trigger: 40,  step: 40 };
-        if (container === listContainer)  return { trigger: 40,  step: 40 };
-      }
-if (isMobile) {
-      return { trigger: 11, step: 35 }; // fallback
-      } else {
-        return { trigger: 40, step: 40 };
-      }
-    };
+  console.log("scrolltype =", type);
+
+  if (isMobile) {
+    return { trigger: 33, step: 35 };
+  }
+
+  if (!type) {
+    console.warn("⚠ data-scrolltype がありません → fallback");
+    return { trigger: 40, step: 40 };
+  }
+
+  switch (type) {
+    case "image": return { trigger: 120, step: 120 };
+    case "text":  return { trigger: 10,  step: 40 };
+    case "list":  return { trigger: 10,  step: 40 };
+    case "top":   return { trigger: 40,  step: 40 };
+    default:
+      console.warn("⚠ 不明な scrolltype:", type);
+      return { trigger: 40, step: 40 };
+  }
+};
 
     const maxScroll = () => container.scrollHeight - container.clientHeight;
 
@@ -74,7 +76,7 @@ if (isMobile) {
 
         const { trigger, step } = getTriggerAndStep(container);
 
-        wheelAccum += e.deltaY;
+        wheelAccum += e.deltaY * 5;
 
         if (Math.abs(wheelAccum) >= trigger) {
           const direction = wheelAccum > 0 ? 1 : -1;
@@ -113,7 +115,7 @@ const startInertia = (step) => {
 
     window.inertiaVelocity *= 0.9;
 
-    const speed = Math.min(Math.max(20, 200 - Math.abs(window.inertiaVelocity) * 150), 200);
+    const speed = Math.min(Math.max(10, 200 - Math.abs(window.inertiaVelocity) * 190), 200);
     window.inertiaTimer = setTimeout(loop, speed);
   };
 

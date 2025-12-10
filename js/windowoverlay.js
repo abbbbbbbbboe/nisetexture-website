@@ -86,17 +86,18 @@ const idleImages = isMobile() ? mobileImages : pcImages;
 
 // 先にプリロード
 preloadImages(idleImages).then(() => {
-    enableIdleOverlay(idleImages, topImage, 2000);
+    enableIdleOverlay(idleImages, topImage, 15000);
 });
 
+//  clockElement.textContent = `〔${h}:${m}:${s}〕`;
 
 function startClock(clockElement) {
     function update() {
         const now = new Date();
-        const h = String(now.getHours()).padStart(2,"0");
-        const m = String(now.getMinutes()).padStart(2,"0");
+        // const h = String(now.getHours()).padStart(2,"0");
+        // const m = String(now.getMinutes()).padStart(2,"0");
         const s = String(now.getSeconds()).padStart(2,"0");
-        clockElement.textContent = `〔${h}:${m}:${s}〕`;
+        clockElement.textContent = `〔${s}〕`;
     }
 
     update();
@@ -173,7 +174,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
       top: 50%;
       left: 50%;
       width: 102vw;
-      height: 110vh;
+      height: 108vh;
      overflow: hidden;
      
       transform: translate(-50%, -50%);
@@ -217,7 +218,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
       
       z-index: 20;  /* ← これが上のレイヤー */
       width: auto;
-      max-width: 80vw;
+      max-width: 72vw;
      
       object-fit: contain;
       pointer-events: none;  /* クリックを通す（任意） */
@@ -355,7 +356,7 @@ function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
     // ==============================
     // ④ ユーザー操作を検知したら resetIdleState()
     // ==============================
-    ["mousemove", "mousedown", "scroll", "touchstart", "touchmove"].forEach(ev => {
+    ["mousemove", "mousedown","wheel", "scroll", "touchstart", "touchmove"].forEach(ev => {
         window.addEventListener(ev, resetIdleState, { passive: true });
     });
 

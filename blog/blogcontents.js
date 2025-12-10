@@ -218,35 +218,6 @@ export const blogContents = {
 
       // ③ この投稿で使いたい global のセット
       hyperlinkGroups: ["basic"],
-    },
-    {
-      id: "post3",
-      category: "diary",
-      title: "初めての投稿",
-      date: "2025-11-26",
-      images: [
-        { src: "img/5.png", caption: "写真1", id: 1 },
-        { src: "img/5.png", caption: "写真1", id: 1 },
-
-      ],
-      textBlocks: [
-        { type: "p", text: "これは最初の段落です。" },
-        { type: "p", text: "ここは大きく開けたい段落。", class: ["large-space-1"] },
-        { type: "divider" },
-        { type: "p", text: "区切り線の後の段落です。" }
-      ]
-    },
-    {
-      id: "post2",
-      category: "work",
-      title: "作品紹介",
-      date: "2025-11-25",
-      textBlocks: [
-        { type: "p", text: "作品の説明テキストです。" }
-      ],
-      images: [
-        { src: "img/5.png", caption: "", id: 1 }
-      ]
     }
   ]
 };

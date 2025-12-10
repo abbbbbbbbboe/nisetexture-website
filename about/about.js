@@ -480,8 +480,10 @@ applyLanguage(activeLanguage);
 attachScrollStep();
 
 // ★★ ADD START : モバイルボタン更新 ★★
+
 addMobileNavButtons();
 updateMobileView();
+
 // ★★ ADD END ★★
 applyRandomSpacingToMobileAreaTitles();
 createScrollTopButton(listContainer, textContainer, imageContainer);
