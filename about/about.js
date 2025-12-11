@@ -198,10 +198,9 @@ const aboutPcImages = [
 
 // モバイル用画像リスト
 const aboutMobileImages = [
-  "img/mobile/mobile_nise/1.webp",
-  "img/mobile/mobile_nise/2.webp",
-  "img/mobile/mobile_nise/3.webp",
-  "img/mobile/mobile_nise/4.webp",
+  "img/mobile/mobile_ota/5.webp",
+  "img/mobile/mobile_koba/5.webp",
+  "img/mobile/mobile_statement/5.webp",
   "img/mobile/mobile_nise/5.webp",
 ];
 
@@ -313,12 +312,11 @@ imageContainer.appendChild(img);
   frames.push(img);
 
 img.onload = () => {
-  imagesLoaded++;
-  if (imagesLoaded === frameCount) {
-    // 初期表示は必ず1番目のフレーム
+  if (imagesLoaded === 0) {
     frames[0].classList.add("active");
     currentIndex = 0;
   }
+  imagesLoaded++;
 };
 }
 
