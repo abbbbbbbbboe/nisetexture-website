@@ -50,15 +50,15 @@ function applyBaseToFile(path) {
     ];
 
     const mobileImagesRaw = [
-           "img/window/pc/1.png",
-        "img/window/pc/2.png",
-        "img/window/pc/3.png",
-        "img/window/pc/4.png",
-        "img/window/pc/5.png",
-        "img/window/pc/6.png",
-        "img/window/pc/7.png",
-        "img/window/pc/8.png",
-        "img/window/pc/9.png"
+         "img/window/mobile/1.png",
+        "img/window/mobile/2.png",
+        "img/window/mobile/3.png",
+        "img/window/mobile/4.png",
+        "img/window/mobile/5.png",
+        "img/window/mobile/6.png",
+        "img/window/mobile/7.png",
+        "img/window/mobile/8.png",
+        "img/window/mobile/9.png"
     ];
 
 
@@ -243,7 +243,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
     line-height:35px;
         font-size: 1em;
         font-family: monospace;
-        color: var(--color);
+        color: #f4f4f4ff;
         z-index: 30;
         font-family: "IBM Plex Serif", "IBM Plex Sans JP", sans-serif;
         font-weight:var(--fontw4);

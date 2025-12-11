@@ -823,6 +823,16 @@ transform: scale(1, 1) !important;
   margin-bottom: 40px;
 }
 
+ p.footnote{
+    font-size: 0.9em;
+    font-weight: var(--fontw5);
+    color: var(--caption-color);
+    transform: scale(0.9, 0.85);
+  }
+  .footnote{
+    
+  }
+
 .divider-line{
   height: 40px;
   width: 90%;
@@ -1097,7 +1107,7 @@ font-weight: var(--fontw2);
     margin-top: 6px;
     margin-left: 15px;
     stroke-width: 3px;
-
+background: url('../img/rogo_1.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -1428,6 +1438,8 @@ font-weight: var(--fontw3);
   .large-space-2 {
     margin-bottom: 70px;
   }
+
+ 
 .divider-line{
   height: 35px;
   width: 95%;

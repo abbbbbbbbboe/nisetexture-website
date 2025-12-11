@@ -13,7 +13,7 @@
 
 
 //ハイパーリンク
-//globalHyperlinks:は汎用的に使える。各post内のhyperlinkGroups:にセット名 ["basic"],を書くと反映される。
+//globalHyperlinks:は汎用的に使える。各post内のhyperlinkGroups:にセット名 ["basic"],を書くと反映される。他にもセットを作れば切り替え可能、複数割り当ても可能
 //各ポスト内のpostHyperlinks:にリンクを設定するとこのポスト内でのみリンクが反映される。
 
 
@@ -43,7 +43,7 @@ export const blogContents = {
       { word: "酩酊", href: "https://www.iwate.med.or.jp/hanamaki/P-9.html" },
       { word: "世迷言", href: "https://www.uta-net.com/song/54556/" },
       { word: "(｀･ω･´)", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1357121248" },
-      
+      { word: "ハラスメント", href: "https://ja.wikipedia.org/wiki/%E5%AB%8C%E3%81%8C%E3%82%89%E3%81%9B" },
     ],
     musicLinks: [
 
@@ -58,7 +58,7 @@ export const blogContents = {
       tag: ["about", "news"],
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
-        { src: "https://soundcloud.com/tofubeats/throw-your-laptop-on-the-fire-2025-mix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
+        { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
       ],
       textBlocks: [
         { type: "skipbutton", id: "skip1", label: "読み上げ音声", mobile_label: "読" },
@@ -66,7 +66,7 @@ export const blogContents = {
 
         { type: "p", text: `こんにちはニセテクスチャです。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2"] },
 
-        
+
         { type: "skipbutton", id: "skip2", label: "section 1", mobile_label: "1", text: "section 1" },
 
         { type: "p", text: `私たちの飲み会ではつまらなさを全面的に受け入れ、だらだらと長時間行うことを信条としています。飲み会を開くことを目的としていますが、たまに飲みながら打ち合わせをして、活動の相談をはじめ、最近あったことを話したり、悪口をこぼしたりします。打ち合わせのために飲み会をしているのか、飲み会のために打ち合わせをしているのか、ジョッキとジョッキを持つ手との境目くらい分からなくなります。`, class: ["large-space-1"] },
@@ -127,7 +127,8 @@ export const blogContents = {
         { "type": "button", "targetId": 1, "label": "読み上げ音声" },
 
         { type: "divider" },
-{ type: "skipbutton", id: "skip6", label: "説明音声", mobile_label: "説" },
+        { type: "p", text: `私たちは、飲み会だけでなくいかなる場面においてもハラスメントを許容しません。`, class: ["large-space-1"] },
+        { type: "skipbutton", id: "skip6", label: "説明音声", mobile_label: "説" },
         { type: "button", "targetId": 2, "label": "説明音声" },
 
         { type: "skipbutton", id: "skip7", label: "link_list", mobile_label: "l" },
@@ -148,7 +149,7 @@ export const blogContents = {
       ],
 
       postHyperlinks: [
-        
+
         { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
         { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
         { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
@@ -168,13 +169,16 @@ export const blogContents = {
       ],
       textBlocks: [
         { type: "p", text: `ニセテクスチャのwebサイトに掲載する広告を募集します。` },
-        { type: "p", text: `広告費は当サイトの運営費および当チームの活動費に使用いたします。`, class: "large-space-2" },
+        { type: "p", text: `広告費は当サイトの運営費および当チームの活動費に使用いたします。`, class: "large-space-1" },
 
-        { type: "p", text: `新幹線に乗っていると窓の向こうで高速に流れる景色とは違って、車両の入り口の上部にある電光掲示板には64文字のキャッチーで簡素なテキストが緩やかに流れている。企業の環境への取り組みや管理職に向けたプロダクトの広告が誰がみているのかわからないまま淡々と横向きにスライドしていく。` },
+        { type: "p", text: `&#x2730;〜〜<br>
+新幹線に乗っていると窓の向こうで高速に流れる景色とは違って、車内に設置された電光掲示板には64文字のキャッチーで簡素なテキストが緩やかに流れている。企業の環境への取り組みや管理職に向けたプロダクトの広告が誰がみているのかわからないまま淡々と横向きにスライドしていく。<br>
+&#x2730;〜〜
+` , class: "large-space-1"},
 
-        { type: "p", text: `電光文字盤という限られたピクセル数の中で、表示できる文字や記号のみで、淡々とメッセージを流すことをこのwebサイトでもやってみたい。`, class: ["large-space-1"] },
+        { type: "p", text: `限られた文字数で、表示できる文字や記号のみで、淡々とメッセージを流すことをこのwebサイトでも行います。`, class: ["large-space-1"] },
 
-        { type: "p", text: `このwebサイトは、PVみたいな数字を持つことはできないと思いますが、64文字ぴったりであなたのテキストを掲載してみませんか？広告のみならず、誰かや自分に宛てたメモやメッセージも載せることが可能です。`, class: "large-space-2" },
+        { type: "p", text: `このwebサイトはPVみたいな数字を持つことはできないかもしれませんが、64文字ぴったりであなたのテキストを掲載してみませんか？広告のみならず、誰かや自分に宛てたメモやメッセージも載せることが可能です。`, class: "large-space-2" },
 
         { type: "divider" },
 
@@ -192,25 +196,25 @@ export const blogContents = {
 
         { type: "skipbutton", id: "skip3", label: "3.期間", mobile_label: "3" },
         { type: "p", text: `3.期間`, class: "index" },
-        { type: "p", text: `基本：1ヶ月〜<br>数日間も可能です。応相談` },
-        { type: "p", text: `途中解約の場合は、掲載を取りやめますが、日割り等での払い戻しはありません。数ヶ月契約の場合は翌月以降の掲載料は返金いたします。`, class: "large-space-2" },
+        { type: "p", text: `1ヶ月（30日間）〜` , class: "large-space-2"},
 
         { type: "skipbutton", id: "skip4", label: "4.形式", mobile_label: "4" },
         { type: "p", text: `4.形式`, class: "index" },
         { type: "p", text: `形式 : テキスト` },
         { type: "p", text: `文字数<br>日本語 : 64文字丁度<br>英語 : 30単語丁度` },
-        { type: "p", text: `テキストのみでも可能です。テキストにリンクをつけることも可能です。`, class: "large-space-2" },
+        { type: "p", text: `*上記文字数、単語数ぴったりでお願いします`, class: "footnote" },
+        { type: "p", text: `*テキストにリンクをつけることも可能です。`, class: ["footnote", "large-space-2"] },
 
         { type: "skipbutton", id: "skip5", label: "5.掲載できないもの", mobile_label: "5" },
         { type: "p", text: `5.掲載できないもの`, class: "index" },
         { type: "p", text: `公序良俗に反する内容<br>虚偽情報<br>差別的表現、差別を助長するもの<br>その他、不適切と判断した広告`, class: "large-space-1" },
-        { type: "p", text: `掲載不可の内容についてはお申し込み時に判断いたします`, class: "large-space-2" },
+        { type: "p", text: `掲載不可の内容についてはお申し込み時に判断いたします。`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip6", label: "6.申し込み方法", mobile_label: "6" },
         { type: "p", text: `6.申し込み方法`, class: "index" },
         { type: "p", text: `下記メールアドレス宛にご連絡ください。` },
         { type: "p", text: `nise.texture[a]gmail.com` },
-        { type: "p", text: `*[a]は@に変更してください。`, class: "large-space-1" },
+        { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
         { type: "p", text: `お問い合わせの際、以下の内容も合わせてお送りください。` },
         { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-2" }
 

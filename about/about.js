@@ -67,7 +67,7 @@ let currentItemId = null;
 
 
 // 📌 モバイルランダム画像の前回使用番号
-const lastMobileImageIndex = {};
+// const lastMobileImageIndex = {};
 
 // ===============================
 // 🔷 スマホアドレスバー計算
@@ -188,6 +188,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// PC用画像リスト
+const aboutPcImages = [
+  "img/pc/nise/1.webp",
+"img/pc/ota/1.webp",
+"img/pc/koba/1.webp",
+"img/pc/statement/1.jpg",
+];
+
+// モバイル用画像リスト
+const aboutMobileImages = [
+  "img/mobile/mobile_nise/1.webp",
+  "img/mobile/mobile_nise/2.webp",
+  "img/mobile/mobile_nise/3.webp",
+  "img/mobile/mobile_nise/4.webp",
+  "img/mobile/mobile_nise/5.webp",
+];
+
+// プリロード関数
+function preloadImages(images) {
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+// 読み込み時にデバイス判定してプリロード
+window.addEventListener("load", () => {
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    preloadImages(aboutMobileImages);
+  } else {
+    preloadImages(aboutPcImages);
+  }
+});
+
 // ================================
 // 📌 DOM要素の取得
 // ================================
@@ -217,37 +252,26 @@ updateMobileView();
   if (!targetItem) return;
 
   currentItemId = targetItem.id;
-applyRandomSpacingToMobileAreaTitles()
+applyRandomSpacingToMobileAreaTitles();
+
   // ================================
   // 📷 メディア描画処理
   // ================================
 if (isMobile() && targetItem.useSlider) {
 
   const folder = targetItem.media_mobile[0];
-  const frameCount = 5;
+const img = new Image();
 
-  // 前回と違う番号を選ぶ
-  let rand;
-  do {
-    rand = Math.floor(Math.random() * frameCount) + 1;
-  } while (lastMobileImageIndex[folder] === rand);
+img.src = `img/mobile/${folder}/5.webp`;
 
-  // 記録
-  lastMobileImageIndex[folder] = rand;
+img.onerror = () => {
+  img.onerror = null;
+  img.src = `img/mobile/${folder}/5.jpg`;
+};
 
-  const img = new Image();
+img.classList.add("mobile-random-image");
+imageContainer.appendChild(img);
 
-  // まず JPG
-  img.src = `img/mobile/${folder}/${rand}.jpg`;
-
-  // JPG ダメなら PNG
-  img.onerror = () => {
-    img.onerror = null;
-    img.src = `img/mobile/${folder}/${rand}.png`;
-  };
-
-  img.classList.add("mobile-random-image");
-  imageContainer.appendChild(img);
 
 } else if (targetItem.useSlider) {
     
@@ -276,22 +300,26 @@ if (isMobile() && targetItem.useSlider) {
   const img = new Image();
 
   // まず jpg を試す
-  img.src = `img/pc/${folder}/${i}.jpg`;
+  img.src = `img/pc/${folder}/${i}.webp`;
 
   // jpg がなかったら png に切り替える
   img.onerror = () => {
     img.onerror = null; // 無限ループ防止
-    img.src = `img/pc/${folder}/${i}.png`;
+    img.src = `img/pc/${folder}/${i}.jpg`;
   };
 
   img.classList.add("frame");
   container.appendChild(img);
   frames.push(img);
 
-  img.onload = () => {
-    imagesLoaded++;
-    if (imagesLoaded === frameCount) updateFrameByCursor();
-  };
+img.onload = () => {
+  imagesLoaded++;
+  if (imagesLoaded === frameCount) {
+    // 初期表示は必ず1番目のフレーム
+    frames[0].classList.add("active");
+    currentIndex = 0;
+  }
+};
 }
 
 

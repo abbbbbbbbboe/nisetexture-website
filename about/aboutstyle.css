@@ -738,7 +738,7 @@ button {
     margin-top: 6px;
     margin-left: 15px;
     stroke-width: 3px;
-
+background: url('../img/rogo_1.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
