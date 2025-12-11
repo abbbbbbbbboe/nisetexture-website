@@ -4,13 +4,26 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 2px;
+.scroll-container::-webkit-scrollbar {
+  width: 1px;
+ 
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--background-border-color);
+.scroll-container:hover::-webkit-scrollbar {
+  width: 1px;
+
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: transparent;
   min-height: 40px;
+
+}
+
+.scroll-container:hover::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  min-height: 40px;
+
 }
 
 ::-webkit-scrollbar-track {
@@ -165,7 +178,7 @@ header {
   text-decoration: none;
   overflow: hidden;
 
-  border-left: var(--border);
+  border-left: 1px solid var(--vertical-border);
   /* margin: 0 0 0 auto; */
 }
 
@@ -302,8 +315,9 @@ button {
 }
 
 #archive-sort-buttons {
-  border-left: var(--border);
+  border-left: 1px solid var(--vertical-border);
   /* padding-top: 5px; */
+  height: 39px;
 }
 
 #archive-sort-buttons button {
@@ -440,7 +454,7 @@ z-index: 200;
   /* ←上寄せ */
 
   position: relative;
-  border-right: var(--border);
+  /* border-right: 1px solid var(--vertical-border); */
 
 }
 
@@ -456,6 +470,7 @@ z-index: 200;
   padding-right: 10px;
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
+  width:fit-content;
 }
 
 
@@ -496,7 +511,7 @@ z-index: 200;
   display: flex;
   flex-direction: column;
   padding-top: 0;
-  border-right: var(--border);
+  /* border-right: 1px solid var(--vertical-border); */
   position: relative;
 
 }
@@ -1501,7 +1516,7 @@ background: url('../img/rogo_1.svg');
 
   .lang-toggle-btn {
     border: 1px solid var(--btn-color);
-    top: 5px;
+    top: -30px;
     right: 30px;
     color: #545454;
     background-color: var(--btn-color);

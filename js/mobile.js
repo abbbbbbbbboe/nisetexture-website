@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       activeSection = "image";
     }
      updateMobileView();       
-     attachScrollStep();
+    //  attachScrollStep();
     adjustMediaSizes();
   }
 });
@@ -58,8 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const main = document.querySelector('#content');
 
-if (currentPage === 'top') main.classList.add('page-top');
-else main.classList.remove('page-top');
+if (currentPage === 'top') {
+  main.classList.add('page-top');
+  main.dataset.scrolltype = "top";
+  delete main.dataset.scrollAttached;
+} else {
+  main.classList.remove('page-top');
+  // main.removeAttribute('data-scrolltype');
+  delete main.dataset.scrolltype;
+  delete main.dataset.scrollAttached;
+
+}
+
+// if (currentPage === 'top') main.classList.add('page-top');
+// else main.classList.remove('page-top');
 
 
 function updateMobileView() {
@@ -106,7 +118,7 @@ function updateMobileView() {
     applyRandomSpacingToListArea();
     applyRandomSpacingToAreaTitles();
     applyRandomSpacingToMobileAreaTitles();
-    attachScrollStep();
+    
     adjustMediaSizes();
     
 
@@ -133,7 +145,7 @@ function updateNavButtons() {
         applyRandomSpacingToListArea();
         applyRandomSpacingToAreaTitles();
         applyRandomSpacingToMobileAreaTitles();
-        attachScrollStep();
+       
         adjustMediaSizes();
       };
     }
@@ -153,7 +165,7 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
-       attachScrollStep();
+      
     adjustMediaSizes();
     };
     nextBtn.onclick = () => {
@@ -163,7 +175,7 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
-       attachScrollStep();
+    
     adjustMediaSizes();
     };
   }
@@ -178,7 +190,7 @@ function updateNavButtons() {
       updateMobileView();
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
-       attachScrollStep();
+       
     adjustMediaSizes();
     };
     nextBtn.style.display = "none";

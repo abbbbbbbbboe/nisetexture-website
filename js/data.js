@@ -32,7 +32,7 @@ text_credit: ``,
   }
 },{
       id: "psemac2025",
-      title: `【不採用】<br>令和7年度<br>国内クリエイター発表支援プログラム`,
+      title: `【不採用】令和7年度国内クリエイター発表支援プログラム`,
       title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
       date: "2025.5.29",
       category: "competition",

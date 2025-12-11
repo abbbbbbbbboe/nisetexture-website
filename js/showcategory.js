@@ -408,7 +408,7 @@ textContainer.querySelectorAll("a").forEach(a => {
 
   // --- サイズ調整・スクロール設定 ---
   adjustMediaSizes();
-  attachScrollStep();
+  // attachScrollStep();
 
   
 // ================================
@@ -602,7 +602,7 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
   //   });
   // }
 
-  attachScrollStep();
+  // attachScrollStep();
   
   if (isMobile()) {
   activeSection = "list";  // 初期表示は image エリア

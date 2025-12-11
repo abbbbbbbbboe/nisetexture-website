@@ -6,40 +6,57 @@ window.inertiaVelocity = 0;
 // スクロール制御（コンテナ単位、最後のステップで止める）
 // ==========================
 function attachScrollStep() {
-  document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
+ 
+  const main = document.querySelector("main");
+
+
+  const isTopPage = main && main.classList.contains("page-top");
+
+  let targets = [];
+  if (main && isTopPage) {
+    // 🟦 TOPページ：main のみスクロール対象
+    if (main.dataset.scrolltype) {
+      targets = [main];
+    }
+  } else {
+    // 🟩 Archiveページ or main が存在しないページ：
+    //   div[data-scrolltype] のみ対象
+   targets = Array.from(document.querySelectorAll('div[data-scrolltype]'))
+  .filter(el => el.dataset.scrolltype && el.dataset.scrollAttached !== "true");
+      
+  }
+
+
+  targets.forEach(container => {
+
     if (container.dataset.scrollAttached === "true") return;
     container.dataset.scrollAttached = "true";
 
     let isScrolling = false;
 
+    
+
     // --------------------------------------------------
     // スクロールごとの trigger（発火距離）と step（移動量）
     // --------------------------------------------------
-const getTriggerAndStep = (container) => {
-  const type = container.dataset.scrolltype;
-  const isMobile = window.innerWidth <= 768;
+  const getTriggerAndStep = (container) => {
+      const type = container.dataset.scrolltype;
+      const isMobile = window.innerWidth <= 768;
 
-  console.log("scrolltype =", type);
+      console.log("scrolltype =", type);
 
-  if (isMobile) {
-    return { trigger: 33, step: 35 };
-  }
+      if (!type) return null; // ← type 無しは無視
 
-  if (!type) {
-    console.warn("⚠ data-scrolltype がありません → fallback");
-    return { trigger: 40, step: 40 };
-  }
+      if (isMobile) return { trigger: 33, step: 35 };
 
-  switch (type) {
-    case "image": return { trigger: 120, step: 120 };
-    case "text":  return { trigger: 10,  step: 40 };
-    case "list":  return { trigger: 10,  step: 40 };
-    case "top":   return { trigger: 40,  step: 40 };
-    default:
-      console.warn("⚠ 不明な scrolltype:", type);
-      return { trigger: 40, step: 40 };
-  }
-};
+      switch (type) {
+        case "image": return { trigger: 120, step: 120 };
+        case "text":  return { trigger: 10,  step: 40 };
+        case "list":  return { trigger: 10,  step: 40 };
+        case "top":   return { trigger: 40,  step: 40 };
+      }
+      return null;
+    };
 
     const maxScroll = () => container.scrollHeight - container.clientHeight;
 
@@ -68,24 +85,22 @@ const getTriggerAndStep = (container) => {
     // ==================================================
     let wheelAccum = 0;
 
-    container.addEventListener(
-      'wheel',
-      (e) => {
-       
-        e.preventDefault();
+    container.addEventListener("wheel", (e) => {
+      e.preventDefault();
 
-        const { trigger, step } = getTriggerAndStep(container);
+      const conf = getTriggerAndStep(container);
+      if (!conf) return;
 
-        wheelAccum += e.deltaY * 5;
+      const { trigger, step } = conf;
 
-        if (Math.abs(wheelAccum) >= trigger) {
-          const direction = wheelAccum > 0 ? 1 : -1;
-          scrollToStep(direction, step);
-          wheelAccum = 0;
-        }
-      },
-      { passive: false }
-    );
+      wheelAccum += e.deltaY * 5;
+
+      if (Math.abs(wheelAccum) >= trigger) {
+        const direction = wheelAccum > 0 ? 1 : -1;
+        scrollToStep(direction, step);
+        wheelAccum = 0;
+      }
+    }, { passive: false });
 
     // ==================================================
     // 📱 Mobile: touch + 疑似慣性ステップ
@@ -136,14 +151,17 @@ const startInertia = (step) => {
 });
 
     container.addEventListener("touchmove", (e) => {
-         
+          const conf = getTriggerAndStep(container);
+      if (!conf) return;  // ← ここが無いとエラー
+const { trigger, step } = conf;
+      
       e.preventDefault();
 
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
       lastY = currentY;
 
-      const { trigger, step } = getTriggerAndStep(container);
+      
 
       accum += diff;
 
@@ -160,7 +178,10 @@ const startInertia = (step) => {
     }, { passive: false });
 
     container.addEventListener("touchend", () => {
-      const { step } = getTriggerAndStep(container);
+      const conf = getTriggerAndStep(container);
+      if (!conf) return;
+
+      const { step } = conf;
 
       // 指を離したあと慣性でステップスクロール
       if (Math.abs(inertiaVelocity) > 0.5) {

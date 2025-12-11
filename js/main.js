@@ -484,6 +484,8 @@ function generateArchiveList() {
           metaBlock.insertAdjacentElement("afterend", mobileImg);
         }
       }
+      
+      
     }
 
     // active 表示
@@ -491,6 +493,7 @@ function generateArchiveList() {
 
     // click → showCategory()
     div.addEventListener('click', () => {
+      
 const previewtext = document.querySelector('.preview-text-wrapper'); // class
 if (previewtext) {
   previewtext.innerHTML = '';
@@ -515,11 +518,14 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
       if (isMobile()) {
         activeSection = "image";
         updateMobileView();
+      
       }
 
       window.suppressHashRender = true;
       window.location.hash = newHash;
       setTimeout(() => window.suppressHashRender = false, 50);
+
+     
     });
 
     // list-item を追加
@@ -542,7 +548,6 @@ const listContainerSpacer = document.createElement("div");
   // 再度 hover イベントをバインド
   attachArchiveHoverEvents();
 
-  
 }
 
 

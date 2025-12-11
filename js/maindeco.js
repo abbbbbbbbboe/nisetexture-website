@@ -9,6 +9,9 @@ document.querySelectorAll('.menu button').forEach(btn => {
      // ★ メニュークリック時は main から top-page を外す（モバイルもPCも共通）
    if (btn.dataset.category === 'archive') {
   main.classList.remove('page-top');
+  // main.removeAttribute('data-scrolltype');
+  delete main.dataset.scrolltype;
+  delete main.dataset.scrollAttached;
 }
 
     document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
@@ -38,10 +41,13 @@ currentPage = btn.dataset.category; // ← これが重要！！
 // adjustMobilePageTopLayout();
     updateMobileView();
     adjustMediaSizes();
-    attachScrollStep();
+    
      if (listContainer) listContainer.scrollTop = 0;
-
-  
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    attachScrollStep();
+  });
+});
   });
 });
 
