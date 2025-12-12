@@ -19,8 +19,8 @@ document.querySelectorAll('.menu button').forEach(btn => {
 
       // ★ archiveクリック時のみpaddingをつける
     if (btn.dataset.category === 'archive') {
-      imageContainer.style.paddingLeft = "80px";
-      imageContainer.style.paddingRight = "80px";
+      imageContainer.style.paddingLeft = "40px";
+      imageContainer.style.paddingRight = "40px";
     } else {
       imageContainer.style.paddingLeft = "20px";
       imageContainer.style.paddingRight = "20px";
@@ -279,7 +279,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText);
+    button.innerHTML = randomLetterSpacing(originalText, 2, 3);
   });
 }
 // ==========================
@@ -296,7 +296,7 @@ function applyRandomSpacingToAreaTitles() {
 // listタイトルに適用
 // ==========================
 function applyRandomSpacingToListArea() {
-  document.querySelectorAll('.list-title').forEach(list => {
+  document.querySelectorAll('.list-title ').forEach(list => {
     const originalText = list.textContent;
     list.innerHTML = randomLetterSpacing(originalText, 2, 2.5);
   });
@@ -312,6 +312,16 @@ function applyRandomSpacingToMobileAreaTitles() {
   });
 }
 
+// ==========================
+// mobileタイトルに適用
+// ==========================
+function applyRandomSpacingToTopText() {
+  document.querySelectorAll('.top-title').forEach(text => {
+    const originalText = text.textContent;
+    text.innerHTML = randomLetterSpacing(originalText, 2, 3);
+  });
+}
+
 
 // ==========================
 // 初期化
@@ -320,7 +330,8 @@ window.addEventListener('DOMContentLoaded', () => {
   applyRandomSpacingToMenu();
   applyRandomSpacingToAreaTitles();
   applyRandomSpacingToListArea();
-  applyRandomSpacingToMobileAreaTitles()
+  applyRandomSpacingToMobileAreaTitles();
+  applyRandomSpacingToTopText();
 });
 
 
@@ -459,47 +470,71 @@ function createScrollTopButton(container) {
   btn.textContent = '↑';
   btn.className = 'scroll-top-btn';
   container.appendChild(btn); // container 内に追加
-    // 初期非表示
-  btn.style.display = 'none';
- 
+
+  // 初期状態（透明 & クリック無効）
+  btn.style.opacity = '0';
+  btn.style.pointerEvents = 'none';
+  btn.style.transition = 'opacity';
+
   btn.style.border = '1px solid #b4b4b4';
- 
   btn.style.color = '#e1e1e1';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
- 
-  // スクロール監視
-  container.addEventListener('scroll', () => {
+
+
+  // -----------------------
+  // 共通処理：表示更新関数
+  // -----------------------
+  function updateScrollTopButton() {
     // 一定量スクロールしたら表示
     if (container.scrollTop > 120) {
-      btn.style.display = 'block';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
     } else {
-      btn.style.display = 'none';
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
     }
 
-    // エリア右下にボタンを配置（fixedで追従）
+    // ボタン位置（fixedで追従）
     const rect = container.getBoundingClientRect();
     btn.style.position = 'fixed';
- 
 
-  if (!isMobile()) {
-    btn.style.left = '';
-    btn.style.right = (window.innerWidth - rect.right + 30) + 'px'; // 右端からの余白
-  } else {
-    // モバイル
-    if (activeSection === 'list') {
-   btn.style.left = '';
-    btn.style.right = (window.innerWidth - rect.right + 7) + 'px'; // 右端からの余白
+    if (!isMobile()) {
+      btn.style.left = '';
+      btn.style.right = (window.innerWidth - rect.right + 30) + 'px';
     } else {
-     btn.style.left = (rect.left + 7) + 'px'; // 16pxは画面端からの余白
-    btn.style.right = ''; // 念のため右は空に
+      if (activeSection === 'list') {
+        btn.style.left = '';
+        btn.style.right = (window.innerWidth - rect.right + 7) + 'px';
+      } else {
+        btn.style.left = (rect.left + 7) + 'px';
+        btn.style.right = '';
+      }
     }
   }
-  });
 
+
+  // -----------------------
+  // スクロール監視
+  // -----------------------
+  container.addEventListener('scroll', updateScrollTopButton);
+
+
+  window.addEventListener('resize', updateScrollTopButton);
+
+  // -----------------------
+  // 初期状態でも一度実行（重要）
+  // -----------------------
+  updateScrollTopButton();
+
+
+  // -----------------------
+  // クリックでトップへ
+  // -----------------------
   btn.addEventListener('click', () => {
     container.scrollTo({ top: 0 });
   });
 }
+
 
 

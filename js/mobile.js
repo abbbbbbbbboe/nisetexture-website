@@ -62,6 +62,7 @@ if (currentPage === 'top') {
   main.classList.add('page-top');
   main.dataset.scrolltype = "top";
   delete main.dataset.scrollAttached;
+  
 } else {
   main.classList.remove('page-top');
   // main.removeAttribute('data-scrolltype');

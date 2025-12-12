@@ -51,7 +51,7 @@ body {
  
   display: flex;
   flex-direction: column;
-/* overflow: hidden; */
+overflow: hidden;
 }
 
 /* p, a,  , .list-item.active .list-meta, .list-item:hover{
@@ -178,7 +178,7 @@ header {
   text-decoration: none;
   overflow: hidden;
 
-  border-left: 1px solid var(--vertical-border);
+  border-left: 1px solid var(--background-border-color);
   /* margin: 0 0 0 auto; */
 }
 
@@ -241,16 +241,16 @@ header {
 .menu {
   height: 40px;
   display: flex;
-  gap: 30px;
+  gap: 60px;
 
   /* margin-left: -25px; */
-  margin-left: 39px;
+  margin-left: 40px;
 }
 
 .main-menu {
   display: flex;
   gap: 30px;
-  width: 260px;
+  width: fit-content;
 }
 
 .topbtn {
@@ -312,6 +312,7 @@ button {
   border-radius: 50%;
   font-size: 1.5em;
   font-weight: 100;
+  display: block !important;
 }
 
 #archive-sort-buttons {
@@ -343,9 +344,29 @@ button {
   
   border: 1px solid var(--a-border-color);
   border-radius: 50%;
+padding-right: 1px;
   margin-top: 6px;
+  letter-spacing: -0.02em !important;
 }
 
+.archive-filter-reset span{
+  letter-spacing: -0.05em !important;
+}
+
+.archive-parentheses-left{
+  height: 23px;
+position: relative;
+top: 5px;
+margin-right: -13px;
+}
+
+.archive-parentheses-right{
+  height: 23px;
+position: relative;
+top: 6px;
+transform: rotate(180deg);
+margin-left: 20px;
+}
 
 .list-item {
   font-weight: var(--fontw3);
@@ -359,7 +380,7 @@ button {
 .list-item.active .list-title {
   color: var(--color);
   font-weight: var(--fontw8);
-  letter-spacing: 0.5rem;
+  /* letter-spacing: 0.5rem; */
 }
 
 .list-item .active .list-title {
@@ -368,6 +389,7 @@ button {
 
 .list-item.active .list-meta {
   color: var(--color);
+  font-weight: var(--fontw2);
 }
 
 .mobile-nav-btn {
@@ -454,20 +476,25 @@ z-index: 200;
   /* ←上寄せ */
 
   position: relative;
-  /* border-right: 1px solid var(--vertical-border); */
+   border-right:var(--area-border);
 
 }
 
 .list-container {
   width: 100%;
+  padding-bottom: 680px;
+}
+
+.page-top .list-container{
+  padding-bottom:0px;
 }
 
 .list-item {
   font-size: 1em;
   cursor: pointer;
   line-height: 40px;
-  padding-left: 40px;
-  padding-right: 10px;
+  padding-left: 35px;
+  /* padding-right: 10px; */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
   width:fit-content;
@@ -487,6 +514,10 @@ z-index: 200;
   font-size: 1em;
   display: inline-block;
 }
+.list-meta{
+  font-weight: var(--fontw1);
+}
+
 
 .list-category {
   display: inline-block;
@@ -511,7 +542,7 @@ z-index: 200;
   display: flex;
   flex-direction: column;
   padding-top: 0;
-  /* border-right: 1px solid var(--vertical-border); */
+  border-right:var(--area-border);
   position: relative;
 
 }
@@ -722,7 +753,7 @@ img.preview {
 
 
 .text-container {
-  padding: 0 40px;
+  padding: 0 30px;
   display: block;
   /* position: relative; */
   padding-bottom: 160px;
@@ -875,12 +906,13 @@ img.preview {
 /* トップ画面 */
 
 .top-title {
-  padding: 0 40px;
+  padding: 0 40px 0 25px;
   font-size: 1em;
   line-height: 40px;
   color: var(--color);
   font-weight: var(--fontw6);
-
+  transform: scale(0.9,1);
+/* letter-spacing: 0.2em; */
 }
 
 .top-top-title {
@@ -904,7 +936,7 @@ img.preview {
   /* ここで折り返しを有効にする */
   justify-content: center;
   /* align-items: center; */
-  gap: 10px;
+  /* gap: 10px; */
   /* height: 100vh; */
   /* background: #b4b4b4; */
   margin-top: 40px;
@@ -913,6 +945,7 @@ img.preview {
 
 .wrapper2 {
   margin-bottom: 80px;
+  margin-top: 0px !important;
 }
 
 .sub-title-mini {
@@ -1430,6 +1463,7 @@ background: url('../img/rogo_1.svg');
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
     padding-left: 0px;
+    width:auto;
   }
 
   .mobile-list-image {

@@ -7,7 +7,7 @@ const contents = {
       title_en: "Open website",
       date: "2025.12.25",
       category: "news,website",
-      place: "tokyo,aaploit",
+      place: "",
       media: [
         "workimg/hyperlog/hyperlog2.jpg",
         "workimg/hyperlog/hyperlog1.jpg",
@@ -32,7 +32,7 @@ text_credit: ``,
   }
 },{
       id: "psemac2025",
-      title: `【不採用】令和7年度国内クリエイター発表支援プログラム`,
+      title: `【不採択】令和7年度国内クリエイター発表支援プログラム`,
       title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
       date: "2025.5.29",
       category: "competition",
@@ -137,7 +137,7 @@ text_credit: `デザイン：新`,
 },
 {
       id: "psemac2024",
-      title: "【不採用】令和6年度国内クリエイター発表支援プログラム",
+      title: "【不採択】令和6年度国内クリエイター発表支援プログラム",
       title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
       date: "2024.5.30",
       category: "competition",

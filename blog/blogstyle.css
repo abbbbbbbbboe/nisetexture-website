@@ -4,12 +4,27 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 2px;
+
+.scroll-container::-webkit-scrollbar {
+  width: 1px;
+ 
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--background-border-color);
+.scroll-container:hover::-webkit-scrollbar {
+  width: 1px;
+
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: transparent;
+  min-height: 40px;
+
+}
+
+.scroll-container:hover::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  min-height: 40px;
+
 }
 
 ::-webkit-scrollbar-track {
@@ -35,6 +50,7 @@ body {
  
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 button,
@@ -199,13 +215,13 @@ header {
   height: 40px;
   display: flex;
   gap: 30px;
-  margin-left: 39px;
+  margin-left: 40px;
 }
 
 .main-menu {
   display: flex;
   gap: 30px;
-  width: 260px;
+  width: fit-content;
 }
 
 .topbtn {
@@ -354,7 +370,7 @@ main {
   justify-content: flex-start;
   /* ←上寄せ */
   position: relative;
-  border-right: 1px solid var(--background-border-color);
+  border-right:var(--area-border);
 }
 
 .list-container {
@@ -365,10 +381,11 @@ main {
   font-size: 1em;
   cursor: pointer;
   line-height: 40px;
-  padding-left: 40px;
-  padding-right: 10px;
+  padding-left: 35px;
+  /* padding-right: 10px; */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
+  width: fit-content;
 }
 
 .list-item {
@@ -606,7 +623,7 @@ img.preview {
 }
 
 .text-area {
-  border-right: 1px solid var(--background-border-color);
+   border-right:var(--area-border);
 }
 
 .text-area p {
@@ -774,7 +791,12 @@ transform: scale(1, 1) !important;
   .button-group {
     width: 97%;
 
+    
   }
+
+  .ebb {
+  width: 25%;
+}
 }
 
 @media screen and (max-width: 1500px) {

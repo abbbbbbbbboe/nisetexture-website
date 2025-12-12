@@ -94,6 +94,13 @@ function generateArchiveSortButtons() {
 
   container.innerHTML = '';
 
+  // --- sortボタン生成の「前」に画像を追加 ---
+const imgBefore = document.createElement("img");
+imgBefore.src = "img/parentheses.svg"; // ←画像パス
+imgBefore.alt = "parentheses";
+imgBefore.className = "archive-parentheses-left"; // 任意
+container.appendChild(imgBefore);
+
   // --- カテゴリ集計 ---
   const categoryCount = {};
   contents.archive.forEach(item => {
@@ -123,6 +130,13 @@ resetBtn.textContent = "all";
 resetBtn.className = "archive-filter-reset";
 container.appendChild(resetBtn);
 
+
+  // ④ 後に画像を追加
+  const imgAfter = document.createElement("img");
+  imgAfter.src = "img/parentheses.svg";
+  imgAfter.alt = "parentheses";
+  imgAfter.className = "archive-parentheses-right";
+  container.appendChild(imgAfter);
 
  // ✅ カテゴリボタンだけを取得
 archiveSortButtons = Array.from(
@@ -446,7 +460,7 @@ function generateArchiveList() {
 
     // まず基本情報を入れる
     div.innerHTML = `
-      <div class="list-title">+&ensp;${randomLetterSpacing(item.title)}&ensp;+</div>
+      <div class="list-title">+&ensp;${randomLetterSpacing(item.title,2,2.5)}&ensp;+</div>
       <div class="list-meta">
         <span class="list-date">(${item.date || ''})</span>
         <br>
@@ -537,9 +551,9 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
     listContainer.appendChild(spacer);
   });
   
-const listContainerSpacer = document.createElement("div");
-    listContainerSpacer.className = "list-container-spacer";
-    listContainer.appendChild(listContainerSpacer);
+// const listContainerSpacer = document.createElement("div");
+//     listContainerSpacer.className = "list-container-spacer";
+//     listContainer.appendChild(listContainerSpacer);
   
 
   // フィルタ適用
@@ -547,6 +561,18 @@ const listContainerSpacer = document.createElement("div");
 
   // 再度 hover イベントをバインド
   attachArchiveHoverEvents();
+
+  // === activeを画面内にスクロール ===
+setTimeout(() => {
+  const activeItem = listContainer.querySelector('.list-item.active');
+  if (activeItem) {
+    activeItem.scrollIntoView({
+      block: 'start',
+      behavior: 'instant' // "smooth" でもOK
+    });
+  }
+}, 0);
+
 
 }
 
@@ -627,8 +653,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // ★★ リロード時に padding を反映 ★★
   if (category === 'archive') {
-    imageContainer.style.paddingLeft = "80px";
-    imageContainer.style.paddingRight = "80px";
+    imageContainer.style.paddingLeft = "40px";
+    imageContainer.style.paddingRight = "40px";
      // ★★ archive ページなら最初に右側と左側の中身を空にする ★★
     if (imageContainer) imageContainer.innerHTML = '';
     if (textsContainer) textsContainer.innerHTML = '';

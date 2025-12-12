@@ -5,8 +5,8 @@
     --skip-target-color: #65696e;
     --area-title-color: #828287;
     --background-border-color: #86868a;
-     --vertical-border:#272b2d00;
-     --scrollbar:#272b2d;
+     --vertical-border:#454c50;
+     --scrollbar:#232325;
     --btn-color: #b6b6b9;
     --menu-color: #b8b8b8;
     --caption-color: #b4b4b4;
@@ -28,6 +28,8 @@
 
     --border: 1px solid var(--background-border-color);
     --border-light: 1px solid #adadad;
+
+    --area-border:0px solid var(--vertical-border);
 
 }
 

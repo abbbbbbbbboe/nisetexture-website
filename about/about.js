@@ -836,7 +836,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText);
+    button.innerHTML = randomLetterSpacing(originalText, 2, 3);
   });
 }
 // ==========================
@@ -855,7 +855,7 @@ function applyRandomSpacingToAreaTitles() {
 function applyRandomSpacingToListArea() {
   document.querySelectorAll('.list-area button,.list-area p').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText,1, 1.5);
+    title.innerHTML = randomLetterSpacing(originalText,2, 2.5);
   });
 }
 

@@ -256,7 +256,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
              clockCss = `
         
         top:60%;
-    margin:0px auto auto auto;
+    margin:80px 12% auto auto;
     line-height:40px;
         font-size: 1em;
         font-family: monospace;

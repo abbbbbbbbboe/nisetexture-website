@@ -122,7 +122,7 @@ function buildList(posts) {
     div.dataset.postId = post.id;
     div.innerHTML = `
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
-      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title)}&ensp;+</span></div>
+      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title,2,2.5)}&ensp;+</span></div>
       <div class="list-meta">
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
@@ -880,7 +880,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText);
+    button.innerHTML = randomLetterSpacing(originalText, 2, 3);
   });
 }
 // ==========================
@@ -897,14 +897,14 @@ function applyRandomSpacingToAreaTitles() {
 // listタイトルに適用
 // ==========================
 function applyRandomSpacingToListArea() {
-  const skipBtn = listArea.querySelector('.skip-btn');
+  const skipBtn = listArea.querySelector('.skip-btn', 2, 2.5);
   if (skipBtn) return;
 
   // if (!imageContainer) return;
 
   document.querySelectorAll('.list-area span,.list-area p').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText, 2, 3);
+    list.innerHTML = randomLetterSpacing(originalText, 2, 2.5);
   });
 }
 
@@ -950,53 +950,59 @@ window.addEventListener("resize", updateTextAreaTitle);
 function createScrollTopButton(container, area) {
   if (area.querySelector('.scroll-top-btn')) return;
 
-
   const btn = document.createElement('button');
   btn.textContent = '↑';
   btn.className = 'scroll-top-btn';
   area.appendChild(btn); // container 内に追加
-  // 初期非表示
+
   btn.style.display = 'none';
-
   btn.style.border = '1px solid #b4b4b4';
-
   btn.style.color = '#e1e1e1';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
+  btn.style.position = 'fixed';
 
-  // スクロール監視
-  container.addEventListener('scroll', () => {
-    // 一定量スクロールしたら表示
-    if (container.scrollTop > 120) {
-      btn.style.display = 'block';
-    } else {
-      btn.style.display = 'none';
-    }
-
-    // エリア右下にボタンを配置（fixedで追従）
+  // --- 位置更新の関数にまとめる ---
+  function updateButtonPosition() {
     const rect = container.getBoundingClientRect();
-    btn.style.position = 'fixed';
-
 
     if (!isMobile()) {
       btn.style.left = '';
-      btn.style.right = (window.innerWidth - rect.right + 30) + 'px'; // 右端からの余白
+      btn.style.right = (window.innerWidth - rect.right + 30) + 'px';
     } else {
-      // モバイル
       if (activeSection === 'list') {
         btn.style.left = '';
-        btn.style.right = (window.innerWidth - rect.right + 8) + 'px'; // 右端からの余白
+        btn.style.right = (window.innerWidth - rect.right + 8) + 'px';
       } else {
-        btn.style.left = (rect.left + 8) + 'px'; // 16pxは画面端からの余白
-        btn.style.right = ''; // 念のため右は空に
+        btn.style.left = (rect.left + 8) + 'px';
+        btn.style.right = '';
       }
+    }
+  }
+
+  // --- スクロール監視 ---
+  container.addEventListener('scroll', () => {
+    if (container.scrollTop > 120) {
+      btn.style.display = 'block';
+      updateButtonPosition();
+    } else {
+      btn.style.display = 'none';
     }
   });
 
+  // --- リサイズ時にも位置更新 ---
+  window.addEventListener('resize', () => {
+    if (btn.style.display === 'block') {
+      updateButtonPosition();
+    }
+  });
+
+  // --- ボタンクリックでトップへ ---
   btn.addEventListener('click', () => {
     container.scrollTo({ top: 0 });
   });
 }
+
 
 
 
