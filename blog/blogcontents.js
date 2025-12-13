@@ -58,7 +58,8 @@ export const blogContents = {
       tag: ["about", "news"],
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
-        { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
+        { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 },
+        { src: "https://youtu.be/ZJcfGl9oPQs", caption: "説明音声", id: 3 }
       ],
       textBlocks: [
         { type: "skipbutton", id: "skip1", label: "読み上げ音声", mobile_label: "読" },

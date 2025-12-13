@@ -227,26 +227,26 @@ window.addEventListener('resize', adjustMediaSizes);
 function convertToYouTubeEmbed(url) {
   let videoId = "";
 
-  // ① 通常動画の形式 ...watch?v=XXXX
   if (url.includes("watch?v=")) {
     videoId = url.split("v=")[1].split("&")[0];
-  
-  // ② ライブ配信の形式 .../live/XXXX
   } else if (url.includes("/live/")) {
     videoId = url.split("/live/")[1].split("?")[0];
-  
-  // ③ 短縮URL形式 youtu.be/XXXX
   } else if (url.includes("youtu.be/")) {
     videoId = url.split("youtu.be/")[1].split("?")[0];
   }
 
+  // enablejsapi=1 が超重要
   return `https://www.youtube.com/embed/${videoId}`;
 }
 
-// VimeoのURLをembed形式に変換
+
 function convertToVimeoEmbed(url) {
   const videoId = url.split("/").pop();
   return `https://player.vimeo.com/video/${videoId}`;
+}
+
+function convertToSoundCloudEmbed(url) {
+  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=false&hide_related=true&visual=true&color=454c50`;
 }
 
 

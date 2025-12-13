@@ -1,5 +1,6 @@
 
 
+
 // =====================================================
 // ✅ カテゴリー表示関数（修正版）
 // =====================================================
@@ -209,10 +210,31 @@ if (isMobile) {
   data.media.forEach((file, i) => {
     let elementHTML = '';
     if (file.includes("youtube.com") || file.includes("youtu.be")) {
-      const embedUrl = file.includes("embed") ? file : convertToYouTubeEmbed(file);
-      elementHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
-    } else if (file.includes("vimeo.com")) {
+  const embedUrl = file.includes("embed")
+    ? file
+    : convertToYouTubeEmbed(file);
+
+const origin = location.origin;
+
+const src = embedUrl.includes("?")
+  ? `${embedUrl}&enablejsapi=1`
+  : `${embedUrl}?enablejsapi=1`;
+
+    
+
+  elementHTML = `
+    <iframe
+    id="yt-${i}-${Date.now()}"
+      src="${src}"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>`;
+} else if (file.includes("vimeo.com")) {
       const embedUrl = convertToVimeoEmbed(file);
+      elementHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+    } else if (file.includes("soundcloud.com")) {
+      const embedUrl = convertToSoundCloudEmbed(file);
       elementHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
     } else if (file.endsWith('.mp4')) {
       elementHTML = `<video src="${file}" controls playsinline></video>`;
@@ -221,6 +243,30 @@ if (isMobile) {
     }
 
     imageContainer.insertAdjacentHTML('beforeend', elementHTML);
+
+
+    // 直前に追加した要素を取得
+const el = imageContainer.lastElementChild;
+
+   console.log("iframe added", el, el.src);
+   
+
+// mediaType を判定
+const isMediaElement =
+  el.tagName === "IFRAME" ||
+  el.tagName === "VIDEO";
+
+// iframe / video のみ初期化
+// iframe / video のみ初期化
+if (el.tagName === "IFRAME" || el.tagName === "VIDEO") {
+  console.log("setup media:", el);
+
+  requestAnimationFrame(() => {
+    setupMediaIframe(el);
+  });
+}
+
+
 
     // キャプション
     if (data.captions && data.captions[i]) {

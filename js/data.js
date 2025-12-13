@@ -39,7 +39,9 @@ text_credit: ``,
       place: "",
       media: [
         "workimg/competition/competition_samune-no_a.png",
-        "https://youtu.be/ZJcfGl9oPQs"
+        "https://youtu.be/ZJcfGl9oPQs",
+        
+        
       ],
       captions: [
     "　",

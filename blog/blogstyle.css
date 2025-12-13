@@ -1078,7 +1078,7 @@ font-weight: var(--fontw2);
 
   body {
     font-size: 15px;
-   
+   overflow: auto;
 
   }
 

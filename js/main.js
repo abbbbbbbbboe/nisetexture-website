@@ -101,19 +101,47 @@ imgBefore.alt = "parentheses";
 imgBefore.className = "archive-parentheses-left"; // 任意
 container.appendChild(imgBefore);
 
-  // --- カテゴリ集計 ---
-  const categoryCount = {};
-  contents.archive.forEach(item => {
-    const cats = item.category.split(',').map(c => c.trim());
-    cats.forEach(cat => {
-      categoryCount[cat] = (categoryCount[cat] || 0) + 1;//使用回数カウント
-    });
+// --- カテゴリ集計 ---
+const categoryCount = {};
+contents.archive.forEach(item => {
+  const cats = item.category.split(',').map(c => c.trim());
+  cats.forEach(cat => {
+    categoryCount[cat] = (categoryCount[cat] || 0) + 1;
   });
+});
 
-  const sortedCats = Object.entries(categoryCount)
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([cate]) => cate);
-    //メソッドチェーン
+// 優先カテゴリ順
+const priorityOrder = ['work', 'exhibition', 'news'];
+
+const sortedCats = Object.entries(categoryCount)
+  .sort((a, b) => {
+    const [catA, countA] = a;
+    const [catB, countB] = b;
+
+    const idxA = priorityOrder.indexOf(catA);
+    const idxB = priorityOrder.indexOf(catB);
+
+    const isPriorityA = idxA !== -1;
+    const isPriorityB = idxB !== -1;
+
+    // ① 優先カテゴリ同士 → priorityOrder の順
+    if (isPriorityA && isPriorityB) {
+      return idxA - idxB;
+    }
+
+    // ② 優先カテゴリ vs 通常カテゴリ → 優先を先に
+    if (isPriorityA) return -1;
+    if (isPriorityB) return 1;
+
+    // ③ 通常カテゴリ同士 → 数が多い順
+    if (countA !== countB) {
+      return countB - countA;
+    }
+
+    // ④ 同数ならアルファベット順
+    return catA.localeCompare(catB);
+  })
+  .map(([cate]) => cate);
 
   // --- sortボタン生成 ---
 sortedCats.forEach(categ => {

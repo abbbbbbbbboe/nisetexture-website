@@ -485,6 +485,17 @@ if (block.type === "p") {
           const mediaEl = createMediaElement(matchedMedia);
           wrapper.appendChild(mediaEl);
 
+          // ★★★★★ ここを追加 ★★★★★
+    const target = mediaEl.querySelector("iframe, video");
+ if (mediaEl) {
+  console.log("setup media:", mediaEl);
+
+  requestAnimationFrame(() => {
+    setupMediaIframe(target);
+  });
+}
+    // ★★★★★ ここまで ★★★★★
+
           // キャプション
           if (matchedMedia.caption) {
             const cap = document.createElement("div");
@@ -740,6 +751,20 @@ function displayImages(images) {
     // ⭐ wrapper の中にメディア本体を入れる
     wrapper.insertAdjacentHTML("beforeend", innerHTML);
 
+        // 直前に追加した要素を取得
+// ★ 直後に中の media 要素を取得
+// ★ 直後に中の media 要素を取得
+const mediaEl = wrapper.querySelector("iframe, video");
+
+if (mediaEl) {
+  console.log("setup media:", mediaEl);
+
+  requestAnimationFrame(() => {
+    setupMediaIframe(mediaEl);
+  });
+}
+
+
     // コンテナに wrapper を追加
     imageContainer.appendChild(wrapper);
     adjustMediaSizes();
@@ -818,8 +843,7 @@ function attachJumpHandlers() {
 // ==========================
 // 映像のリンクを埋め込み方式に変換
 // ==========================
-
-// YouTubeのURLをembed形式に変換
+// YouTubeのURLをembed形式に変換（enablejsapi=1 付き）
 function convertToYouTubeEmbed(url) {
   let videoId = "";
 
@@ -827,17 +851,20 @@ function convertToYouTubeEmbed(url) {
   if (url.includes("watch?v=")) {
     videoId = url.split("v=")[1].split("&")[0];
 
-    // ② ライブ配信の形式 .../live/XXXX
+  // ② ライブ配信の形式 .../live/XXXX
   } else if (url.includes("/live/")) {
     videoId = url.split("/live/")[1].split("?")[0];
 
-    // ③ 短縮URL形式 youtu.be/XXXX
+  // ③ 短縮URL形式 youtu.be/XXXX
   } else if (url.includes("youtu.be/")) {
     videoId = url.split("youtu.be/")[1].split("?")[0];
   }
 
-  return `https://www.youtube.com/embed/${videoId}`;
+  if (!videoId) return "";
+
+  return `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
 }
+
 
 // VimeoのURLをembed形式に変換
 function convertToVimeoEmbed(url) {

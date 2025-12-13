@@ -1,4 +1,156 @@
 
+
+let isMediaPlaying = false;
+
+let ytReady = false;
+const pendingYouTubeIframes = [];
+window.onYouTubeIframeAPIReady = () => {
+  ytReady = true;
+  pendingYouTubeIframes.forEach(iframe => {
+    setupYouTubePlayer(iframe);
+  });
+  pendingYouTubeIframes.length = 0;
+};
+
+
+
+function setupYouTubePlayer(iframe) {
+      console.log("setupYouTubePlayer called", iframe, iframe.id);
+  console.log("YouTube Player init:", iframe.id);
+
+  new YT.Player(iframe.id, {
+    events: {
+      onStateChange: e => {
+        console.log("YT state:", e.data);
+
+        if (e.data === YT.PlayerState.PLAYING) {
+          console.log("media play");
+          isMediaPlaying = true;
+        } else if (
+          e.data === YT.PlayerState.PAUSED ||
+          e.data === YT.PlayerState.ENDED
+        ) {
+          console.log("media stop");
+          isMediaPlaying = false;
+          resetIdleState();
+        }
+      }
+    }
+  });
+}
+
+
+
+
+function setupVimeoPlayer(iframe) {
+  const player = new Vimeo.Player(iframe);
+
+  player.on("play", () => {
+    console.log("media play");
+    isMediaPlaying = true;
+  });
+
+  player.on("pause", () => {
+    console.log("media stop");
+    isMediaPlaying = false;
+    resetIdleState();
+  });
+
+  player.on("ended", () => {
+    console.log("media stop");
+    isMediaPlaying = false;
+    resetIdleState();
+  });
+}
+
+function setupSoundCloudPlayer(iframe) {
+  if (!window.SC || !SC.Widget) {
+    console.warn("SoundCloud API not ready");
+    return;
+  }
+
+  const widget = SC.Widget(iframe);
+
+  widget.bind(SC.Widget.Events.PLAY, () => {
+    console.log("media play");
+    isMediaPlaying = true;
+  });
+
+  widget.bind(SC.Widget.Events.PAUSE, () => {
+    console.log("media stop");
+    isMediaPlaying = false;
+    resetIdleState();
+  });
+
+  widget.bind(SC.Widget.Events.FINISH, () => {
+    console.log("media stop");
+    isMediaPlaying = false;
+    resetIdleState();
+  });
+}
+
+
+function setupMediaIframe(el) {
+    if (!el || el.__mediaInitialized) return;
+  el.__mediaInitialized = true;
+
+  if (el.tagName === "IFRAME") {
+    const src = el.src || "";
+
+    // ✅ YouTube
+    if (src.includes("youtube.com") || src.includes("youtu.be")) {
+      console.log("setupMediaIframe → youtube", src);
+
+      // id が必須
+      if (!el.id) {
+        el.id = "yt-" + Math.random().toString(36).slice(2);
+      }
+
+      if (window.YT && YT.Player) {
+        setupYouTubePlayer(el);
+      } else {
+        pendingYouTubeIframes.push(el);
+      }
+      return;
+    }
+
+    // ✅ Vimeo
+    if (src.includes("vimeo.com")) {
+      console.log("setupMediaIframe → vimeo", src);
+      setupVimeoPlayer(el);
+      return;
+    }
+
+    // ✅ SoundCloud
+    if (src.includes("soundcloud.com") || src.includes("w.soundcloud.com")) {
+      console.log("setupMediaIframe → soundcloud", src);
+      setupSoundCloudPlayer(el);
+      return;
+    }
+  }
+
+  // ✅ HTML5 video
+  if (el.tagName === "VIDEO") {
+    console.log("setupMediaIframe → video", el.src);
+
+    el.addEventListener("play", () => {
+      console.log("media play");
+      isMediaPlaying = true;
+    });
+
+    const stop = () => {
+      console.log("media stop");
+      isMediaPlaying = false;
+      resetIdleState();
+    };
+
+    el.addEventListener("pause", stop);
+    el.addEventListener("ended", stop);
+  }
+}
+
+
+
  // ===========================================
     // ④ 実行（読み込む画像だけ指定する）
     // ===========================================
@@ -86,7 +238,7 @@ const idleImages = isMobile() ? mobileImages : pcImages;
 
 // 先にプリロード
 preloadImages(idleImages).then(() => {
-    enableIdleOverlay(idleImages, topImage, 15000);
+    enableIdleOverlay(idleImages, topImage,15000);
 });
 
 //  clockElement.textContent = `〔${h}:${m}:${s}〕`;
@@ -336,22 +488,35 @@ function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
     // ==============================
     // overlay を完全削除 + 復活予約
     // ==============================
-    function resetIdleState() {
-        // ① ゼロに戻す（remove）
-        if (overlay && document.body.contains(overlay)) {
-            overlay.remove();
-        }
+function resetIdleState() {
 
-        // ② タイマー停止
-        if (loopTimer) clearInterval(loopTimer);
-        if (clockTimer) clearInterval(clockTimer);
-        if (idleTimer) clearTimeout(idleTimer);
 
-        // ③ idleTime 後に overlay を再生成
-        idleTimer = setTimeout(() => {
-            showOverlay();
-        }, idleTime);
+  // 再生中なら idle カウント自体を止める
+  if (isMediaPlaying) {
+    console.log("media playing → idle paused");
+    return;
+  }
+
+  // overlay 削除
+  if (overlay && document.body.contains(overlay)) {
+    overlay.remove();
+  }
+
+  // タイマー停止
+  if (loopTimer) clearInterval(loopTimer);
+  if (clockTimer) clearInterval(clockTimer);
+  if (idleTimer) clearTimeout(idleTimer);
+
+  // 再セット
+  idleTimer = setTimeout(() => {
+    if (!isMediaPlaying) {
+      showOverlay();
     }
+  }, idleTime);
+
+  
+}
+
 
     // ==============================
     // ④ ユーザー操作を検知したら resetIdleState()
@@ -365,9 +530,12 @@ function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
 }
 
 
-
-   
-
+// window.addEventListener("load", () => {
+//   document.querySelectorAll("iframe").forEach(iframe => {
+//     console.log("FOUND iframe (global)", iframe.src);
+//     setupMediaIframe(iframe, "youtube");
+//   });
+// });
 
 //    "img/window/mobile/1.png",
 //         "img/window/mobile/2.png",
