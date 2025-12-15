@@ -211,3 +211,157 @@ function stopInertiaAndRound(container) {
   const rounded = Math.round(current / step) * step;
   container.scrollTop = rounded; // 位置を丸める
 }
+
+
+
+
+function clickMediaIframe(el) {
+  const wrapper = el.closest('.media-iframe-wrapper');
+  if (!wrapper) return;
+
+  const cover = wrapper.querySelector('.media-iframe-cover');
+  if (!cover) return;
+
+  // 初期状態
+  el.style.pointerEvents = 'none';
+  cover.style.pointerEvents = 'auto';
+
+  let isActive = false;
+
+  // ▶ cover クリックで有効化 + 再生
+  cover.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    isActive = true;
+
+    // cover 非表示
+    cover.style.opacity = '0';
+    cover.style.pointerEvents = 'none';
+
+    // iframe 有効化
+    el.style.pointerEvents = 'auto';
+    wrapper.classList.add('iframe-active');
+
+    // ▶ 再生指示を送る
+    playIframe(el);
+  });
+
+  // ▶ 外クリックで無効化
+  const deactivate = (e) => {
+    if (!isActive) return;
+    if (wrapper.contains(e.target)) return;
+
+    isActive = false;
+
+    el.style.pointerEvents = 'none';
+    cover.style.pointerEvents = 'auto';
+    cover.style.opacity = '1';
+
+    wrapper.classList.remove('iframe-active');
+  };
+
+    // ▶ 再生終了・停止時に cover 復活
+  setupIframeStateListener(el, () => {
+    isActive = false;
+
+    el.style.pointerEvents = 'none';
+    cover.style.pointerEvents = 'auto';
+    cover.style.opacity = '1';
+
+    wrapper.classList.remove('iframe-active');
+  });
+
+  document.addEventListener('click', deactivate);
+  document.addEventListener('touchstart', deactivate);
+}
+
+function playIframe(el) {
+  const src = el.src || '';
+
+  // YouTube
+  if (src.includes('youtube.com') || src.includes('youtu.be')) {
+    el.contentWindow?.postMessage(
+      JSON.stringify({
+        event: 'command',
+        func: 'playVideo',
+        args: []
+      }),
+      '*'
+    );
+  }
+
+  // Vimeo
+  if (src.includes('vimeo.com')) {
+    el.contentWindow?.postMessage(
+      { method: 'play' },
+      '*'
+    );
+  }
+  else if (src.includes('soundcloud.com')) {
+    el.contentWindow?.postMessage(
+      JSON.stringify({
+        method: 'play'
+      }),
+      '*'
+    );
+  }
+}
+
+function setupIframeStateListener(el, onDeactivate) {
+  const src = el.src || '';
+
+  // YouTube
+  if (src.includes('youtube.com') || src.includes('youtu.be')) {
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+
+      let data;
+      try {
+        data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      } catch {
+        return;
+      }
+
+      if (data.event === 'onStateChange') {
+        // 0: 終了, 2: 一時停止
+        if (data.info === 0 || data.info === 2) {
+          onDeactivate();
+        }
+      }
+    });
+  }
+
+  // Vimeo
+  if (src.includes('vimeo.com')) {
+    window.addEventListener('message', (e) => {
+      if (!e.data || !e.data.event) return;
+
+      if (e.data.event === 'pause' || e.data.event === 'ended') {
+        onDeactivate();
+      }
+    });
+  }
+
+   // 🔊 SoundCloud
+  else if (src.includes('soundcloud.com')) {
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+
+      let data;
+      try {
+        data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      } catch {
+        return;
+      }
+
+      // pause / finish
+      if (
+        data.event === 'pause' ||
+        data.event === 'finish'
+      ) {
+        onDeactivate();
+      }
+    });
+  }
+}

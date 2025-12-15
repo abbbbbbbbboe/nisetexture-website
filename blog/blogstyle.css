@@ -375,6 +375,7 @@ main {
 
 .list-container {
   width: 100%;
+   padding-bottom: 680px;
 }
 
 .list-item {
@@ -539,6 +540,25 @@ main {
   margin: 0 auto 0px auto;
   box-sizing: content-box;
 }
+
+.media-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.media-iframe-wrapper iframe,
+.media-iframe-wrapper video {
+  display: block;
+}
+
+.media-iframe-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
 
 
 

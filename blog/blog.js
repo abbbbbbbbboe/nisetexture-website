@@ -99,7 +99,7 @@ window.addEventListener("hashchange", () => {
   // updateTextAreaTitle();
   // applyRandomSpacingToAreaTitles();
   // 左のリストの active 切り替え
-  // activateListItem(hash);
+  activateListItem(hash);
 });
 
 // ================================
@@ -122,7 +122,7 @@ function buildList(posts) {
     div.dataset.postId = post.id;
     div.innerHTML = `
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
-      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title,2,2.5)}&ensp;+</span></div>
+      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title,1,2.5)}&ensp;+</span></div>
       <div class="list-meta">
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
@@ -153,6 +153,17 @@ function buildList(posts) {
     listContainer.appendChild(spacer);
   });
 
+
+    // === activeを画面内にスクロール ===
+setTimeout(() => {
+  const activeItem = listContainer.querySelector('.list-item.active');
+  if (activeItem) {
+    activeItem.scrollIntoView({
+      block: 'start',
+      behavior: 'instant' // "smooth" でもOK
+    });
+  }
+}, 0);
 }
 
 
@@ -191,6 +202,7 @@ function setupClickHandler() {
     // applyRandomSpacingToAreaTitles();
     // applyRandomSpacingToMobileAreaTitles();
     // ハッシュ更新は最後（または少し遅らせる）
+    console.log(postId);
     setTimeout(() => { location.hash = postId; }, 0);
     adjustMediaSizes();
     
@@ -474,25 +486,55 @@ if (block.type === "p") {
       const targetId = block.targetId;
       const matchedMedia = images.find(img => img.id == targetId);
 
+          // ★★★★★ ここを追加 ★★★★★
+//     const target = mediaEl.querySelector("iframe, video");
+//  if (mediaEl) {
+//   console.log("setup media:", mediaEl);
+
+//   requestAnimationFrame(() => {
+//     setupMediaIframe(target);
+//   });
+// }
+    // ★★★★★ ここまで ★★★★★
+
       // =========================================================
       // ★ モバイル版 → ボタンの代わりに画像/動画を直接挿入
       // =========================================================
       if (isMobile()) {
         if (matchedMedia) {
-          const wrapper = document.createElement("div");
-          wrapper.className = "inline-media-wrapper";
+  const wrapper = document.createElement("div");
+  wrapper.className = "inline-media-wrapper";
 
-          const mediaEl = createMediaElement(matchedMedia);
-          wrapper.appendChild(mediaEl);
+  const mediaEl = createMediaElement(matchedMedia);
 
-          // ★★★★★ ここを追加 ★★★★★
-    const target = mediaEl.querySelector("iframe, video");
- if (mediaEl) {
-  console.log("setup media:", mediaEl);
+  // ============================
+  // iframe / video 用ラッパー
+  // ============================
+  const iframeWrapper = document.createElement("div");
+  iframeWrapper.className = "media-iframe-wrapper";
 
-  requestAnimationFrame(() => {
-    setupMediaIframe(target);
-  });
+  const cover = document.createElement("div");
+  cover.className = "media-iframe-cover";
+
+  iframeWrapper.appendChild(mediaEl);
+  iframeWrapper.appendChild(cover);
+
+  wrapper.appendChild(iframeWrapper);
+  textsContainer.appendChild(wrapper);
+
+  // 🔑 実体を必ず取得
+  const target = iframeWrapper.querySelector("iframe, video");
+
+  if (target) {
+    console.log("setup media:", target);
+
+    requestAnimationFrame(() => {
+      // 再生状態監視（必須）
+      setupMediaIframe(target);
+
+      // UI制御（クリックで有効化）
+      clickMediaIframe(target);
+    });
 }
     // ★★★★★ ここまで ★★★★★
 
@@ -595,11 +637,6 @@ if (block.type === "p") {
   attachJumpHandlers();
   });
 
-
-
-
-
-
 }
 
 
@@ -676,91 +713,110 @@ function displayImages(images) {
 
   imageContainer.innerHTML = "";
 
+    // ⭐ images が無い or 配列じゃない場合は安全に抜ける
+  if (!Array.isArray(images) || images.length === 0) {
+    createScrollTopButton(imageContainer, imageArea);
+    return;
+  }
+
   images.forEach((item, idx) => {
     const file = item.src;
+
+    // ⭐ src が無い場合はスキップ
+if (typeof file !== "string" || file === "") {
+  console.warn("media src missing:", item);
+  return;
+}
+
+
+
     const mediaId = item.id ?? idx;
 
 
     // ⭐ wrapper を作成（フラッシュはこれにつける）
-    const wrapper = document.createElement("div");
-    wrapper.className = "media-wrapper";
+   // ⭐ wrapper を作成（既存用途）
+const wrapper = document.createElement("div");
+wrapper.className = "media-wrapper";
+wrapper.dataset.id = mediaId;
+wrapper.style.position = "relative";
+wrapper.style.overflow = "hidden";
 
-    wrapper.dataset.id = mediaId; // これで wrapper も検索可能に
-    wrapper.style.position = "relative";
-    wrapper.style.overflow = "hidden"; // ← フラッシュをきれいに見せるため必須
-    // wrapper.style.width = "fit-content";
+let innerHTML = "";
 
-    let innerHTML = "";
+// ===============================
+// iframe / video 系
+// ===============================
+if (
+  file.includes("youtube.com") ||
+  file.includes("youtu.be") ||
+  file.includes("vimeo.com") ||
+  file.includes("soundcloud.com") ||
+  file.endsWith(".mp4")
+) {
 
-    // --- YouTube ---
-    if (file.includes("youtube.com") || file.includes("youtu.be")) {
-      const embedUrl = file.includes("embed") ? file : convertToYouTubeEmbed(file);
-      innerHTML = `
-        <iframe src="${embedUrl}" 
-                frameborder="0" 
-                allowfullscreen
-                data-id="${mediaId}">
-        </iframe>`;
-    }
+  let mediaHTML = "";
 
-    // --- Vimeo ---
-    else if (file.includes("vimeo.com")) {
-      const embedUrl = convertToVimeoEmbed(file);
-      innerHTML = `
-        <iframe src="${embedUrl}"
-                frameborder="0"
-                allowfullscreen
-                data-id="${mediaId}">
-        </iframe>`;
-    }
+  // --- YouTube ---
+  if (file.includes("youtube.com") || file.includes("youtu.be")) {
+    const embedUrl = file.includes("embed")
+      ? file
+      : convertToYouTubeEmbed(file);
 
-    // ⭐⭐⭐ --- SoundCloud (追加) --- ⭐⭐⭐
-    else if (file.includes("soundcloud.com")) {
-      const embedUrl = convertToSoundCloudEmbed(file); // 追加
-      innerHTML = `
-        <iframe 
-          width="80%" 
-          height="80px" 
-        
-          src="${embedUrl}"
-          data-id="${mediaId}">
-        </iframe>
-        `;
-    }
+    mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+  }
 
-    // --- MP4 Video ---
-    else if (file.endsWith(".mp4")) {
-      innerHTML = `
-        <video src="${file}" 
-               controls 
-               playsinline
-               data-id="${mediaId}">
-        </video>`;
-    }
+  // --- Vimeo ---
+  else if (file.includes("vimeo.com")) {
+    const embedUrl = convertToVimeoEmbed(file);
+    mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+  }
 
-    // --- Image ---
-    else {
-      innerHTML = `
-        <img src="${file}"
-             alt=""
-             data-id="${mediaId}">
-      `;
-    }
+  // --- SoundCloud ---
+  else if (file.includes("soundcloud.com")) {
+    const embedUrl = convertToSoundCloudEmbed(file);
+    mediaHTML = `<iframe src="${embedUrl}"></iframe>`;
+  }
 
+  // --- MP4 ---
+  else if (file.endsWith(".mp4")) {
+    mediaHTML = `<video src="${file}" controls playsinline></video>`;
+  }
 
-    // ⭐ wrapper の中にメディア本体を入れる
-    wrapper.insertAdjacentHTML("beforeend", innerHTML);
+  innerHTML = `
+    <div class="media-iframe-wrapper">
+      ${mediaHTML}
+      <div class="media-iframe-cover"></div>
+    </div>
+  `;
+}
+
+// ===============================
+// image
+// ===============================
+else {
+  innerHTML = `
+    <img src="${file}" alt="" data-id="${mediaId}">
+  `;
+}
+
+// wrapper に追加
+wrapper.insertAdjacentHTML("beforeend", innerHTML);
+imageContainer.appendChild(wrapper);
+
 
         // 直前に追加した要素を取得
 // ★ 直後に中の media 要素を取得
 // ★ 直後に中の media 要素を取得
 const mediaEl = wrapper.querySelector("iframe, video");
 
+
+
 if (mediaEl) {
   console.log("setup media:", mediaEl);
 
   requestAnimationFrame(() => {
     setupMediaIframe(mediaEl);
+    clickMediaIframe(mediaEl);
   });
 }
 
@@ -907,7 +963,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText, 2, 3);
+    button.innerHTML = randomLetterSpacing(originalText, 2, 4.5);
   });
 }
 // ==========================
@@ -931,7 +987,7 @@ function applyRandomSpacingToListArea() {
 
   document.querySelectorAll('.list-area span,.list-area p').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText, 2, 2.5);
+    list.innerHTML = randomLetterSpacing(originalText, 0.5, 3);
   });
 }
 
@@ -1105,6 +1161,14 @@ function createScrollTopButton(container, area) {
 // 画像エリアのリサイズ（修正版）
 // ================================
 function resizeMediaToFitArea(el, areaWidth) {
+      let targetEl = el;
+  let wrapper = null;
+
+  // iframe / video は wrapper を親に持つ
+  if (el.closest('.media-iframe-wrapper')) {
+    wrapper = el.closest('.media-iframe-wrapper');
+  }
+  
   let naturalWidth, naturalHeight, aspectRatio;
 
   if (el.tagName.toLowerCase() === 'iframe') {

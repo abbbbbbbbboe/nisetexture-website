@@ -129,7 +129,7 @@ text_en: `A group exhibition by nisetexture and <a href="https://kenjimonden.com
           Kenshi Kadota explores symbiotic environments where architecturally constructed objects and moving images intersect and mutually influence each other. By seeking “light-like qualities” in his footage, he investigates methods to generate these environments.<br><br>
 
           As suggested by the title “Towards the Light,” each artist attempts expression through their own approach to “light,” an element of video. Within this, motifs such as tasks performed in daily life and dwellings emerge, refined and transformed through the creative process. The exhibition featured works where video was not merely a recording medium, but where each motif manifested as light.`,
-text_credit: `デザイン：新`,
+text_credit: `デザイン：<a href="https://arata-new.jp">新</a>`,
        links: {
     "Website": "https://towards-the-light.notion.site/",
     "place": "https://www.moto-eigakan.com/",

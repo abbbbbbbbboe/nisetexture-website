@@ -151,6 +151,7 @@ renderFull(currentItem, { skipRestoreScroll: true });
 
 
 
+
 // ================================
 // 本文描画関数（差分更新対応版）
 // ================================
@@ -223,19 +224,25 @@ const src = embedUrl.includes("?")
     
 
   elementHTML = `
+  <div class="media-iframe-wrapper" data-scrolltype="text">
     <iframe
     id="yt-${i}-${Date.now()}"
       src="${src}"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen
-    ></iframe>`;
+      
+    ></iframe>
+    <div class="media-iframe-cover"></div>
+    </div>`;
 } else if (file.includes("vimeo.com")) {
       const embedUrl = convertToVimeoEmbed(file);
-      elementHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+      elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
+    </div>`;
     } else if (file.includes("soundcloud.com")) {
       const embedUrl = convertToSoundCloudEmbed(file);
-      elementHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+      elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
+    </div>`;
     } else if (file.endsWith('.mp4')) {
       elementHTML = `<video src="${file}" controls playsinline></video>`;
     } else {
@@ -246,24 +253,28 @@ const src = embedUrl.includes("?")
 
 
     // 直前に追加した要素を取得
-const el = imageContainer.lastElementChild;
+const last = imageContainer.lastElementChild;
+let el = null;
 
-   console.log("iframe added", el, el.src);
-   
+// --- iframe / video（wrapperあり） ---
+if (last.classList?.contains('media-iframe-wrapper')) {
+  el = last.querySelector('iframe, video');
 
-// mediaType を判定
-const isMediaElement =
-  el.tagName === "IFRAME" ||
-  el.tagName === "VIDEO";
+  if (el) {
+    console.log("media added (wrapped)", el.tagName, el.src || '');
 
-// iframe / video のみ初期化
-// iframe / video のみ初期化
-if (el.tagName === "IFRAME" || el.tagName === "VIDEO") {
-  console.log("setup media:", el);
+    requestAnimationFrame(() => {
+      setupMediaIframe(el);
+      clickMediaIframe(el);
+    });
+  }
 
-  requestAnimationFrame(() => {
-    setupMediaIframe(el);
-  });
+// --- img / video 単体 ---
+} else if (last.tagName === 'IMG') {
+  console.log("media added (img)", last.src || '');
+
+} else if (last.tagName === 'VIDEO') {
+  console.log("media added (video)", last.src || '');
 }
 
 
@@ -409,7 +420,7 @@ function applyLanguage(lang) {
   if (enSection) enSection.style.display = (lang === "en") ? "block" : "none";
 
   // ボタンの表示テキスト
-  langBtn.textContent = (lang === "ja") ? "EN" : "JP";
+  langBtn.textContent = (lang === "ja") ? "english⇄" : "japanese⇄";
 }
 
 

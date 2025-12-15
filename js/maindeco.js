@@ -115,6 +115,13 @@ function toggleArchiveSortButtons(show) {
   // 画像エリアのリサイズ
   // ================================
 function resizeMediaToFitArea(el, areaWidth) {
+    let targetEl = el;
+  let wrapper = null;
+
+  // iframe / video は wrapper を親に持つ
+  if (el.closest('.media-iframe-wrapper')) {
+    wrapper = el.closest('.media-iframe-wrapper');
+  }
   let naturalWidth, naturalHeight, aspectRatio;
 
   if (el.tagName.toLowerCase() === 'iframe') {
@@ -174,6 +181,10 @@ function resizeMediaToFitArea(el, areaWidth) {
   // el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
 
+   // ▶ wrapper にも高さを与える（← 超重要）
+  if (wrapper) {
+    wrapper.style.height = `${newHeight}px`;
+  }
 }
 
 
@@ -279,7 +290,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText, 2, 3);
+    button.innerHTML = randomLetterSpacing(originalText, 2, 4.5);
   });
 }
 // ==========================
@@ -298,7 +309,7 @@ function applyRandomSpacingToAreaTitles() {
 function applyRandomSpacingToListArea() {
   document.querySelectorAll('.list-title ').forEach(list => {
     const originalText = list.textContent;
-    list.innerHTML = randomLetterSpacing(originalText, 2, 2.5);
+    list.innerHTML = randomLetterSpacing(originalText, 0.5, 3);
   });
 }
 

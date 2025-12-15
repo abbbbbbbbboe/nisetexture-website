@@ -488,7 +488,7 @@ function generateArchiveList() {
 
     // まず基本情報を入れる
     div.innerHTML = `
-      <div class="list-title">+&ensp;${randomLetterSpacing(item.title,2,2.5)}&ensp;+</div>
+      <div class="list-title">+&ensp;${randomLetterSpacing(item.title,0.5,3)}&ensp;+</div>
       <div class="list-meta">
         <span class="list-date">(${item.date || ''})</span>
         <br>
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // ← 上のフィルターボタン群を作る
     if (category === 'archive') {
-   
+   if (textsContainer) textsContainer.innerHTML = '';
     generateArchiveList(); 
         // ← 左リスト生成
   }     // ← ☆ 左リストを生成（すべての作品）
@@ -721,6 +721,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 attachScrollStep();
 updateMobileView();
+
+// ===== 初期描画完了後に表示 =====
+if (listContainer) listContainer.style.visibility = 'visible';
+if (imageContainer) imageContainer.style.visibility = 'visible';
+if (textsContainer) textsContainer.style.visibility = 'visible';
 });
 
 
@@ -736,12 +741,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // 日本語表示
       jpText.style.display = "block";
       enText.style.display = "none";
-      toggleBtn.textContent = "EN";
+      toggleBtn.textContent = "english⇄";
     } else {
       // 英語表示
       jpText.style.display = "none";
       enText.style.display = "block";
-      toggleBtn.textContent = "JP";
+      toggleBtn.textContent = "japanese⇄";
     }
   });
 });

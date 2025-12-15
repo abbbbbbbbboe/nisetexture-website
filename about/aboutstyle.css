@@ -574,18 +574,20 @@ button {
 }
 
 .lang-toggle-btn {
-  width: 24px;
-  border: 1px solid var(--btn-color);
+   width: fit-content;
+   padding: 0px 7px;
+  border: 1px dotted var(--btn-color);
   background: none;
   cursor: pointer;
-  line-height: 22px;
-  font-size: 0.9em;
-  font-weight: 300;
+   line-height: 18px;
+border-radius: 9px;
+  font-size: 0.8em;
+  font-weight: var(--fontw3);
   position: absolute;
-  top: 47px;
-  right: 60px;
-  color: var(--backgroundcolor);
-  background-color: var(--btn-color);
+  top: 52px;
+  right: 75px;
+  color: var(--btn-color);
+  background-color: var(--backgroundcolor);
   z-index: 999;
 }
 
@@ -593,6 +595,7 @@ button {
   color: var(--btn-color);
   background-color: var(--backgroundcolor);
   border: 1px solid var(--btn-color);
+  font-weight: var(--fontw3);
 }
 
 .text-area p {
@@ -982,16 +985,15 @@ background: url('../img/rogo_1.svg');
 
   .lang-toggle-btn {
     
-    top: 75px;
+    top: 77px;
     right: 30px;
-    color: var(--backgroundcolor);
-    background-color: var(--btn-color);
+    color: var(--btn-color);
+    
+    
   }
 
   .lang-toggle-btn:hover {
-    color: var(--backgroundcolor);
-    background-color: var(--btn-color);
-    border: 1px solid var(--btn-color);
+   border: 1px dotted var(--btn-color);
 
   }
 

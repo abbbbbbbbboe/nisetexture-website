@@ -74,7 +74,7 @@ export const blogContents = {
 
         { type: "p", text: `酔うとは「血液に溶け込んで脳に運ばれたアルコールによって脳が麻痺する状態」を指し、飲酒をすることで脳の機能が鈍り、陽気になったりします。陽気のまま終わればいいのですが、大抵の場合、クラクラ、キンキン、ゲロゲロが順番に襲って何のために集まったのかも分からなくなって自然と頬に涙も…。`, class: ["large-space-1"] },
 
-        { type: "p", text: `泣くだけでは解決にならないので、何のために集まったか分からなくなった飲み会のために、だらだらとする飲み会は繰り返されます。そんな不毛で必要な我々の活動の骨組みと言っても過言ではない飲み会の精神（スピリット）がいかなるものか泣きながら書き記していこうと思います。`, class: ["large-space-1"] },
+        { type: "p", text: `泣くだけでは解決にならないので、何のために集まったか分からなくなった飲み会のために、だらだらとする飲み会は繰り返されます。そんな不毛で必要な我々の活動の骨組みと言っても過言ではない飲み会の精神（スピリット）がいかなるものか泣きながら書き記していこうと思います。`, class: ["large-space-2"] },
 
 
         { type: "skipbutton", id: "skip3", label: "section 2", mobile_label: "2", text: "section 2" },
@@ -92,12 +92,12 @@ export const blogContents = {
         { type: "p", text: `まさに張子のように空洞化した飲み会は、確かにあの居酒屋のカウンターや半個室で訳の分からない言葉で罵り合ったり、絶品だった料理があった可能性も常に内包したメディアになりうるのです`, class: ["large-space-1"] },
 
         { type: "p", text: `何事も経験に基づいて型を決めると悩むことが減り、手順に沿って淡々と進めれば、求めているものが手に入ることに気がつきます。` },
-        { type: "p", text: `しかしながら、型を事前に決めてしまうことは、その内容を突き詰める時には有効ですが、方法以前の他の可能性を無かったことにすることにもなるのです。`, class: ["large-space-1"] },
+        { type: "p", text: `しかしながら、型を事前に決めてしまうことは、その内容を突き詰める時には有効ですが、方法以前の他の可能性を無かったことにすることにもなるのです。`, class: ["large-space-2"] },
 
 
         { type: "skipbutton", id: "skip4", label: "section 3", mobile_label: "3", text: "section 3" },
 
-        { type: "p", text: `他の可能性を横目に、飲み会を突き詰めたい私たちは、瓶ビールがあれば頼み、人数分のグラスを注文します。すいませ〜ん！注文いいですか？瓶ビールと青菜炒め、チャーハン、チャーシューもお願いします！それとグラスは二つで！えーっとキリンで！お願いしまーす。瓶ビールのラベルを上にして、両手で丁寧に相手のグラスに注ぎます。おしぼりを瓶の下に添えるとなおgoodです.`, class: ["large-space-1"] },
+        { type: "p", text: `他の可能性を横目に、飲み会を突き詰めたい私たちは、瓶ビールがあれば頼み、人数分のグラスを注文します。すいませ〜ん！注文いいですか？瓶ビールと青菜炒め、チャーハン、チャーシューもお願いします！それとグラスは二つで！えーっとキリンで！お願いしまーす。瓶ビールのラベルを上にして、両手で丁寧に相手のグラスに注ぎます。おしぼりを瓶の下に添えるとなおgoodです。`, class: ["large-space-1"] },
 
         { type: "p", text: `注ぐ時や注がれる時って、なんか言葉にもなってないような音が口からこぼれませんか？` },
         { type: "p", text: `まだ、未経験の皆さんは一度実践してみましょう！何事においても実践と思考の循環こそが一番重要なことです。`, class: ["large-space-1"] },
@@ -111,17 +111,17 @@ export const blogContents = {
 
         { type: "p", text: `やがてアルコールは分解され、いつかは集まった人間も散っていきますが、飲み会がただそのものとして存在しているのではなく、日常の一連の流れの中にあり、はたまた、厚生労働省が「節度ある適度な飲酒」を進めるように、肝臓は日頃から大切にしなければいけないようです。`, class: ["large-space-1"] },
 
-        { type: "p", text: `しかしながら、飲み会においてそんなことは二の次で、露悪的な“ノミュニケーション”を行う没入と、翌朝の俯瞰を繰り返すことが大切なのかもしれません。` },
+        { type: "p", text: `しかしながら、飲み会においてそんなことは二の次で、露悪的な“飲みュニケーション”を行う没入と、翌朝の俯瞰を繰り返すことが大切なのかもしれません。` },
         { type: "p", text: `翌朝はあくまでも俯瞰という冷静さを保ち、罵ったことや泣いてしまったことを決して反省しないほうが良いでしょう。飲み会において反省性は集団としての地盤を固めるものではなく、むしろ酩酊した足場を切り崩す可能性を孕みます。`, class: ["large-space-1"] },
 
-        { type: "p", text: `つまり、中身のない混乱した状態をつくることで秩序が反転するのです。`, class: ["large-space-1"] },
+        { type: "p", text: `つまり、中身のない混乱した状態をつくることで秩序が反転するのです。`, class: ["large-space-2"] },
 
 
         { type: "skipbutton", id: "skip5", label: "section 4", mobile_label: "4", text: "section 4" },
 
         { type: "p", text: `ところで、飲み会の終わり頃ってどうしても話し足りなくて、寂しくなったりして、この時間が永遠に続けばいいのになって思ってしまった時は、粘って粘って、始発まで飲んだり歩いたりする訳です。電車が動き出すまで、その街にあるものや人、生き物とかをじろじろみて歩き回ります。秋や春先に朝まで歩く際は、ぜひ上着を忘れずにしてください。`, class: ["large-space-1"] },
 
-        { type: "p", text: `元々空洞のような時間ですから、話し足りなさや寂しさと言った感情はあるようでないもので、朝まで歩いたからといって「朝だな」以上の感動や達成した成果などがあるわけではなく、ただひたすらにだらだらと飲み歩いたに過ぎないのです。そうこれは、結局のところ宴、祭りといった架空の儀式、世迷言（よまいごと）を吐き出すための箱、客観的な事実では無駄な時間でしかないのです`, class: ["large-space-1"] },
+        { type: "p", text: `元々空洞のような時間ですから、話し足りなさや寂しさと言った感情はあるようでないもので、朝まで歩いたからといって「朝だな」以上の感動や達成した成果などがあるわけではなく、ただひたすらにだらだらと飲み歩いたに過ぎないのです。そうこれは、結局のところ宴、祭りといった架空の儀式、世迷言（よまいごと）を吐き出すための箱、客観的な事実では無駄な時間でしかないのです。`, class: ["large-space-1"] },
 
         { type: "p", text: `ここまででニセテクスチャの主な活動について知っていただけたことかと思いますので、お酒タバコは20歳から、適度にお水も飲みながら、読んだみなさまもぜひ飲み会にご参加ください(｀･ω･´)`, class: ["large-space-2"] },
 
@@ -136,16 +136,18 @@ export const blogContents = {
         { type: "p", text: `【link_list】`, class: ["index"] },
         { type: "a", text: `酔うってどういうこと？|酔いの仕組みとアルコール代謝|サッポロホールディングス`, link: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html", class: ["link-list"] },
         { type: "a", text: `アルコール｜厚生労働省`, link: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html", class: ["link-list"] },
-        { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`, link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list", "large-space-2"] },
+        { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`, link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list"] },
+         { type: "a", text: `NAMIKIBASHI 日本の形「宴 」`, link: "https://youtu.be/LxFjc99HWRs?si=_J0dYEe8S0rGO1J9", class: ["link-list", "large-space-2"] },
 
         { type: "skipbutton", id: "skip8", label: "credit", mobile_label: "c" },
         { type: "p", text: `【credit】`, class: ["index"] },
         { type: "p", text: `声：朗読順`, class: ["credit"] },
-        { type: "p", text: `・吉月ひさたか`, class: ["credit"] },
-        { type: "p", text: `・WAKO 西村多和子`, class: ["credit"] },
-        { type: "p", text: `・`, class: ["credit"] },
-        { type: "p", text: `・平岡せいこ`, class: ["credit"] },
-        { type: "p", text: `・難波優太`, class: ["credit", "large-space-2"] },
+        { type: "p", text: `1.吉月ひさたか`, class: ["credit"] },
+        { type: "p", text: `2.WAKO 西村多和子`, class: ["credit"] },
+        { type: "p", text: `3.non-credit`, class: ["credit"] },
+        { type: "p", text: `4.平岡せいこ`, class: ["credit"] },
+        { type: "p", text: `5.難波優太`, class: ["credit", "large-space-1"] },
+         { type: "p", text: `説明音声：オスカル修平`, class: ["credit", "large-space-2"] },
 
       ],
 
@@ -166,7 +168,7 @@ export const blogContents = {
       date: "2025-11-22",
       tag: ["news"],
       images: [
-        { src: "img/5.png", caption: "写真1", id: 1 },
+        {  },
       ],
       textBlocks: [
         { type: "p", text: `ニセテクスチャのwebサイトに掲載する広告を募集します。` },
