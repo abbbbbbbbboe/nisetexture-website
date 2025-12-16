@@ -631,6 +631,7 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
     const textContainer = textArea.querySelector('.text-container');
     if (textContainer) {
       console.log('✅ スクロール復元実行', { savedScroll: savedScroll.text });
+      
       requestAnimationFrame(() => {
         textContainer.scrollTop = savedScroll.text;
       });

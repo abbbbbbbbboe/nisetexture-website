@@ -197,7 +197,7 @@ function setupClickHandler() {
     if (textsContainer) textsContainer.scrollTop = 0;
     if (imageContainer) imageContainer.scrollTop = 0;
 
-    // updateTextAreaTitle();
+    updateTextAreaTitle();
 
     // applyRandomSpacingToAreaTitles();
     // applyRandomSpacingToMobileAreaTitles();
@@ -963,7 +963,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText, 2, 4.5);
+    button.innerHTML = randomLetterSpacing(originalText, 1, 3);
   });
 }
 // ==========================
@@ -1039,8 +1039,8 @@ function createScrollTopButton(container, area) {
   area.appendChild(btn); // container 内に追加
 
   btn.style.display = 'none';
-  btn.style.border = '1px solid #b4b4b4';
-  btn.style.color = '#e1e1e1';
+  // btn.style.border = '1px solid #b4b4b4';
+ btn.style.color = 'var(--btn-color)';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
   btn.style.position = 'fixed';

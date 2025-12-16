@@ -76,7 +76,26 @@ button {
 }
 
 .scroll-top-btn {
-  background-color: var(--backgroundcolor);
+  background: var(--backgroundcolor);
+  border: 1px dotted var(--btn-color) !important;
+   background-color: var(--backgroundcolor);
+  width: 28px;
+  height: 28px;
+  top: 80px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  font-weight: var(--fontw1);
+  text-indent: -1px;
+  line-height: 28px !important;
+   margin-top: 6px;
+   color: ver(--btn-color);
+   transform: scale(1,1) !important;
+   text-indent: 1px;
+}
+.scroll-top-btn:hover{
+  border: 1px solid var(--btn-color) !important;
+  color: ver(--btn-color);
+  font-weight: var(--fontw3) !important;
 }
 
 .text-links a:hover {
@@ -241,15 +260,7 @@ main {
 .menu span {
   transform: scale(0.9, 1);
 }
-.scroll-top-btn {
-  background-color: var(--backgroundcolor);
-  width: 32px;
-  height: 32px;
-  top: 84px;
-  border-radius: 50%;
-  font-size: 1.5em;
-  font-weight: var(--fontw1);
-}
+
 button {
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
   cursor: pointer
@@ -412,7 +423,7 @@ button {
 
 
 .list-area {
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
    border-right:var(--area-border);
   display: flex;
   flex-direction: column;
@@ -855,10 +866,14 @@ background: url('../img/rogo_1.svg');
     border-radius: 13px;
     font-size: 1.5em;
     font-weight: var(--fontw1);
-    /* text-indent: -1px; */
+    text-indent: 0px;
 
 
   }
+
+    .scroll-top-btn:hover{
+  border: 1px dotted var(--btn-color);
+}
 
   .list-area,
   .image-area,
@@ -939,7 +954,7 @@ background: url('../img/rogo_1.svg');
   }
 
   .list-area {
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
     border-right: 0px;
   }
 

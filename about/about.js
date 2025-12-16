@@ -113,6 +113,14 @@ function updateMobileView() {
   updateNavButtons();
    applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
+
+        if (activeSection === "text") {
+   
+      requestAnimationFrame(() => {
+        textContainer.scrollTop = 0;
+      });
+  
+  }
 }
 
 function updateNavButtons() {
@@ -232,6 +240,7 @@ const textContainer = textArea.querySelector('.text-container');
 const imageContainer = imageArea.querySelector('.image-container');
 
 function showAboutCategory(category) {
+  
   const items = contents.about;
   if (!items) return;
 
@@ -243,6 +252,7 @@ updateMobileView();
   // --- エリア初期化 ---
   imageContainer.innerHTML = '';
   textContainer.innerHTML = '';
+  textContainer.scrollTop = 0;
 
   // --- 選択されたカテゴリデータ取得 ---
   const targetItem = items.find(item => item.id === category);
@@ -483,8 +493,6 @@ langBtn.addEventListener("click", () => {
 });
 
 
-
-
 // === 初期表示 ===
 applyLanguage(activeLanguage);
 
@@ -512,6 +520,14 @@ updateMobileView();
 applyRandomSpacingToMobileAreaTitles();
 createScrollTopButton(listContainer, textContainer, imageContainer);
   
+
+// ★★ すべてのDOM・レイアウト・スクロール処理が終わった後 ★★
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    textContainer.scrollTop = 0;
+  });
+});
+
 }
 
 // ★★ ADD START : resize 時にも反映 ★★
@@ -540,12 +556,13 @@ function updateActiveButton(activeCategory) {
 // ================================
 document.querySelectorAll('[data-category]').forEach(btn => {
   btn.addEventListener('click', () => {
+    
     const category = btn.dataset.category;
     if (category) {
       // ハッシュを変更（履歴に残る）
       window.location.hash = category;
       showAboutCategory(category);
-      
+   
     }
   });
 });
@@ -570,6 +587,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const initialHash = window.location.hash.replace('#', '');
   if (initialHash) {
     showAboutCategory(initialHash);
+    textContainer.scrollTop = 0;
   }
   attachScrollStep();
 });
@@ -834,7 +852,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText, 2, 4.5);
+    button.innerHTML = randomLetterSpacing(originalText, 1, 3);
   });
 }
 // ==========================
@@ -894,9 +912,9 @@ function createScrollTopButton(container) {
     // 初期非表示
   btn.style.display = 'none';
  
-  btn.style.border = '1px solid #b4b4b4';
+  
  
-  btn.style.color = '#e1e1e1';
+  btn.style.color = ' var(--btn-color)';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
  

@@ -7,7 +7,7 @@ const contents = {
       title_en: "Open website",
       date: "2025.12.25",
       category: "news,website",
-      place: "",
+      place: "internet",
       media: [
         "workimg/hyperlog/hyperlog2.jpg",
         "workimg/hyperlog/hyperlog1.jpg",

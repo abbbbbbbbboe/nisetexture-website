@@ -181,6 +181,7 @@ function resizeMediaToFitArea(el, areaWidth) {
   // el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
 
+  
    // ▶ wrapper にも高さを与える（← 超重要）
   if (wrapper) {
     wrapper.style.height = `${newHeight}px`;
@@ -290,7 +291,7 @@ function randomLetterSpacing(text, minSpacing = -0.5, maxSpacing = 2) {
 function applyRandomSpacingToMenu() {
   document.querySelectorAll('.menu button , .menu a').forEach(button => {
     const originalText = button.textContent;
-    button.innerHTML = randomLetterSpacing(originalText, 2, 4.5);
+    button.innerHTML = randomLetterSpacing(originalText, 1, 3);
   });
 }
 // ==========================
@@ -487,8 +488,8 @@ function createScrollTopButton(container) {
   btn.style.pointerEvents = 'none';
   btn.style.transition = 'opacity';
 
-  btn.style.border = '1px solid #b4b4b4';
-  btn.style.color = '#e1e1e1';
+  // btn.style.border = '1px dotted var(--btn-color)';
+  btn.style.color = 'var(--btn-color)';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
 

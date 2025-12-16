@@ -120,7 +120,7 @@ function updateMobileView() {
     applyRandomSpacingToAreaTitles();
     applyRandomSpacingToMobileAreaTitles();
     
-    adjustMediaSizes();
+    // adjustMediaSizes();
     
 
     // モバイルでは filter ボタン非表示
@@ -143,11 +143,12 @@ function updateNavButtons() {
         stopInertiaAndRound(listContainer);
         activeSection = "image";
         updateMobileView();
+        adjustMediaSizes();
+
         applyRandomSpacingToListArea();
         applyRandomSpacingToAreaTitles();
         applyRandomSpacingToMobileAreaTitles();
        
-        adjustMediaSizes();
       };
     }
   }
@@ -166,8 +167,19 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
+
+        // === activeを画面内にスクロール ===
+setTimeout(() => {
+  const activeItem = listContainer.querySelector('.list-item.active');
+  if (activeItem) {
+    activeItem.scrollIntoView({
+      block: 'start',
+      behavior: 'instant' // "smooth" でもOK
+    });
+  }
+}, 0);
       
-    adjustMediaSizes();
+    // adjustMediaSizes();
     };
     nextBtn.onclick = () => {
       stopInertiaAndRound(imageContainer);
@@ -177,7 +189,7 @@ function updateNavButtons() {
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
     
-    adjustMediaSizes();
+    // adjustMediaSizes();
     };
   }
 
@@ -192,7 +204,7 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
        
-    adjustMediaSizes();
+    // adjustMediaSizes();
     };
     nextBtn.style.display = "none";
   }

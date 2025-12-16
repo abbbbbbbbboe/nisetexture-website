@@ -292,12 +292,14 @@ function playIframe(el) {
   }
 
   // Vimeo
-  if (src.includes('vimeo.com')) {
+  else if (src.includes('vimeo.com')) {
     el.contentWindow?.postMessage(
       { method: 'play' },
       '*'
     );
   }
+
+  // 🔊 SoundCloud
   else if (src.includes('soundcloud.com')) {
     el.contentWindow?.postMessage(
       JSON.stringify({
@@ -307,6 +309,7 @@ function playIframe(el) {
     );
   }
 }
+
 
 function setupIframeStateListener(el, onDeactivate) {
   const src = el.src || '';
@@ -324,7 +327,7 @@ function setupIframeStateListener(el, onDeactivate) {
       }
 
       if (data.event === 'onStateChange') {
-        // 0: 終了, 2: 一時停止
+        // 0: ended, 2: paused
         if (data.info === 0 || data.info === 2) {
           onDeactivate();
         }
@@ -333,7 +336,7 @@ function setupIframeStateListener(el, onDeactivate) {
   }
 
   // Vimeo
-  if (src.includes('vimeo.com')) {
+  else if (src.includes('vimeo.com')) {
     window.addEventListener('message', (e) => {
       if (!e.data || !e.data.event) return;
 
@@ -343,7 +346,7 @@ function setupIframeStateListener(el, onDeactivate) {
     });
   }
 
-   // 🔊 SoundCloud
+  // 🔊 SoundCloud
   else if (src.includes('soundcloud.com')) {
     window.addEventListener('message', (e) => {
       if (!e.data) return;
