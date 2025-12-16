@@ -20,8 +20,9 @@
 export const blogContents = {
   globalHyperlinks: {
     basic: [
-      { word: "ニセテクスチャ", href: "https://nisetexture.com/" },
-      { word: "通信", href: "https://ja.wikipedia.org/wiki/%E9%80%9A%E4%BF%A1" },
+      { word: "ニセ", href: "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/241218/02.html" },
+      { word: "テクスチャ", href: "https://www.token.co.jp/estate/useful/archipedia/word.php?jid=00016&wid=00266&wdid=01" },
+      { word: "通信", href: "https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/s54/html/s54a01020202.html" },
       { word: "飲み会", href: "https://note.com/wakusei2nduno/n/nd8f850fbde4d" },
       { word: "つまらなさ", href: "https://x.com/haraajukku/status/1853686504809443769" },
       { word: "ジョッキ", href: "https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%BC%E3%83%AB%E3%82%B8%E3%83%A7%E3%83%83%E3%82%AD#/media/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:BIER_IM_EG.jpg" },
@@ -36,14 +37,17 @@ export const blogContents = {
       { word: "型", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13247187703" },
       { word: "青菜炒め", href: "https://misenyaba.owst.jp/foods" },
       { word: "循環", href: "https://www.rd.ntt/se/media/article/0044.html" },
-      { word: "フィクション", href: "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" },
-      { word: "ノンフィクション", href: "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" },
+      { word: "フィクション", href: "https://youtu.be/kmT_aQh2TwQ?si=BBNZBBF82CqZy3TJ" },
+      { word: "ノンフィクション", href: "http://www.insecam.org/" },
       { word: "露悪", href: "https://dic.nicovideo.jp/a/%E9%9C%B2%E6%82%AA" },
       { word: "俯瞰", href: "https://www.google.com/maps" },
       { word: "酩酊", href: "https://www.iwate.med.or.jp/hanamaki/P-9.html" },
       { word: "世迷言", href: "https://www.uta-net.com/song/54556/" },
       { word: "(｀･ω･´)", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1357121248" },
       { word: "ハラスメント", href: "https://ja.wikipedia.org/wiki/%E5%AB%8C%E3%81%8C%E3%82%89%E3%81%9B" },
+       { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
+        { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
+        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
     ],
     musicLinks: [
 
@@ -152,10 +156,8 @@ export const blogContents = {
       ],
 
       postHyperlinks: [
-
-        { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
-        { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
-        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
+{ word: "節度ある適度な飲酒", href: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html" },
+       
       ],
 
       // ③ この投稿で使いたい global のセット
