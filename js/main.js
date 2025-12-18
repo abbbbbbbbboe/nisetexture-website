@@ -560,7 +560,7 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
       if (isMobile()) {
         activeSection = "image";
         updateMobileView();
-      
+      adjustMediaSizes();
       }
 
       window.suppressHashRender = true;

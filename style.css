@@ -1523,6 +1523,10 @@ background: url('../img/rogo_1.svg');
     width: 70px;
   }
 
+  .sub-title-mini{
+    bottom: 0;
+  }
+
   .top-text-en {
     margin-top: 0px;
 

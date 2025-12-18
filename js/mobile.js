@@ -143,7 +143,7 @@ function updateNavButtons() {
         stopInertiaAndRound(listContainer);
         activeSection = "image";
         updateMobileView();
-        adjustMediaSizes();
+        
 
         applyRandomSpacingToListArea();
         applyRandomSpacingToAreaTitles();

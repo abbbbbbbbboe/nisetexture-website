@@ -249,7 +249,7 @@ function startClock(clockElement) {
         // const h = String(now.getHours()).padStart(2,"0");
         // const m = String(now.getMinutes()).padStart(2,"0");
         const s = String(now.getSeconds()).padStart(2,"0");
-        clockElement.textContent = `〔${s}〕`;
+        clockElement.textContent = `〔:${s}〕`;
     }
 
     update();
@@ -313,7 +313,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
       top: 50%;
       left: 50%;
       width: 95dvw;
-      height: 100dvh;
+      height: 120dvh;
      
       transform: translate(-50%, -50%);
       image-rendering: pixelated;
@@ -356,10 +356,10 @@ function createIdleOverlay(imagePaths, topImagePath) {
       transform: translate(-50%, -50%);
       z-index: 20;  /* ← これが上のレイヤー */
       width: auto;
-      max-width: 100dvw;
-      max-height: 100dvh;
-     padding-left: 3px;
-  padding-right: 3px;
+      max-width: 70dvw;
+      max-height: 70dvh;
+     padding-left: 0px;
+  padding-right: 0px;
       object-fit: contain;
       pointer-events: none;  /* クリックを通す（任意） */
       
@@ -391,7 +391,7 @@ function createIdleOverlay(imagePaths, topImagePath) {
             clockCss = `
             max-width: 100dvw;
       max-height: 100dvh;
-    margin:36px auto auto auto;
+    margin:72px -10px auto auto;
     line-height:35px;
         font-size: 1em;
         font-family: monospace;

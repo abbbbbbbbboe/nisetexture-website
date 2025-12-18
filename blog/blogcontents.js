@@ -62,8 +62,7 @@ export const blogContents = {
       tag: ["about", "news"],
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
-        { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 },
-        { src: "https://youtu.be/ZJcfGl9oPQs", caption: "説明音声", id: 3 }
+        { src: "https://soundcloud.com/fcjjl5q21hqr/test1?si=5f6dc2b65f91467797d1287c6b4450f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
       ],
       textBlocks: [
         { type: "skipbutton", id: "skip1", label: "読み上げ音声", mobile_label: "読" },
@@ -145,7 +144,7 @@ export const blogContents = {
 
         { type: "skipbutton", id: "skip8", label: "credit", mobile_label: "c" },
         { type: "p", text: `【credit】`, class: ["index"] },
-        { type: "p", text: `声：朗読順`, class: ["credit"] },
+        { type: "p", text: `声（朗読順）`, class: ["credit"] },
         { type: "p", text: `1.吉月ひさたか`, class: ["credit"] },
         { type: "p", text: `2.WAKO 西村多和子`, class: ["credit"] },
         { type: "p", text: `3.non-credit`, class: ["credit"] },
@@ -156,6 +155,7 @@ export const blogContents = {
       ],
 
       postHyperlinks: [
+        { word: "血液に溶け込んで脳に運ばれたアルコールによって脳が麻痺する状態", href: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html" },
 { word: "節度ある適度な飲酒", href: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html" },
        
       ],

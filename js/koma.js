@@ -102,7 +102,7 @@ function initAll() {
 
     // モバイルなら自動ループ
     if (isMobile()) {
-      startMobileLoop(frames, 400);
+      startMobileLoop(frames, 500);
       return;
     }
 
