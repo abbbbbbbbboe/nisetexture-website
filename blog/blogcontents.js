@@ -30,7 +30,7 @@ export const blogContents = {
       { word: "涙", href: "https://ja.wikipedia.org/wiki/%E6%B6%99" },
       { word: "武勇伝", href: "https://sayapea.exblog.jp/439216/" },
       { word: "スピリッツ", href: "https://www.suntory.co.jp/wnb/guide/spirits/01/" },
-      { word: "解散", href: "https://youtu.be/CrVR1YEQP2k?si=QiyftNrTtO7COP4N" },
+      { word: "解散", href: "https://youtu.be/CrVR1YEQP2k?si=nIlH2v1rFqaTHuUM&t=98" },
       { word: "張子", href: "https://goodjobstore.jp/collections/%E3%81%AF%E3%82%8A%E3%81%93" },
       { word: "空洞", href: "https://youtu.be/mKUhq7SYouA?si=5MkAMTYIA7JC5-3i" },
       { word: "内包", href: "https://www.weblio.jp/content/%E5%86%85%E5%8C%85" },
@@ -47,7 +47,7 @@ export const blogContents = {
       { word: "ハラスメント", href: "https://ja.wikipedia.org/wiki/%E5%AB%8C%E3%81%8C%E3%82%89%E3%81%9B" },
        { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
         { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
-        { word: "“飲みュニケーション”", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
+        { word: "飲みュニケーション", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
     ],
     musicLinks: [
 
@@ -207,7 +207,7 @@ export const blogContents = {
         { type: "p", text: `4.形式`, class: "index" },
         { type: "p", text: `形式 : テキスト` },
         { type: "p", text: `文字数<br>日本語 : 64文字丁度<br>英語 : 30単語丁度` },
-        { type: "p", text: `*上記文字数、単語数ぴったりでお願いします`, class: "footnote" },
+        { type: "p", text: `*上記文字数、単語数ぴったりでお願いします。`, class: "footnote" },
         { type: "p", text: `*テキストにリンクをつけることも可能です。`, class: ["footnote", "large-space-2"] },
 
         { type: "skipbutton", id: "skip5", label: "5.掲載できないもの", mobile_label: "5" },
@@ -221,7 +221,10 @@ export const blogContents = {
         { type: "p", text: `nise.texture[a]gmail.com` },
         { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
         { type: "p", text: `お問い合わせの際、以下の内容も合わせてお送りください。` },
-        { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-2" }
+        { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-2" },
+        { type: "skipbutton", id: "skip7", label: "広告募集要項PDF", mobile_label: "詳" },
+        { type: "p", text: `【詳細】`, class: ["index"] },
+        { type: "a", text: `ニセテクスチャwebサイト広告募集要項PDF↗︎`, link: "https://drive.google.com/file/d/1E56T4v7xRcFfwSXOOytGW9yCiwL64jKI/view?usp=sharing", class: ["link-list"] },
 
       ],
 
