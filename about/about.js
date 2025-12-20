@@ -307,12 +307,12 @@ imageContainer.appendChild(img);
   const img = new Image();
 
   // まず jpg を試す
-  img.src = `img/pc/${folder}/${i}.webp`;
+  img.src = `about/img/pc/${folder}/${i}.webp`;
 
   // jpg がなかったら png に切り替える
   img.onerror = () => {
     img.onerror = null; // 無限ループ防止
-    img.src = `img/pc/${folder}/${i}.jpg`;
+    img.src = `about/img/pc/${folder}/${i}.jpg`;
   };
 
   img.classList.add("frame");
