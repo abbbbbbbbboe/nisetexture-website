@@ -951,9 +951,14 @@ letter-spacing: 0.05em;
 
 }
 
+.preview-text.text-ja{
+  margin-top: -1px;
+}
+
 .preview-text.text-en,
 .preview-text.text-ja {
-  margin-left: -5px;
+  
+  margin-left: -6px;
   /* padding-left: 10px;
   padding-right: 10px; */
   border-top: 1px solid var(--background-border-color);
