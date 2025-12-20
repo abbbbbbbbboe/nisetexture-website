@@ -678,8 +678,9 @@ img.preview {
   pointer-events: none;
   /* マウスイベントを通さない */
   border: none;
-
+ 
 }
+
 
 
 
@@ -929,8 +930,9 @@ letter-spacing: 0.05em;
   background: repeating-linear-gradient(to bottom,
       var(--backgroundcolor),
       var(--backgroundcolor) 39px,
-      transparent 39px,
-      transparent 40px);
+      var(--background-border-color) 39px,
+      var(--background-border-color) 40px);
+ 
 
 }
 
@@ -954,6 +956,10 @@ letter-spacing: 0.05em;
   margin-left: -5px;
   /* padding-left: 10px;
   padding-right: 10px; */
+  border-top: 1px solid var(--background-border-color);
+border-right: 1px solid var(--background-border-color);
+border-left: 1px solid var(--background-border-color);
+
 }
 
 

@@ -343,7 +343,7 @@ if (textContainer) {
     img.style.objectFit = 'cover';
     img.style.zIndex = '999';
     img.style.pointerEvents = 'none';
-    img.style.filter = 'grayscale(90%)';
+    // img.style.filter = '    grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(90%) brightness(85%) contrast(105%)';
     
     page.appendChild(img);
   }
@@ -420,6 +420,7 @@ const enPreview = getFirstSentenceWithHTML(enText);
   wrapper.style.margin = '0';
   // wrapper.style.mixBlendMode = 'difference';
   wrapper.style.color = '#000';
+  
   
   
   if (jpPreview.trim()) {

@@ -9,18 +9,22 @@ const contents = {
       category: "news,website",
       place: "internet",
       media: [
-        "workimg/hyperlog/hyperlog2.jpg",
-        "workimg/hyperlog/hyperlog1.jpg",
-        "workimg/hyperlog/hyperlog3.jpg",
-        "workimg/hyperlog/hyperlog4.jpg",
-        "https://youtu.be/FvWRGIJsiaE?si=FP_535e-OSIgRdKp"
+        "workimg/opennewsite/1.png",
+        "workimg/opennewsite/2.png",
+        "workimg/opennewsite/3.png",
+        "workimg/opennewsite/4.png",
+        "workimg/opennewsite/5.png",
+        "workimg/opennewsite/6.png",
+        "workimg/opennewsite/7.png"
       ],
       captions: [
-    "リビングルーム・トレーニング#1＆構造図",
-    "リビングルーム・トレーニング#1",
-    "リビングルーム・トレーニング#1",
-    "リビングルーム・トレーニング#1構造図",
-    "配信『「リビングルーム・トレーニング キッチン#1」を見る』"
+    "toppage",
+    "archive1",
+    "archive2",
+    "archive3",
+    "archive4",
+    "about",
+    "ニセテ通信-広告募集"
     
   ],
       text_jp: `私たちのwebサイトを公開しました！これから、活動のアーカイブをここに載せていきます。<br>それに伴い、ニセテ通信に「私たちの活動について」というテキストを掲載しました。読み上げの音声もあるので、ぜひご覧ください。`,
