@@ -652,7 +652,7 @@ newWidth = Math.floor(newWidth);
   el.style.height = `${newHeight}px`;
   
   el.style.display = 'block';
-  el.style.margin = '-1px auto 0px auto';
+  el.style.margin = '1px auto 0px auto';
   el.style.maxWidth = '100%';
   
 
