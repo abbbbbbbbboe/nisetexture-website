@@ -422,10 +422,16 @@ main {
 .page-top{
   grid-template-columns: 1fr 6fr 3fr;
 }
+.page-top .area-title-image{
+  margin-left: 40px;
+}
 
 @media screen and (max-width: 1385px) {
   .page-top{
   grid-template-columns: 1.5fr 5.5fr 3fr;
+}
+.page-top .area-title-image{
+  margin-left: 0px;
 }
 }
 
@@ -1043,7 +1049,7 @@ letter-spacing: 0.05em;
 
 @media screen and (max-width: 1385px) {
   #wrapper{
-    margin-top: 40px;
+    margin-top: 0px;
   }
   .sub-title-big {
     display: none !important;
