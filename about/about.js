@@ -652,7 +652,7 @@ newWidth = Math.floor(newWidth);
   el.style.height = `${newHeight}px`;
   
   el.style.display = 'block';
-  el.style.margin = '1px auto 0px auto';
+  // el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
   
 
@@ -859,7 +859,7 @@ function applyRandomSpacingToMenu() {
 // エリアタイトルに適用
 // ==========================
 function applyRandomSpacingToAreaTitles() {
-  document.querySelectorAll('.area-title h1').forEach(title => {
+  document.querySelectorAll('.area-title a').forEach(title => {
     const originalText = title.textContent;
     title.innerHTML = randomLetterSpacing(originalText, 1, 2.5);
   });

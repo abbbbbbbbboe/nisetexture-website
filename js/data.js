@@ -27,8 +27,8 @@ const contents = {
     "ニセテ通信-広告募集"
     
   ],
-      text_jp: `私たちのwebサイトを公開しました！これから、活動のアーカイブをここに載せていきます。<br>それに伴い、ニセテ通信に「私たちの活動について」というテキストを掲載しました。読み上げの音声もあるので、ぜひご覧ください。`,
-text_en: `Our website is now live! We'll be posting archives of our activities here going forward. <br>Along with this, we've published a text titled “About Our Activities” in the Nisete Newsletter. An audio version is also available, so please take a look.`,
+      text_jp: `私たちのwebサイトを公開しました！これから、活動のアーカイブをここに載せていきます。<br>それに伴い、ニセテ通信に「私たちの活動について」というテキストを掲載しました。読み上げの音声もあるので、ぜひご覧ください。<br><br>また、新たにロゴも作成しました。webサイトとロゴの新設を記念してTシャツを作りました。以下のリンクからご覧いただけます。よろしければご購入ください。<a href="https://suzuri.jp/ota_sora/sections/24389">Tシャツ↗︎</a>`,
+text_en: `Our website is now live! We'll be posting archives of our activities here going forward. <br>Along with this, we've published a text titled “About Our Activities” in the Nisete Newsletter. An audio version is also available, so please take a look.<br><br>We've also created a new logo. To commemorate the launch of our website and logo, we've made T-shirts. You can view them via the link below. Please consider purchasing one if you'd like.<a href="https://suzuri.jp/ota_sora/sections/24389">Tshirt↗︎</a>`,
 text_credit: ``,
        links: {
     "Website": "https://nisetexture.com",

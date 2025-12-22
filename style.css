@@ -486,7 +486,7 @@ main {
   z-index: 20;
 }
 
-.area-title h1 {
+.area-title a {
   color: var(--area-title-color);
   /* font-weight: 800; */
   font-size: 1.3em;
@@ -495,10 +495,11 @@ main {
   font-family: "Baskervville", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: var(--fontw5);
-
+  font-weight: var(--fontw6);
+text-decoration: none;
   transform: scale(1, 0.95);
 z-index: 200;
+cursor: default;
 }
 
 .list-container,
@@ -796,7 +797,7 @@ letter-spacing: 0.05em;
 } */
 
 
-.text-area a{
+.text-container a{
   position: relative;
   display: inline-block;
   padding: 0 20px;
@@ -810,7 +811,7 @@ letter-spacing: 0.05em;
   letter-spacing: 0.3rem;
 }
 
-.text-area a::before {
+.text-container a::before {
   content: "";
   position: absolute;
   top: 7px;
@@ -830,14 +831,14 @@ letter-spacing: 0.05em;
      
 }
 
-.text-area a:hover{
+.text-container a:hover{
   color: var(--backgroundcolor);
   font-weight: var(--fontw3);
   /* ← 文字色の変更はここ！ */
   z-index: 2;
 }
 
-.text-area a:hover::before{
+.text-container a:hover::before{
   background: var(--color);
   /* ホバー時の背景色 */
   color: var(--backgroundcolor);
@@ -1022,7 +1023,8 @@ border-left: 1px solid var(--background-border-color);
 }
 
 .top-top-title {
-  margin-top: 40px;
+  margin-top: 0px;
+  margin-left: 10px;
 }
 
 .top-text-en {
@@ -1419,6 +1421,13 @@ background: url('../img/rogo_1.svg');
     color: var(--btn-color);
   }
 
+  .list-title{
+    font-weight: var(--fontw5);
+    padding-right: 15px;
+  }
+  .list-meta{
+  font-weight: var(--fontw3);
+}
 
   .scroll-extra {
     height: 35px;
@@ -1482,7 +1491,7 @@ background: url('../img/rogo_1.svg');
 
   .page-top .text-container {
     margin-left: -10px;
-    margin-bottom: 70px;
+    /* margin-bottom: 70px; */
   }
 
   /* top では高さ固定レイアウトを解除 */
@@ -1499,10 +1508,13 @@ background: url('../img/rogo_1.svg');
     margin-left: 10px;
   }
 .mobile-image-area-title p{
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  transform: scale(1, 0.9);
+  font-size: 0.9em;
+  letter-spacing: 0.2em;
+  transform: scale(1, 0.95);
+  padding-right: 10px;
+  margin-bottom: 35px;
 }
+
 
   #wrapper {
     height: 70px;
@@ -1555,9 +1567,10 @@ background: url('../img/rogo_1.svg');
     margin-top: 0px;
   }
 
-  .area-title h1 {
+  .area-title a {
     padding-left: 20px;
     line-height: 35px;
+    margin: 0 0 !important;
   }
 
   .list-area {
@@ -1699,7 +1712,7 @@ background: url('../img/rogo_1.svg');
 
   .text-en {
     margin-top: 35px;
-    margin-left: 5px;
+    margin-left: 0px;
     /* margin-bottom: 140px; */
     padding-bottom: 0;
     /* margin-left: -10px; */
@@ -1721,14 +1734,31 @@ background: url('../img/rogo_1.svg');
 
   }
 
-
-
   .mobile-en-title {
     font-weight: var(--fontw4) !important;
     letter-spacing: 0.3rem !important;
     font-size: 1.1em !important;
-
   }
+
+  .mobile-textarea-meta{
+display: flex;
+  flex-wrap: wrap;  /* コンテナの幅を超えた場合に、自動的に次の行へ折り返す */
+  gap: 0 10px; /* アイテム間の余白を設定 (モダンな方法) */
+      line-height: 35px;
+      margin-left: 10px;
+  }
+
+    .mobile-textarea-meta p{
+    font-size: 1em !important;
+     letter-spacing: 0.2rem !important;
+      font-weight: var(--fontw2) !important;
+      color:var(--caption-color) !important;
+      /* transform: scale(1, 0.95) !important; */
+     width: max-content;   /* ← これが重要 */
+  white-space: nowrap;
+  }
+
+
 
   .text-links {
 

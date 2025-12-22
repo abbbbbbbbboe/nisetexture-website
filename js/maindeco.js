@@ -181,7 +181,7 @@ function resizeMediaToFitArea(el, areaWidth) {
   // el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
 
-  
+
    // ▶ wrapper にも高さを与える（← 超重要）
   if (wrapper) {
     wrapper.style.height = `${newHeight}px`;
@@ -298,7 +298,7 @@ function applyRandomSpacingToMenu() {
 // エリアタイトルに適用
 // ==========================
 function applyRandomSpacingToAreaTitles() {
-  document.querySelectorAll('.area-title h1').forEach(title => {
+  document.querySelectorAll('.area-title a').forEach(title => {
     const originalText = title.textContent;
     title.innerHTML = randomLetterSpacing(originalText, 1, 2.5);
   });

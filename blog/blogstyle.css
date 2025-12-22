@@ -347,7 +347,7 @@ main {
   margin: 0 auto 0 0;
 }
 
-.area-title h1 {
+.area-title a {
   color: var(--area-title-color);
   /* font-weight: 800; */
   font-size: 1.3em;
@@ -356,8 +356,10 @@ main {
   font-family: "Baskervville", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: var(--fontw5);
+  font-weight: var(--fontw6);
   transform: scale(1, 0.95);
+  text-decoration: none;
+  cursor: default;
 }
 
 .list-container,
@@ -878,9 +880,6 @@ transform: scale(1, 1) !important;
     color: var(--caption-color);
     transform: scale(0.9, 0.85);
   }
-  .footnote{
-    
-  }
 
 .divider-line{
   height: 40px;
@@ -1338,7 +1337,7 @@ margin-top: 0px;
     margin-left: 23px;
   }
 
-  .area-title h1 {
+  .area-title a {
     padding-left: 20px;
     line-height: 35px;
   }

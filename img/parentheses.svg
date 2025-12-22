@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.67 17.33">
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.51 17.03">
   <defs>
     <style>
       .cls-1 {
@@ -7,5 +7,5 @@
       }
     </style>
   </defs>
-  <path class="cls-1" d="M8.67,0v1C4.44,1,1,4.44,1,8.67s3.44,7.67,7.67,7.67v1C3.89,17.33,0,13.44,0,8.67S3.89,0,8.67,0Z"/>
+  <path class="cls-1" d="M8.51,17.03C3.82,17.03,0,13.21,0,8.51S3.82,0,8.51,0v.7C4.21.7.7,4.21.7,8.51s3.51,7.82,7.82,7.82v.7Z"/>
 </svg>

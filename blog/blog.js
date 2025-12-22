@@ -970,7 +970,7 @@ function applyRandomSpacingToMenu() {
 // エリアタイトルに適用
 // ==========================
 function applyRandomSpacingToAreaTitles() {
-  document.querySelectorAll('.area-title h1, .area-title-imagetext h1').forEach(title => {
+  document.querySelectorAll('.area-title a, .area-title-imagetext a').forEach(title => {
     const originalText = title.textContent;
     title.innerHTML = randomLetterSpacing(originalText, 1, 2.5);
   });
@@ -1010,21 +1010,26 @@ window.addEventListener('DOMContentLoaded', () => {
   applyRandomSpacingToAreaTitles();
   applyRandomSpacingToListArea();
   applyRandomSpacingToMobileAreaTitles();
+ 
 });
 
 function updateTextAreaTitle() {
-  const titleEl = document.querySelector('.area-title-imagetext h1');
+  const titleEl = document.querySelector('.area-title-imagetext a');
   if (!titleEl) return;
 
   if (isMobile()) {
     titleEl.textContent = "text | image";   // ← モバイル表記
-
+titleEl.href = titleEl.dataset.mobileHref;
   } else {
     titleEl.textContent = "text";           // ← PC表記
+    titleEl.href = titleEl.dataset.pcHref;
     applyRandomSpacingToAreaTitles();
   }
 
 }
+document.addEventListener('DOMContentLoaded', () => {
+  updateTextAreaTitle();
+});
 window.addEventListener("resize", updateTextAreaTitle);
 
 // ==========================

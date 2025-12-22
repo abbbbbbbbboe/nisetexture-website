@@ -402,7 +402,7 @@ button {
   margin: 0 auto 0 0;
 }
 
-.area-title h1 {
+.area-title a {
   color: var(--area-title-color);
   font-size: 1.3em;
   line-height: 40px;
@@ -410,8 +410,11 @@ button {
   font-family: "Baskervville", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: var(--fontw5);
+  font-weight: var(--fontw6);
   transform: scale(1, 0.95);
+  text-decoration: none;
+  cursor: default;
+  margin: 0 0 !important;
 }
 
 .list-container,
@@ -523,7 +526,7 @@ button {
   position: relative;
   width: 100%;
   text-align: center;
-  margin: 0 auto;
+  margin: 1px auto 0 auto;
 }
 
 .member-slider img.frame {
@@ -661,6 +664,7 @@ border-radius: 9px;
   color: var(--color);
   font-weight: var(--fontw2);
   font-size: 1em;
+  margin-top: 2px;
 }
 
 .text-links a:hover {
@@ -948,7 +952,7 @@ background: url('../img/rogo_1.svg');
     margin-left: 23px;
   }
 
-  .area-title h1 {
+  .area-title a {
     padding-left: 20px;
     line-height: 35px;
   }
@@ -979,6 +983,11 @@ background: url('../img/rogo_1.svg');
     padding-right: 45px;
 
   }
+
+  .mobile-random-image {
+ 
+  margin: -1px auto 0 auto;
+}
 
   /* 最後のエリアは右のボーダーなし */
 

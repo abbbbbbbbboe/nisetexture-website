@@ -362,6 +362,7 @@ if (jpFull.trim()) {
   if (isMobile) {
     jaSection.innerHTML = `
       <p class="mobile-jp-title">${data.title || ""}</p>
+      <div class="mobile-textarea-meta"><p>(${data.date || ""})</p><p>${data.place ? `@${data.place}` : ""}</p></div>
       <p>${jpFull}</p>
     `;
   } else {
@@ -382,6 +383,7 @@ if (enFull.trim()) {
     // モバイル → タイトル + テキスト
     enSection.innerHTML = `
       <p class="mobile-en-title">${data.title_en || ""}</p>
+    <div class="mobile-textarea-meta"><p>(${data.date || ""})</p><p>${data.place ? `@${data.place}` : ""}</p></div>
       <p>${enFull}</p>
     `;
   } else {
