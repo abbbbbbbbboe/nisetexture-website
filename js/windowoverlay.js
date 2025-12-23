@@ -238,7 +238,7 @@ const idleImages = isMobile() ? mobileImages : pcImages;
 
 // 先にプリロード
 preloadImages(idleImages).then(() => {
-    enableIdleOverlay(idleImages, topImage,13000);
+    enableIdleOverlay(idleImages, topImage,150000);
 });
 
 //  clockElement.textContent = `〔${h}:${m}:${s}〕`;

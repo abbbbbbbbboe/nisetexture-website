@@ -707,12 +707,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ★ ソートボタンの表示制御
  toggleArchiveSortButtons(category === 'archive');
 
-   // ← 上のフィルターボタン群を作る
+
     if (category === 'archive') {
    if (textsContainer) textsContainer.innerHTML = '';
     generateArchiveList(); 
-        // ← 左リスト生成
-  }     // ← ☆ 左リストを生成（すべての作品）
+       
+  }     
  
   updateArchiveButtonStates();   // ← フィルターボタンの見た目更新
   // 選択中作品を右側に表示

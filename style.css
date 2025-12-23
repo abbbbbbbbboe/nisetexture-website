@@ -449,6 +449,13 @@ main {
   }
 }
 
+.copyright p{
+letter-spacing: 0.1em !important;
+  margin-top: 360px;
+  font-size: 0.8em !important;
+  color: var(--caption-color) !important;
+  text-align: right;
+}
 .list-area,
 .image-area,
 .text-area {
@@ -1491,7 +1498,8 @@ background: url('../img/rogo_1.svg');
 
   .page-top .text-container {
     margin-left: -10px;
-    /* margin-bottom: 70px; */
+    margin-bottom: 70px;
+    padding: 0 10px 0 30px;
   }
 
   /* top では高さ固定レイアウトを解除 */
@@ -1501,6 +1509,11 @@ background: url('../img/rogo_1.svg');
     overflow: auto;
     /* display: block !important; */
     /* overflow: visible !important; */
+  }
+
+  .copyright p{
+    margin-top: 35px;
+    text-align: center;
   }
 
   .mobile-image-area-title{
