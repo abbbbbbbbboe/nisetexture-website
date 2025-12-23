@@ -9,22 +9,24 @@ const contents = {
       category: "news,website",
       place: "internet",
       media: [
-        "workimg/opennewsite/1.png",
-        "workimg/opennewsite/2.png",
-        "workimg/opennewsite/3.png",
-        "workimg/opennewsite/4.png",
-        "workimg/opennewsite/5.png",
-        "workimg/opennewsite/6.png",
-        "workimg/opennewsite/7.png"
+        "workimg/opennewsite/rogo.webp",
+        "workimg/opennewsite/1.webp",
+        "workimg/opennewsite/2.webp",
+        "workimg/opennewsite/3.webp",
+        "workimg/opennewsite/4.webp",
+        "workimg/opennewsite/5.webp",
+        "workimg/opennewsite/6.webp",
+        "workimg/opennewsite/7.webp"
       ],
       captions: [
+        "rogo",
     "toppage",
     "archive1",
     "archive2",
     "archive3",
     "archive4",
-    "about",
-    "ニセテ通信-広告募集"
+    "about +profile+",
+    "ニセテ通信 +私たちの活動について+"
     
   ],
       text_jp: `私たちのwebサイトを公開しました！これから、活動のアーカイブをここに載せていきます。<br>それに伴い、ニセテ通信に「私たちの活動について」というテキストを掲載しました。読み上げの音声もあるので、ぜひご覧ください。<br><br>また、新たにロゴも作成しました。webサイトとロゴの新設を記念してTシャツを作りました。以下のリンクからご覧いただけます。よろしければご購入ください。<a href="https://suzuri.jp/ota_sora/sections/24389">Tシャツ↗︎</a>`,
