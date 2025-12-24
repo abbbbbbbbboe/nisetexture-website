@@ -455,6 +455,7 @@ letter-spacing: 0.1em !important;
   font-size: 0.8em !important;
   color: var(--caption-color) !important;
   text-align: right;
+  margin-right: 10px;
 }
 .list-area,
 .image-area,
