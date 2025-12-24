@@ -34,6 +34,7 @@ text_en: `Our website is now live! We'll be posting archives of our activities h
 text_credit: ``,
        links: {
     "Website": "https://nisetexture.com",
+     "Tshirt": "https://suzuri.jp/ota_sora/sections/24389",
  
   }
 },{
