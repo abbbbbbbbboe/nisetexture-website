@@ -24,9 +24,9 @@ let activeSection = "list"; // "list" | "image" | "text"
 // ===============================
 // 🔷 DOM 取得
 // ===============================
-const listArea  = document.querySelector(".list-area");
+const listArea = document.querySelector(".list-area");
 const imageArea = document.querySelector(".image-area");
-const textArea  = document.querySelector(".text-area");
+const textArea = document.querySelector(".text-area");
 
 const prevBtn = document.getElementById("nav-prev");
 const nextBtn = document.getElementById("nav-next");
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       activeSection = "text";
     }
- 
- 
+
+
     updateMobileView();
   }
 });
@@ -63,23 +63,23 @@ function updateMobileView() {
 
   // PC は常に全部表示
   if (!isMobile()) {
-    listArea.style.display  = "";
+    listArea.style.display = "";
     imageArea.style.display = "";
-    textArea.style.display  = "";
-    prevBtn.style.display   = "none";
-    nextBtn.style.display   = "none";
+    textArea.style.display = "";
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
     return;
   }
 
   // アクティブセクションのみ表示
-  listArea.style.display  = activeSection === "list"  ? "" : "none";
+  listArea.style.display = activeSection === "list" ? "" : "none";
   imageArea.style.display = activeSection === "image" ? "" : "none";
-  textArea.style.display  = activeSection === "text"  ? "" : "none";
+  textArea.style.display = activeSection === "text" ? "" : "none";
 
-  
-  
+
+
   updateNavButtons();
- 
+
 }
 
 // ===============================
@@ -99,19 +99,13 @@ function updateNavButtons() {
       prevBtn.style.display = "none";
       nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text | image</span>`;
-      
+
       nextBtn.onclick = () => {
         const listContainer = document.querySelector('.list-container');
         stopInertiaAndRound(listContainer);
-   
         activeSection = "text";
-        
-      
         updateMobileView();
-         adjustMediaSizes();
-          
-         
-        
+        adjustMediaSizes();
       };
     }
   }
@@ -129,25 +123,21 @@ function updateNavButtons() {
     prevBtn.style.display = "block";
 
     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">list</span>`;
-    
+
     prevBtn.onclick = () => {
       const textsContainer = document.querySelector('.text-container');
-stopInertiaAndRound(textsContainer);
+      stopInertiaAndRound(textsContainer);
       activeSection = "list";
-      // document.querySelectorAll('.skip-button-panel-mobile').forEach(el => el.remove());
+
       updateMobileView();
-      
-      //  adjustMediaSizes();
-      
-      
-      
+
     };
 
     nextBtn.style.display = "none";
   }
 
-  
- 
+
+
 }
 
 // ===============================
@@ -161,16 +151,11 @@ window.addEventListener("hashchange", () => {
   if (selected) {
     // 記事が選択された → text へ
     activeSection = "text";
-    
+
   } else {
     // ハッシュ消えた → list へ
     activeSection = "list";
   }
- applyRandomSpacingToMobileAreaTitles();
+  applyRandomSpacingToMobileAreaTitles();
   updateMobileView();
-  
- 
 });
-
-
-

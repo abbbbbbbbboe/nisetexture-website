@@ -6,7 +6,7 @@
 
 .scroll-container::-webkit-scrollbar {
   width: 1px;
- 
+
 }
 
 .scroll-container:hover::-webkit-scrollbar {
@@ -48,15 +48,12 @@ body {
   background: var(--backgroundcolor);
 
   color: var(--color);
- 
+
   display: flex;
   flex-direction: column;
-overflow: hidden;
+  overflow: hidden;
 }
 
-/* p, a,  , .list-item.active .list-meta, .list-item:hover{
-color: #e1e1e1;
-} */
 
 p {
   color: var(--color);
@@ -79,9 +76,9 @@ button,
 .scroll-top-btn {
   background: var(--backgroundcolor);
   border: 1px dotted var(--btn-color);
-  /* text-indent: -1px; */
 }
-.scroll-top-btn:hover{
+
+.scroll-top-btn:hover {
   border: 1px solid var(--btn-color);
 }
 
@@ -90,8 +87,6 @@ header {
   height: 81px;
   display: flex;
   flex-direction: column;
-  /* background: #3b3b3b; */
-  /* background-image: url("img/background6.png"); */
   background-size: 100%;
   border-bottom: var(--border);
 }
@@ -99,13 +94,11 @@ header {
 .head1 {
   display: flex;
   border-bottom: var(--border);
-  /* padding-right: 40px; */
+ 
 }
 
 .site-title {
   height: px;
-  /* width: auto; */
-
 }
 
 
@@ -132,21 +125,16 @@ header {
 }
 
 .rogoyoko {
-
-
   background-size: contain;
-
 }
 
 .rogoyoko img {
   height: 30px;
   margin-top: 5px;
-
 }
 
 .youtube {
   line-height: 40px;
-
   letter-spacing: 0.1rem;
   margin: 0 30px 0 auto;
 }
@@ -154,12 +142,10 @@ header {
 .youtube a {
   line-height: 24px;
   text-decoration: none;
-
   display: inline-block;
- border: 1px solid var(--a-border-color);
+  border: 1px solid var(--a-border-color);
   border-radius: 12px;
   padding: 0 7px 0 10px;
-  /* font-family: "IBM Plex Serif", serif; */
   font-style: italic;
   color: var(--link-color);
   font-weight: var(--fontw3);
@@ -177,13 +163,10 @@ header {
   width: 30%;
   height: 40px;
   font-size: 0.9em;
-
   line-height: 40px;
   text-decoration: none;
   overflow: hidden;
-
   border-left: 1px solid var(--background-border-color);
-  /* margin: 0 0 0 auto; */
 }
 
 
@@ -197,9 +180,6 @@ header {
 
 .ebb ul li {
   display: inline-block;
-
-
-
   letter-spacing: 0.35rem;
   transform: scale(0.9, 1);
 }
@@ -209,16 +189,10 @@ header {
 }
 
 
-
-
 .ebb a {
   text-decoration: none;
-
-
-
   letter-spacing: 0.3rem;
 }
-
 
 
 .ad a {
@@ -240,14 +214,10 @@ header {
 
 
 
-
-
 .menu {
   height: 40px;
   display: flex;
   gap: 60px;
-
-  /* margin-left: -25px; */
   margin-left: 40px;
 }
 
@@ -265,24 +235,15 @@ button {
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
 }
 
-/* .menu button {
-  background: none;
-  
-  font-size: 1em;
-  color: var(--menu-color);
-  font-weight: var(--fontw3);
-} */
-
 .menu button.active {
   color: var(--color);
 }
 
-.menu button, .btn {
+.menu button,
+.btn {
   background: none;
-  /* border: none; */
   font-size: 1em;
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
-
   line-height: 40px;
   text-decoration: none;
   color: var(--menu-color);
@@ -303,9 +264,7 @@ button {
 
 /* メニュー用 */
 .menu button.active {
-
   font-weight: var(--fontw6);
-  /* margin-left: -14px; */
   color: var(--color);
 }
 
@@ -318,7 +277,7 @@ button {
   font-weight: 100;
   display: block !important;
   line-height: 28px;
-text-indent: 0.5px;
+  text-indent: 0.5px;
   margin-top: 6px;
 }
 
@@ -326,12 +285,10 @@ text-indent: 0.5px;
 
 #archive-sort-buttons {
   border-left: 1px solid var(--vertical-border);
-  /* padding-top: 5px; */
   height: 39px;
 }
 
 #archive-sort-buttons button {
-  /* line-height: 40px; */
   margin-left: 30px;
   font-weight: var(--fontw2);
   line-height: 0;
@@ -350,35 +307,35 @@ text-indent: 0.5px;
 .archive-filter-reset {
   height: 28px;
   width: 28px;
-  
+
   border: 1px dotted var(--btn-color);
   border-radius: 50%;
-padding-right: 1px;
+  padding-right: 1px;
   margin-top: 6px;
   letter-spacing: -0.02em !important;
 }
 
-.archive-filter-reset:hover{
+.archive-filter-reset:hover {
   border: 1px solid var(--btn-color);
 }
 
-.archive-filter-reset span{
+.archive-filter-reset span {
   letter-spacing: -0.05em !important;
 }
 
-.archive-parentheses-left{
+.archive-parentheses-left {
   height: 23px;
-position: relative;
-top: 5px;
-margin-right: -13px;
+  position: relative;
+  top: 5px;
+  margin-right: -13px;
 }
 
-.archive-parentheses-right{
+.archive-parentheses-right {
   height: 23px;
-position: relative;
-top: 6px;
-transform: rotate(180deg);
-margin-left: 20px;
+  position: relative;
+  top: 6px;
+  transform: rotate(180deg);
+  margin-left: 20px;
 }
 
 .list-item {
@@ -393,7 +350,6 @@ margin-left: 20px;
 .list-item.active .list-title {
   color: var(--color);
   font-weight: var(--fontw8);
-  /* letter-spacing: 0.5rem; */
 }
 
 .list-item .active .list-title {
@@ -407,7 +363,6 @@ margin-left: 20px;
 
 .mobile-nav-btn {
   display: none;
-
 }
 
 main {
@@ -415,56 +370,54 @@ main {
   display: grid;
   grid-template-columns: 2fr 5fr 3fr;
   height: 100%;
-  /* border-top: 1px solid #b4b4b4; */
-
 }
 
-.page-top{
+.page-top {
   grid-template-columns: 1fr 6fr 3fr;
 }
-.page-top .area-title-image{
+
+.page-top .area-title-image {
   margin-left: 40px;
 }
 
 @media screen and (max-width: 1385px) {
-  .page-top{
-  grid-template-columns: 1.5fr 5.5fr 3fr;
-}
-.page-top .area-title-image{
-  margin-left: 0px;
-}
+  .page-top {
+    grid-template-columns: 1.5fr 5.5fr 3fr;
+  }
+
+  .page-top .area-title-image {
+    margin-left: 0px;
+  }
 }
 
 @media screen and (max-width: 920px) {
-  .page-top{
-  grid-template-columns: 100px 5fr 3fr;
-}
+  .page-top {
+    grid-template-columns: 100px 5fr 3fr;
+  }
 
-.top-title{
-  padding: 0 0 0 25px !important;
-}
+  .top-title {
+    padding: 0 0 0 25px !important;
+  }
 
- #wrapper{
+  #wrapper {
     margin-top: 40px;
   }
 }
 
-.copyright p{
-letter-spacing: 0.1em !important;
+.copyright p {
+  letter-spacing: 0.1em !important;
   margin-top: 360px;
   font-size: 0.8em !important;
   color: var(--caption-color) !important;
   text-align: right;
   margin-right: 10px;
 }
+
 .list-area,
 .image-area,
 .text-area {
   box-sizing: content-box;
-
   display: flex;
-
-
   background: repeating-linear-gradient(to bottom,
       transparent,
       transparent 39px,
@@ -472,14 +425,9 @@ letter-spacing: 0.1em !important;
       var(--background-border-color) 40px);
 
   width: 100%;
-  /* overflow-y: auto; 各エリアを縦スクロール可能に */
   height: calc(100dvh - 81px);
-  /* 親要素内で高さを固定 */
   box-sizing: border-box;
-  /* パディングを含めて高さを計算 */
   position: relative;
-  /* ← タイトル固定用に基準設定 */
-
 }
 
 .area-title {
@@ -496,7 +444,6 @@ letter-spacing: 0.1em !important;
 
 .area-title a {
   color: var(--area-title-color);
-  /* font-weight: 800; */
   font-size: 1.3em;
   line-height: 40px;
   padding-left: 40px;
@@ -504,10 +451,10 @@ letter-spacing: 0.1em !important;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: var(--fontw6);
-text-decoration: none;
+  text-decoration: none;
   transform: scale(1, 0.95);
-z-index: 200;
-cursor: default;
+  z-index: 200;
+  cursor: default;
 }
 
 .list-container,
@@ -515,7 +462,7 @@ cursor: default;
 .text-container {
   overflow-y: auto;
   overflow-x: hidden;
-   visibility: hidden;
+  visibility: hidden;
 }
 
 
@@ -523,15 +470,10 @@ cursor: default;
 .list-area {
   display: flex;
   flex-direction: column;
-  /* ←縦並びにする！ */
   align-items: flex-start;
-  /* ←左寄せ */
   justify-content: flex-start;
-  /* ←上寄せ */
-
   position: relative;
-   border-right:var(--area-border);
-
+  border-right: var(--area-border);
 }
 
 .list-container {
@@ -539,8 +481,8 @@ cursor: default;
   padding-bottom: 680px;
 }
 
-.page-top .list-container{
-  padding-bottom:0px;
+.page-top .list-container {
+  padding-bottom: 0px;
 }
 
 .list-item {
@@ -548,19 +490,14 @@ cursor: default;
   cursor: pointer;
   line-height: 40px;
   padding-left: 35px;
-  /* padding-right: 10px; */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
-  width:fit-content;
+  width: fit-content;
 }
-
-
-
 
 
 .list-item span {
   display: inline-block;
-
 }
 
 
@@ -568,7 +505,8 @@ cursor: default;
   font-size: 1em;
   display: inline-block;
 }
-.list-meta{
+
+.list-meta {
   font-weight: var(--fontw1);
 }
 
@@ -579,7 +517,6 @@ cursor: default;
 
 .list-place {
   display: inline-block;
-  /* margin-bottom: 80px; */
 }
 
 .list-item-spacer {
@@ -596,9 +533,8 @@ cursor: default;
   display: flex;
   flex-direction: column;
   padding-top: 0;
-  border-right:var(--area-border);
+  border-right: var(--area-border);
   position: relative;
-
 }
 
 .image-container {
@@ -634,9 +570,7 @@ cursor: default;
   width: 100%;
   height: auto;
   object-fit: cover;
-
   box-sizing: content-box;
-
 }
 
 
@@ -649,7 +583,6 @@ cursor: default;
   display: block;
   box-sizing: content-box;
   object-fit: cover;
-  /* pointer-events: none; */
 }
 
 .media-iframe-wrapper {
@@ -675,82 +608,45 @@ cursor: default;
 /* ホバー用プレビュー画像 */
 img.preview {
   position: absolute;
-  /* エリアの上に重ねる */
-  top:80px;
+  top: 80px;
   left: 20%;
   width: 80%;
   height: calc(100%-80px);
   object-fit: cover;
-  /* エリア全体をカバー、長辺はトリミング */
   z-index: 10;
-  /* クリック表示より上に重なる */
   pointer-events: none;
-  /* マウスイベントを通さない */
   border: none;
- 
 }
 
 
-
-
-
-/* 最後のエリアは右のボーダーなし */
 .text-area {
   display: flex;
   flex-direction: column;
-  /* 必須：縦並び */
   overflow-y: auto;
-  /* スクロール可能 */
-
   position: relative;
 }
-  .text-lang-wrapper{
-    position: relative;
-    padding-top: 40px;
-  }
 
-
-/* .lang-toggle-btn {
-  width: 24px;
-
-  border: 1px solid var(--btn-color);
-  color: #e1e1e1;
-  background: none;
-  cursor: pointer;
-  line-height: 22px;
-
-  font-size: 0.9em;
-  font-weight: var(--fontw3);
-  position: absolute;
-  top: 7px;
-  right: 20px;
-  color: var(--backgroundcolor);
-  background-color: var(--btn-color);
-  z-index: 999;
-
+.text-lang-wrapper {
+  position: relative;
+  padding-top: 40px;
 }
 
-.lang-toggle-btn:hover {
-  color: var(--btn-color);
-  background-color: var(--backgroundcolor);
-  border: 1px solid var(--btn-color);
-} */
 
 .lang-toggle-btn {
   width: fit-content;
-padding: 0px 7px;
+  padding: 0px 7px;
   border: 1px dotted var(--btn-color);
   color: var(--btn-color);
   background: none;
   cursor: pointer;
   line-height: 18px;
-border-radius: 9px;
+  border-radius: 9px;
   font-size: 0.8em;
   font-weight: var(--fontw3);
   position: absolute;
   top: 10px;
   right: 40px;
-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   background-color: var(--backgroundcolor);
   z-index: 999;
 
@@ -771,47 +667,21 @@ letter-spacing: 0.05em;
 .text-area p {
   font-size: 1em;
   line-height: 40px;
-
   flex-shrink: 0;
-  /* 高さ縮小防止 */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
   font-weight: var(--fontw2);
   color: var(--color);
-  
 }
 
-/* .text-area a {
-  margin-top: 7px;
-  line-height: 24px;
-  text-decoration: none;
-  display: inline-block;
-  border: var(--border-light);
-  border-radius: 13px;
-  padding: 0 7px 0 10px;
-  font-style: italic;
-  color: var(--color);
-  font-weight: var(--fontw2);
-  font-size: 1em;
-  margin: 0 5px;
 
-}
-
-.text-area a:hover {
-  color: var(--backgroundcolor);
-  background-color: var(--color);
-  border: 1px solid var(--color);
-
-} */
-
-
-.text-container a{
+.text-container a {
   position: relative;
   display: inline-block;
   padding: 0 20px;
   line-height: 40px;
   border-radius: 20px;
-  color:  var(--color);
+  color: var(--color);
   text-decoration: none;
   font-weight: var(--fontw2);
   font-style: italic;
@@ -827,38 +697,29 @@ letter-spacing: 0.05em;
   right: 7px;
   bottom: 7px;
   border-radius: 13px;
-  /* 20px - 7px = 13px */
   background: #00000000;
-  /* 内側背景 */
-  border: 1px solid  var(--a-border-color);
-
+  border: 1px solid var(--a-border-color);
   transition-property: background, color;
-
   z-index: 1;
-  /* 背景にする */
-     
 }
 
-.text-container a:hover{
+.text-container a:hover {
   color: var(--backgroundcolor);
   font-weight: var(--fontw3);
-  /* ← 文字色の変更はここ！ */
   z-index: 2;
 }
 
-.text-container a:hover::before{
+.text-container a:hover::before {
   background: var(--color);
-  /* ホバー時の背景色 */
   color: var(--backgroundcolor);
-  border: 1px solid  var(--color);
-   z-index: -1;
+  border: 1px solid var(--color);
+  z-index: -1;
 }
 
 
 .text-container {
   padding: 0 30px;
   display: block;
-  /* position: relative; */
   padding-bottom: 160px;
 }
 
@@ -867,54 +728,38 @@ letter-spacing: 0.05em;
 .text-links {
   display: flex;
   flex-wrap: wrap;
-
-  /* padding-bottom: 40px; */
 }
 
 
 .preview-text a {
-
   line-height: 24px;
   text-decoration: none;
-
   display: inline-block;
   border: 1px solid var(--a-border-color);
   border-radius: 13px;
   padding: 0 7px 0 10px;
-  /* font-family: "IBM Plex Serif", serif; */
   font-style: italic;
   color: var(--color);
   font-weight: var(--fontw2);
   font-size: 1em;
-  
 }
 
-/* .text-links a:hover {
-  color: var(--backgroundcolor);
-  background-color: var(--color);
-  border: 1px solid var(--color);
-  font-weight: var(--fontw3);
-
-} */
 
 .text-ja {
- 
- 
   margin-left: -5px;
 }
 
 .text-en {
   margin-left: -5px;
-  
 }
 
 .text-credit {
-
   margin-bottom: 80px;
   color: var(--color);
-  margin-top:40px;
+  margin-top: 40px;
 }
-.credit-top{
+
+.credit-top {
   font-weight: var(--fontw4);
 }
 
@@ -924,27 +769,20 @@ letter-spacing: 0.05em;
 
 .preview-text {
   margin-top: 0px;
-/* margin-left: -5px; */
   padding: 0 30px;
   font-size: 1em;
   line-height: 40px;
-
   flex-shrink: 0;
-  /* 高さ縮小防止 */
   transform: scale(0.9, 1);
   letter-spacing: 0.3rem;
   font-weight: var(--fontw2);
   background-color: var(--backgroundcolor);
- 
   background: repeating-linear-gradient(to bottom,
       var(--backgroundcolor),
       var(--backgroundcolor) 39px,
       var(--background-border-color) 39px,
       var(--background-border-color) 40px);
- 
-
 }
-
 
 
 .preview-text a {
@@ -960,20 +798,16 @@ letter-spacing: 0.05em;
 
 }
 
-.preview-text.text-ja{
+.preview-text.text-ja {
   margin-top: -1px;
 }
 
 .preview-text.text-en,
 .preview-text.text-ja {
-  
   margin-left: -6px;
-  /* padding-left: 10px;
-  padding-right: 10px; */
   border-top: 1px solid var(--background-border-color);
-border-right: 1px solid var(--background-border-color);
-border-left: 1px solid var(--background-border-color);
-
+  border-right: 1px solid var(--background-border-color);
+  border-left: 1px solid var(--background-border-color);
 }
 
 
@@ -987,9 +821,7 @@ border-left: 1px solid var(--background-border-color);
 
 .scroll-extra {
   display: block !important;
-  /* 横並び防止 */
   width: 100% !important;
-  /* 横幅確保 */
   height: 80px;
   flex-shrink: 0;
 }
@@ -998,10 +830,7 @@ border-left: 1px solid var(--background-border-color);
 .image-area,
 .text-area {
   position: relative;
-  /* ボタンの absolute 基準 */
 }
-
-
 
 .member-sublist {
   margin-left: 1em;
@@ -1018,7 +847,7 @@ border-left: 1px solid var(--background-border-color);
 }
 
 
-/* トップ画面 */
+
 
 .top-title {
   padding: 0 40px 0 25px;
@@ -1026,8 +855,7 @@ border-left: 1px solid var(--background-border-color);
   line-height: 40px;
   color: var(--color);
   font-weight: var(--fontw6);
-  transform: scale(0.9,1);
-/* letter-spacing: 0.2em; */
+  transform: scale(0.9, 1);
 }
 
 .top-top-title {
@@ -1049,14 +877,8 @@ border-left: 1px solid var(--background-border-color);
 #wrapper {
   display: flex;
   flex-wrap: wrap;
-  /* ここで折り返しを有効にする */
   justify-content: center;
-  /* align-items: center; */
-  /* gap: 10px; */
-  /* height: 100vh; */
-  /* background: #b4b4b4; */
   margin-top: 0px;
-
 }
 
 .wrapper2 {
@@ -1069,9 +891,10 @@ border-left: 1px solid var(--background-border-color);
 }
 
 @media screen and (max-width: 1385px) {
-  #wrapper{
+  #wrapper {
     margin-top: 0px;
   }
+
   .sub-title-big {
     display: none !important;
   }
@@ -1085,7 +908,6 @@ border-left: 1px solid var(--background-border-color);
 
   .sub-title {
     padding-right: 0px !important;
-
   }
 
 }
@@ -1097,38 +919,26 @@ border-left: 1px solid var(--background-border-color);
 }
 
 .sub-title {
-
   position: relative;
-
-
   overflow: hidden;
   border: 0px !important;
   z-index: 999;
-
-
 }
 
 .sub-title img {
-
   background: none;
   border: 0px !important;
   object-fit: contain !important;
   height: 40px !important;
   margin: 0px auto 0px auto !important;
   background-color: #00000000 !important;
-
-
 }
 
 
 .komaImage,
 .komaImage2 {
   position: relative;
-  /* width: calc((100% - 30px) / 4); ←1行3個、gap分を考慮 */
   aspect-ratio: 1 / 1;
-  /* 正方形を維持（必須） */
-  /* overflow: hidden;
-  width: 100%; */
 }
 
 
@@ -1145,7 +955,6 @@ border-left: 1px solid var(--background-border-color);
   background: none;
   border: none;
   filter: drop-shadow(35px 20px 11px #33333460);
-
 }
 
 .frame.active {
@@ -1157,7 +966,6 @@ border-left: 1px solid var(--background-border-color);
 .komaImage2 img {
   background: none;
   border: 0px;
-
 }
 
 
@@ -1170,18 +978,13 @@ border-left: 1px solid var(--background-border-color);
 
 @media screen and (max-width: 768px) {
 
-
-
-
   body {
     font-size: 15px;
     overflow: auto;
-    
   }
 
   ::-webkit-scrollbar {
     width: 0px;
-
   }
 
 
@@ -1193,34 +996,17 @@ border-left: 1px solid var(--background-border-color);
     position: fixed;
     z-index: 9999;
     background-color: var(--backgroundcolor);
-
   }
 
 
   .head1 {
     display: grid;
     grid-template-columns: 160px auto auto;
-    /* width: 300px; */
   }
 
   .head1 .h:last-child {
     grid-column: 1 / -1;
   }
-
-  /* .head1 {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.h {
-  width:auto;
-}
-
-.h:last-child {
-  width: 100%;
-  order: 99; 
-} */
-
 
   .site-title {
     height: 35px;
@@ -1232,10 +1018,8 @@ border-left: 1px solid var(--background-border-color);
     margin-top: 6px;
     margin-left: 15px;
     stroke-width: 3px;
-
     background-repeat: no-repeat;
     background-size: contain;
-
   }
 
 
@@ -1245,27 +1029,23 @@ border-left: 1px solid var(--background-border-color);
     margin-top: 6px;
     margin-left: 15px;
     stroke-width: 3px;
-background: url('../img/rogo_1.svg');
+    background: url('../img/rogo_1.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
 
   .rogoyoko {
-
     margin-left: 20px;
     background-size: contain;
-
   }
 
   .rogoyoko img {
     height: 29px;
     margin-top: 3px;
-
   }
 
   .youtube {
     line-height: 35px;
-
     letter-spacing: 0.1rem;
     margin: 0 0 0 auto;
     padding-right: 10px;
@@ -1274,12 +1054,9 @@ background: url('../img/rogo_1.svg');
   .youtube a {
     line-height: 18px;
     text-decoration: none;
-
     display: inline-block;
-   
     border-radius: 10px;
     padding: 0 5px 0 5px;
-    /* font-family: "IBM Plex Serif", serif; */
     font-style: italic;
     color: var(--btn-color);
     font-weight: var(--fontw3);
@@ -1301,7 +1078,8 @@ background: url('../img/rogo_1.svg');
     margin-left: 20px;
   }
 
-  .menu button, .btn{
+  .menu button,
+  .btn {
     line-height: 35px;
   }
 
@@ -1329,22 +1107,18 @@ background: url('../img/rogo_1.svg');
   }
 
   .ebb {
-    /* width: calc(40% - 40px); */
     width: 100vw;
     height: 35px;
     font-size: 1em;
-
     line-height: 35px;
     text-decoration: none;
     overflow: hidden;
     border-left: 0px;
     border-top: 1px solid var(--background-border-color);
-    /* margin: 0 0 0 auto; */
   }
 
   .mobile-nav-wrapper {
     height: 100dvh;
-    
   }
 
   main {
@@ -1353,14 +1127,13 @@ background: url('../img/rogo_1.svg');
     position: relative;
     top: 107px;
     display: block;
-     height: calc(100dvh - 106px);
+    height: calc(100dvh - 106px);
   }
 
   .scroll-top-btn {
     width: 20px;
     height: 60px;
     top: 216px;
-
     line-height: 28px !important;
     letter-spacing: 0 !important;
     border-radius: 13px;
@@ -1370,9 +1143,9 @@ background: url('../img/rogo_1.svg');
     margin-top: 0px;
   }
 
-  .scroll-top-btn:hover{
-  border: 1px dotted var(--btn-color);
-}
+  .scroll-top-btn:hover {
+    border: 1px dotted var(--btn-color);
+  }
 
 
   .list-area,
@@ -1384,25 +1157,17 @@ background: url('../img/rogo_1.svg');
         var(--backgroundcolor) 34px,
         var(--background-border-color) 34px,
         var(--background-border-color) 35px);
-    /* background: #454c50; */
     width: 100%;
-    /* overflow-y: auto; 各エリアを縦スクロール可能に */
     height: calc(100dvh - 106px);
-    /* 親要素内で高さを固定 */
     box-sizing: border-box;
-    /* パディングを含めて高さを計算 */
     position: relative;
-    /* ← タイトル固定用に基準設定 */
     border-right: 0;
     overflow-x: hidden;
-    /* overflow-y: hidden; */
-
   }
 
   .list-container,
   .image-container,
   .text-container {
-
     background: repeating-linear-gradient(to bottom,
         var(--backgroundcolor),
         var(--backgroundcolor) 34px,
@@ -1423,34 +1188,31 @@ background: url('../img/rogo_1.svg');
     margin-bottom: 35px;
   }
 
-
-
   .list-item:hover {
     color: var(--btn-color);
   }
 
-  .list-title{
+  .list-title {
     font-weight: var(--fontw5);
     padding-right: 15px;
   }
-  .list-meta{
-  font-weight: var(--fontw3);
-}
+
+  .list-meta {
+    font-weight: var(--fontw3);
+  }
 
   .scroll-extra {
     height: 35px;
   }
 
-  /*  */
+
   .area-title {
     font-weight: var(--fontw4);
     height: 34px;
     line-height: 35px;
     margin: 0 auto 0 0;
     border-bottom: 1px solid var(--background-border-color);
-    /* box-sizing: border-box; */
     background: var(--backgroundcolor);
-
   }
 
   .area-title-imagetext {
@@ -1460,9 +1222,7 @@ background: url('../img/rogo_1.svg');
   .page-top {
     height: calc(100dvh - 106px);
     overflow: auto;
-    /* display: flex; */
     width: 100%;
-
   }
 
 
@@ -1481,14 +1241,10 @@ background: url('../img/rogo_1.svg');
   }
 
   .page-top .image-area {
-    
     height: auto;
-
   }
 
   .page-top .text-area {
-    /* margin-top: 35px; */
-    /* border-top: 1px solid var(--background-border-color); */
     height: auto;
     min-height: calc((100svh - 385px));
   }
@@ -1508,33 +1264,31 @@ background: url('../img/rogo_1.svg');
   .page-top .image-area,
   .page-top .text-area {
     overflow: auto;
-    /* display: block !important; */
-    /* overflow: visible !important; */
   }
 
-  .copyright p{
+  .copyright p {
     margin-top: 35px;
     text-align: center;
   }
 
-  .mobile-image-area-title{
+  .mobile-image-area-title {
     line-height: 35px;
     margin-left: 10px;
   }
-.mobile-image-area-title p{
-  font-size: 0.9em;
-  letter-spacing: 0.2em;
-  transform: scale(1, 0.95);
-  padding-right: 10px;
-  margin-bottom: 35px;
-}
+
+  .mobile-image-area-title p {
+    font-size: 0.9em;
+    letter-spacing: 0.2em;
+    transform: scale(1, 0.95);
+    padding-right: 10px;
+    margin-bottom: 35px;
+  }
 
 
   #wrapper {
     height: 70px;
     margin-top: 0px;
     gap: 5px;
-
   }
 
   .wrapper2 {
@@ -1545,10 +1299,7 @@ background: url('../img/rogo_1.svg');
   .komaImage2 {
     position: relative;
     height: 70px;
-    /* width: calc((100% - 30px) / 4); */
     aspect-ratio: 1 / 1;
-    /* 正方形を維持（必須） */
-
   }
 
   .frame {
@@ -1557,7 +1308,6 @@ background: url('../img/rogo_1.svg');
 
   .sub-title img {
     height: 35px !important;
-
   }
 
 
@@ -1568,7 +1318,7 @@ background: url('../img/rogo_1.svg');
     width: 70px;
   }
 
-  .sub-title-mini{
+  .sub-title-mini {
     bottom: 0;
   }
 
@@ -1607,15 +1357,12 @@ background: url('../img/rogo_1.svg');
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
     padding-left: 0px;
-    width:auto;
+    width: auto;
   }
 
   .mobile-list-image {
     height: 69px;
     width: 100%;
-
-    /* box-sizing: border-box; */
-
     padding-right: 30px;
   }
 
@@ -1638,10 +1385,9 @@ background: url('../img/rogo_1.svg');
   .image-container {
     padding-left: 35px !important;
     padding-right: 35px !important;
-
   }
 
-  
+
 
 
   .caption {
@@ -1652,15 +1398,15 @@ background: url('../img/rogo_1.svg');
     transform: scale(1, 0.9);
     letter-spacing: 0.1rem;
     margin-top: -5px;
-
   }
 
   /* 最後のエリアは右のボーダーなし */
 
-.text-lang-wrapper{
+  .text-lang-wrapper {
     margin-left: 5px;
     padding-top: 0px;
   }
+
   .text-container {
     padding: 0 10px 140px 30px;
   }
@@ -1677,35 +1423,30 @@ background: url('../img/rogo_1.svg');
     /* margin-top: 7px; */
     font-weight: var(--fontw3);
     /* padding:0 10px; */
-    margin:0 5px;
-     transform: scale(1, 0.95);
+    margin: 0 5px;
+    transform: scale(1, 0.95);
   }
 
-  .text-area a::before{
-     content: "";
+  .text-area a::before {
+    content: "";
     top: 5px;
-  
-  bottom: 5px;
-     z-index: 1;
-    
+    bottom: 5px;
+    z-index: 1;
   }
 
 
 
   .lang-toggle-btn {
-
     top: -28px;
     right: 30px;
     color: var(--btn-color);
-
     z-index: 999;
   }
 
-.lang-toggle-btn:hover {
+  .lang-toggle-btn:hover {
+    border: 1px dotted var(--btn-color);
+  }
 
-  border: 1px dotted var(--btn-color);
-}
- 
 
   .page-top .lang-toggle-btn {
     top: 7px;
@@ -1714,22 +1455,16 @@ background: url('../img/rogo_1.svg');
   .text-ja {
     margin: 0;
     padding-bottom: 0;
-    /* margin-left: -10px; */
-    /* margin-bottom: 140px; */
   }
 
   .text-ja p {
     letter-spacing: 0.3rem;
-    /* margin-bottom: 70px; */
-
   }
 
   .text-en {
     margin-top: 35px;
     margin-left: 0px;
-    /* margin-bottom: 140px; */
     padding-bottom: 0;
-    /* margin-left: -10px; */
   }
 
   .text-en p {
@@ -1754,49 +1489,32 @@ background: url('../img/rogo_1.svg');
     font-size: 1.1em !important;
   }
 
-  .mobile-textarea-meta{
-display: flex;
-  flex-wrap: wrap;  /* コンテナの幅を超えた場合に、自動的に次の行へ折り返す */
-  gap: 0 10px; /* アイテム間の余白を設定 (モダンな方法) */
-      line-height: 35px;
-      margin-left: 10px;
+  .mobile-textarea-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    line-height: 35px;
+    margin-left: 10px;
   }
 
-    .mobile-textarea-meta p{
+  .mobile-textarea-meta p {
     font-size: 1em !important;
-     letter-spacing: 0.2rem !important;
-      font-weight: var(--fontw2) !important;
-      color:var(--caption-color) !important;
-      /* transform: scale(1, 0.95) !important; */
-     width: max-content;   /* ← これが重要 */
-  white-space: nowrap;
+    letter-spacing: 0.2rem !important;
+    font-weight: var(--fontw2) !important;
+    color: var(--caption-color) !important;
+    width: max-content;
+    white-space: nowrap;
   }
 
 
 
   .text-links {
-
-    
     line-height: 35px;
     display: flex;
     letter-spacing: 0.1rem;
     margin: 0 10px 35px 10px;
     padding-bottom: 0;
   }
-
-  /* .text-links a {
-    
-    line-height: 35px;
-    text-decoration: none;
-
-    display: inline-block;
-   
-  
-    padding: 0 7px 0 10px;
-
-    font-weight: var(--fontw3);
-    font-size: 15px;
-  } */
 
   @keyframes linkanime {
 
@@ -1832,16 +1550,13 @@ display: flex;
     writing-mode: vertical-rl;
     text-decoration: none;
     color: var(--color);
-
     font-family: "Baskervville", serif;
     font-optical-sizing: auto;
-
     font-style: normal;
     font-weight: var(--fontw5);
     font-size: 17px;
     line-height: 35px;
     display: none;
-
   }
 
   .mobile-nav-btn-text {

@@ -7,7 +7,7 @@
 
 .scroll-container::-webkit-scrollbar {
   width: 1px;
- 
+
 }
 
 .scroll-container:hover::-webkit-scrollbar {
@@ -44,17 +44,13 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: "IBM Plex Sans", "IBM Plex Sans JP", sans-serif;
-
-
   background: var(--backgroundcolor);
   color: var(--color);
   height: 100dvh;
   display: flex;
   flex-direction: column;
-overflow: hidden;
+  overflow: hidden;
 }
-
-
 
 
 p {
@@ -78,7 +74,7 @@ button {
 .scroll-top-btn {
   background: var(--backgroundcolor);
   border: 1px dotted var(--btn-color) !important;
-   background-color: var(--backgroundcolor);
+  background-color: var(--backgroundcolor);
   width: 28px;
   height: 28px;
   top: 80px;
@@ -87,12 +83,13 @@ button {
   font-weight: var(--fontw1);
   text-indent: -1px;
   line-height: 28px !important;
-   margin-top: 6px;
-   color: ver(--btn-color);
-   transform: scale(1,1) !important;
-   text-indent: 1px;
+  margin-top: 6px;
+  color: ver(--btn-color);
+  transform: scale(1, 1) !important;
+  text-indent: 1px;
 }
-.scroll-top-btn:hover{
+
+.scroll-top-btn:hover {
   border: 1px solid var(--btn-color) !important;
   color: ver(--btn-color);
   font-weight: var(--fontw3) !important;
@@ -100,15 +97,13 @@ button {
 
 .text-links a:hover {
   color: var(--backgroundcolor);
-font-weight: var(--fontw3);
+  font-weight: var(--fontw3);
 }
 
 header {
   height: 80px;
   display: flex;
   flex-direction: column;
-  /* background: #3b3b3b; */
-  /* background-image: url("img/background6.png"); */
   background-size: 100%;
   border-bottom: 1px solid var(--background-border-color);
 }
@@ -116,13 +111,10 @@ header {
 .head1 {
   display: flex;
   border-bottom: 1px solid var(--background-border-color);
-  /* padding-right: 40px; */
 }
 
 .site-title {
   height: 40px;
-  /* width: auto; */
-
 }
 
 .rogo {
@@ -134,7 +126,6 @@ header {
   background: url('../img/rogo_1.svg');
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
 .rogo:hover {
@@ -148,21 +139,16 @@ header {
 }
 
 .rogoyoko {
-
-
   background-size: contain;
-
 }
 
 .rogoyoko img {
   height: 30px;
   margin-top: 5px;
-
 }
 
 .youtube {
   line-height: 40px;
-
   letter-spacing: 0.1rem;
   margin: 0 30px 0 auto;
 }
@@ -174,7 +160,6 @@ header {
   border: 1px solid var(--a-border-color);
   border-radius: 13px;
   padding: 0 7px 0 10px;
-  /* font-family: "IBM Plex Serif", serif; */
   font-style: italic;
   color: var(--color);
   font-weight: var(--fontw3);
@@ -189,7 +174,6 @@ header {
 
 /* 電光掲示板css↓ */
 .ebb {
-  /* width: calc(40% - 40px); */
   width: 40%;
   height: 40px;
   font-size: 1em;
@@ -247,7 +231,6 @@ main {
   display: grid;
   grid-template-columns: 2fr 4fr 4fr;
   height: 100%;
-
 }
 
 .menu {
@@ -305,29 +288,27 @@ button {
   line-height: 40px;
   text-decoration: none;
   font-weight: var(--fontw3);
-  transform: scale(0.9,1);
+  transform: scale(0.9, 1);
 }
 
 .list-area button {
   margin-bottom: 40px;
-  color:var(--menu-color);
+  color: var(--menu-color);
 }
 
 .list-container button:hover {
-
   color: var(--color);
   font-weight: var(--fontw4);
 }
 
 .list-item {
-
-  font-weight:var(--fontw3);
+  font-weight: var(--fontw3);
 }
 
 /* リスト用 */
 .list-item.active .list-title {
   color: var(--color);
-  font-weight:var(--fontw6);
+  font-weight: var(--fontw6);
   letter-spacing: 0.5rem;
 }
 
@@ -368,11 +349,7 @@ button {
 .list-area,
 .image-area,
 .text-area {
-
-
   display: flex;
-
-
   background: repeating-linear-gradient(to bottom,
       transparent,
       transparent 39px,
@@ -380,15 +357,10 @@ button {
       var(--background-border-color) 40px);
 
   width: 100%;
-  /* overflow-y: auto; 各エリアを縦スクロール可能に */
   height: calc(100dvh - 81px);
   ;
-  /* 親要素内で高さを固定 */
   box-sizing: border-box;
-  /* パディングを含めて高さを計算 */
   position: relative;
-  /* ← タイトル固定用に基準設定 */
-
 }
 
 .area-title {
@@ -426,15 +398,11 @@ button {
 
 
 .list-area {
-  /* padding-bottom: 40px; */
-   border-right:var(--area-border);
+  border-right: var(--area-border);
   display: flex;
   flex-direction: column;
-  /* ←縦並びにする！ */
   align-items: flex-start;
-  /* ←左寄せ */
   justify-content: flex-start;
-  /* ←上寄せ */
   position: relative;
 }
 
@@ -478,10 +446,8 @@ button {
   align-items: center;
   padding-top: 0;
   box-sizing: content-box;
-
-  border-right:var(--area-border);
+  border-right: var(--area-border);
   position: relative;
-
 }
 
 .image-container {
@@ -489,8 +455,6 @@ button {
   height: 100%;
   padding-left: 20%;
   padding-right: 20%;
-
-
 }
 
 .caption {
@@ -533,13 +497,9 @@ button {
   position: absolute;
   top: 0;
   left: 50%;
-  /* 親の中央を基準 */
   transform: translateX(-50%);
-  /* 中央揃え */
   width: auto;
-  /* 高さに合わせて調整 */
   height: 100%;
-  /* 親の高さに合わせる */
   opacity: 0;
   z-index: 0;
 }
@@ -571,9 +531,7 @@ button {
 .text-area {
   display: flex;
   flex-direction: column;
-  /* 必須：縦並び */
   overflow-y: auto;
-  /* スクロール可能 */
   position: relative;
 }
 
@@ -588,13 +546,13 @@ button {
 }
 
 .lang-toggle-btn {
-   width: fit-content;
-   padding: 0px 7px;
+  width: fit-content;
+  padding: 0px 7px;
   border: 1px dotted var(--btn-color);
   background: none;
   cursor: pointer;
-   line-height: 18px;
-border-radius: 9px;
+  line-height: 18px;
+  border-radius: 9px;
   font-size: 0.8em;
   font-weight: var(--fontw3);
   position: absolute;
@@ -615,7 +573,6 @@ border-radius: 9px;
 .text-area p {
   font-size: 1em;
   line-height: 40px;
-  /* flex-shrink: 0; 高さ縮小防止 */
   transform: scale(0.9, 1);
   font-weight: var(--fontw3);
   margin-left: -15px;
@@ -659,7 +616,6 @@ border-radius: 9px;
   border: var(--border-light);
   border-radius: 13px;
   padding: 0 9px 0 10px;
-  /* font-family: "IBM Plex Serif", serif; */
   font-style: italic;
   color: var(--color);
   font-weight: var(--fontw2);
@@ -668,8 +624,8 @@ border-radius: 9px;
 }
 
 .text-links a:hover {
-  background-color:  var(--color);
-  border: 1px solid  var(--color);
+  background-color: var(--color);
+  border: 1px solid var(--color);
 }
 
 
@@ -684,9 +640,7 @@ border-radius: 9px;
 
 .scroll-extra {
   display: block !important;
-  /* 横並び防止 */
   width: 100% !important;
-  /* 横幅確保 */
   height: 80px;
   flex-shrink: 0;
 }
@@ -695,7 +649,6 @@ border-radius: 9px;
 .image-area,
 .text-area {
   position: relative;
-  /* ボタンの absolute 基準 */
 }
 
 
@@ -722,7 +675,7 @@ border-radius: 9px;
 
   body {
     font-size: 15px;
-overflow: auto;
+    overflow: auto;
   }
 
   ::-webkit-scrollbar {
@@ -744,7 +697,6 @@ overflow: auto;
   .head1 {
     display: grid;
     grid-template-columns: 160px auto auto;
-    /* width: 300px; */
   }
 
   .head1 .h:last-child {
@@ -766,13 +718,13 @@ overflow: auto;
     background-size: contain;
   }
 
-   .rogo:hover {
+  .rogo:hover {
     height: 27px;
     width: 160px;
     margin-top: 6px;
     margin-left: 15px;
     stroke-width: 3px;
-background: url('../img/rogo_1.svg');
+    background: url('../img/rogo_1.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -798,7 +750,6 @@ background: url('../img/rogo_1.svg');
     line-height: 18px;
     border-radius: 10px;
     padding: 0 5px 0 5px;
-    /* font-family: "IBM Plex Serif", serif; */
     font-style: italic;
     font-size: 15px;
     border: 1px solid var(--a-border-color);
@@ -840,7 +791,6 @@ background: url('../img/rogo_1.svg');
   }
 
   .ebb {
-    /* width: calc(40% - 40px); */
     width: 100vw;
     height: 35px;
     font-size: 1em;
@@ -849,7 +799,6 @@ background: url('../img/rogo_1.svg');
     overflow: hidden;
     border-left: 0px;
     border-top: 1px solid var(--background-border-color);
-    /* margin: 0 0 0 auto; */
   }
 
   main {
@@ -864,20 +813,17 @@ background: url('../img/rogo_1.svg');
     width: 20px;
     height: 60px;
     top: 251px;
-
     line-height: 28px !important;
     letter-spacing: 0 !important;
     border-radius: 13px;
     font-size: 1.5em;
     font-weight: var(--fontw1);
     text-indent: 0px;
-
-
   }
 
-    .scroll-top-btn:hover{
-  border: 1px dotted var(--btn-color);
-}
+  .scroll-top-btn:hover {
+    border: 1px dotted var(--btn-color);
+  }
 
   .list-area,
   .image-area,
@@ -888,16 +834,10 @@ background: url('../img/rogo_1.svg');
         transparent 34px,
         var(--background-border-color) 34px,
         var(--background-border-color) 35px);
-    /* background: #454c50; */
     width: 100%;
-    /* overflow-y: auto; 各エリアを縦スクロール可能に */
     height: calc(100dvh - 106px);
-    ;
-    /* 親要素内で高さを固定 */
     box-sizing: border-box;
-    /* パディングを含めて高さを計算 */
     position: relative;
-    /* ← タイトル固定用に基準設定 */
     border-right: 0;
     overflow-x: hidden;
   }
@@ -905,7 +845,6 @@ background: url('../img/rogo_1.svg');
   .list-container,
   .image-container,
   .text-container {
-
     background: repeating-linear-gradient(to bottom,
         var(--backgroundcolor),
         var(--backgroundcolor) 34px,
@@ -958,7 +897,6 @@ background: url('../img/rogo_1.svg');
   }
 
   .list-area {
-    /* padding-bottom: 30px; */
     border-right: 0px;
   }
 
@@ -985,9 +923,8 @@ background: url('../img/rogo_1.svg');
   }
 
   .mobile-random-image {
- 
-  margin: -1px auto 0 auto;
-}
+    margin: -1px auto 0 auto;
+  }
 
   /* 最後のエリアは右のボーダーなし */
 
@@ -1008,17 +945,13 @@ background: url('../img/rogo_1.svg');
   }
 
   .lang-toggle-btn {
-    
     top: 77px;
     right: 30px;
     color: var(--btn-color);
-    
-    
   }
 
   .lang-toggle-btn:hover {
-   border: 1px dotted var(--btn-color);
-
+    border: 1px dotted var(--btn-color);
   }
 
   .text-ja {
@@ -1031,7 +964,6 @@ background: url('../img/rogo_1.svg');
   }
 
   .text-en {
-
     margin-bottom: 30px;
     margin-left: -13px;
   }
@@ -1047,19 +979,15 @@ background: url('../img/rogo_1.svg');
   .mobile-jp-title {
     font-weight: var(--fontw6) !important;
     letter-spacing: 0.6rem !important;
-
-
   }
 
   .mobile-en-title {
     font-weight: var(--fontw6) !important;
     letter-spacing: 0.4rem !important;
     font-size: 1.1em !important;
-
   }
 
   .text-links {
-
     gap: 13px 15px;
     line-height: 35px;
     display: flex;
@@ -1072,12 +1000,10 @@ background: url('../img/rogo_1.svg');
     margin-top: 7px;
     line-height: 20px;
     text-decoration: none;
-
     display: inline-block;
     border: var(--border-light);
     border-radius: 11px;
     padding: 0 7px 0 10px;
-
     font-weight: var(--fontw3);
     font-size: 15px;
   }
@@ -1088,7 +1014,6 @@ background: url('../img/rogo_1.svg');
     100% {
       background-color: var(--color);
       color: var(--backgroundcolor);
-
     }
 
     98% {
@@ -1101,7 +1026,6 @@ background: url('../img/rogo_1.svg');
   .text-links a,
   .youtube a {
     animation: linkanime 4s step-start infinite;
-
     animation-name: linkanime;
   }
 
@@ -1116,7 +1040,7 @@ background: url('../img/rogo_1.svg');
     background-color: var(--backgroundcolor);
     writing-mode: vertical-rl;
     text-decoration: none;
-   color: var(--color);
+    color: var(--color);
     font-family: "Baskervville", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -1124,7 +1048,6 @@ background: url('../img/rogo_1.svg');
     font-size: 17px;
     line-height: 35px;
     display: none;
-
   }
 
   .mobile-nav-btn-text {

@@ -24,13 +24,9 @@
     --fontw7: 700;
     --fontw8: 800;
 
-
-
     --border: 1px solid var(--background-border-color);
     --border-light: 1px solid #adadad;
-
     --area-border:0px solid var(--vertical-border);
-
 }
 
   /* --backgroundcolor: #454c50; */

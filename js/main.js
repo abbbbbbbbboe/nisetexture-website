@@ -14,30 +14,11 @@ const filterArea = document.getElementById('archive-sort-buttons');
 let skipScrolling = false;
 
 let currentIndex = null;
-let currentArchiveFilters = []; 
+let currentArchiveFilters = [];
 let archiveSortButtons = [];
 
 
-// ================================
-// 🆕 フィルタによる表示・非表示
-// ================================
-// function updateListByFilter() {
-//   const items = contents[currentCategory];
-//   const filters = currentArchiveFilters.map(f => f.toLowerCase());
 
-//   listContainer.querySelectorAll('.list-item').forEach((el) => {
-//     const index = Number(el.dataset.index);
-//     const item = items[index];
-
-//     const categories = Array.isArray(item.category)
-//       ? item.category.map(c => c.toLowerCase())
-//       : item.category.split(',').map(s => s.trim().toLowerCase());
-
-//     const matches = (filters.length === 0) || categories.some(c => filters.includes(c));
-
-//     el.style.display = matches ? '' : 'none';
-//   });
-// }
 
 // ================================
 // 🆕 フィルタによる表示・非表示
@@ -95,68 +76,68 @@ function generateArchiveSortButtons() {
   container.innerHTML = '';
 
   // --- sortボタン生成の「前」に画像を追加 ---
-const imgBefore = document.createElement("img");
-imgBefore.src = "img/parentheses.svg"; // ←画像パス
-imgBefore.alt = "parentheses";
-imgBefore.className = "archive-parentheses-left"; // 任意
-container.appendChild(imgBefore);
+  const imgBefore = document.createElement("img");
+  imgBefore.src = "img/parentheses.svg"; // ←画像パス
+  imgBefore.alt = "parentheses";
+  imgBefore.className = "archive-parentheses-left"; // 任意
+  container.appendChild(imgBefore);
 
-// --- カテゴリ集計 ---
-const categoryCount = {};
-contents.archive.forEach(item => {
-  const cats = item.category.split(',').map(c => c.trim());
-  cats.forEach(cat => {
-    categoryCount[cat] = (categoryCount[cat] || 0) + 1;
+  // --- カテゴリ集計 ---
+  const categoryCount = {};
+  contents.archive.forEach(item => {
+    const cats = item.category.split(',').map(c => c.trim());
+    cats.forEach(cat => {
+      categoryCount[cat] = (categoryCount[cat] || 0) + 1;
+    });
   });
-});
 
-// 優先カテゴリ順
-const priorityOrder = ['work', 'exhibition', 'news'];
+  // 優先カテゴリ順
+  const priorityOrder = ['work', 'exhibition', 'news'];
 
-const sortedCats = Object.entries(categoryCount)
-  .sort((a, b) => {
-    const [catA, countA] = a;
-    const [catB, countB] = b;
+  const sortedCats = Object.entries(categoryCount)
+    .sort((a, b) => {
+      const [catA, countA] = a;
+      const [catB, countB] = b;
 
-    const idxA = priorityOrder.indexOf(catA);
-    const idxB = priorityOrder.indexOf(catB);
+      const idxA = priorityOrder.indexOf(catA);
+      const idxB = priorityOrder.indexOf(catB);
 
-    const isPriorityA = idxA !== -1;
-    const isPriorityB = idxB !== -1;
+      const isPriorityA = idxA !== -1;
+      const isPriorityB = idxB !== -1;
 
-    // ① 優先カテゴリ同士 → priorityOrder の順
-    if (isPriorityA && isPriorityB) {
-      return idxA - idxB;
-    }
+      // ① 優先カテゴリ同士 → priorityOrder の順
+      if (isPriorityA && isPriorityB) {
+        return idxA - idxB;
+      }
 
-    // ② 優先カテゴリ vs 通常カテゴリ → 優先を先に
-    if (isPriorityA) return -1;
-    if (isPriorityB) return 1;
+      // ② 優先カテゴリ vs 通常カテゴリ → 優先を先に
+      if (isPriorityA) return -1;
+      if (isPriorityB) return 1;
 
-    // ③ 通常カテゴリ同士 → 数が多い順
-    if (countA !== countB) {
-      return countB - countA;
-    }
+      // ③ 通常カテゴリ同士 → 数が多い順
+      if (countA !== countB) {
+        return countB - countA;
+      }
 
-    // ④ 同数ならアルファベット順
-    return catA.localeCompare(catB);
-  })
-  .map(([cate]) => cate);
+      // ④ 同数ならアルファベット順
+      return catA.localeCompare(catB);
+    })
+    .map(([cate]) => cate);
 
   // --- sortボタン生成 ---
-sortedCats.forEach(categ => {
-  const btn = document.createElement('button');
-  btn.dataset.archiveCategory = categ;
-  btn.className = "archive-filter";
-  btn.innerHTML = "*" + randomLetterSpacing(categ);
-  container.appendChild(btn);
-});
+  sortedCats.forEach(categ => {
+    const btn = document.createElement('button');
+    btn.dataset.archiveCategory = categ;
+    btn.className = "archive-filter";
+    btn.innerHTML = "*" + randomLetterSpacing(categ);
+    container.appendChild(btn);
+  });
 
-// --- リセットボタン ---
-const resetBtn = document.createElement('button');
-resetBtn.textContent = "all";
-resetBtn.className = "archive-filter-reset";
-container.appendChild(resetBtn);
+  // --- リセットボタン ---
+  const resetBtn = document.createElement('button');
+  resetBtn.textContent = "all";
+  resetBtn.className = "archive-filter-reset";
+  container.appendChild(resetBtn);
 
 
   // ④ 後に画像を追加
@@ -166,157 +147,151 @@ container.appendChild(resetBtn);
   imgAfter.className = "archive-parentheses-right";
   container.appendChild(imgAfter);
 
- // ✅ カテゴリボタンだけを取得
-archiveSortButtons = Array.from(
-  container.querySelectorAll('button[data-archive-category]')
-);
+  // ✅ カテゴリボタンだけを取得
+  archiveSortButtons = Array.from(
+    container.querySelectorAll('button[data-archive-category]')
+  );
 
-// ================================
-// 📌 リセットボタン
-// ================================
-resetBtn.addEventListener('click', () => {
-  console.log("🔵 RESET FILTER");
+  // ================================
+  // 📌 リセットボタン
+  // ================================
+  resetBtn.addEventListener('click', () => {
 
-  // 1) currentArchiveFilters を完全に空にする
-  currentArchiveFilters = [];
+    // 1) currentArchiveFilters を完全に空にする
+    currentArchiveFilters = [];
 
-  // 2) 今の URL から category / itemId を取り出す
-  const currentHash = window.location.hash;
-  const [catPart] = currentHash.replace('#', '').split('?');
-  const [category, itemId] = catPart.split('/');
-
-  // 3) /A（作品ID）は残すが ?filter= は付けない
-  let newHash = `#${category || 'archive'}`;
-  if (itemId) newHash += `/${itemId}`;
-
-  // showCategory が暴発しないよう一時停止
-  window.suppressHashRender = true;
-  window.location.hash = newHash;
-  setTimeout(() => { window.suppressHashRender = false; }, 50);
-
-  // 4) 左リストのフィルターを解除して再描画
-  updateListByFilter('archive');
-
-  // 5) ボタンの見た目も更新
-  updateArchiveButtonStates();
-
-  console.log("🟠 RESET後のフィルター:", currentArchiveFilters);
-});
-
-
-
-  
-
-
-// ================================
-// 📌 フィルターボタンクリック処理（URL反映版 / 正式版）
-// ================================
-archiveSortButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selected = btn.dataset.archiveCategory;
-
-    console.log("🔵 FILTER TOGGLE:", selected);
-    console.log("   BEFORE:", [...currentArchiveFilters]);
-
-    // ON/OFF切り替え
-    if (currentArchiveFilters.includes(selected)) {
-      currentArchiveFilters = currentArchiveFilters.filter(f => f !== selected);
-    } else {
-      currentArchiveFilters.push(selected);
-    }
-    console.log("   AFTER:", [...currentArchiveFilters]);
-
-    // ✅ 現在のハッシュを解析
+    // 2) 今の URL から category / itemId を取り出す
     const currentHash = window.location.hash;
     const [catPart] = currentHash.replace('#', '').split('?');
     const [category, itemId] = catPart.split('/');
 
-    // ✅ 新しいハッシュ構築（作品表示状態は保持）
+    // 3) /A（作品ID）は残すが ?filter= は付けない
     let newHash = `#${category || 'archive'}`;
     if (itemId) newHash += `/${itemId}`;
 
-    if (currentArchiveFilters.length > 0) {
-      newHash += `?filter=${currentArchiveFilters.join(',')}`;
-    }
-
-    // ✅ 「ここが大事」 URL更新で showCategory が走らないように一時停止
+    // showCategory が暴発しないよう一時停止
     window.suppressHashRender = true;
     window.location.hash = newHash;
     setTimeout(() => { window.suppressHashRender = false; }, 50);
 
-    // ✅ 左リストを更新
+    // 4) 左リストのフィルターを解除して再描画
     updateListByFilter('archive');
 
-    // ===============================
-// ✅ 表示中の作品がフィルタに一致するかチェック
-// ===============================
-if (window.currentRenderedId) {
-  const currentItem = contents.archive.find(i => i.id === window.currentRenderedId);
+    // 5) ボタンの見た目も更新
+    updateArchiveButtonStates();
 
-  if (currentItem) {
-    // item.category を配列化
-    let itemCategories = Array.isArray(currentItem.category)
-      ? currentItem.category
-      : currentItem.category.split(',').map(s => s.trim());
+   
+  });
 
-    // フィルタに合致するか
-    const matches =
-      currentArchiveFilters.length === 0 ||
-      itemCategories.some(cat => currentArchiveFilters.includes(cat));
 
-    // ✅ 合わなくなった場合 → 作品表示を解除
-    if (!matches) {
-      console.log("🚫 現在表示中の作品がフィルタに合わないため非表示にします");
 
-      const imgContainer = imageArea.querySelector('.image-container');
-if (imgContainer) {
-  imgContainer.innerHTML = "";
-}
 
-const textContainer = textArea.querySelector('.text-container');
-if (textContainer) {
-  textContainer.innerHTML = "";
-}
 
-      // 内部状態リセット
-      window.currentRenderedId = null;
-      currentIndex = null;
 
-       // ✅ リスト内の active クラスを全て解除する
- listArea.querySelectorAll('.list-item.active')
-   .forEach(el => el.classList.remove('active'));
+  // ================================
+  // 📌 フィルターボタンクリック処理（URL反映版 / 正式版）
+  // ================================
+  archiveSortButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.archiveCategory;
 
-      // URL から ID を削除 → #archive?filter=...
-      let newHash = `#archive`;
+      // ON/OFF切り替え
+      if (currentArchiveFilters.includes(selected)) {
+        currentArchiveFilters = currentArchiveFilters.filter(f => f !== selected);
+      } else {
+        currentArchiveFilters.push(selected);
+      }
+
+      // ✅ 現在のハッシュを解析
+      const currentHash = window.location.hash;
+      const [catPart] = currentHash.replace('#', '').split('?');
+      const [category, itemId] = catPart.split('/');
+
+      // ✅ 新しいハッシュ構築（作品表示状態は保持）
+      let newHash = `#${category || 'archive'}`;
+      if (itemId) newHash += `/${itemId}`;
+
       if (currentArchiveFilters.length > 0) {
         newHash += `?filter=${currentArchiveFilters.join(',')}`;
       }
 
+      // ✅ 「ここが大事」 URL更新で showCategory が走らないように一時停止
       window.suppressHashRender = true;
       window.location.hash = newHash;
       setTimeout(() => { window.suppressHashRender = false; }, 50);
-    }
-  }
-}
- 
-    // ✅ ボタン見た目を更新
-    updateArchiveButtonStates();
 
-    console.log("🟠 フィルター更新後:", currentArchiveFilters);
+      // ✅ 左リストを更新
+      updateListByFilter('archive');
+
+      // ===============================
+      // ✅ 表示中の作品がフィルタに一致するかチェック
+      // ===============================
+      if (window.currentRenderedId) {
+        const currentItem = contents.archive.find(i => i.id === window.currentRenderedId);
+
+        if (currentItem) {
+          // item.category を配列化
+          let itemCategories = Array.isArray(currentItem.category)
+            ? currentItem.category
+            : currentItem.category.split(',').map(s => s.trim());
+
+          // フィルタに合致するか
+          const matches =
+            currentArchiveFilters.length === 0 ||
+            itemCategories.some(cat => currentArchiveFilters.includes(cat));
+
+          // ✅ 合わなくなった場合 → 作品表示を解除
+          if (!matches) {
+         
+
+            const imgContainer = imageArea.querySelector('.image-container');
+            if (imgContainer) {
+              imgContainer.innerHTML = "";
+            }
+
+            const textContainer = textArea.querySelector('.text-container');
+            if (textContainer) {
+              textContainer.innerHTML = "";
+            }
+
+            // 内部状態リセット
+            window.currentRenderedId = null;
+            currentIndex = null;
+
+            // ✅ リスト内の active クラスを全て解除する
+            listArea.querySelectorAll('.list-item.active')
+              .forEach(el => el.classList.remove('active'));
+
+            // URL から ID を削除 → #archive?filter=...
+            let newHash = `#archive`;
+            if (currentArchiveFilters.length > 0) {
+              newHash += `?filter=${currentArchiveFilters.join(',')}`;
+            }
+
+            window.suppressHashRender = true;
+            window.location.hash = newHash;
+            setTimeout(() => { window.suppressHashRender = false; }, 50);
+          }
+        }
+      }
+
+      // ✅ ボタン見た目を更新
+      updateArchiveButtonStates();
+
+    });
   });
-});
 
 
 
-   
-  
+
+
 }
 
 // ================================
-  // プレビュー描画関数
-  // ================================
-  function renderPreview(data) {
-     if (isMobile()) return;
+// プレビュー描画関数
+// ================================
+function renderPreview(data) {
+  if (isMobile()) return;
   page.querySelectorAll('img.preview').forEach(el => el.remove());
   document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
   textArea.querySelectorAll('.scroll-extra').forEach(el => el.remove());
@@ -344,66 +319,66 @@ if (textContainer) {
     img.style.zIndex = '999';
     img.style.pointerEvents = 'none';
     // img.style.filter = '    grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(90%) brightness(85%) contrast(105%)';
-    
+
     page.appendChild(img);
   }
 
   // --- プレビュー短文を生成 ---
-const jpText = data.text_jp || data.text_ja || data.text || "";
+  const jpText = data.text_jp || data.text_ja || data.text || "";
   const enText = data.text_en || "";
 
-// --- 日本語の一文を抽出 ---
+  // --- 日本語の一文を抽出 ---
   const jpPreview = jpText.split("。")[0] + (jpText.includes("。") ? "。" : "");
 
-// --- 英語の一文を抽出 ---
-function getFirstSentenceWithHTML(htmlText) {
-  // 仮の div に流してテキストだけ抽出
-  const tmpDiv = document.createElement('div');
-  tmpDiv.innerHTML = htmlText;
-  const textContent = tmpDiv.textContent || tmpDiv.innerText || "";
+  // --- 英語の一文を抽出 ---
+  function getFirstSentenceWithHTML(htmlText) {
+    // 仮の div に流してテキストだけ抽出
+    const tmpDiv = document.createElement('div');
+    tmpDiv.innerHTML = htmlText;
+    const textContent = tmpDiv.textContent || tmpDiv.innerText || "";
 
-  // 最初のピリオドまでを取得（日本語なら '。' に置き換え可）
-  const match = textContent.match(/.*?[.。!?]/); 
-  if (!match) return htmlText; // 文が見つからなければそのまま返す
+    // 最初のピリオドまでを取得（日本語なら '。' に置き換え可）
+    const match = textContent.match(/.*?[.。!?]/);
+    if (!match) return htmlText; // 文が見つからなければそのまま返す
 
-  const firstSentenceText = match[0];
+    const firstSentenceText = match[0];
 
-  // 元の HTML から対応する部分を復元
-  let count = 0;
-  let resultHTML = "";
-  const parser = document.createElement('div');
-  parser.innerHTML = htmlText;
+    // 元の HTML から対応する部分を復元
+    let count = 0;
+    let resultHTML = "";
+    const parser = document.createElement('div');
+    parser.innerHTML = htmlText;
 
-  function traverse(node) {
-    if (count >= firstSentenceText.length) return;
+    function traverse(node) {
+      if (count >= firstSentenceText.length) return;
 
-    if (node.nodeType === Node.TEXT_NODE) {
-      const remaining = firstSentenceText.length - count;
-      resultHTML += node.textContent.slice(0, remaining);
-      count += node.textContent.slice(0, remaining).length;
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      resultHTML += `<${node.tagName.toLowerCase()}`;
-      // 属性もコピー
-      for (let attr of node.attributes) {
-        resultHTML += ` ${attr.name}="${attr.value}"`;
+      if (node.nodeType === Node.TEXT_NODE) {
+        const remaining = firstSentenceText.length - count;
+        resultHTML += node.textContent.slice(0, remaining);
+        count += node.textContent.slice(0, remaining).length;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        resultHTML += `<${node.tagName.toLowerCase()}`;
+        // 属性もコピー
+        for (let attr of node.attributes) {
+          resultHTML += ` ${attr.name}="${attr.value}"`;
+        }
+        resultHTML += '>';
+        for (let child of node.childNodes) {
+          traverse(child);
+        }
+        resultHTML += `</${node.tagName.toLowerCase()}>`;
       }
-      resultHTML += '>';
-      for (let child of node.childNodes) {
-        traverse(child);
-      }
-      resultHTML += `</${node.tagName.toLowerCase()}>`;
     }
+
+    parser.childNodes.forEach(traverse);
+    return resultHTML;
   }
 
-  parser.childNodes.forEach(traverse);
-  return resultHTML;
-}
-
-// 使用例
-const enPreview = getFirstSentenceWithHTML(enText);
+  // 使用例
+  const enPreview = getFirstSentenceWithHTML(enText);
 
 
- 
+
   const rect = textArea.getBoundingClientRect();
 
   // プレビュー用ラッパー
@@ -420,9 +395,9 @@ const enPreview = getFirstSentenceWithHTML(enText);
   wrapper.style.margin = '0';
   // wrapper.style.mixBlendMode = 'difference';
   wrapper.style.color = '#000';
-  
-  
-  
+
+
+
   if (jpPreview.trim()) {
     const pJp = document.createElement('p');
     pJp.className = 'preview-text text-ja';
@@ -435,7 +410,7 @@ const enPreview = getFirstSentenceWithHTML(enText);
     const pEn = document.createElement('p');
     pEn.className = 'preview-text text-en';
     pEn.innerHTML = enPreview;
-   
+
     wrapper.appendChild(pEn);
   }
 
@@ -443,8 +418,8 @@ const enPreview = getFirstSentenceWithHTML(enText);
 }
 
 // ================================
-  // archive初期画面でitemをホバーした時にプレビューを出す。
-  // ================================
+// archive初期画面でitemをホバーした時にプレビューを出す。
+// ================================
 function attachArchiveHoverEvents() {
   listArea.querySelectorAll('.list-item').forEach(itemEl => {
     itemEl.addEventListener('mouseenter', e => {
@@ -457,11 +432,11 @@ function attachArchiveHoverEvents() {
     });
 
     itemEl.addEventListener('mouseleave', () => {
-      
+
       // プレビューを消す処理（あなたの既存コードに合わせる）
       page.querySelectorAll('img.preview').forEach(el => el.remove());
       document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
-      
+
       // 消した後、右側の通常テキストを再表示
       textArea.querySelectorAll('.text-section').forEach(el => {
         el.style.visibility = 'visible';
@@ -471,8 +446,8 @@ function attachArchiveHoverEvents() {
 }
 
 // ================================
-  // 左のリストの要素の構成
-  // ================================
+// 左のリストの要素の構成
+// ================================
 
 function generateArchiveList() {
   listContainer.innerHTML = '';
@@ -485,11 +460,11 @@ function generateArchiveList() {
     div.dataset.index = i;
     div.dataset.id = item.id;
 
-    
+
 
     // まず基本情報を入れる
     div.innerHTML = `
-      <div class="list-title">+&ensp;${randomLetterSpacing(item.title,0.5,3)}&ensp;+</div>
+      <div class="list-title">+&ensp;${randomLetterSpacing(item.title, 0.5, 3)}&ensp;+</div>
       <div class="list-meta">
         <span class="list-date">(${item.date || ''})</span>
         <br>
@@ -527,8 +502,8 @@ function generateArchiveList() {
           metaBlock.insertAdjacentElement("afterend", mobileImg);
         }
       }
-      
-      
+
+
     }
 
     // active 表示
@@ -536,12 +511,14 @@ function generateArchiveList() {
 
     // click → showCategory()
     div.addEventListener('click', () => {
-      
-const previewtext = document.querySelector('.preview-text-wrapper'); // class
-if (previewtext) {
-  previewtext.innerHTML = '';
-}
-page.querySelectorAll('img.preview').forEach(el => el.remove());
+
+ 
+
+      const previewtext = document.querySelector('.preview-text-wrapper'); // class
+      if (previewtext) {
+        previewtext.innerHTML = '';
+      }
+      page.querySelectorAll('img.preview').forEach(el => el.remove());
 
 
       currentIndex = i;
@@ -561,14 +538,13 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
       if (isMobile()) {
         activeSection = "image";
         updateMobileView();
-      adjustMediaSizes();
+        adjustMediaSizes();
       }
 
       window.suppressHashRender = true;
       window.location.hash = newHash;
       setTimeout(() => window.suppressHashRender = false, 50);
 
-     
     });
 
     // list-item を追加
@@ -579,11 +555,8 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
     spacer.className = "list-item-spacer";
     listContainer.appendChild(spacer);
   });
-  
-// const listContainerSpacer = document.createElement("div");
-//     listContainerSpacer.className = "list-container-spacer";
-//     listContainer.appendChild(listContainerSpacer);
-  
+
+
 
   // フィルタ適用
   updateListByFilter('archive');
@@ -592,25 +565,20 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
   attachArchiveHoverEvents();
 
   // === activeを画面内にスクロール ===
-setTimeout(() => {
-  const activeItem = listContainer.querySelector('.list-item.active');
-  if (activeItem) {
-    activeItem.scrollIntoView({
-      block: 'start',
-      behavior: 'instant' // "smooth" でもOK
-    });
-  }
-}, 0);
+  setTimeout(() => {
+    const activeItem = listContainer.querySelector('.list-item.active');
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        block: 'start',
+        behavior: 'instant' // "smooth" でもOK
+      });
+    }
+  }, 0);
 
 
 }
 
 
-
-// URL の ?filter=〜 を削除して上書き
-// if (window.location.search.includes("filter")) {
-//   history.replaceState(null, "", window.location.pathname + window.location.hash);
-// }
 
 
 
@@ -645,21 +613,6 @@ function updateArchiveButtonStates() {
 
 
 
-// ================================
-// 初期ロード＆ハッシュ変化対応
-// ================================
-
-// 重複防止：まず既存のイベントを削除（安全策）
-// window.removeEventListener('hashchange', handleHashChange);
-// window.removeEventListener('DOMContentLoaded', handleHashChange);
-
-// イベントを1箇所で登録
-// window.addEventListener('hashchange', handleHashChange);
-// window.addEventListener('DOMContentLoaded', handleHashChange);
-
-
-
-
 // =====================================================
 // ✅ ページ読み込み時
 // ページ読み込み時にフィルターボタンを生成＆状態更新
@@ -680,22 +633,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idx !== -1) currentIndex = idx;
   }
 
-   // ★★ リロード時に padding を反映 ★★
+  // ★★ リロード時に padding を反映 ★★
   if (category === 'archive') {
     imageContainer.style.paddingLeft = "40px";
     imageContainer.style.paddingRight = "40px";
-     // ★★ archive ページなら最初に右側と左側の中身を空にする ★★
+    // ★★ archive ページなら最初に右側と左側の中身を空にする ★★
     if (imageContainer) imageContainer.innerHTML = '';
     if (textsContainer) textsContainer.innerHTML = '';
   } else {
     imageContainer.style.paddingLeft = "0px";
     imageContainer.style.paddingRight = "0px";
   }
-// imageContainer.innerHTML = "";
-// textsContainer.innerHTML = "";
 
-   generateArchiveSortButtons(); 
-  console.log("listArea:", listArea, "imageArea:", imageArea, "textArea:", textArea);
+  generateArchiveSortButtons();
   // ★ メニューボタンの active 管理
   const menuButtons = document.querySelectorAll('.menu button');
   menuButtons.forEach(btn => btn.classList.remove('active'));
@@ -705,28 +655,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ★ ソートボタンの表示制御
- toggleArchiveSortButtons(category === 'archive');
+  toggleArchiveSortButtons(category === 'archive');
 
 
-    if (category === 'archive') {
-   if (textsContainer) textsContainer.innerHTML = '';
-    generateArchiveList(); 
-       
-  }     
- 
+  if (category === 'archive') {
+    if (textsContainer) textsContainer.innerHTML = '';
+    generateArchiveList();
+
+  }
+
   updateArchiveButtonStates();   // ← フィルターボタンの見た目更新
   // 選択中作品を右側に表示
-   if (Number.isInteger(currentIndex) && contents.archive[currentIndex]) {
+  if (Number.isInteger(currentIndex) && contents.archive[currentIndex]) {
     showCategory('archive', currentIndex, currentArchiveFilters.length ? currentArchiveFilters : 'all');
   }
 
-attachScrollStep();
-updateMobileView();
+  attachScrollStep();
+  updateMobileView();
 
-// ===== 初期描画完了後に表示 =====
-if (listContainer) listContainer.style.visibility = 'visible';
-if (imageContainer) imageContainer.style.visibility = 'visible';
-if (textsContainer) textsContainer.style.visibility = 'visible';
+  // ===== 初期描画完了後に表示 =====
+  if (listContainer) listContainer.style.visibility = 'visible';
+  if (imageContainer) imageContainer.style.visibility = 'visible';
+  if (textsContainer) textsContainer.style.visibility = 'visible';
 });
 
 
@@ -736,6 +686,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("langToggle");
   const jpText = document.querySelector(".top-text");
   const enText = document.querySelector(".top-text-en");
+
+  if (!toggleBtn || !jpText || !enText) return;
 
   toggleBtn.addEventListener("click", () => {
     if (jpText.style.display === "none") {
@@ -759,75 +711,72 @@ document.addEventListener("DOMContentLoaded", () => {
 // ✅ ハッシュ解析 & 表示処理
 // =====================================================
 function handleHashChange() {
-  console.log('%c🔁 handleHashChange 発火', 'color: cyan; font-weight: bold;', window.location.hash);
+
 
 
   if (window.suppressHashRender) {
-    console.log('ℹ️ handleHashChange: suppressHashRender active — skip showCategory');
     return;
   }
 
   //URLから現状のページ状態を解析
-const hash = window.location.hash.replace('#', '');
-const [catPart, queryPart = ''] = hash.split('?');
-const [category, itemId] = catPart.split('/');
-const params = new URLSearchParams(queryPart);
+  const hash = window.location.hash.replace('#', '');
+  const [catPart, queryPart = ''] = hash.split('?');
+  const [category, itemId] = catPart.split('/');
+  const params = new URLSearchParams(queryPart);
 
- console.log('🟡 currentRenderedId:', window.currentRenderedId, '🔹 itemId:', itemId);
 
   // --- フィルター取得（常に配列へ統一） ---
   let filterCategory = params.get('filter');
   filterCategory = filterCategory && filterCategory !== 'all'
     ? filterCategory.split(',').map(s => s.trim())
     : [];
-    
-currentArchiveFilters = filterCategory;
+
+  currentArchiveFilters = filterCategory;
 
   const sameCategory = category === window.currentCategory;
   const sameItem = itemId === window.currentRenderedId;
 
   // ✅ フィルター変更のみ
   if (sameCategory && sameItem) {
-  // console.log("♻️ フィルター変更のみ：リスト更新＋作品維持");
-  updateArchiveButtonStates();
+  
+    updateArchiveButtonStates();
 
-  // ✅ 現在の作品がフィルター対象外なら非表示にする
-  if (window.currentRenderedId && category === 'archive') {
-    const currentItem = contents.archive.find(i => i.id === window.currentRenderedId);
-    if (currentItem) {
-      const itemCats = Array.isArray(currentItem.category)
-        ? currentItem.category
-        : currentItem.category.split(',').map(s => s.trim());
-      const filters = currentArchiveFilters.map(f => f.toLowerCase());
-      const match = filters.length === 0 || itemCats.some(c => filters.includes(c.toLowerCase()));
+    // ✅ 現在の作品がフィルター対象外なら非表示にする
+    if (window.currentRenderedId && category === 'archive') {
+      const currentItem = contents.archive.find(i => i.id === window.currentRenderedId);
+      if (currentItem) {
+        const itemCats = Array.isArray(currentItem.category)
+          ? currentItem.category
+          : currentItem.category.split(',').map(s => s.trim());
+        const filters = currentArchiveFilters.map(f => f.toLowerCase());
+        const match = filters.length === 0 || itemCats.some(c => filters.includes(c.toLowerCase()));
 
-    if (!match) {
-  // console.log("🚫 現在の作品がフィルター対象外 → 非表示にします");
-  imageArea.querySelectorAll('iframe, img, video, .caption').forEach(el => el.remove());
-  textArea.querySelectorAll('p, .scroll-extra, a').forEach(el => el.remove());
+        if (!match) {
+          imageArea.querySelectorAll('iframe, img, video, .caption').forEach(el => el.remove());
+          textArea.querySelectorAll('p, .scroll-extra, a').forEach(el => el.remove());
 
-  window.currentRenderedId = null;
-  currentIndex = null;
-  listContainer.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
+          window.currentRenderedId = null;
+          currentIndex = null;
+          listContainer.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
 
-  // ✅ ここから追加：URLから itemId を削除（suppress でループ防止）
-  window.suppressHashRender = true;
-  const baseHash = `#${category}`;
-  const filterPart = currentArchiveFilters.length > 0
-    ? `?filter=${currentArchiveFilters.join(',')}`
-    : '';
-  window.location.hash = baseHash + filterPart;
-  setTimeout(() => { window.suppressHashRender = false; }, 50);
-}
+          // ✅ ここから追加：URLから itemId を削除（suppress でループ防止）
+          window.suppressHashRender = true;
+          const baseHash = `#${category}`;
+          const filterPart = currentArchiveFilters.length > 0
+            ? `?filter=${currentArchiveFilters.join(',')}`
+            : '';
+          window.location.hash = baseHash + filterPart;
+          setTimeout(() => { window.suppressHashRender = false; }, 50);
+        }
 
+      }
     }
+
+    setTimeout(() => updateListByFilter(category), 100);
+    return;
   }
 
-  setTimeout(() => updateListByFilter(category), 100);
-  return;
-}
-
-//フィルターの変更のみでない場合は以下の処理
+  //フィルターの変更のみでない場合は以下の処理
   window.currentCategory = category;
 
   //URLからアーカイブのidを探しその配列内のインデックスをセットする。
@@ -838,42 +787,25 @@ currentArchiveFilters = filterCategory;
   } else if (itemId && !isNaN(parseInt(itemId))) {
     targetIndex = parseInt(itemId);
   }
- // ✅ フィルタ解除で itemId があるのに targetIndex が null になるのを防ぐ
- if (category === 'archive' && itemId && targetIndex == null) {
-   const fallback = contents.archive.findIndex(i => i.id === itemId);
-   if (fallback !== -1) targetIndex = fallback;
-}
-// console.log('🟦 showCategory called', category, 'targetIndex:', targetIndex);
+  // ✅ フィルタ解除で itemId があるのに targetIndex が null になるのを防ぐ
+  if (category === 'archive' && itemId && targetIndex == null) {
+    const fallback = contents.archive.findIndex(i => i.id === itemId);
+    if (fallback !== -1) targetIndex = fallback;
+  }
+ 
 
 
-if (category) {
-const isDifferentItem = itemId !== window.currentRenderedId;
+  if (category) {
+    const isDifferentItem = itemId !== window.currentRenderedId;
 
-  console.log('✅ forceScrollReset 判定', {
-    category,
-    targetIndex,
-    currentRenderedId: window.currentRenderedId,
-    newItemId: itemId,
-    forceScrollReset: isDifferentItem
-  });
-console.log("🟡 showCategory 呼び出し:", {
-  category,
-  targetIndex,
-  filterCategory,
-  forceScrollReset: isDifferentItem,
-  skipRestore: isDifferentItem
-});
 
-  showCategory(category, targetIndex, filterCategory, {
-    forceScrollReset: isDifferentItem ,  // ← 作品が変わったときだけスクロールリセット
-    skipRestore: isDifferentItem 
- });
-}
+    showCategory(category, targetIndex, filterCategory, {
+      forceScrollReset: isDifferentItem,  // ← 作品が変わったときだけスクロールリセット
+      skipRestore: isDifferentItem
+    });
+  }
 
-updateArchiveButtonStates();
+  updateArchiveButtonStates();
 
-  console.log("🔗 URL → filter:", filterCategory);
-console.log("📦 内部状態 currentArchiveFilters:", currentArchiveFilters);
-console.log("🎯 currentRenderedId:", window.currentRenderedId);
 
 }

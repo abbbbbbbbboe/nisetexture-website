@@ -5,47 +5,27 @@
 // ✅ カテゴリー表示関数（修正版）
 // =====================================================
 function showCategory(category, autoIndex = null, filterCategory = 'all', options = {}) {
-
-
-  
   const prevImageScroll = imageContainer ? imageContainer.scrollTop : 0;
-  const prevTextScroll  = textsContainer ? textsContainer.scrollTop : 0;
-
-   
-
-
-
-   console.log('%c📌 showCategory 実行', 'color: green; font-weight: bold;', {category, autoIndex, currentIndex});
+  const prevTextScroll = textsContainer ? textsContainer.scrollTop : 0;
   const forceScrollReset = options.forceScrollReset || false;
 
   // 🟩 特殊処理: archiveカテゴリで個別作品を指定して表示する場合
   let shouldRenderFull = false;
-let itemToRender = null;
+  let itemToRender = null;
 
-if (category === 'archive' && autoIndex !== null) {
-  itemToRender = contents.archive[autoIndex];
-  if (itemToRender) {
-    currentIndex = autoIndex; // 左リストで active クラス同期用
-    shouldRenderFull = true;  // 後で右エリア描画
+  if (category === 'archive' && autoIndex !== null) {
+    itemToRender = contents.archive[autoIndex];
+    if (itemToRender) {
+      currentIndex = autoIndex; // 左リストで active クラス同期用
+      shouldRenderFull = true;  // 後で右エリア描画
+    }
   }
-}
 
   // 🟦 通常のカテゴリ表示処理
   const items = contents[category];
   if (!items) return;
 
-  // console.log('🟦 showCategory called', category, 'autoIndex:', autoIndex);
-
-  // if (window.skipNextShowCategory) {
-  //   // console.log('⏩ showCategory skipped (manual renderFull already done)');
-  //   window.skipNextShowCategory = false;
-  //   return;
-  // }
-
   window.currentCategory = category;
-
-  
-
 
 
   // ================================
@@ -72,7 +52,7 @@ if (category === 'archive' && autoIndex !== null) {
   }
 
 
-  
+
   // ================================
   // 🔹 メニュー・UI 更新　
   // ================================
@@ -84,7 +64,7 @@ if (category === 'archive' && autoIndex !== null) {
   // ================================
   // 🔹 表示初期化
   // ================================
-  
+
   imageArea.querySelectorAll('iframe, img, video, .caption').forEach(el => el.remove());
   textsContainer.querySelectorAll('p, .scroll-extra, a').forEach(el => el.remove());
 
@@ -98,11 +78,11 @@ if (category === 'archive' && autoIndex !== null) {
   // 🔹 現在の選択状態維持 or 非表示処理
   // ================================
   if (forceScrollReset) {
-  if (imageContainer && textsContainer){
-   imageContainer.scrollTop = 0;
-   textsContainer.scrollTop = 0;
- }
-}
+    if (imageContainer && textsContainer) {
+      imageContainer.scrollTop = 0;
+      textsContainer.scrollTop = 0;
+    }
+  }
   if (currentIndex !== null) {
     const currentItem = items[currentIndex];
     if (currentItem) {
@@ -114,27 +94,12 @@ if (category === 'archive' && autoIndex !== null) {
       if (match) {
         if (window.currentRenderedId !== currentItem.id) {
 
- if (!imageContainer || !textsContainer) {
-      console.warn("showCategory: コンテナが見つからないためスクロール復元をスキップ");
-      renderFull(currentItem, { skipRestoreScroll: true });
-      
-    }
+          if (!imageContainer || !textsContainer) {
 
+            renderFull(currentItem, { skipRestoreScroll: true });
 
-renderFull(currentItem, { skipRestoreScroll: true });
-
-// 復元は forceScrollReset が false のときのみ行う（true なら renderFull 側が reset を行う）
-// if (!forceScrollReset) {
-//   requestAnimationFrame(() => {
-//     imageContainer.scrollTop = imageScroll;
-//     textsContainer.scrollTop = textScroll;
-//   });
-// } else {
-//   console.log('ℹ️ showCategory: forceScrollReset=true のためスクロール復元をスキップ');
-// }
-
-        } else {
-          // console.log('🔁 フィルター操作: 同作品なので再描画スキップ');
+          }
+          renderFull(currentItem, { skipRestoreScroll: true });
         }
       } else {
         imageArea.querySelectorAll('iframe, img, video, .caption').forEach(el => el.remove());
@@ -152,78 +117,70 @@ renderFull(currentItem, { skipRestoreScroll: true });
 
 
 
-// ================================
-// 本文描画関数（差分更新対応版）
-// ================================
-function renderFull(data, options = {}) {
-  // options.skipRestoreScroll が真ならスクロール復元をスキップする
-  const skipRestore = !!options.skipRestoreScroll;
-   const forceReset  = !!options.forceScrollReset; 
-
-  // ✅ まだ1度も描画されていない場合は初期化
-  if (!window.currentRenderedId) {
-    window.currentRenderedId = null;
-  }
-
-  // ✅ 現在のスクロール位置を保持
-  const imageScroll = imageContainer ? imageContainer.scrollTop : 0;
-  const textScroll = textsContainer ? textsContainer.scrollTop : 0;
-
-
-
-
-  // ✅ ここで「作品が切り替わったか」を判定
-  const isSameWork = window.currentRenderedId === data.id;
-  const shouldResetScroll = !isSameWork; // 違う作品ならリセット
-
-  // 🔍 状況をログに出す
-  if (isSameWork) {
-    console.log('ℹ️ renderFull: 同じ作品なのでスクロール維持');
-  } else {
-    console.log('🔄 renderFull: 作品が切り替わったのでスクロールリセット');
-  }
-
-
-
-  // ✅ 新しい作品を記録
-  window.currentRenderedId = data.id;
-
-  
-
   // ================================
-  // 🔹 IMAGEエリア更新
+  // 本文描画関数（差分更新対応版）
   // ================================
-  const isMobile = window.innerWidth <= 768;
-  imageContainer.innerHTML = '';
+  function renderFull(data, options = {}) {
+    // options.skipRestoreScroll が真ならスクロール復元をスキップする
+    const skipRestore = !!options.skipRestoreScroll;
+    const forceReset = !!options.forceScrollReset;
 
-  // 🔹 スクロールトップボタン
-  createScrollTopButton(imageContainer);
-if (isMobile) {
-   const imageAreaTitle = document.createElement('div');
-   imageAreaTitle.className = 'mobile-image-area-title';
-    imageAreaTitle.innerHTML = `
+    // ✅ まだ1度も描画されていない場合は初期化
+    if (!window.currentRenderedId) {
+      window.currentRenderedId = null;
+    }
+
+    // ✅ 現在のスクロール位置を保持
+    const imageScroll = imageContainer ? imageContainer.scrollTop : 0;
+    const textScroll = textsContainer ? textsContainer.scrollTop : 0;
+
+
+
+
+    // ✅ ここで「作品が切り替わったか」を判定
+    const isSameWork = window.currentRenderedId === data.id;
+    const shouldResetScroll = !isSameWork; // 違う作品ならリセット
+
+
+    // ✅ 新しい作品を記録
+    window.currentRenderedId = data.id;
+
+
+
+    // ================================
+    // 🔹 IMAGEエリア更新
+    // ================================
+    const isMobile = window.innerWidth <= 768;
+    imageContainer.innerHTML = '';
+
+    // 🔹 スクロールトップボタン
+    createScrollTopButton(imageContainer);
+    if (isMobile) {
+      const imageAreaTitle = document.createElement('div');
+      imageAreaTitle.className = 'mobile-image-area-title';
+      imageAreaTitle.innerHTML = `
       <p>+&ensp;${data.title || ""}&ensp;+</p>
      
     `;
-    imageContainer.appendChild(imageAreaTitle);
-  }
-  // --- メディア描画 ---
-  data.media.forEach((file, i) => {
-    let elementHTML = '';
-    if (file.includes("youtube.com") || file.includes("youtu.be")) {
-  const embedUrl = file.includes("embed")
-    ? file
-    : convertToYouTubeEmbed(file);
+      imageContainer.appendChild(imageAreaTitle);
+    }
+    // --- メディア描画 ---
+    data.media.forEach((file, i) => {
+      let elementHTML = '';
+      if (file.includes("youtube.com") || file.includes("youtu.be")) {
+        const embedUrl = file.includes("embed")
+          ? file
+          : convertToYouTubeEmbed(file);
 
-const origin = location.origin;
+        const origin = location.origin;
 
-const src = embedUrl.includes("?")
-  ? `${embedUrl}&enablejsapi=1`
-  : `${embedUrl}?enablejsapi=1`;
+        const src = embedUrl.includes("?")
+          ? `${embedUrl}&enablejsapi=1`
+          : `${embedUrl}?enablejsapi=1`;
 
-    
 
-  elementHTML = `
+
+        elementHTML = `
   <div class="media-iframe-wrapper" data-scrolltype="text">
     <iframe
     id="yt-${i}-${Date.now()}"
@@ -235,375 +192,360 @@ const src = embedUrl.includes("?")
     ></iframe>
     <div class="media-iframe-cover"></div>
     </div>`;
-} else if (file.includes("vimeo.com")) {
-      const embedUrl = convertToVimeoEmbed(file);
-      elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
+      } else if (file.includes("vimeo.com")) {
+        const embedUrl = convertToVimeoEmbed(file);
+        elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
     </div>`;
-    } else if (file.includes("soundcloud.com")) {
-      const embedUrl = convertToSoundCloudEmbed(file);
-      elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
+      } else if (file.includes("soundcloud.com")) {
+        const embedUrl = convertToSoundCloudEmbed(file);
+        elementHTML = `<div class="media-iframe-wrapper" data-scrolltype="text"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe> <div class="media-iframe-cover"></div>
     </div>`;
-    } else if (file.endsWith('.mp4')) {
-      elementHTML = `<video src="${file}" controls playsinline></video>`;
-    } else {
-      elementHTML = `<img src="${file}" alt="${data.title}">`;
-    }
+      } else if (file.endsWith('.mp4')) {
+        elementHTML = `<video src="${file}" controls playsinline></video>`;
+      } else {
+        elementHTML = `<img src="${file}" alt="${data.title}">`;
+      }
 
-    imageContainer.insertAdjacentHTML('beforeend', elementHTML);
+      imageContainer.insertAdjacentHTML('beforeend', elementHTML);
 
 
-    // 直前に追加した要素を取得
-const last = imageContainer.lastElementChild;
-let el = null;
+      // 直前に追加した要素を取得
+      const last = imageContainer.lastElementChild;
+      let el = null;
 
-// --- iframe / video（wrapperあり） ---
-if (last.classList?.contains('media-iframe-wrapper')) {
-  el = last.querySelector('iframe, video');
+      // --- iframe / video（wrapperあり） ---
+      if (last.classList?.contains('media-iframe-wrapper')) {
+        el = last.querySelector('iframe, video');
 
-  if (el) {
-    console.log("media added (wrapped)", el.tagName, el.src || '');
+        if (el) {
 
-    requestAnimationFrame(() => {
-      setupMediaIframe(el);
-      clickMediaIframe(el);
+          requestAnimationFrame(() => {
+            setupMediaIframe(el);
+            clickMediaIframe(el);
+          });
+        }
+      }
+
+
+      // キャプション
+      if (data.captions && data.captions[i]) {
+        const caption = document.createElement('div');
+        caption.className = 'caption';
+        caption.textContent = data.captions[i];
+        imageContainer.appendChild(caption);
+      }
     });
-  }
 
-// --- img / video 単体 ---
-} else if (last.tagName === 'IMG') {
-  console.log("media added (img)", last.src || '');
-
-} else if (last.tagName === 'VIDEO') {
-  console.log("media added (video)", last.src || '');
-}
+    // ✅ 余白を追加
+    const extraSpace = document.createElement('div');
+    extraSpace.className = 'scroll-extra';
+    extraSpace.style.height = '240px';
+    imageContainer.appendChild(extraSpace);
 
 
-
-    // キャプション
-    if (data.captions && data.captions[i]) {
-      const caption = document.createElement('div');
-      caption.className = 'caption';
-      caption.textContent = data.captions[i];
-      imageContainer.appendChild(caption);
-    }
-  });
-
-  // ✅ 余白を追加
-  const extraSpace = document.createElement('div');
-  extraSpace.className = 'scroll-extra';
-  extraSpace.style.height = '240px';
-  imageContainer.appendChild(extraSpace);
-
-  // ================================
-  // 🔹 TEXTエリア更新
-  // ================================
-  let textContainer = textArea.querySelector('.text-container');
-  
-
-
-  textContainer.innerHTML = ''; // コンテンツのみ更新
-
+    // ================================
+    // 🔹 TEXTエリア更新
+    // ================================
+    let textContainer = textArea.querySelector('.text-container');
+    textContainer.innerHTML = ''; // コンテンツのみ更新
 
     // --- リンク（archive用） ---
-  if (data.links && Object.keys(data.links).length > 0) {
-    const linkContainer = document.createElement('div');
-    linkContainer.className = 'text-section text-links';
+    if (data.links && Object.keys(data.links).length > 0) {
+      const linkContainer = document.createElement('div');
+      linkContainer.className = 'text-section text-links';
 
-    for (const [label, url] of Object.entries(data.links)) {
-      const linkEl = document.createElement('a');
-      linkEl.href = url;
-      linkEl.textContent = label;
-      linkEl.target = '_blank';
-      linkEl.rel = 'noopener noreferrer';
-      linkContainer.appendChild(linkEl);
+      for (const [label, url] of Object.entries(data.links)) {
+        const linkEl = document.createElement('a');
+        linkEl.href = url;
+        linkEl.textContent = label;
+        linkEl.target = '_blank';
+        linkEl.rel = 'noopener noreferrer';
+        linkContainer.appendChild(linkEl);
+      }
+
+      textContainer.appendChild(linkContainer);
+    } else {
+      // --- links が空の場合：高さだけのダミー要素 ---
+      const emptyLinkSpace = document.createElement('div');
+      emptyLinkSpace.className = 'text-section text-links-empty';
+
+      // 高さ設定（PC 40px / モバイル 35px）
+      const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
+      emptyLinkSpace.style.height = isMobileDevice ? "35px" : "40px";
+
+      textContainer.appendChild(emptyLinkSpace);
     }
 
-    textContainer.appendChild(linkContainer);
-  }else {
-  // --- links が空の場合：高さだけのダミー要素 ---
-  const emptyLinkSpace = document.createElement('div');
-  emptyLinkSpace.className = 'text-section text-links-empty';
+    // === ▼ 言語切り替え一式をまとめる親要素を作成 ▼ ===
+    const langWrapper = document.createElement('div');
+    langWrapper.className = "text-lang-wrapper";
+    // ====================================================
 
-  // 高さ設定（PC 40px / モバイル 35px）
-  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
-  emptyLinkSpace.style.height = isMobileDevice ? "35px" : "40px";
+    // === 言語切り替えボタン ===
+    const langBtn = document.createElement('button');
+    langBtn.className = "text-section lang-toggle-btn";
 
-  textContainer.appendChild(emptyLinkSpace);
-}
+    // 言語のグローバル状態（維持したい場合）
+    let activeLanguage = window.activeLanguage || "ja";
+    window.activeLanguage = activeLanguage;
 
-// === ▼ 言語切り替え一式をまとめる親要素を作成 ▼ ===
-const langWrapper = document.createElement('div');
-langWrapper.className = "text-lang-wrapper";
-// ====================================================
-
-// === 言語切り替えボタン ===
-const langBtn = document.createElement('button');
-langBtn.className = "text-section lang-toggle-btn";
-
-// 言語のグローバル状態（維持したい場合）
-let activeLanguage = window.activeLanguage || "ja";
-window.activeLanguage = activeLanguage;
-
-// 🔻 textContainer に入れず、langWrapper に追加
-langWrapper.appendChild(langBtn);
+    // 🔻 textContainer に入れず、langWrapper に追加
+    langWrapper.appendChild(langBtn);
 
 
- // --- 日本語テキスト ---
+    // --- 日本語テキスト ---
 
-const jpFull = data.text_jp || data.text_ja || data.text || "";
-let jaSection = null;
+    const jpFull = data.text_jp || data.text_ja || data.text || "";
+    let jaSection = null;
 
-if (jpFull.trim()) {
-  jaSection = document.createElement('div');
-  jaSection.className = 'text-section text-ja';
+    if (jpFull.trim()) {
+      jaSection = document.createElement('div');
+      jaSection.className = 'text-section text-ja';
 
-  // モバイル → タイトル + テキスト
-  // PC → テキストのみ
-  if (isMobile) {
-    jaSection.innerHTML = `
+      // モバイル → タイトル + テキスト
+      // PC → テキストのみ
+      if (isMobile) {
+        jaSection.innerHTML = `
       <p class="mobile-jp-title">${data.title || ""}</p>
       <div class="mobile-textarea-meta"><p>(${data.date || ""})</p><p>${data.place ? `@${data.place}` : ""}</p></div>
       <p>${jpFull}</p>
     `;
-  } else {
-    jaSection.innerHTML = `<p>${jpFull}</p>`;
-  }
+      } else {
+        jaSection.innerHTML = `<p>${jpFull}</p>`;
+      }
 
-   // 🔻 textContainer → langWrapper
-  langWrapper.appendChild(jaSection);
-}
+      // 🔻 textContainer → langWrapper
+      langWrapper.appendChild(jaSection);
+    }
 
-// --- 英語テキスト ---
-const enFull = data.text_en || "";
-let enSection = null;
-if (enFull.trim()) {
-  enSection = document.createElement('div');
-  enSection.className = 'text-section text-en';
-  if (isMobile) {
-    // モバイル → タイトル + テキスト
-    enSection.innerHTML = `
+    // --- 英語テキスト ---
+    const enFull = data.text_en || "";
+    let enSection = null;
+    if (enFull.trim()) {
+      enSection = document.createElement('div');
+      enSection.className = 'text-section text-en';
+      if (isMobile) {
+        // モバイル → タイトル + テキスト
+        enSection.innerHTML = `
       <p class="mobile-en-title">${data.title_en || ""}</p>
     <div class="mobile-textarea-meta"><p>(${data.date || ""})</p><p>${data.place ? `@${data.place}` : ""}</p></div>
       <p>${enFull}</p>
     `;
-  } else {
-    // PC → テキストのみ
-    enSection.innerHTML = `<p>${enFull}</p>`;
-  }
+      } else {
+        // PC → テキストのみ
+        enSection.innerHTML = `<p>${enFull}</p>`;
+      }
 
-   // 🔻 textContainer → langWrapper
-  langWrapper.appendChild(enSection);
-}
+      // 🔻 textContainer → langWrapper
+      langWrapper.appendChild(enSection);
+    }
 
-if (!enSection) {
-  langBtn.remove();
-}
-// === ▼ ここで初めて textContainer に追加して1まとめにする ▼ ===
-textContainer.appendChild(langWrapper);
-// =================================================================
+    if (!enSection) {
+      langBtn.remove();
+    }
+    // === ▼ ここで初めて textContainer に追加して1まとめにする ▼ ===
+    textContainer.appendChild(langWrapper);
+    // =================================================================
 
     // --- クレジット ---
-  const creditFull = data.text_credit || "";
-  if (creditFull.trim()) {
-    const creditSection = document.createElement('div');
-    creditSection.className = 'text-section text-credit';
-    creditSection.innerHTML = `<p><span class="credit-top">credit</span><br>${creditFull}</p>`;
-    textContainer.appendChild(creditSection);
-  }
-
-
-
-// === 言語適用関数 ===
-function applyLanguage(lang) {
-  activeLanguage = lang;
-  window.activeLanguage = lang;
-
-  if (jaSection) jaSection.style.display = (lang === "ja") ? "block" : "none";
-  if (enSection) enSection.style.display = (lang === "en") ? "block" : "none";
-
-  // ボタンの表示テキスト
-  langBtn.textContent = (lang === "ja") ? "english⇄" : "japanese⇄";
-}
-
-
-// === ボタンクリックでトグル ===
-langBtn.addEventListener("click", () => {
-  const newLang = (activeLanguage === "ja") ? "en" : "ja";
-  applyLanguage(newLang);
-});
-
-
-
-
-// === 初期表示 ===
-applyLanguage(activeLanguage);
-
-
-  // --- スクロール補助 ---
-  const spacer = document.createElement("div");
-  spacer.className = "scroll-extra";
-  textContainer.appendChild(spacer);
-
-  // 🔹 スクロールトップボタン
-  createScrollTopButton(textContainer);
-
-  // ================================
-// 🔹 TEXTエリア更新が終わったあとに実行する
-// ================================
-textContainer.querySelectorAll("a").forEach(a => {
-    const href = a.getAttribute("href");
-    if (!a.target && href && !href.startsWith("#") && !href.startsWith("mailto:") && !href.startsWith("tel:")) {
-        try {
-            const url = new URL(href, location.href);
-            if (url.hostname !== location.hostname) {
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-            }
-        } catch (e) {
-            // 無効なURLは無視
-        }
+    const creditFull = data.text_credit || "";
+    if (creditFull.trim()) {
+      const creditSection = document.createElement('div');
+      creditSection.className = 'text-section text-credit';
+      creditSection.innerHTML = `<p><span class="credit-top">credit</span><br>${creditFull}</p>`;
+      textContainer.appendChild(creditSection);
     }
-});
 
-  // --- サイズ調整・スクロール設定 ---
-  adjustMediaSizes();
-  // attachScrollStep();
 
-  
-// ================================
-// 📌 スクロールリセット処理
-// ================================
 
-if (forceReset || shouldResetScroll) {
-  if (imageContainer) imageContainer.scrollTo({ top: 0, behavior: "auto" });
-  if (textContainer) textContainer.scrollTo({ top: 0, behavior: "auto" });
-  console.log('🌀 スクロール位置をリセットしました');
-} else {
-  // 同じ作品で、スクロール復元をスキップしない場合
-  if (!skipRestore) {
-    if (imageContainer) imageContainer.scrollTo({ top: imageScroll });
-    if (textContainer) textContainer.scrollTo({ top: textScroll });
-    console.log('↩️ スクロール位置を復元しました');
+    // === 言語適用関数 ===
+    function applyLanguage(lang) {
+      activeLanguage = lang;
+      window.activeLanguage = lang;
+
+      if (jaSection) jaSection.style.display = (lang === "ja") ? "block" : "none";
+      if (enSection) enSection.style.display = (lang === "en") ? "block" : "none";
+
+      // ボタンの表示テキスト
+      langBtn.textContent = (lang === "ja") ? "english⇄" : "japanese⇄";
+    }
+
+
+    // === ボタンクリックでトグル ===
+    langBtn.addEventListener("click", () => {
+      const newLang = (activeLanguage === "ja") ? "en" : "ja";
+      applyLanguage(newLang);
+    });
+
+
+
+
+    // === 初期表示 ===
+    applyLanguage(activeLanguage);
+
+
+    // --- スクロール補助 ---
+    const spacer = document.createElement("div");
+    spacer.className = "scroll-extra";
+    textContainer.appendChild(spacer);
+
+    // 🔹 スクロールトップボタン
+    createScrollTopButton(textContainer);
+
+    // ================================
+    // 🔹 TEXTエリア更新が終わったあとに実行する
+    // ================================
+    textContainer.querySelectorAll("a").forEach(a => {
+      const href = a.getAttribute("href");
+      if (!a.target && href && !href.startsWith("#") && !href.startsWith("mailto:") && !href.startsWith("tel:")) {
+        try {
+          const url = new URL(href, location.href);
+          if (url.hostname !== location.hostname) {
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+          }
+        } catch (e) {
+          // 無効なURLは無視
+        }
+      }
+    });
+
+    // --- サイズ調整・スクロール設定 ---
+    adjustMediaSizes();
+
+
+    // ================================
+    // 📌 スクロールリセット処理
+    // ================================
+
+    if (forceReset || shouldResetScroll) {
+      if (imageContainer) imageContainer.scrollTo({ top: 0, behavior: "auto" });
+      if (textContainer) textContainer.scrollTo({ top: 0, behavior: "auto" });
+
+    } else {
+      // 同じ作品で、スクロール復元をスキップしない場合
+      if (!skipRestore) {
+        if (imageContainer) imageContainer.scrollTo({ top: imageScroll });
+        if (textContainer) textContainer.scrollTo({ top: textScroll });
+
+      }
+    }
+
+
+
+
   }
-}
-
-  // console.log('✅ renderFull 完了:', data.title);
-
-
-}
 
 
   // =============================
-// イベント設定（クリック・ホバー）
-// =============================
-listArea.querySelectorAll('.list-item').forEach(itemEl => {
-itemEl.addEventListener('click', e => {
-  
-   savedScroll.text = 0;
-    isItemClicked = true; // ✅ クリック時にフラグON
-  setTimeout(() => {
-    isItemClicked = false; // 少し経ってからリセット（数百msでOK）
-  }, 1000);
-  const origIndex = parseInt(e.currentTarget.dataset.index, 10);
+  // イベント設定（クリック・ホバー）
+  // =============================
+  listArea.querySelectorAll('.list-item').forEach(itemEl => {
+    itemEl.addEventListener('click', e => {
+
+      savedScroll.text = 0;
+      isItemClicked = true; // ✅ クリック時にフラグON
+      setTimeout(() => {
+        isItemClicked = false; // 少し経ってからリセット（数百msでOK）
+      }, 1000);
+      const origIndex = parseInt(e.currentTarget.dataset.index, 10);
+      const data = items[origIndex];
+      if (!data) return;
+
+      // 🔹 クリック時にホバー状態のプレビューを消す
+      e.currentTarget.dispatchEvent(new Event('mouseleave'));
+
+      currentIndex = origIndex;
+
+      // ✅ リストのアクティブ更新
+      listArea.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+      // 🔹 プレビュー削除（念のため）
+      imageArea.querySelectorAll('img.preview').forEach(el => el.remove());
+      textArea.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
+
+      // 🔹 元の本文を復帰
+      textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
+        el.style.visibility = '';
+      });
+
+      // ✅ 本文描画
+      renderFull(data, { forceScrollReset: true, skipSavedScroll: true });
+
+      // ✅ ハッシュ更新（抑制あり）
+      window.suppressHashRender = true;
+      let hash = category;
+      if (data.id) hash += `/${data.id}`;
+      if (category === 'archive' && currentArchiveFilters.length > 0) {
+        const filterStr = currentArchiveFilters.join(',');
+        hash += `?filter=${encodeURIComponent(filterStr)}`;
+      }
+      window.location.hash = hash;
+      requestAnimationFrame(() => {
+        window.suppressHashRender = false;
+      });
+
+      if (isMobile()) {
+        activeSection = "image";  // 初期表示は image エリア
+      }
+      updateMobileView();
+
+    });
+
+
+
+
+
+
+
+    // --- ホバー ---
+    let savedScroll = { text: 0 };
+
+    itemEl.addEventListener('mouseenter', e => {
+     const origIndex = parseInt(e.currentTarget.dataset.index, 10);
+  e.currentTarget.dataset.hoverIndex = origIndex;
   const data = items[origIndex];
   if (!data) return;
 
-  // 🔹 クリック時にホバー状態のプレビューを消す
-  e.currentTarget.dispatchEvent(new Event('mouseleave'));
+      // クリックで表示中の作品ならプレビューを出さない
+      if (currentIndex === origIndex) return;
 
-  currentIndex = origIndex;
+      // hover前に現在の選択作品のスクロール位置を保存
+      const textContainer = textArea.querySelector('.text-container');
+      if (textContainer) {
+        savedScroll.text = textContainer.scrollTop;
 
-  // ✅ リストのアクティブ更新
-  listArea.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
-  e.currentTarget.classList.add('active');
-
-  // 🔹 プレビュー削除（念のため）
-  imageArea.querySelectorAll('img.preview').forEach(el => el.remove());
-  textArea.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
-
-  // 🔹 元の本文を復帰
-  textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
-    el.style.visibility = '';
-  });
-
-  // window.skipNextShowCategory = true;
-
-  // ✅ 本文描画
-  renderFull(data, { forceScrollReset: true, skipSavedScroll: true });
-
-  // ✅ ハッシュ更新（抑制あり）
-  window.suppressHashRender = true;
-  let hash = category;
-  if (data.id) hash += `/${data.id}`;
-  if (category === 'archive' && currentArchiveFilters.length > 0) {
-    const filterStr = currentArchiveFilters.join(',');
-    hash += `?filter=${encodeURIComponent(filterStr)}`;
-  }
-  window.location.hash = hash;
-  requestAnimationFrame(() => {
-    window.suppressHashRender = false;
-  });
-
-  if (isMobile()) {
-  activeSection = "image";  // 初期表示は image エリア
-}
-updateMobileView();
-  
-});
+        // ✅ スクロールバーを非表示
+        textContainer.dataset.prevOverflowY = textContainer.style.overflowY; // 元の状態を保存
+        textContainer.style.overflowY = 'hidden';
+      }
 
 
-  
+      // 元の本文を非表示にしてスクロール位置を保持
+      textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
+        el.style.visibility = 'hidden';
+      });
+
+      // --- scroll-top-btn を非表示 ---
+      imageArea.querySelectorAll('.scroll-top-btn').forEach(btn => btn.style.display = 'none');
+      textArea.querySelectorAll('.scroll-top-btn').forEach(btn => btn.style.display = 'none');
+
+      // プレビューを描画
+      renderPreview(data);
+    });
 
 
+    // ==========================
+    // マウスリーブ時の処理
+    // ==========================
+  itemEl.addEventListener('mouseleave', e => {
+  const origIndex = Number(e.currentTarget.dataset.hoverIndex);
 
-
-// --- ホバー ---
-let savedScroll = { text: 0 };
-
-itemEl.addEventListener('mouseenter', e => {
-  const origIndex = parseInt(e.currentTarget.dataset.index, 10);
-  const data = items[origIndex];
-  if (!data) return;
-
-  // クリックで表示中の作品ならプレビューを出さない
-  if (currentIndex === origIndex) return;
-
-  // hover前に現在の選択作品のスクロール位置を保存
-  const textContainer = textArea.querySelector('.text-container');
-   if (textContainer) {
-    savedScroll.text = textContainer.scrollTop;
-
-    // ✅ スクロールバーを非表示
-    textContainer.dataset.prevOverflowY = textContainer.style.overflowY; // 元の状態を保存
-    textContainer.style.overflowY = 'hidden';
-  }
-  
-
-  // 元の本文を非表示にしてスクロール位置を保持
-  textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
-    el.style.visibility = 'hidden';
-  });
-
-  // --- scroll-top-btn を非表示 ---
-  imageArea.querySelectorAll('.scroll-top-btn').forEach(btn => btn.style.display = 'none');
-  textArea.querySelectorAll('.scroll-top-btn').forEach(btn => btn.style.display = 'none');
-
-  // プレビューを描画
-  renderPreview(data);
-});
-
-
-// ==========================
-// マウスリーブ時の処理
-// ==========================
-itemEl.addEventListener('mouseleave', e => {
-  // プレビュー関連を削除
-  
-page.querySelectorAll('img.preview').forEach(el => el.remove());
+  // プレビュー削除など
+  page.querySelectorAll('img.preview').forEach(el => el.remove());
   document.querySelectorAll('.preview-text-wrapper').forEach(el => el.remove());
 
-
-  // --- scroll-top-btn を再表示 ---
   document.querySelectorAll('.scroll-top-btn').forEach(btn => {
     const container = btn.parentElement;
     btn.style.display = container.scrollTop > 120 ? 'block' : 'none';
@@ -611,29 +553,20 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
 
   if (currentIndex === origIndex) return;
 
-   const textContainer = textArea.querySelector('.text-container');
+  const textContainer = textArea.querySelector('.text-container');
   if (textContainer) {
-    textContainer.style.overflowY = textContainer.dataset.prevOverflowY || 'auto';
+    textContainer.style.overflowY =
+      textContainer.dataset.prevOverflowY || 'auto';
     delete textContainer.dataset.prevOverflowY;
   }
 
-  // 元の本文・補助を再表示
   textArea.querySelectorAll('.text-section, .scroll-extra').forEach(el => {
     el.style.visibility = '';
   });
 
-  // ✅ フラグで復元処理をスキップ
-  // if (isItemClicked) {
-  //   console.log('⏭️ クリックによるmouseleaveなのでスクロール復元をスキップ');
-  //   return;
-  // }
-
-  // 元のスクロール位置を復元
   if (typeof currentIndex === 'number' && items[currentIndex]) {
     const textContainer = textArea.querySelector('.text-container');
     if (textContainer) {
-      console.log('✅ スクロール復元実行', { savedScroll: savedScroll.text });
-      
       requestAnimationFrame(() => {
         textContainer.scrollTop = savedScroll.text;
       });
@@ -642,36 +575,13 @@ page.querySelectorAll('img.preview').forEach(el => el.remove());
 });
 
 
+  });
 
-  
 
-});
 
- // ✅ 自動復元（ページ直アクセス時）
-  // if (autoIndex !== null && items[autoIndex]) {
-  //   console.log('%c🎯 自動クリック開始', 'color: orange; font-weight: bold;', autoIndex);
-
-  //   requestAnimationFrame(() => {
-  //     const el = listArea.querySelector(`.list-item[data-index="${autoIndex}"]`);
-  //     if (el) {
-  //       // console.log('🟢 自動クリック対象発見', el.dataset.index, el.textContent);
-  //       window.isAutoRestoring = true;
-  //       el.click();
-  //       setTimeout(() => (window.isAutoRestoring = false), 500);
-  //     }
-  //   });
-  // }
-
-  // attachScrollStep();
-  
   if (isMobile()) {
-  activeSection = "list";  // 初期表示は image エリア
-}
-updateMobileView();
-updateNavButtons()
-
-
-
-
-  
+    activeSection = "list";  // 初期表示は image エリア
+  }
+  updateMobileView();
+  updateNavButtons();
 }

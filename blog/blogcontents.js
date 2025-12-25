@@ -45,9 +45,9 @@ export const blogContents = {
       { word: "世迷言", href: "https://www.uta-net.com/song/54556/" },
       { word: "(｀･ω･´)", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1357121248" },
       { word: "ハラスメント", href: "https://ja.wikipedia.org/wiki/%E5%AB%8C%E3%81%8C%E3%82%89%E3%81%9B" },
-       { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
-        { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
-        { word: "飲みュニケーション", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
+      { word: "暖房の風が直接当たって唇が乾いて", href: "https://www.yuskin.co.jp/skincare/skincare_03/" },
+      { word: "テレビに逐一悪口", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14168380004" },
+      { word: "飲みュニケーション", href: "https://ja.wikipedia.org/wiki/%E9%A3%B2%E3%81%BF%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" }
     ],
     musicLinks: [
 
@@ -140,7 +140,7 @@ export const blogContents = {
         { type: "a", text: `酔うってどういうこと？|酔いの仕組みとアルコール代謝|サッポロホールディングス`, link: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html", class: ["link-list"] },
         { type: "a", text: `アルコール｜厚生労働省`, link: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html", class: ["link-list"] },
         { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`, link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list"] },
-         { type: "a", text: `NAMIKIBASHI 日本の形「宴 」`, link: "https://youtu.be/LxFjc99HWRs?si=_J0dYEe8S0rGO1J9", class: ["link-list", "large-space-2"] },
+        { type: "a", text: `NAMIKIBASHI 日本の形「宴 」`, link: "https://youtu.be/LxFjc99HWRs?si=_J0dYEe8S0rGO1J9", class: ["link-list", "large-space-2"] },
 
         { type: "skipbutton", id: "skip8", label: "credit", mobile_label: "c" },
         { type: "p", text: `【credit】`, class: ["index"] },
@@ -150,14 +150,14 @@ export const blogContents = {
         { type: "p", text: `3.non-credit`, class: ["credit"] },
         { type: "p", text: `4.平岡せいこ`, class: ["credit"] },
         { type: "p", text: `5.難波優太`, class: ["credit", "large-space-1"] },
-         { type: "p", text: `説明音声：オスカル修平`, class: ["credit", "large-space-2"] },
+        { type: "p", text: `説明音声：オスカル修平`, class: ["credit", "large-space-2"] },
 
       ],
 
       postHyperlinks: [
         { word: "血液に溶け込んで脳に運ばれたアルコールによって脳が麻痺する状態", href: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html" },
-{ word: "節度ある適度な飲酒", href: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html" },
-       
+        { word: "節度ある適度な飲酒", href: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html" },
+
       ],
 
       // ③ この投稿で使いたい global のセット
@@ -170,16 +170,18 @@ export const blogContents = {
       date: "2025-11-22",
       tag: ["news"],
       images: [
-        {  },
+        {},
       ],
       textBlocks: [
         { type: "p", text: `ニセテクスチャのwebサイトに掲載する広告を募集します。` },
         { type: "p", text: `広告費は当サイトの運営費および当チームの活動費に使用いたします。`, class: "large-space-1" },
 
-        { type: "p", text: `&#x2730;〜〜<br>
+        {
+          type: "p", text: `&#x2730;〜〜<br>
 新幹線に乗っていると窓の向こうで高速に流れる景色とは違って、車内に設置された電光掲示板には64文字のキャッチーで簡素なテキストが緩やかに流れている。企業の環境への取り組みや管理職に向けたプロダクトの広告が誰がみているのかわからないまま淡々と横向きにスライドしていく。<br>
 &#x2730;〜〜
-` , class: "large-space-1"},
+` , class: "large-space-1"
+        },
 
         { type: "p", text: `限られた文字数で、表示できる文字や記号のみで、淡々とメッセージを流すことをこのwebサイトでも行います。`, class: ["large-space-1"] },
 
@@ -201,7 +203,7 @@ export const blogContents = {
 
         { type: "skipbutton", id: "skip3", label: "3.期間", mobile_label: "3" },
         { type: "p", text: `3.期間`, class: "index" },
-        { type: "p", text: `1ヶ月（30日間）〜` , class: "large-space-2"},
+        { type: "p", text: `1ヶ月（30日間）〜`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip4", label: "4.形式", mobile_label: "4" },
         { type: "p", text: `4.形式`, class: "index" },

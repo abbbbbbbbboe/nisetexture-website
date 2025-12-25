@@ -50,16 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
       displayText(post.textBlocks, post.images, post);
 
       displayImages(post.images);
-      // updateTextAreaTitle();
-      // applyRandomSpacingToAreaTitles();
-
     }
   }
   applyRandomSpacingToMenu();
-  // applyRandomSpacingToAreaTitles();
   applyRandomSpacingToListArea();
   applyRandomSpacingToMobileAreaTitles();
-  // adjustMediaSizes(); //問題ない
 
 });
 
@@ -96,15 +91,9 @@ window.addEventListener("hashchange", () => {
   // 表示更新
   displayText(post.textBlocks, post.images, post);
   displayImages(post.images);
-  // updateTextAreaTitle();
-  // applyRandomSpacingToAreaTitles();
-  // 左のリストの active 切り替え
   activateListItem(hash);
 });
 
-// ================================
-// --- ブラウザ戻る・進む（hashchange対応） ---
-// ================================
 
 
 
@@ -115,14 +104,14 @@ window.addEventListener("hashchange", () => {
 function buildList(posts) {
 
   listContainer.innerHTML = "";
-  createScrollTopButton(listContainer,listArea);
+  createScrollTopButton(listContainer, listArea);
   posts.forEach(post => {
     const div = document.createElement("div");
     div.className = "list-item";
     div.dataset.postId = post.id;
     div.innerHTML = `
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
-      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title,1,2.5)}&ensp;+</span></div>
+      <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title, 1, 2.5)}&ensp;+</span></div>
       <div class="list-meta">
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
@@ -154,16 +143,16 @@ function buildList(posts) {
   });
 
 
-    // === activeを画面内にスクロール ===
-setTimeout(() => {
-  const activeItem = listContainer.querySelector('.list-item.active');
-  if (activeItem) {
-    activeItem.scrollIntoView({
-      block: 'start',
-      behavior: 'instant' // "smooth" でもOK
-    });
-  }
-}, 0);
+  // === activeを画面内にスクロール ===
+  setTimeout(() => {
+    const activeItem = listContainer.querySelector('.list-item.active');
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        block: 'start',
+        behavior: 'instant' // "smooth" でもOK
+      });
+    }
+  }, 0);
 }
 
 
@@ -199,13 +188,9 @@ function setupClickHandler() {
 
     updateTextAreaTitle();
 
-    // applyRandomSpacingToAreaTitles();
-    // applyRandomSpacingToMobileAreaTitles();
-    // ハッシュ更新は最後（または少し遅らせる）
-    console.log(postId);
     setTimeout(() => { location.hash = postId; }, 0);
     adjustMediaSizes();
-    
+
   });
 }
 
@@ -248,14 +233,10 @@ function applyHyperlinksToText(text, links, usedWords) {
 }
 
 
-
-
-
-
 function collectHyperlinks(post) {
   let links = [];
 
-   // ② 記事固有 postHyperlinks
+  // ② 記事固有 postHyperlinks
   if (post.postHyperlinks) {
     links.push(
       ...post.postHyperlinks.map(l => ({
@@ -285,13 +266,6 @@ function collectHyperlinks(post) {
   return links;
 }
 
-// function removeEmptyLinks(html) {
-//   if (!html) return html;
-
-//   // 空の a タグをすべて削除（中身が空白のみも含む）
-//   return html.replace(/<a\b[^>]*>\s*<\/a>/g, "");
-// }
-
 function displayText(blocks, images, post) {
   textsContainer.innerHTML = "";
 
@@ -299,7 +273,7 @@ function displayText(blocks, images, post) {
 
   let currentButtonGroup = null;
 
-   // ★ 記事全体で既にリンク化された語句を記録
+  // ★ 記事全体で既にリンク化された語句を記録
   const usedWords = new Set();
 
   // ★ PC版・モバイル版それぞれでスキップパネルを準備
@@ -366,61 +340,54 @@ function displayText(blocks, images, post) {
     // --------------------------
     // ▶ 通常の段落 <p>
     // --------------------------
-if (block.type === "p") {
-  currentButtonGroup = null;
+    if (block.type === "p") {
+      currentButtonGroup = null;
 
-  // 記事用のリンク一覧
-  const links = collectHyperlinks(post);
+      // 記事用のリンク一覧
+      const links = collectHyperlinks(post);
 
-  // リンク化したテキスト
-  const linked = applyHyperlinksToText(block.text, links, usedWords);
+      // リンク化したテキスト
+      const linked = applyHyperlinksToText(block.text, links, usedWords);
 
-  const p = document.createElement("p");
-  p.innerHTML = linked; // ← aタグ反映済みテキストを入れる
+      const p = document.createElement("p");
+      p.innerHTML = linked; // ← aタグ反映済みテキストを入れる
 
-    // --- 🔥 空の a タグを削除する処理 ---
-  // const aTags = p.querySelectorAll("a");
-  // aTags.forEach(a => {
-  //   if (!a.textContent || a.textContent.trim() === "") {
-  //     a.remove();
-  //   }
-  // });
+    
+      // クラス追加
+      if (block.class) {
+        if (Array.isArray(block.class)) {
+          block.class.forEach(c => p.classList.add(c));
+        } else {
+          p.classList.add(block.class);
+        }
+      }
 
-  // クラス追加
-  if (block.class) {
-    if (Array.isArray(block.class)) {
-      block.class.forEach(c => p.classList.add(c));
-    } else {
-      p.classList.add(block.class);
+      textsContainer.appendChild(p);
     }
-  }
-
-  textsContainer.appendChild(p);
-}
 
 
     // --------------------------
     // ▶ 通常の段落 <li>
     // --------------------------
     if (block.type === "li") {
-  currentButtonGroup = null;
+      currentButtonGroup = null;
 
-  const links = collectHyperlinks(post);
-  const linked = applyHyperlinksToText(block.text, links, usedWords);
+      const links = collectHyperlinks(post);
+      const linked = applyHyperlinksToText(block.text, links, usedWords);
 
-  const li = document.createElement("li");
-  li.innerHTML = linked;
+      const li = document.createElement("li");
+      li.innerHTML = linked;
 
-  if (block.class) {
-    if (Array.isArray(block.class)) {
-      block.class.forEach(c => li.classList.add(c));
-    } else {
-      li.classList.add(block.class);
+      if (block.class) {
+        if (Array.isArray(block.class)) {
+          block.class.forEach(c => li.classList.add(c));
+        } else {
+          li.classList.add(block.class);
+        }
+      }
+
+      textsContainer.appendChild(li);
     }
-  }
-
-  textsContainer.appendChild(li);
-}
 
     // --------------------------
     // ▶ Aタグ
@@ -486,57 +453,46 @@ if (block.type === "p") {
       const targetId = block.targetId;
       const matchedMedia = images.find(img => img.id == targetId);
 
-          // ★★★★★ ここを追加 ★★★★★
-//     const target = mediaEl.querySelector("iframe, video");
-//  if (mediaEl) {
-//   console.log("setup media:", mediaEl);
-
-//   requestAnimationFrame(() => {
-//     setupMediaIframe(target);
-//   });
-// }
-    // ★★★★★ ここまで ★★★★★
 
       // =========================================================
       // ★ モバイル版 → ボタンの代わりに画像/動画を直接挿入
       // =========================================================
       if (isMobile()) {
         if (matchedMedia) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "inline-media-wrapper";
+          const wrapper = document.createElement("div");
+          wrapper.className = "inline-media-wrapper";
 
-  const mediaEl = createMediaElement(matchedMedia);
+          const mediaEl = createMediaElement(matchedMedia);
 
-  // ============================
-  // iframe / video 用ラッパー
-  // ============================
-  const iframeWrapper = document.createElement("div");
-  iframeWrapper.className = "media-iframe-wrapper";
+          // ============================
+          // iframe / video 用ラッパー
+          // ============================
+          const iframeWrapper = document.createElement("div");
+          iframeWrapper.className = "media-iframe-wrapper";
 
-  const cover = document.createElement("div");
-  cover.className = "media-iframe-cover";
+          const cover = document.createElement("div");
+          cover.className = "media-iframe-cover";
 
-  iframeWrapper.appendChild(mediaEl);
-  iframeWrapper.appendChild(cover);
+          iframeWrapper.appendChild(mediaEl);
+          iframeWrapper.appendChild(cover);
 
-  wrapper.appendChild(iframeWrapper);
-  textsContainer.appendChild(wrapper);
+          wrapper.appendChild(iframeWrapper);
+          textsContainer.appendChild(wrapper);
 
-  // 🔑 実体を必ず取得
-  const target = iframeWrapper.querySelector("iframe, video");
+          // 🔑 実体を必ず取得
+          const target = iframeWrapper.querySelector("iframe, video");
 
-  if (target) {
-    console.log("setup media:", target);
+          if (target) {
+          
+            requestAnimationFrame(() => {
+              // 再生状態監視（必須）
+              setupMediaIframe(target);
 
-    requestAnimationFrame(() => {
-      // 再生状態監視（必須）
-      setupMediaIframe(target);
-
-      // UI制御（クリックで有効化）
-      clickMediaIframe(target);
-    });
-}
-    // ★★★★★ ここまで ★★★★★
+              // UI制御（クリックで有効化）
+              clickMediaIframe(target);
+            });
+          }
+          // ★★★★★ ここまで ★★★★★
 
           // キャプション
           if (matchedMedia.caption) {
@@ -601,13 +557,13 @@ if (block.type === "p") {
         let label = block.mobile_label || block.label;
         btn.textContent = label ? label + "↓" : "↓";
 
-     
-    btn.addEventListener("click", () => {
-      scrollContainer.scrollTo({
-        behavior: 'auto',
-        top: mark.offsetTop
-      });
-    });
+
+        btn.addEventListener("click", () => {
+          scrollContainer.scrollTo({
+            behavior: 'auto',
+            top: mark.offsetTop
+          });
+        });
 
         skipPanel.appendChild(btn);
 
@@ -622,19 +578,18 @@ if (block.type === "p") {
       sb.textContent = block.label ? "…" + block.label : "";
 
       sb.dataset.id = block.id;
-  sb.addEventListener("click", () => {
-    scrollContainer.scrollTo({
-      behavior: 'auto',
-      top: mark.offsetTop
-      
-    });
-  });
+      sb.addEventListener("click", () => {
+        scrollContainer.scrollTo({
+          behavior: 'auto',
+          top: mark.offsetTop
+
+        });
+      });
 
 
       skipPanel.appendChild(sb);
     }
- // ← attachJumpHandlers() はループ外が正しい
-  attachJumpHandlers();
+    attachJumpHandlers();
   });
 
 }
@@ -713,7 +668,7 @@ function displayImages(images) {
 
   imageContainer.innerHTML = "";
 
-    // ⭐ images が無い or 配列じゃない場合は安全に抜ける
+  // ⭐ images が無い or 配列じゃない場合は安全に抜ける
   if (!Array.isArray(images) || images.length === 0) {
     createScrollTopButton(imageContainer, imageArea);
     return;
@@ -723,10 +678,9 @@ function displayImages(images) {
     const file = item.src;
 
     // ⭐ src が無い場合はスキップ
-if (typeof file !== "string" || file === "") {
-  console.warn("media src missing:", item);
-  return;
-}
+    if (typeof file !== "string" || file === "") {
+      return;
+    }
 
 
 
@@ -734,91 +688,89 @@ if (typeof file !== "string" || file === "") {
 
 
     // ⭐ wrapper を作成（フラッシュはこれにつける）
-   // ⭐ wrapper を作成（既存用途）
-const wrapper = document.createElement("div");
-wrapper.className = "media-wrapper";
-wrapper.dataset.id = mediaId;
-wrapper.style.position = "relative";
-wrapper.style.overflow = "hidden";
+    // ⭐ wrapper を作成（既存用途）
+    const wrapper = document.createElement("div");
+    wrapper.className = "media-wrapper";
+    wrapper.dataset.id = mediaId;
+    wrapper.style.position = "relative";
+    wrapper.style.overflow = "hidden";
 
-let innerHTML = "";
+    let innerHTML = "";
 
-// ===============================
-// iframe / video 系
-// ===============================
-if (
-  file.includes("youtube.com") ||
-  file.includes("youtu.be") ||
-  file.includes("vimeo.com") ||
-  file.includes("soundcloud.com") ||
-  file.endsWith(".mp4")
-) {
+    // ===============================
+    // iframe / video 系
+    // ===============================
+    if (
+      file.includes("youtube.com") ||
+      file.includes("youtu.be") ||
+      file.includes("vimeo.com") ||
+      file.includes("soundcloud.com") ||
+      file.endsWith(".mp4")
+    ) {
 
-  let mediaHTML = "";
+      let mediaHTML = "";
 
-  // --- YouTube ---
-  if (file.includes("youtube.com") || file.includes("youtu.be")) {
-    const embedUrl = file.includes("embed")
-      ? file
-      : convertToYouTubeEmbed(file);
+      // --- YouTube ---
+      if (file.includes("youtube.com") || file.includes("youtu.be")) {
+        const embedUrl = file.includes("embed")
+          ? file
+          : convertToYouTubeEmbed(file);
 
-    mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
-  }
+        mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+      }
 
-  // --- Vimeo ---
-  else if (file.includes("vimeo.com")) {
-    const embedUrl = convertToVimeoEmbed(file);
-    mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
-  }
+      // --- Vimeo ---
+      else if (file.includes("vimeo.com")) {
+        const embedUrl = convertToVimeoEmbed(file);
+        mediaHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+      }
 
-  // --- SoundCloud ---
-  else if (file.includes("soundcloud.com")) {
-    const embedUrl = convertToSoundCloudEmbed(file);
-    mediaHTML = `<iframe src="${embedUrl}"></iframe>`;
-  }
+      // --- SoundCloud ---
+      else if (file.includes("soundcloud.com")) {
+        const embedUrl = convertToSoundCloudEmbed(file);
+        mediaHTML = `<iframe src="${embedUrl}"></iframe>`;
+      }
 
-  // --- MP4 ---
-  else if (file.endsWith(".mp4")) {
-    mediaHTML = `<video src="${file}" controls playsinline></video>`;
-  }
+      // --- MP4 ---
+      else if (file.endsWith(".mp4")) {
+        mediaHTML = `<video src="${file}" controls playsinline></video>`;
+      }
 
-  innerHTML = `
+      innerHTML = `
     <div class="media-iframe-wrapper">
       ${mediaHTML}
       <div class="media-iframe-cover"></div>
     </div>
   `;
-}
+    }
 
-// ===============================
-// image
-// ===============================
-else {
-  innerHTML = `
+    // ===============================
+    // image
+    // ===============================
+    else {
+      innerHTML = `
     <img src="${file}" alt="" data-id="${mediaId}">
   `;
-}
+    }
 
-// wrapper に追加
-wrapper.insertAdjacentHTML("beforeend", innerHTML);
-imageContainer.appendChild(wrapper);
-
-
-        // 直前に追加した要素を取得
-// ★ 直後に中の media 要素を取得
-// ★ 直後に中の media 要素を取得
-const mediaEl = wrapper.querySelector("iframe, video");
+    // wrapper に追加
+    wrapper.insertAdjacentHTML("beforeend", innerHTML);
+    imageContainer.appendChild(wrapper);
 
 
+    // 直前に追加した要素を取得
+    // ★ 直後に中の media 要素を取得
+    // ★ 直後に中の media 要素を取得
+    const mediaEl = wrapper.querySelector("iframe, video");
 
-if (mediaEl) {
-  console.log("setup media:", mediaEl);
 
-  requestAnimationFrame(() => {
-    setupMediaIframe(mediaEl);
-    clickMediaIframe(mediaEl);
-  });
-}
+
+    if (mediaEl) {
+      requestAnimationFrame(() => {
+        setupMediaIframe(mediaEl);
+        clickMediaIframe(mediaEl);
+      });
+    }
 
 
     // コンテナに wrapper を追加
@@ -841,7 +793,7 @@ if (mediaEl) {
   imageContainer.appendChild(extraSpace);
 
 
-  createScrollTopButton(imageContainer,imageArea);
+  createScrollTopButton(imageContainer, imageArea);
 
 }
 
@@ -907,11 +859,11 @@ function convertToYouTubeEmbed(url) {
   if (url.includes("watch?v=")) {
     videoId = url.split("v=")[1].split("&")[0];
 
-  // ② ライブ配信の形式 .../live/XXXX
+    // ② ライブ配信の形式 .../live/XXXX
   } else if (url.includes("/live/")) {
     videoId = url.split("/live/")[1].split("?")[0];
 
-  // ③ 短縮URL形式 youtu.be/XXXX
+    // ③ 短縮URL形式 youtu.be/XXXX
   } else if (url.includes("youtu.be/")) {
     videoId = url.split("youtu.be/")[1].split("?")[0];
   }
@@ -928,10 +880,6 @@ function convertToVimeoEmbed(url) {
   return `https://player.vimeo.com/video/${videoId}`;
 }
 
-// function convertToSoundCloudEmbed(url) {
-//   const encoded = encodeURIComponent(url);
-//   return `https://w.soundcloud.com/player/?url=${encoded}&color=%23ff5500&inverse=false&auto_play=false&show_user=true`;
-// }
 
 function convertToSoundCloudEmbed(url) {
   return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=false&hide_related=true&visual=true&color=454c50`;
@@ -1010,7 +958,7 @@ window.addEventListener('DOMContentLoaded', () => {
   applyRandomSpacingToAreaTitles();
   applyRandomSpacingToListArea();
   applyRandomSpacingToMobileAreaTitles();
- 
+
 });
 
 function updateTextAreaTitle() {
@@ -1019,7 +967,7 @@ function updateTextAreaTitle() {
 
   if (isMobile()) {
     titleEl.textContent = "text | image";   // ← モバイル表記
-titleEl.href = titleEl.dataset.mobileHref;
+    titleEl.href = titleEl.dataset.mobileHref;
   } else {
     titleEl.textContent = "text";           // ← PC表記
     titleEl.href = titleEl.dataset.pcHref;
@@ -1045,7 +993,7 @@ function createScrollTopButton(container, area) {
 
   btn.style.display = 'none';
   // btn.style.border = '1px solid #b4b4b4';
- btn.style.color = 'var(--btn-color)';
+  btn.style.color = 'var(--btn-color)';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
   btn.style.position = 'fixed';
@@ -1094,86 +1042,18 @@ function createScrollTopButton(container, area) {
 
 
 
-
-
-// ================================
-// 画像エリアのリサイズ
-// ================================
-// function resizeMediaToFitArea(el, areaWidth) {
-//   let naturalWidth, naturalHeight, aspectRatio;
-
-//   if (el.tagName.toLowerCase() === 'iframe') {
-//     aspectRatio = 16 / 9;
-//     naturalWidth = 1600;
-//     naturalHeight = 900;
-//   } else {
-//     naturalWidth = el.naturalWidth || el.videoWidth || el.clientWidth;
-//     naturalHeight = el.naturalHeight || el.videoHeight || el.clientHeight;
-//     aspectRatio = naturalWidth / naturalHeight;
-//   }
-
-//   if (!naturalWidth || !naturalHeight) return;
-
-//   // ⭐ モバイル時だけ丸め単位を 35px に
-//   const roundUnit = isMobile() ? 35 : 40;
-
-//   // ================================
-//   // ボーダー offset
-//   // ================================
-//   const borderOffset = 2;
-//   const usableWidth = areaWidth - borderOffset;
-
-//   // 高さ -1px offset
-//   const heightOffset = 1;
-
-//   // 比率維持した縮小
-//   const scale = Math.min(1, usableWidth / naturalWidth);
-//   let newWidth = naturalWidth * scale;
-//   let newHeight = (naturalHeight * scale) - heightOffset;
-
-//   // ⭐★ 丸め単位で調整（PC=40, モバイル=35）
-//   newHeight = Math.floor(newHeight / roundUnit) * roundUnit;
-//   if (newHeight < roundUnit) newHeight = roundUnit;
-
-//   newWidth = aspectRatio * newHeight;
-
-//   // 横幅オーバーなら再調整
-//   if (newWidth > usableWidth) {
-//     newWidth = usableWidth;
-//     newHeight = newWidth / aspectRatio;
-
-//     newHeight = Math.floor(newHeight / roundUnit) * roundUnit;
-//   }
-
-//   // 最終調整
-//   newHeight = newHeight - 1;
-//   if (newHeight < 1) newHeight = 1;
-
-//   newWidth = Math.floor(newWidth);
-
-//   // 適用
-//   el.style.width = `${newWidth}px`;
-//   el.style.height = `${newHeight}px`;
-
-//   el.style.display = 'block';
-//   // el.style.margin = '-1px auto 0px auto';
-//   el.style.maxWidth = '100%';
-
-// }
-
-
 // ================================
 // 画像エリアのリサイズ（修正版）
 // ================================
 function resizeMediaToFitArea(el, areaWidth) {
-      let targetEl = el;
+  let targetEl = el;
   let wrapper = null;
 
   // iframe / video は wrapper を親に持つ
   if (el.closest('.media-iframe-wrapper')) {
     wrapper = el.closest('.media-iframe-wrapper');
   }
-  
+
   let naturalWidth, naturalHeight, aspectRatio;
 
   if (el.tagName.toLowerCase() === 'iframe') {
@@ -1207,7 +1087,7 @@ function resizeMediaToFitArea(el, areaWidth) {
   let scaledWidth = naturalWidth * scale;
   let scaledHeight = (naturalHeight * scale) - heightOffset;
 
- 
+
 
   // ================================
   // 高さを丸め（※ここだけで丸める）
@@ -1267,8 +1147,8 @@ function adjustMediaSizes() {
     const paddingRight = parseFloat(styles.paddingRight) || 0;
     const usableWidth = container.clientWidth - paddingLeft - paddingRight;
 
-    
-  
+
+
 
     const mediaElements = container.querySelectorAll('img, video, iframe');
 
@@ -1279,27 +1159,27 @@ function adjustMediaSizes() {
 
       if (el.tagName.toLowerCase() === 'img') {
 
-  const tryApply = () => {
-    // naturalWidth が 0 の場合は後で再試行
-    if (el.naturalWidth > 0 && el.naturalHeight > 0) {
-      applySize();
-      return true;
-    }
-    return false;
-  };
+        const tryApply = () => {
+          // naturalWidth が 0 の場合は後で再試行
+          if (el.naturalWidth > 0 && el.naturalHeight > 0) {
+            applySize();
+            return true;
+          }
+          return false;
+        };
 
-  // complete でも naturalWidth が 0 のケースがある
-  if (!tryApply()) {
-    // 取得できるまで最大15回再試行（45ms）
-    let retry = 0;
-    const timer = setInterval(() => {
-      if (tryApply() || retry > 15) {
-        clearInterval(timer);
-      }
-      retry++;
-    }, 3);
-  }
-} else if (el.tagName.toLowerCase() === 'video') {
+        // complete でも naturalWidth が 0 のケースがある
+        if (!tryApply()) {
+          // 取得できるまで最大15回再試行（45ms）
+          let retry = 0;
+          const timer = setInterval(() => {
+            if (tryApply() || retry > 15) {
+              clearInterval(timer);
+            }
+            retry++;
+          }, 3);
+        }
+      } else if (el.tagName.toLowerCase() === 'video') {
 
         if (el.readyState >= 1) applySize();
         else el.addEventListener('loadedmetadata', applySize);
@@ -1316,7 +1196,3 @@ function adjustMediaSizes() {
 
 window.addEventListener("load", adjustMediaSizes);
 window.addEventListener('resize', adjustMediaSizes);
-
-
-
-

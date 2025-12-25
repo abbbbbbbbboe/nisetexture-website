@@ -30,7 +30,7 @@ function detectPageType() {
 let currentPage = detectPageType();
 
 // ★★ ADD START : モバイル判定 + 現在表示エリア管理 ★★
-let activeSection = "list"; 
+let activeSection = "list";
 // "list" | "image" | "text"
 
 function isMobile() {
@@ -44,13 +44,12 @@ const nextBtn = document.getElementById("nav-next");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (isMobile()) {
-      if (currentIndex === null || currentIndex === undefined) {
-      activeSection = "list"; 
+    if (currentIndex === null || currentIndex === undefined) {
+      activeSection = "list";
     } else {
       activeSection = "image";
     }
-     updateMobileView();       
-    //  attachScrollStep();
+    updateMobileView();
     adjustMediaSizes();
   }
 });
@@ -62,42 +61,37 @@ if (currentPage === 'top') {
   main.classList.add('page-top');
   main.dataset.scrolltype = "top";
   delete main.dataset.scrollAttached;
-  
+
 } else {
   main.classList.remove('page-top');
-  // main.removeAttribute('data-scrolltype');
   delete main.dataset.scrolltype;
   delete main.dataset.scrollAttached;
 
 }
 
-// if (currentPage === 'top') main.classList.add('page-top');
-// else main.classList.remove('page-top');
-
 
 function updateMobileView() {
 
- if (!isMobile()) {
-    listArea.style.display  = "";
+  if (!isMobile()) {
+    listArea.style.display = "";
     imageArea.style.display = "";
-    textArea.style.display  = "";
+    textArea.style.display = "";
     prevBtn.style.display = "none";
-    nextBtn.style.display = "none";  
+    nextBtn.style.display = "none";
     return;
   }
 
 
-      // ⭐ トップページは切替を完全に無効化（常に3つのセクションを表示）
+  // ⭐ トップページは切替を完全に無効化（常に3つのセクションを表示）
   if (currentPage === "top") {
-    listArea.style.display  = "";
+    listArea.style.display = "";
     imageArea.style.display = "";
-    textArea.style.display  = "";
-    prevBtn.style.display   = "none";
-    nextBtn.style.display   = "none";
-    
+    textArea.style.display = "";
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
     return;
   }
- 
+
   // ===============================
   // Archiveページ（モバイル）
   // ===============================
@@ -111,18 +105,14 @@ function updateMobileView() {
     }
 
     // アクティブセクションのみ表示
-    listArea.style.display  = (activeSection === "list")  ? "" : "none";
+    listArea.style.display = (activeSection === "list") ? "" : "none";
     imageArea.style.display = (activeSection === "image") ? "" : "none";
-    textArea.style.display  = (activeSection === "text")  ? "" : "none";
+    textArea.style.display = (activeSection === "text") ? "" : "none";
 
     updateNavButtons();
     applyRandomSpacingToListArea();
     applyRandomSpacingToAreaTitles();
     applyRandomSpacingToMobileAreaTitles();
-    
-    // adjustMediaSizes();
-    
-
     // モバイルでは filter ボタン非表示
     if (filterArea) filterArea.style.display = "none";
 
@@ -132,23 +122,20 @@ function updateMobileView() {
 
 function updateNavButtons() {
   if (activeSection === "list") {
-       // archiveページかつ作品未選択なら右ボタン非表示
+    // archiveページかつ作品未選択なら右ボタン非表示
     if (currentPage === "archive" && currentIndex === null) {
       nextBtn.style.display = "none";
     } else {
-        prevBtn.style.display = "none";
+      prevBtn.style.display = "none";
       nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
         stopInertiaAndRound(listContainer);
         activeSection = "image";
         updateMobileView();
-        
-
         applyRandomSpacingToListArea();
         applyRandomSpacingToAreaTitles();
         applyRandomSpacingToMobileAreaTitles();
-       
       };
     }
   }
@@ -157,7 +144,7 @@ function updateNavButtons() {
     // image = 左→list / 右→text
     prevBtn.style.display = "block";
     nextBtn.style.display = "block";
-     prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">title</span>`;
+    prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">title</span>`;
     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">text</span>`;
 
     prevBtn.onclick = () => {
@@ -168,18 +155,17 @@ function updateNavButtons() {
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
 
-        // === activeを画面内にスクロール ===
-setTimeout(() => {
-  const activeItem = listContainer.querySelector('.list-item.active');
-  if (activeItem) {
-    activeItem.scrollIntoView({
-      block: 'start',
-      behavior: 'instant' // "smooth" でもOK
-    });
-  }
-}, 0);
-      
-    // adjustMediaSizes();
+      // === activeを画面内にスクロール ===
+      setTimeout(() => {
+        const activeItem = listContainer.querySelector('.list-item.active');
+        if (activeItem) {
+          activeItem.scrollIntoView({
+            block: 'start',
+            behavior: 'instant' // "smooth" でもOK
+          });
+        }
+      }, 0);
+
     };
     nextBtn.onclick = () => {
       stopInertiaAndRound(imageContainer);
@@ -188,8 +174,11 @@ setTimeout(() => {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
       applyRandomSpacingToMobileAreaTitles();
-    
-    // adjustMediaSizes();
+
+      const textContainer = document.querySelector('.text-container');
+      if (textContainer) {
+        textContainer.scrollTop = 0;
+      }
     };
   }
 
@@ -203,22 +192,10 @@ setTimeout(() => {
       updateMobileView();
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
-       
-    // adjustMediaSizes();
     };
     nextBtn.style.display = "none";
   }
 }
-
-// el.addEventListener('click', () => {
-//   currentIndex = i;   // ← 作品選択完了！
-
-//   updateListByFilter();
-//   showCategory(category, i);
-
-//   // ★★★ 作品選択後にモバイルビュー更新 → ボタンが出る！
-//   updateMobileView();
-// });
 // ★★ ADD END ★★
 
 
@@ -245,7 +222,7 @@ function adjustTopSpacerHeight() {
   // 残りの高さをtop-spacerにセット
   const remainingHeight = windowHeight - otherHeight;
   topSpacer.style.height = remainingHeight > 0 ? `${remainingHeight}px` : "0px";
-  
+
 }
 
 // DOM読み込み時とリサイズ時に実行

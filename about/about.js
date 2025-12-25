@@ -2,60 +2,60 @@ const contents = {
   about: [
     {
       id: "profile",
-      useSlider: true, 
+      useSlider: true,
       title: "Profile",
       title_en: "Profile",
       media: ["nise"],
       media_mobile: ["mobile_nise"],
-      text_jp: `単純・退屈で繰り返される、日常の行為や生活の作業を、ニセテクスチャ（物や事における偽物の質感、手触り、表面の様子）によって覆い隠す・反転させることを目的に、2024年より活動を開始したメディア・チーム。<br>オオタソラと小林玲衣奈が参加。主な活動は飲み会をした後にその街を一晩中歩くこと。趣味は街にある木材が本物か確認すること。`,
-      text_en: `A media team that began its activities in 2024 with the aim of concealing and reversing simple, monotonous, and repetitive everyday actions and routines through “nisetexture” — simulated surfaces, sensations, and appearances of things and situations. <br>The members are Sora Oota and Reina Kobayashi. Their main activity is walking around the city all night after having a drink together. Their hobby is checking whether the wooden materials found in the city are real or not.`,
-         links: {
-    "YouTube": "https://youtube.com/@nisetexture?si=XRcAyUBKGoHIAxTG"
-  }
+      text_jp: `単純・退屈で繰り返される日常の行為や生活の作業を、ニセテクスチャ（物や事における偽物の質感、手触り、表面の様子）によって覆い隠す・反転させることを目的に、2024年より活動を開始したメディア・チーム。<br><br>オオタソラと小林玲衣奈が参加。主な活動は飲み会をした後にその街を一晩中歩くこと。<br>趣味は街にある木材が本物か確認すること。`,
+      text_en: `A media team that began its activities in 2024 with the aim of concealing and reversing simple, monotonous, and repetitive everyday actions and routines through “nisetexture” — simulated surfaces, sensations, and appearances of things and situations. <br><br>The members are Sora Oota and Reina Kobayashi. Their main activity is walking around the city all night after having a drink together. Their hobby is checking whether the wooden materials found in the city are real or not.`,
+      links: {
+        "YouTube": "https://youtube.com/@nisetexture?si=XRcAyUBKGoHIAxTG"
+      }
     },
     {
       id: "otasora",
-      useSlider: true, 
+      useSlider: true,
       title: "オオタソラ",
-       title_en: "ota sora",
+      title_en: "ota sora",
       media: ["ota"],
       media_mobile: ["mobile_ota"],
-       text_jp: `1998年福岡生まれ。<br>武蔵野美術大学 造形学部 基礎デザイン学科 卒業。<br>webサイト、グラフィックデザイン、映像の制作を主に行う。ドットやパターンの表現に興味がある。<br>
+      text_jp: `1998年福岡生まれ。<br>武蔵野美術大学 造形学部 基礎デザイン学科 卒業。<br>webサイト、グラフィックデザイン、映像の制作を主に行う。ドットやパターンの表現に興味がある。<br>
        なるべく道具や構造から作るように意識して制作する。`,
       text_en: `Born in Fukuoka in 1998.<br> Graduated from Musashino Art University, Faculty of Design, Department of Basic Design. <br>Primarily creates web, graphic design, and video content.
        Interested in dot and pattern expression. Consciously strives to create works by building from tools and structures whenever possible.`,
-         links: {
-    "Website": "https://otasora.website/",
-    "Instagram": "https://www.instagram.com/abbbbbbbbboe"
-  }
+      links: {
+        "Website": "https://otasora.website/",
+        "Instagram": "https://www.instagram.com/abbbbbbbbboe"
+      }
     },
     {
       id: "kobayashireina",
-      useSlider: true, 
+      useSlider: true,
       title: "小林玲衣奈",
-       title_en: "kobayashi reina",
+      title_en: "kobayashi reina",
       media: ["koba"],
       media_mobile: ["mobile_koba"],
-    text_jp: `1998年、愛知県名古屋市生まれ。<br>2023年、情報科学芸術大学院大学［IAMAS］修士課程修了。<br>風景に関心があり、ささやかなものを集めたりまとめたりすることで、物事を見出そうとする。`,
+      text_jp: `1998年、愛知県名古屋市生まれ。<br>2023年、情報科学芸術大学院大学［IAMAS］修士課程修了。<br>風景に関心があり、ささやかなものを集めたりまとめたりすることで、物事を見出そうとする。`,
       text_en: `Born in 1998 in Nagoya, Aichi Prefecture.Completed the Master’s Program at the Institute of Advanced Media Arts and Sciences (IAMAS) in 2023.<br>With a deep interest in landscapes, she seeks to discover meaning by collecting and assembling subtle, everyday fragments.`,
-            links: {
-    "Website": "https://www.kobayashireina.com/",
-    "Instagram": "https://www.instagram.com/5884017rk/?hl=ja"
-  
-  }
+      links: {
+        "Website": "https://www.kobayashireina.com/",
+        "Instagram": "https://www.instagram.com/5884017rk"
+
+      }
     },
     {
       id: "statement",
-      useSlider:true,
+      useSlider: true,
       title: "Statement",
       title_en: "Statement",
       media: ["statement"],
       media_mobile: ["mobile_statement"],
-   text_jp: `私たちはあらゆる場面でのハラスメントを許容しません。`,
+      text_jp: `私たちはあらゆる場面でのハラスメントを許容しません。`,
       text_en: `We will not tolerate discrimination or harassment of any kind.`,
-            links: {
-    
-  }
+      links: {
+
+      }
     }
   ]
 };
@@ -84,7 +84,7 @@ window.addEventListener('resize', setVh);
 window.addEventListener('orientationchange', setVh);
 
 // ★★ ADD START : モバイル判定 + 現在表示エリア管理 ★★
-let activeSection = "list"; 
+let activeSection = "list";
 // "list" | "image" | "text"
 
 function isMobile() {
@@ -97,49 +97,49 @@ const nextBtn = document.getElementById("nav-next");
 function updateMobileView() {
   // PC → すべて表示 & nav 隠す
   if (!isMobile()) {
-    listArea.style.display  = "";
+    listArea.style.display = "";
     imageArea.style.display = "";
-    textArea.style.display  = "";
+    textArea.style.display = "";
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     return;
   }
 
   // mobile → active だけ表示
-  listArea.style.display  = (activeSection === "list")  ? "" : "none";
+  listArea.style.display = (activeSection === "list") ? "" : "none";
   imageArea.style.display = (activeSection === "image") ? "" : "none";
-  textArea.style.display  = (activeSection === "text")  ? "" : "none";
+  textArea.style.display = (activeSection === "text") ? "" : "none";
 
   updateNavButtons();
-   applyRandomSpacingToListArea();
-      applyRandomSpacingToAreaTitles();
+  applyRandomSpacingToListArea();
+  applyRandomSpacingToAreaTitles();
 
-        if (activeSection === "text") {
-   
-      requestAnimationFrame(() => {
-        textContainer.scrollTop = 0;
-      });
-  
+  if (activeSection === "text") {
+
+    requestAnimationFrame(() => {
+      textContainer.scrollTop = 0;
+    });
+
   }
 }
 
 function updateNavButtons() {
 
   if (activeSection === "list") {
-       // archiveページかつ作品未選択なら右ボタン非表示
+    // archiveページかつ作品未選択なら右ボタン非表示
     if (currentItemId == null) {
       nextBtn.style.display = "none";
       prevBtn.style.display = "none";
     } else {
-        prevBtn.style.display = "none";
+      prevBtn.style.display = "none";
       nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
         stopInertiaAndRound(listContainer);
         activeSection = "image";
-       updateMobileView();
-      applyRandomSpacingToListArea();
-      applyRandomSpacingToAreaTitles();
+        updateMobileView();
+        applyRandomSpacingToListArea();
+        applyRandomSpacingToAreaTitles();
       };
     }
   }
@@ -197,9 +197,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // PC用画像リスト
 const aboutPcImages = [
   "img/pc/nise/1.webp",
-"img/pc/ota/1.webp",
-"img/pc/koba/1.webp",
-"img/pc/statement/1.jpg",
+  "img/pc/ota/1.webp",
+  "img/pc/koba/1.webp",
+  "img/pc/statement/1.jpg",
 ];
 
 // モバイル用画像リスト
@@ -240,14 +240,14 @@ const textContainer = textArea.querySelector('.text-container');
 const imageContainer = imageArea.querySelector('.image-container');
 
 function showAboutCategory(category) {
-  
+
   const items = contents.about;
   if (!items) return;
 
   // ★★ ADD START : 初期表示は image-area ★★
-activeSection = isMobile() ? "image" : activeSection;
-updateMobileView();
-// ★★ ADD END ★★
+  activeSection = isMobile() ? "image" : activeSection;
+  updateMobileView();
+  // ★★ ADD END ★★
 
   // --- エリア初期化 ---
   imageContainer.innerHTML = '';
@@ -259,29 +259,29 @@ updateMobileView();
   if (!targetItem) return;
 
   currentItemId = targetItem.id;
-applyRandomSpacingToMobileAreaTitles();
+  applyRandomSpacingToMobileAreaTitles();
 
   // ================================
   // 📷 メディア描画処理
   // ================================
-if (isMobile() && targetItem.useSlider) {
+  if (isMobile() && targetItem.useSlider) {
 
-  const folder = targetItem.media_mobile[0];
-const img = new Image();
+    const folder = targetItem.media_mobile[0];
+    const img = new Image();
 
-img.src = `img/mobile/${folder}/5.webp`;
+    img.src = `img/mobile/${folder}/5.webp`;
 
-img.onerror = () => {
-  img.onerror = null;
-  img.src = `img/mobile/${folder}/5.jpg`;
-};
+    img.onerror = () => {
+      img.onerror = null;
+      img.src = `img/mobile/${folder}/5.jpg`;
+    };
 
-img.classList.add("mobile-random-image");
-imageContainer.appendChild(img);
+    img.classList.add("mobile-random-image");
+    imageContainer.appendChild(img);
 
 
-} else if (targetItem.useSlider) {
-    
+  } else if (targetItem.useSlider) {
+
     targetItem.media.forEach((folder, idx) => {
       const containerId = `imageContainer_${category}_${idx}`;
       const container = document.createElement("div");
@@ -303,30 +303,30 @@ imageContainer.appendChild(img);
       let currentIndex = -1;
       let imagesLoaded = 0;
 
- for (let i = 1; i <= frameCount; i++) {
-  const img = new Image();
+      for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
 
-  // まず jpg を試す
-  img.src = `/about/img/pc/${folder}/${i}.webp`;
+        // まず jpg を試す
+        img.src = `/about/img/pc/${folder}/${i}.webp`;
 
-  // jpg がなかったら png に切り替える
-  img.onerror = () => {
-    img.onerror = null; // 無限ループ防止
-    img.src = `/about/img/pc/${folder}/${i}.jpg`;
-  };
+        // jpg がなかったら png に切り替える
+        img.onerror = () => {
+          img.onerror = null; // 無限ループ防止
+          img.src = `/about/img/pc/${folder}/${i}.jpg`;
+        };
 
-  img.classList.add("frame");
-  container.appendChild(img);
-  frames.push(img);
+        img.classList.add("frame");
+        container.appendChild(img);
+        frames.push(img);
 
-img.onload = () => {
-  if (imagesLoaded === 0) {
-    frames[0].classList.add("active");
-    currentIndex = 0;
-  }
-  imagesLoaded++;
-};
-}
+        img.onload = () => {
+          if (imagesLoaded === 0) {
+            frames[0].classList.add("active");
+            currentIndex = 0;
+          }
+          imagesLoaded++;
+        };
+      }
 
 
       function updateFrameByCursor(e = null) {
@@ -387,82 +387,82 @@ img.onload = () => {
   const creditFull = targetItem.text_credit || "";
 
   // --- リンク描画 ---
-if (targetItem.links && Object.keys(targetItem.links).length > 0) {
-  // --- リンクがある場合の通常処理 ---
-  const linkContainer = document.createElement('div');
-  linkContainer.className = 'text-section text-links';
+  if (targetItem.links && Object.keys(targetItem.links).length > 0) {
+    // --- リンクがある場合の通常処理 ---
+    const linkContainer = document.createElement('div');
+    linkContainer.className = 'text-section text-links';
 
-  for (const [label, url] of Object.entries(targetItem.links)) {
-    const linkEl = document.createElement('a');
-    linkEl.href = url;
-    linkEl.textContent = label;
-    linkEl.target = '_blank';
-    linkEl.rel = 'noopener noreferrer';
-    linkContainer.appendChild(linkEl);
+    for (const [label, url] of Object.entries(targetItem.links)) {
+      const linkEl = document.createElement('a');
+      linkEl.href = url;
+      linkEl.textContent = label;
+      linkEl.target = '_blank';
+      linkEl.rel = 'noopener noreferrer';
+      linkContainer.appendChild(linkEl);
+    }
+
+    textContainer.appendChild(linkContainer);
+
+  } else {
+    // --- links が空の場合：高さだけのダミー要素 ---
+    const emptyLinkSpace = document.createElement('div');
+    emptyLinkSpace.className = 'text-section text-links-empty';
+
+    // 高さ設定（PC 40px / モバイル 35px）
+    const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
+    emptyLinkSpace.style.height = isMobileDevice ? "70px" : "80px";
+
+    textContainer.appendChild(emptyLinkSpace);
   }
-
-  textContainer.appendChild(linkContainer);
-
-} else {
-  // --- links が空の場合：高さだけのダミー要素 ---
-  const emptyLinkSpace = document.createElement('div');
-  emptyLinkSpace.className = 'text-section text-links-empty';
-
-  // 高さ設定（PC 40px / モバイル 35px）
-  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
-  emptyLinkSpace.style.height = isMobileDevice ? "70px" : "80px";
-
-  textContainer.appendChild(emptyLinkSpace);
-}
 
 
   // === 言語切り替えボタン ===
-const langBtn = document.createElement('button');
-langBtn.className = "text-section lang-toggle-btn";
+  const langBtn = document.createElement('button');
+  langBtn.className = "text-section lang-toggle-btn";
 
-// 言語のグローバル状態（維持したい場合）
-let activeLanguage = window.activeLanguage || "ja";
-window.activeLanguage = activeLanguage;
+  // 言語のグローバル状態（維持したい場合）
+  let activeLanguage = window.activeLanguage || "ja";
+  window.activeLanguage = activeLanguage;
 
-textContainer.appendChild(langBtn);
+  textContainer.appendChild(langBtn);
 
- // --- 日本語テキスト ---
+  // --- 日本語テキスト ---
 
-let jaSection = null;
-if (jpFull.trim()) {
-  jaSection = document.createElement('div');
-  jaSection.className = 'text-section text-ja';
-   // モバイル → タイトル + テキスト
-  // PC → テキストのみ
-  if (isMobile()) {
-    jaSection.innerHTML = `
+  let jaSection = null;
+  if (jpFull.trim()) {
+    jaSection = document.createElement('div');
+    jaSection.className = 'text-section text-ja';
+    // モバイル → タイトル + テキスト
+    // PC → テキストのみ
+    if (isMobile()) {
+      jaSection.innerHTML = `
       <p class="mobile-jp-title">${targetItem.title || ""}</p>
       <p>${jpFull}</p>
     `;
-  } else {
-    jaSection.innerHTML = `<p>${jpFull}</p>`;
+    } else {
+      jaSection.innerHTML = `<p>${jpFull}</p>`;
+    }
+    textContainer.appendChild(jaSection);
   }
-  textContainer.appendChild(jaSection);
-}
 
-// --- 英語テキスト ---
+  // --- 英語テキスト ---
 
-let enSection = null;
-if (enFull.trim()) {
-  enSection = document.createElement('div');
-  enSection.className = 'text-section text-en';
-  if (isMobile()) {
-    // モバイル → タイトル + テキスト
-    enSection.innerHTML = `
+  let enSection = null;
+  if (enFull.trim()) {
+    enSection = document.createElement('div');
+    enSection.className = 'text-section text-en';
+    if (isMobile()) {
+      // モバイル → タイトル + テキスト
+      enSection.innerHTML = `
       <p class="mobile-en-title">${targetItem.title_en || ""}</p>
       <p>${enFull}</p>
     `;
-  } else {
-    // PC → テキストのみ
-    enSection.innerHTML = `<p>${enFull}</p>`;
+    } else {
+      // PC → テキストのみ
+      enSection.innerHTML = `<p>${enFull}</p>`;
+    }
+    textContainer.appendChild(enSection);
   }
-  textContainer.appendChild(enSection);
-}
 
 
   if (creditFull.trim()) {
@@ -472,36 +472,29 @@ if (enFull.trim()) {
     textContainer.appendChild(creditSection);
   }
 
-  
-// === 言語適用関数 ===
-function applyLanguage(lang) {
-  activeLanguage = lang;
-  window.activeLanguage = lang;
 
-  if (jaSection) jaSection.style.display = (lang === "ja") ? "block" : "none";
-  if (enSection) enSection.style.display = (lang === "en") ? "block" : "none";
+  // === 言語適用関数 ===
+  function applyLanguage(lang) {
+    activeLanguage = lang;
+    window.activeLanguage = lang;
 
-  // ボタンの表示テキスト
-  langBtn.textContent = (lang === "ja") ? "english⇄" : "japanese⇄";
-}
+    if (jaSection) jaSection.style.display = (lang === "ja") ? "block" : "none";
+    if (enSection) enSection.style.display = (lang === "en") ? "block" : "none";
 
-
-// === ボタンクリックでトグル ===
-langBtn.addEventListener("click", () => {
-  const newLang = (activeLanguage === "ja") ? "en" : "ja";
-  applyLanguage(newLang);
-});
+    // ボタンの表示テキスト
+    langBtn.textContent = (lang === "ja") ? "english⇄" : "japanese⇄";
+  }
 
 
-// === 初期表示 ===
-applyLanguage(activeLanguage);
+  // === ボタンクリックでトグル ===
+  langBtn.addEventListener("click", () => {
+    const newLang = (activeLanguage === "ja") ? "en" : "ja";
+    applyLanguage(newLang);
+  });
 
 
-  // --- スクロール余白 ---
-  // const spacerImg = document.createElement('div');
-  // spacerImg.className = 'scroll-extra';
-  // imageArea.appendChild(spacerImg);
-
+  // === 初期表示 ===
+  applyLanguage(activeLanguage);
 
   // --- activeクラス更新 ---
   updateActiveButton(category);
@@ -509,33 +502,26 @@ applyLanguage(activeLanguage);
   // --- サイズ調整 ---
   adjustMediaSizes();
 
-attachScrollStep();
+  attachScrollStep();
 
-// ★★ ADD START : モバイルボタン更新 ★★
+  // ★★ ADD START : モバイルボタン更新 ★★
+  updateMobileView();
 
-addMobileNavButtons();
-updateMobileView();
+  // ★★ ADD END ★★
+  applyRandomSpacingToMobileAreaTitles();
+  createScrollTopButton(listContainer, textContainer, imageContainer);
 
-// ★★ ADD END ★★
-applyRandomSpacingToMobileAreaTitles();
-createScrollTopButton(listContainer, textContainer, imageContainer);
-  
 
-// ★★ すべてのDOM・レイアウト・スクロール処理が終わった後 ★★
-requestAnimationFrame(() => {
+  // ★★ すべてのDOM・レイアウト・スクロール処理が終わった後 ★★
   requestAnimationFrame(() => {
-    textContainer.scrollTop = 0;
+    requestAnimationFrame(() => {
+      textContainer.scrollTop = 0;
+    });
   });
-});
 
 }
 
-// ★★ ADD START : resize 時にも反映 ★★
-// window.addEventListener("resize", () => {
-//   updateMobileView();
-//   addMobileNavButtons();
-// });
-// ★★ ADD END ★★
+
 
 
 // ================================
@@ -556,13 +542,13 @@ function updateActiveButton(activeCategory) {
 // ================================
 document.querySelectorAll('[data-category]').forEach(btn => {
   btn.addEventListener('click', () => {
-    
+
     const category = btn.dataset.category;
     if (category) {
       // ハッシュを変更（履歴に残る）
       window.location.hash = category;
       showAboutCategory(category);
-   
+
     }
   });
 });
@@ -594,11 +580,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-  // ================================
-  // 画像エリアのリサイズ
-  // ================================
+// ================================
+// 画像エリアのリサイズ
+// ================================
 function resizeMediaToFitArea(el, areaWidth) {
   let naturalWidth, naturalHeight, aspectRatio;
 
@@ -629,7 +613,7 @@ function resizeMediaToFitArea(el, areaWidth) {
   let newHeight = (naturalHeight * scale) - heightOffset;
 
   // 高さを40pxの倍数に調整
-const step = isMobile() ? 35 : 40;
+  const step = isMobile() ? 35 : 40;
 
   newHeight = Math.floor(newHeight / step) * step;
   if (newHeight < step) newHeight = step;
@@ -643,26 +627,25 @@ const step = isMobile() ? 35 : 40;
   }
 
   // ✅ ここではもう縦-1pxしない（上で処理済み）
-// ✅ 縦を1px減らす 
-newHeight = newHeight - 1; if (newHeight < 1) newHeight = 1;
+  // ✅ 縦を1px減らす 
+  newHeight = newHeight - 1; if (newHeight < 1) newHeight = 1;
 
-newWidth = Math.floor(newWidth);
+  newWidth = Math.floor(newWidth);
   // スタイル適用
   el.style.width = `${newWidth}px`;
   el.style.height = `${newHeight}px`;
-  
+
   el.style.display = 'block';
   // el.style.margin = '-1px auto 0px auto';
   el.style.maxWidth = '100%';
-  
 
-    // ✅ 親の member-slider 高さも設定
+
+  // ✅ 親の member-slider 高さも設定
   const parentSlider = el.closest('.member-slider');
   if (parentSlider) {
     parentSlider.style.height = `${newHeight}px`;
   }
 }
-
 
 
 // ==========================
@@ -671,14 +654,14 @@ newWidth = Math.floor(newWidth);
 function adjustMediaSizes() {
   const imageContents = document.querySelector('.image-container');
   if (!imageContents) return;
-  
+
 
   const styles = getComputedStyle(imageContents);
   const paddingLeft = parseFloat(styles.paddingLeft) || 0;
   const paddingRight = parseFloat(styles.paddingRight) || 0;
   const usableWidth = imageArea.clientWidth - paddingLeft - paddingRight;
 
-  const mediaElements =  imageContents.querySelectorAll('img, video, iframe');
+  const mediaElements = imageContents.querySelectorAll('img, video, iframe');
 
   mediaElements.forEach(el => {
     const applySize = () => resizeMediaToFitArea(el, usableWidth);
@@ -699,118 +682,6 @@ function adjustMediaSizes() {
 window.addEventListener('resize', adjustMediaSizes);
 
 
-
-
-
-
-// // ==========================
-// // スクロール制御（コンテナ単位、最後のステップで止める）
-// // ==========================
-// function attachScrollStep() {
-//   document.querySelectorAll('.list-container, .image-container, .text-container').forEach(container => {
-//     if (container.dataset.scrollAttached === "true") return;
-//     container.dataset.scrollAttached = "true";
-
-//     let isScrolling = false;
-
-//     const getStep = () => {
-//       const isImg = container.classList.contains('image-container');
-//       if (window.innerWidth <= 768) {
-//         return isImg ? 35 : 35;   // Mobile
-//       } else {
-//         return isImg ? 120 : 40;  // PC
-//       }
-//     };
-
-//     const maxScroll = () => container.scrollHeight - container.clientHeight;
-
-//     const scrollToStep = (direction) => {
-//       if (isScrolling) return;
-//       isScrolling = true;
-
-//       const step = getStep();
-//       let target = container.scrollTop + direction * step;
-
-//       const lastStepTop = Math.floor(maxScroll() / step) * step;
-//       if (target > lastStepTop) target = lastStepTop;
-//       if (target < 0) target = 0;
-
-//       target = Math.round(target / step) * step;
-//       container.scrollTo({ top: target, behavior: 'auto' });
-
-//       setTimeout(() => { isScrolling = false; }, 120);
-//     };
-
-//     // ==========================
-//     // 🖱 PC: wheel
-//     // ==========================
-//     container.addEventListener(
-//       'wheel',
-//       (e) => {
-//         e.preventDefault();
-//         const direction = e.deltaY > 0 ? 1 : -1;
-//         scrollToStep(direction);
-//       },
-//       { passive: false }
-//     );
-
-//  // ==========================
-//     // 📱 Mobile: touchmove でステップスクロール
-//     // ==========================
-//     let lastY = 0;
-//     let accum = 0;
-
-//     container.addEventListener("touchstart", (e) => {
-//       lastY = e.touches[0].clientY;
-//       accum = 0;
-//     });
-
-//     container.addEventListener("touchmove", (e) => {
-//   e.preventDefault(); // 標準スクロール無効
-
-//   const currentY = e.touches[0].clientY;
-//   const diff = lastY - currentY;
-
-//   accum += diff;
-//   lastY = currentY;
-
-//   const step = getStep();   // ← 実際に動く量（例：35px）
-//   const trigger = 6;       // ← 指を何px動かしたら発火するか
-
-//   if (Math.abs(accum) >= trigger) {
-//     const direction = accum > 0 ? 1 : -1;
-
-//     scrollToStep(direction);  // step(35px) で動く
-
-//     // 余りを残す（滑らか連続ステップのため）
-//     accum = accum % trigger;
-//   }
-// }, { passive: false });
-
-//     container.addEventListener("touchend", () => {
-//       accum = 0;
-//     });
-//   });
-// }
-
-
-
-
-// 初回タイトル生成
-// document.querySelectorAll('.list-area, .image-area, .text-area').forEach(area => {
-//   if (!area.querySelector('.area-title')) {
-//     const title = document.createElement('div');
-//     title.className = 'area-title';
-
-//     if (area.classList.contains('list-area')) title.textContent = 'title';
-//     if (area.classList.contains('image-area')) title.textContent = 'image';
-//     if (area.classList.contains('text-area')) title.textContent = 'text';
-
-//     area.prepend(title);
-//   }
-// });
-
-
 // YouTubeのURLをembed形式に変換
 function convertToYouTubeEmbed(url) {
   const videoId = url.split("v=")[1]?.split("&")[0] || url.split("/").pop();
@@ -822,15 +693,6 @@ function convertToVimeoEmbed(url) {
   const videoId = url.split("/").pop();
   return `https://player.vimeo.com/video/${videoId}`;
 }
-
-
-
-
-
-
-
-
-
 
 
 // ==========================
@@ -871,7 +733,7 @@ function applyRandomSpacingToAreaTitles() {
 function applyRandomSpacingToListArea() {
   document.querySelectorAll('.list-area button,.list-area p').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText,0.5, 3);
+    title.innerHTML = randomLetterSpacing(originalText, 0.5, 3);
   });
 }
 
@@ -881,7 +743,7 @@ function applyRandomSpacingToListArea() {
 function applyRandomSpacingToMobileAreaTitles() {
   document.querySelectorAll('.mobile-nav-btn span').forEach(title => {
     const originalText = title.textContent;
-    title.innerHTML = randomLetterSpacing(originalText,1, 2.5);
+    title.innerHTML = randomLetterSpacing(originalText, 1, 2.5);
   });
 }
 
@@ -909,15 +771,12 @@ function createScrollTopButton(container) {
   btn.textContent = '↑';
   btn.className = 'scroll-top-btn';
   container.appendChild(btn); // container 内に追加
-    // 初期非表示
+  // 初期非表示
   btn.style.display = 'none';
- 
-  
- 
   btn.style.color = ' var(--btn-color)';
   btn.style.cursor = 'pointer';
   btn.style.zIndex = '900';
- 
+
   // スクロール監視
   container.addEventListener('scroll', () => {
     // 一定量スクロールしたら表示
@@ -930,21 +789,21 @@ function createScrollTopButton(container) {
     // エリア右下にボタンを配置（fixedで追従）
     const rect = container.getBoundingClientRect();
     btn.style.position = 'fixed';
- 
 
-  if (!isMobile()) {
-    btn.style.left = '';
-    btn.style.right = (window.innerWidth - rect.right + 30) + 'px'; // 右端からの余白
-  } else {
-    // モバイル
-    if (activeSection === 'list') {
-   btn.style.left = '';
-    btn.style.right = (window.innerWidth - rect.right + 8) + 'px'; // 右端からの余白
+
+    if (!isMobile()) {
+      btn.style.left = '';
+      btn.style.right = (window.innerWidth - rect.right + 30) + 'px'; // 右端からの余白
     } else {
-     btn.style.left = (rect.left + 8) + 'px'; // 16pxは画面端からの余白
-    btn.style.right = ''; // 念のため右は空に
+      // モバイル
+      if (activeSection === 'list') {
+        btn.style.left = '';
+        btn.style.right = (window.innerWidth - rect.right + 8) + 'px'; // 右端からの余白
+      } else {
+        btn.style.left = (rect.left + 8) + 'px'; // 16pxは画面端からの余白
+        btn.style.right = ''; // 念のため右は空に
+      }
     }
-  }
   });
 
   btn.addEventListener('click', () => {

@@ -6,7 +6,7 @@ window.inertiaVelocity = 0;
 // スクロール制御（コンテナ単位、最後のステップで止める）
 // ==========================
 function attachScrollStep() {
- 
+
   const main = document.querySelector("main");
 
 
@@ -21,9 +21,9 @@ function attachScrollStep() {
   } else {
     // 🟩 Archiveページ or main が存在しないページ：
     //   div[data-scrolltype] のみ対象
-   targets = Array.from(document.querySelectorAll('div[data-scrolltype]'))
-  .filter(el => el.dataset.scrolltype && el.dataset.scrollAttached !== "true");
-      
+    targets = Array.from(document.querySelectorAll('div[data-scrolltype]'))
+      .filter(el => el.dataset.scrolltype && el.dataset.scrollAttached !== "true");
+
   }
 
 
@@ -34,16 +34,16 @@ function attachScrollStep() {
 
     let isScrolling = false;
 
-    
+
 
     // --------------------------------------------------
     // スクロールごとの trigger（発火距離）と step（移動量）
     // --------------------------------------------------
-  const getTriggerAndStep = (container) => {
+    const getTriggerAndStep = (container) => {
       const type = container.dataset.scrolltype;
       const isMobile = window.innerWidth <= 768;
 
-      console.log("scrolltype =", type);
+
 
       if (!type) return null; // ← type 無しは無視
 
@@ -51,9 +51,9 @@ function attachScrollStep() {
 
       switch (type) {
         case "image": return { trigger: 120, step: 120 };
-        case "text":  return { trigger: 10,  step: 40 };
-        case "list":  return { trigger: 10,  step: 40 };
-        case "top":   return { trigger: 40,  step: 40 };
+        case "text": return { trigger: 10, step: 40 };
+        case "list": return { trigger: 10, step: 40 };
+        case "top": return { trigger: 40, step: 40 };
       }
       return null;
     };
@@ -62,8 +62,8 @@ function attachScrollStep() {
 
     const scrollToStep = (direction, step) => {
 
-        
-  
+
+
 
       if (isScrolling) return;
       isScrolling = true;
@@ -108,60 +108,56 @@ function attachScrollStep() {
     let lastY = 0;
     let accum = 0;
 
-    // ★ 疑似慣性スクロール用
-       // 現在の慣性の速度
-    
 
-    // -------- inertia start ---------
-// ==========================
-// Mobile: Inertia Scroll
-// ==========================
+    // ==========================
+    // Mobile: Inertia Scroll
+    // ==========================
 
 
 
-const startInertia = (step) => {
-  clearTimeout(window.inertiaTimer);
+    const startInertia = (step) => {
+      clearTimeout(window.inertiaTimer);
 
-  const loop = () => {
-    if (Math.abs(window.inertiaVelocity) < 0.05) return;
+      const loop = () => {
+        if (Math.abs(window.inertiaVelocity) < 0.05) return;
 
-    const direction = window.inertiaVelocity > 0 ? 1 : -1;
-    scrollToStep(direction, step);
+        const direction = window.inertiaVelocity > 0 ? 1 : -1;
+        scrollToStep(direction, step);
 
-    window.inertiaVelocity *= 0.9;
+        window.inertiaVelocity *= 0.9;
 
-    const speed = Math.min(Math.max(10, 200 - Math.abs(window.inertiaVelocity) * 190), 200);
-    window.inertiaTimer = setTimeout(loop, speed);
-  };
+        const speed = Math.min(Math.max(10, 200 - Math.abs(window.inertiaVelocity) * 190), 200);
+        window.inertiaTimer = setTimeout(loop, speed);
+      };
 
-  loop();
-};
+      loop();
+    };
 
 
 
     // --------------------------------
 
-   container.addEventListener("touchstart", (e) => {
-  lastY = e.touches[0].clientY;
-  accum = 0;
+    container.addEventListener("touchstart", (e) => {
+      lastY = e.touches[0].clientY;
+      accum = 0;
 
-  // 慣性を止める
-  inertiaVelocity = 0;
-  clearTimeout(inertiaTimer);  // ← これが正しい！
-});
+      // 慣性を止める
+      inertiaVelocity = 0;
+      clearTimeout(inertiaTimer);  // ← これが正しい！
+    });
 
     container.addEventListener("touchmove", (e) => {
-          const conf = getTriggerAndStep(container);
+      const conf = getTriggerAndStep(container);
       if (!conf) return;  // ← ここが無いとエラー
-const { trigger, step } = conf;
-      
+      const { trigger, step } = conf;
+
       e.preventDefault();
 
       const currentY = e.touches[0].clientY;
       const diff = lastY - currentY;
       lastY = currentY;
 
-      
+
 
       accum += diff;
 
@@ -261,7 +257,7 @@ function clickMediaIframe(el) {
     wrapper.classList.remove('iframe-active');
   };
 
-    // ▶ 再生終了・停止時に cover 復活
+  // ▶ 再生終了・停止時に cover 復活
   setupIframeStateListener(el, () => {
     isActive = false;
 

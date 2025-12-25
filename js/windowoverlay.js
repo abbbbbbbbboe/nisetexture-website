@@ -15,22 +15,21 @@ window.onYouTubeIframeAPIReady = () => {
 
 
 function setupYouTubePlayer(iframe) {
-      console.log("setupYouTubePlayer called", iframe, iframe.id);
-  console.log("YouTube Player init:", iframe.id);
+
 
   new YT.Player(iframe.id, {
     events: {
       onStateChange: e => {
-        console.log("YT state:", e.data);
+
 
         if (e.data === YT.PlayerState.PLAYING) {
-          console.log("media play");
+
           isMediaPlaying = true;
         } else if (
           e.data === YT.PlayerState.PAUSED ||
           e.data === YT.PlayerState.ENDED
         ) {
-          console.log("media stop");
+
           isMediaPlaying = false;
           resetIdleState();
         }
@@ -46,18 +45,18 @@ function setupVimeoPlayer(iframe) {
   const player = new Vimeo.Player(iframe);
 
   player.on("play", () => {
-    console.log("media play");
+
     isMediaPlaying = true;
   });
 
   player.on("pause", () => {
-    console.log("media stop");
+
     isMediaPlaying = false;
     resetIdleState();
   });
 
   player.on("ended", () => {
-    console.log("media stop");
+
     isMediaPlaying = false;
     resetIdleState();
   });
@@ -65,25 +64,25 @@ function setupVimeoPlayer(iframe) {
 
 function setupSoundCloudPlayer(iframe) {
   if (!window.SC || !SC.Widget) {
-    console.warn("SoundCloud API not ready");
+
     return;
   }
 
   const widget = SC.Widget(iframe);
 
   widget.bind(SC.Widget.Events.PLAY, () => {
-    console.log("media play");
+
     isMediaPlaying = true;
   });
 
   widget.bind(SC.Widget.Events.PAUSE, () => {
-    console.log("media stop");
+
     isMediaPlaying = false;
     resetIdleState();
   });
 
   widget.bind(SC.Widget.Events.FINISH, () => {
-    console.log("media stop");
+
     isMediaPlaying = false;
     resetIdleState();
   });
@@ -91,7 +90,7 @@ function setupSoundCloudPlayer(iframe) {
 
 
 function setupMediaIframe(el) {
-    if (!el || el.__mediaInitialized) return;
+  if (!el || el.__mediaInitialized) return;
   el.__mediaInitialized = true;
 
   if (el.tagName === "IFRAME") {
@@ -99,7 +98,7 @@ function setupMediaIframe(el) {
 
     // ✅ YouTube
     if (src.includes("youtube.com") || src.includes("youtu.be")) {
-      console.log("setupMediaIframe → youtube", src);
+
 
       // id が必須
       if (!el.id) {
@@ -116,14 +115,14 @@ function setupMediaIframe(el) {
 
     // ✅ Vimeo
     if (src.includes("vimeo.com")) {
-      console.log("setupMediaIframe → vimeo", src);
+
       setupVimeoPlayer(el);
       return;
     }
 
     // ✅ SoundCloud
     if (src.includes("soundcloud.com") || src.includes("w.soundcloud.com")) {
-      console.log("setupMediaIframe → soundcloud", src);
+
       setupSoundCloudPlayer(el);
       return;
     }
@@ -131,15 +130,15 @@ function setupMediaIframe(el) {
 
   // ✅ HTML5 video
   if (el.tagName === "VIDEO") {
-    console.log("setupMediaIframe → video", el.src);
+
 
     el.addEventListener("play", () => {
-      console.log("media play");
+
       isMediaPlaying = true;
     });
 
     const stop = () => {
-      console.log("media stop");
+
       isMediaPlaying = false;
       resetIdleState();
     };
@@ -151,120 +150,118 @@ function setupMediaIframe(el) {
 
 
 
- // ===========================================
-    // ④ 実行（読み込む画像だけ指定する）
-    // ===========================================
+// ===========================================
+// ④ 実行（読み込む画像だけ指定する）
+// ===========================================
 
-    // 現在ページの階層の深さを返す
+// 現在ページの階層の深さを返す
 function getPathDepth() {
-    let path = window.location.pathname;
+  let path = window.location.pathname;
 
-    // 末尾の "/" を強制削除（例: /about/ → /about）
-    if (path.endsWith("/")) path = path.slice(0, -1);
+  // 末尾の "/" を強制削除（例: /about/ → /about）
+  if (path.endsWith("/")) path = path.slice(0, -1);
 
-    const segments = path.split("/").filter(s => s.length > 0);
+  const segments = path.split("/").filter(s => s.length > 0);
 
-    // 最後の要素がファイル名か判定（ . が含まれているか ）
-    const last = segments[segments.length - 1];
-    const isFile = last && last.includes(".");
+  // 最後の要素がファイル名か判定（ . が含まれているか ）
+  const last = segments[segments.length - 1];
+  const isFile = last && last.includes(".");
 
-    // ファイル名はカウントしない
-    return isFile ? segments.length - 1 : segments.length;
+  // ファイル名はカウントしない
+  return isFile ? segments.length - 1 : segments.length;
 }
 
 
 // 深さに応じて "../" を付ける
 function applyBaseToPaths(paths) {
-    const depth = getPathDepth();
-    const base = "../".repeat(depth); // depth=1 → "../" がつく
+  const depth = getPathDepth();
+  const base = "../".repeat(depth);
 
-    return paths.map(p => base + p);
+  return paths.map(p => base + p);
 }
 
 // 1ファイルだけの補正
 function applyBaseToFile(path) {
-    const depth = getPathDepth();
-    const base = "../".repeat(depth);
-    return base + path;
+  const depth = getPathDepth();
+  const base = "../".repeat(depth);
+  return base + path;
 }
 
 
-    const pcImagesRaw = [
-        "img/window/pc/1.png",
-        "img/window/pc/2.png",
-        "img/window/pc/3.png",
-        "img/window/pc/4.png",
-        "img/window/pc/5.png",
-        "img/window/pc/6.png",
-        "img/window/pc/7.png",
-        "img/window/pc/8.png",
-        "img/window/pc/9.png"
-    ];
+const pcImagesRaw = [
+  "img/window/pc/1.png",
+  "img/window/pc/2.png",
+  "img/window/pc/3.png",
+  "img/window/pc/4.png",
+  "img/window/pc/5.png",
+  "img/window/pc/6.png",
+  "img/window/pc/7.png",
+  "img/window/pc/8.png",
+  "img/window/pc/9.png"
+];
 
-    const mobileImagesRaw = [
-         "img/window/mobile/1.png",
-        "img/window/mobile/2.png",
-        "img/window/mobile/3.png",
-        "img/window/mobile/4.png",
-        "img/window/mobile/5.png",
-        "img/window/mobile/6.png",
-        "img/window/mobile/7.png",
-        "img/window/mobile/8.png",
-        "img/window/mobile/9.png"
-    ];
+const mobileImagesRaw = [
+  "img/window/mobile/1.png",
+  "img/window/mobile/2.png",
+  "img/window/mobile/3.png",
+  "img/window/mobile/4.png",
+  "img/window/mobile/5.png",
+  "img/window/mobile/6.png",
+  "img/window/mobile/7.png",
+  "img/window/mobile/8.png",
+  "img/window/mobile/9.png"
+];
 
 
-    // ===============================
+// ===============================
 // 画像をプリロードする関数
 // ===============================
 function preloadImages(imagePaths) {
-    return Promise.all(
-        imagePaths.map(src => {
-            return new Promise(resolve => {
-                const img = new Image();
-                img.onload = () => resolve(src);      // ロード成功
-                img.onerror = () => resolve(src);     // 失敗しても先に進む
-                img.src = src;
-            });
-        })
-    );
+  return Promise.all(
+    imagePaths.map(src => {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(src);      // ロード成功
+        img.onerror = () => resolve(src);     // 失敗しても先に進む
+        img.src = src;
+      });
+    })
+  );
 }
 // 階層に応じて補正したパスを作成
-const pcImages    = applyBaseToPaths(pcImagesRaw);
+const pcImages = applyBaseToPaths(pcImagesRaw);
 const mobileImages = applyBaseToPaths(mobileImagesRaw);
-const topImage     = applyBaseToFile("img/rogo_side.svg");
+const topImage = applyBaseToFile("img/rogo_side.svg");
 
 const idleImages = isMobile() ? mobileImages : pcImages;
 
 // 先にプリロード
 preloadImages(idleImages).then(() => {
-    enableIdleOverlay(idleImages, topImage,15000);
+  enableIdleOverlay(idleImages, topImage, 15000);
 });
 
 //  clockElement.textContent = `〔${h}:${m}:${s}〕`;
 
 function startClock(clockElement) {
-    function update() {
-        const now = new Date();
-        // const h = String(now.getHours()).padStart(2,"0");
-        // const m = String(now.getMinutes()).padStart(2,"0");
-        const s = String(now.getSeconds()).padStart(2,"0");
-        clockElement.textContent = `〔:${s}〕`;
-    }
+  function update() {
+    const now = new Date();
+    const s = String(now.getSeconds()).padStart(2, "0");
+    clockElement.textContent = `〔:${s}〕`;
+  }
 
-    update();
-    return setInterval(update, 1000);
+  update();
+  return setInterval(update, 1000);
 }
 
 // ===========================================
 // ① overlay と画像フレームを JS で生成
 // ===========================================
 function createIdleOverlay(imagePaths, topImagePath) {
-    const overlay = document.createElement("div");
-    overlay.id = "idle-overlay";
-    let overlaycss = "";
-    if (isMobile()) {
-        overlaycss = `
+  const overlay = document.createElement("div");
+  overlay.id = "idle-overlay";
+  let overlaycss = "";
+  if (isMobile()) {
+    overlaycss = `
     position: fixed;
     top:50%;
     inset: 0;
@@ -277,8 +274,8 @@ function createIdleOverlay(imagePaths, topImagePath) {
     
     
   `;
-    } else {
-        overlaycss = `
+  } else {
+    overlaycss = `
     position: fixed;
     inset: 0;
     width: 100vw;
@@ -290,24 +287,24 @@ function createIdleOverlay(imagePaths, topImagePath) {
     
     overflow: hidden;
   `;
-    }
+  }
 
-    overlay.style.cssText = overlaycss;
+  overlay.style.cssText = overlaycss;
 
-    const frameBox = document.createElement("div");
-    frameBox.className = "frames";
-    frameBox.style.cssText = `
+  const frameBox = document.createElement("div");
+  frameBox.className = "frames";
+  frameBox.style.cssText = `
     position: absolute;
     inset: 0;
   `;
 
-    // ---- メイン画像（フィット表示） ----
-    imagePaths.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        let imgcss = "";
-        if (isMobile()) {
-            imgcss = `
+  // ---- メイン画像（フィット表示） ----
+  imagePaths.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    let imgcss = "";
+    if (isMobile()) {
+      imgcss = `
       display: none;
       position: absolute;
       top: 50%;
@@ -319,8 +316,8 @@ function createIdleOverlay(imagePaths, topImagePath) {
       image-rendering: pixelated;
       z-index: -1;
     `;
-        } else {
-            imgcss = `
+    } else {
+      imgcss = `
       display: none;
       position: absolute;
       top: 50%;
@@ -333,23 +330,23 @@ function createIdleOverlay(imagePaths, topImagePath) {
       image-rendering: pixelated;
       z-index: -1;
     `;
-        }
+    }
 
-        img.style.cssText = imgcss;
+    img.style.cssText = imgcss;
 
-        frameBox.appendChild(img);
-    });
+    frameBox.appendChild(img);
+  });
 
-    overlay.appendChild(frameBox);
+  overlay.appendChild(frameBox);
 
-    // ---- 上に重ねる画像（ロゴ・模様など） ----
-    if (topImagePath) {
-        const topImg = document.createElement("img");
-        topImg.src = topImagePath;
-        let topImgCss = "";
+  // ---- 上に重ねる画像（ロゴ・模様など） ----
+  if (topImagePath) {
+    const topImg = document.createElement("img");
+    topImg.src = topImagePath;
+    let topImgCss = "";
 
-        if (isMobile()) {
-            topImgCss = `
+    if (isMobile()) {
+      topImgCss = `
       position: absolute;
       top: 50%;
       left: 50%;
@@ -364,8 +361,8 @@ function createIdleOverlay(imagePaths, topImagePath) {
       pointer-events: none;  /* クリックを通す（任意） */
       
     `;
-        } else {
-            topImgCss = `
+    } else {
+      topImgCss = `
       position: absolute;
       
       z-index: 20;  /* ← これが上のレイヤー */
@@ -375,20 +372,21 @@ function createIdleOverlay(imagePaths, topImagePath) {
       object-fit: contain;
       pointer-events: none;  /* クリックを通す（任意） */
       overflow: hidden;
-    `;}
+    `;
+    }
 
     topImg.style.cssText = topImgCss;
 
     overlay.appendChild(topImg);
-    }
+  }
 
-       // ---- 時計の追加（左上表示）----
-    const clock = document.createElement("div");
-    clock.id = "idle-clock";
-     let clockCss = "";
+  // ---- 時計の追加（左上表示）----
+  const clock = document.createElement("div");
+  clock.id = "idle-clock";
+  let clockCss = "";
 
-        if (isMobile()) {
-            clockCss = `
+  if (isMobile()) {
+    clockCss = `
             max-width: 100dvw;
       max-height: 100dvh;
     margin:72px -10px auto auto;
@@ -404,8 +402,8 @@ function createIdleOverlay(imagePaths, topImagePath) {
         letter-spacing: 0.5rem;
         transform: scale(1, 0.85);
     `;
-    } else {
-             clockCss = `
+  } else {
+    clockCss = `
         
         top:60%;
     margin:80px 12% auto auto;
@@ -420,129 +418,112 @@ function createIdleOverlay(imagePaths, topImagePath) {
         pointer-events: none;
         letter-spacing: 0.5rem;
         transform: scale(1, 0.85);
-    `;}
+    `;
+  }
 
-    clock.style.cssText = clockCss
-    overlay.appendChild(clock);
+  clock.style.cssText = clockCss
+  overlay.appendChild(clock);
 
-    document.body.appendChild(overlay);
+  document.body.appendChild(overlay);
 
-    return {
-        overlay,
-        frames: [...frameBox.querySelectorAll("img")],
-        clock
-    };
-    }
+  return {
+    overlay,
+    frames: [...frameBox.querySelectorAll("img")],
+    clock
+  };
+}
 
 
 
-    // ===========================================
-    // ② 画像ループ（往復）
-    // ===========================================
-    function startLoop(frames, interval = 1000) {
-        let max = frames.length;
-        let index = 0;
-        let direction = 1;
+// ===========================================
+// ② 画像ループ（往復）
+// ===========================================
+function startLoop(frames, interval = 1000) {
+  let max = frames.length;
+  let index = 0;
+  let direction = 1;
 
-        frames.forEach(f => f.classList.remove("active"));
-        frames[0].style.display = "block";
+  frames.forEach(f => f.classList.remove("active"));
+  frames[0].style.display = "block";
 
-        return setInterval(() => {
-            index += direction;
+  return setInterval(() => {
+    index += direction;
 
-            if (index >= max - 1) direction = -1;
-            else if (index <= 0) direction = 1;
+    if (index >= max - 1) direction = -1;
+    else if (index <= 0) direction = 1;
 
-            frames.forEach(f => (f.style.display = "none"));
-            frames[index].style.display = "block";
+    frames.forEach(f => (f.style.display = "none"));
+    frames[index].style.display = "block";
 
-        }, interval);
-    }
+  }, interval);
+}
 
 
 function enableIdleOverlay(imagePaths, topImagePath, idleTime = 1000) {
-    let overlayInfo = null;
-    let overlay = null;
-    let frames = null;
+  let overlayInfo = null;
+  let overlay = null;
+  let frames = null;
 
-    let idleTimer = null;
-    let loopTimer = null;
-    let clockTimer = null; 
+  let idleTimer = null;
+  let loopTimer = null;
+  let clockTimer = null;
 
-    // ==============================
-    // overlay を生成して idle ループ開始
-    // ==============================
-    function showOverlay() {
-        overlayInfo = createIdleOverlay(imagePaths, topImagePath);
-        overlay = overlayInfo.overlay;
-        frames = overlayInfo.frames;
-         clock = overlayInfo.clock;  
+  // ==============================
+  // overlay を生成して idle ループ開始
+  // ==============================
+  function showOverlay() {
+    overlayInfo = createIdleOverlay(imagePaths, topImagePath);
+    overlay = overlayInfo.overlay;
+    frames = overlayInfo.frames;
+    clock = overlayInfo.clock;
 
-        document.body.appendChild(overlay);
-        overlay.style.display = "flex";
+    document.body.appendChild(overlay);
+    overlay.style.display = "flex";
 
-        loopTimer = startLoop(frames, 1000);
-        clockTimer = startClock(clock);
-    }
-
-    // ==============================
-    // overlay を完全削除 + 復活予約
-    // ==============================
-function resetIdleState() {
-
-
-  // 再生中なら idle カウント自体を止める
-  if (isMediaPlaying) {
-    console.log("media playing → idle paused");
-    return;
+    loopTimer = startLoop(frames, 1000);
+    clockTimer = startClock(clock);
   }
 
-  // overlay 削除
-  if (overlay && document.body.contains(overlay)) {
-    overlay.remove();
+  // ==============================
+  // overlay を完全削除 + 復活予約
+  // ==============================
+  function resetIdleState() {
+
+
+    // 再生中なら idle カウント自体を止める
+    if (isMediaPlaying) {
+      console.log("media playing → idle paused");
+      return;
+    }
+
+    // overlay 削除
+    if (overlay && document.body.contains(overlay)) {
+      overlay.remove();
+    }
+
+    // タイマー停止
+    if (loopTimer) clearInterval(loopTimer);
+    if (clockTimer) clearInterval(clockTimer);
+    if (idleTimer) clearTimeout(idleTimer);
+
+    // 再セット
+    idleTimer = setTimeout(() => {
+      if (!isMediaPlaying) {
+        showOverlay();
+      }
+    }, idleTime);
+
+
   }
 
-  // タイマー停止
-  if (loopTimer) clearInterval(loopTimer);
-  if (clockTimer) clearInterval(clockTimer);
-  if (idleTimer) clearTimeout(idleTimer);
 
-  // 再セット
-  idleTimer = setTimeout(() => {
-    if (!isMediaPlaying) {
-      showOverlay();
-    }
-  }, idleTime);
+  // ==============================
+  // ④ ユーザー操作を検知したら resetIdleState()
+  // ==============================
+  ["mousemove", "mousedown", "wheel", "scroll", "touchstart", "touchmove"].forEach(ev => {
+    window.addEventListener(ev, resetIdleState, { passive: true });
+  });
 
-  
+  // 初回起動
+  resetIdleState();
 }
-
-
-    // ==============================
-    // ④ ユーザー操作を検知したら resetIdleState()
-    // ==============================
-    ["mousemove", "mousedown","wheel", "scroll", "touchstart", "touchmove"].forEach(ev => {
-        window.addEventListener(ev, resetIdleState, { passive: true });
-    });
-
-    // 初回起動
-    resetIdleState();
-}
-
-
-// window.addEventListener("load", () => {
-//   document.querySelectorAll("iframe").forEach(iframe => {
-//     console.log("FOUND iframe (global)", iframe.src);
-//     setupMediaIframe(iframe, "youtube");
-//   });
-// });
-
-//    "img/window/mobile/1.png",
-//         "img/window/mobile/2.png",
-//         "img/window/mobile/3.png",
-//         "img/window/mobile/4.png",
-//         "img/window/mobile/5.png",
-//         "img/window/mobile/6.png",
-//         "img/window/mobile/7.png",
-//         "img/window/mobile/8.png",
-//         "img/window/mobile/9.png"

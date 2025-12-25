@@ -1,23 +1,23 @@
-  attachScrollStep()
-  
-  // ================================
+attachScrollStep();
+
+// ================================
 // 📌 メニューボタンのアクティブ切替
 // ================================
 document.querySelectorAll('.menu button').forEach(btn => {
   btn.addEventListener('click', () => {
 
-     // ★ メニュークリック時は main から top-page を外す（モバイルもPCも共通）
-   if (btn.dataset.category === 'archive') {
-  main.classList.remove('page-top');
-  // main.removeAttribute('data-scrolltype');
-  delete main.dataset.scrolltype;
-  delete main.dataset.scrollAttached;
-}
+    // ★ メニュークリック時は main から top-page を外す（モバイルもPCも共通）
+    if (btn.dataset.category === 'archive') {
+      main.classList.remove('page-top');
+      // main.removeAttribute('data-scrolltype');
+      delete main.dataset.scrolltype;
+      delete main.dataset.scrollAttached;
+    }
 
     document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-      // ★ archiveクリック時のみpaddingをつける
+    // ★ archiveクリック時のみpaddingをつける
     if (btn.dataset.category === 'archive') {
       imageContainer.style.paddingLeft = "40px";
       imageContainer.style.paddingRight = "40px";
@@ -25,7 +25,7 @@ document.querySelectorAll('.menu button').forEach(btn => {
       imageContainer.style.paddingLeft = "20px";
       imageContainer.style.paddingRight = "20px";
     }
-currentPage = btn.dataset.category; // ← これが重要！！
+    currentPage = btn.dataset.category;
     generateArchiveList()
     // ★ 左リストの active を全て解除
     const listContainer = document.querySelector('.list-container');
@@ -33,21 +33,19 @@ currentPage = btn.dataset.category; // ← これが重要！！
       listContainer.querySelectorAll('.list-item').forEach(item => item.classList.remove('active'));
     }
 
-    
-    generateArchiveSortButtons(); 
+
+    generateArchiveSortButtons();
 
 
-
-// adjustMobilePageTopLayout();
     updateMobileView();
     adjustMediaSizes();
-    
-     if (listContainer) listContainer.scrollTop = 0;
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    attachScrollStep();
-  });
-});
+
+    if (listContainer) listContainer.scrollTop = 0;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        attachScrollStep();
+      });
+    });
   });
 });
 
@@ -64,18 +62,11 @@ menuButtons.forEach(button => {
     textsContainer.querySelectorAll('p, .scroll-extra, a, .lang-toggle-btn').forEach(el => el.remove());
 
     window.location.hash = category;
-    // console.log("🟡 showCategory 呼び出し:", {
-    //   category,
-    //   targetIndex,
-    //   filterCategory,
-    //   forceScrollReset: isDifferentItem,
-    //   skipRestore: isDifferentItem
-    // });
 
     showCategory(category);
   });
 });
-  
+
 // -------------------------
 // archive用ソートボタンの要素を表示/非表示
 // -------------------------
@@ -91,31 +82,12 @@ function toggleArchiveSortButtons(show) {
   }
 }
 
-  // ================================
-  // 初回タイトル生成
-  // ================================
-//   document.querySelectorAll('.list-area, .image-area, .text-area').forEach(area => {
-//   if (!area.querySelector('.area-title')) {
-//     const title = document.createElement('div');
-//     title.className = 'area-title';
 
-//     if (area.classList.contains('list-area')) title.textContent = 'title';
-//     if (area.classList.contains('image-area')) title.textContent = 'image';
-//     if (area.classList.contains('text-area')) title.textContent = 'text';
-
-//     area.prepend(title);
-//   }
-// });
-
-
-
-
-
-  // ================================
-  // 画像エリアのリサイズ
-  // ================================
+// ================================
+// 画像エリアのリサイズ
+// ================================
 function resizeMediaToFitArea(el, areaWidth) {
-    let targetEl = el;
+  let targetEl = el;
   let wrapper = null;
 
   // iframe / video は wrapper を親に持つ
@@ -182,7 +154,7 @@ function resizeMediaToFitArea(el, areaWidth) {
   el.style.maxWidth = '100%';
 
 
-   // ▶ wrapper にも高さを与える（← 超重要）
+  // ▶ wrapper にも高さを与える（← 超重要）
   if (wrapper) {
     wrapper.style.height = `${newHeight}px`;
   }
@@ -198,20 +170,20 @@ function adjustMediaSizes() {
   // const imageContainer = document.querySelector('.image-container');
   if (!imageContainer) return;
 
-    // ⭐ 先に koma 用の処理
-  adjustKomaBlocks()
-  
+  // ⭐ 先に koma 用の処理
+  adjustKomaBlocks();
+
 
   const styles = getComputedStyle(imageContainer);
   const paddingLeft = parseFloat(styles.paddingLeft) || 0;
   const paddingRight = parseFloat(styles.paddingRight) || 0;
   const usableWidth = imageContainer.clientWidth - paddingLeft - paddingRight;
 
-  const mediaElements =  imageContainer.querySelectorAll('img, video, iframe');
+  const mediaElements = imageContainer.querySelectorAll('img, video, iframe');
 
   mediaElements.forEach(el => {
-      // ⭐ トップページの画像（.frame付き）はスキップ
-  if (el.classList.contains("frame")) return;
+    // ⭐ トップページの画像（.frame付き）はスキップ
+    if (el.classList.contains("frame")) return;
     const applySize = () => resizeMediaToFitArea(el, usableWidth);
 
     if (el.tagName.toLowerCase() === 'img') {
@@ -262,14 +234,7 @@ function convertToSoundCloudEmbed(url) {
 }
 
 
-// ページロード時にもハッシュを復元
-// window.addEventListener('load', () => {
-//   // handleHashChange(); // ← 下の関数を呼び出すだけ
-//   updateArchiveButtonStates();
-// });
 
-// ハッシュ変化時
-// window.addEventListener('hashchange', handleHashChange);
 
 
 // ==========================
@@ -347,128 +312,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-// // ==========================
-// // スクロール制御（コンテナ単位、最後のステップで止める）
-// // ==========================
-
-
-// function attachScrollStep() {
-//   document.querySelectorAll('.list-container, .image-container, .text-container, .page-top').forEach(container => {
-//     if (container.dataset.scrollAttached === "true") return;
-//     container.dataset.scrollAttached = "true";
-
-//     let isScrolling = false;
-
-//     const getStep = () => {
-//       const isImg = container.classList.contains('image-container');
-//       if (window.innerWidth <= 768) {
-//         return isImg ? 35 : 35;   // Mobile 固定35px
-//       } else {
-//         return isImg ? 120 : 40;  // PC
-//       }
-//     };
-
-//     const maxScroll = () =>
-//       container.scrollHeight - container.clientHeight;
-
-//     const scrollToStep = (direction) => {
-//       if (isScrolling) return;
-//       isScrolling = true;
-
-//       const step = getStep();
-//       let target = container.scrollTop + direction * step;
-
-//       // 最終ステップ調整
-//       const lastStepTop = Math.floor(maxScroll() / step) * step;
-//       if (target > lastStepTop) target = lastStepTop;
-//       if (target < 0) target = 0;
-
-//       target = Math.round(target / step) * step;
-
-//       container.scrollTo({ top: target, behavior: 'auto' });
-
-//       setTimeout(() => { isScrolling = false; }, 80);
-//     };
-
-
-//     // ==========================
-//     // PC: wheel
-//     // ==========================
-//     container.addEventListener(
-//       'wheel',
-//       (e) => {
-//         e.preventDefault();
-//         const direction = e.deltaY > 0 ? 1 : -1;
-//         scrollToStep(direction);
-//       },
-//       { passive: false }
-//     );
-
-//     // ==========================
-//     // Mobile: touch
-//     // ==========================
-//     let lastY = 0;
-//     let accum = 0;
-//     const trigger = 17;
-
-//     // **慣性疑似スクロール用**
-//     let inertiaInterval = null;
-//     let inertiaVelocity = 0;
-
-//     const startInertia = () => {
-//       clearInterval(inertiaInterval);
-
-//       inertiaInterval = setInterval(() => {
-//         // 速度がほぼ0 → 停止
-//         if (Math.abs(inertiaVelocity) < 0.05) {
-//           clearInterval(inertiaInterval);
-//           return;
-//         }
-
-//         const direction = inertiaVelocity > 0 ? 1 : -1;
-//         scrollToStep(direction);
-
-//         // 摩擦で減衰
-//         inertiaVelocity *= 0.87;
-//       }, 60); // 60msごとに "カタカタ" 移動
-//     };
-
-
-//     container.addEventListener("touchstart", (e) => {
-//       lastY = e.touches[0].clientY;
-//       accum = 0;
-//       inertiaVelocity = 0;
-//       clearInterval(inertiaInterval);
-//     });
-
-//     container.addEventListener("touchmove", (e) => {
-//       e.preventDefault();
-//       const currentY = e.touches[0].clientY;
-//       const diff = lastY - currentY;
-
-//       accum += diff;
-//       lastY = currentY;
-
-//       // 慣性用速度に加算
-//       inertiaVelocity = diff * 0.23;
-
-//       if (Math.abs(accum) >= trigger) {
-//         const direction = accum > 0 ? 1 : -1;
-//         scrollToStep(direction);
-//         accum = accum % trigger;
-//       }
-//     }, { passive: false });
-
-//     container.addEventListener("touchend", () => {
-//       // 指離したら慣性ステップスクロール開始
-//       if (Math.abs(inertiaVelocity) > 0.5) {
-//         startInertia();
-//       }
-//       accum = 0;
-//     });
-//   });
-// }
 
 
 
