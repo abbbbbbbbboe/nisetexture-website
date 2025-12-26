@@ -122,7 +122,7 @@ function updateNavButtons() {
   if (activeSection === "text") {
     prevBtn.style.display = "block";
 
-    prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">list</span>`;
+    prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">title</span>`;
 
     prevBtn.onclick = () => {
       const textsContainer = document.querySelector('.text-container');
