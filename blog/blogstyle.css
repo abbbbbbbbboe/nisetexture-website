@@ -47,6 +47,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+    -webkit-text-size-adjust: 100%; /* iOS Safari, Chrome for AndroidなどWebKit系ブラウザ */
+  text-size-adjust: 100%; /* 標準的な指定 */
 }
 
 button,
@@ -1115,6 +1117,9 @@ p.footnote {
     border-left: 0px;
     border-top: 1px solid var(--background-border-color);
   }
+    .ebb ul {
+  animation: SlideSample 40s linear infinite;
+}
 
   main {
     grid-template-columns: none;

@@ -121,14 +121,31 @@ function updateMobileView() {
 }
 
 function updateNavButtons() {
+    if (!isMobile()) return;
+    
   if (activeSection === "list") {
     // archiveページかつ作品未選択なら右ボタン非表示
     if (currentPage === "archive" && currentIndex === null) {
+      prevBtn.style.display = "none";
       nextBtn.style.display = "none";
     } else {
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "block";
-      nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
+      prevBtn.style.display = "block";
+      prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">text</span>`;
+      prevBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
+      activeSection = "text";
+      updateMobileView();
+      applyRandomSpacingToListArea();
+      applyRandomSpacingToAreaTitles();
+      applyRandomSpacingToMobileAreaTitles();
+
+      const textContainer = document.querySelector('.text-container');
+      if (textContainer) {
+        textContainer.scrollTop = 0;
+      }
+    };
+     nextBtn.style.display = "block";
+     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
         stopInertiaAndRound(listContainer);
         activeSection = "image";
@@ -193,7 +210,28 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToAreaTitles();
     };
-    nextBtn.style.display = "none";
+     nextBtn.style.display = "block";
+     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">list</span>`;
+     nextBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
+      activeSection = "list";
+      updateMobileView();
+      applyRandomSpacingToListArea();
+      applyRandomSpacingToAreaTitles();
+      applyRandomSpacingToMobileAreaTitles();
+
+      // === activeを画面内にスクロール ===
+      setTimeout(() => {
+        const activeItem = listContainer.querySelector('.list-item.active');
+        if (activeItem) {
+          activeItem.scrollIntoView({
+            block: 'start',
+            behavior: 'instant' // "smooth" でもOK
+          });
+        }
+      }, 0);
+
+    };
   }
 }
 // ★★ ADD END ★★
@@ -228,3 +266,4 @@ function adjustTopSpacerHeight() {
 // DOM読み込み時とリサイズ時に実行
 document.addEventListener("DOMContentLoaded", adjustTopSpacerHeight);
 window.addEventListener("resize", adjustTopSpacerHeight);
+

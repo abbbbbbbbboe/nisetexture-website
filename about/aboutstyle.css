@@ -50,6 +50,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+    -webkit-text-size-adjust: 100%; /* iOS Safari, Chrome for AndroidなどWebKit系ブラウザ */
+  text-size-adjust: 100%; /* 標準的な指定 */
 }
 
 
@@ -303,7 +305,9 @@ button {
 
 .list-item {
   font-weight: var(--fontw3);
+  
 }
+
 
 /* リスト用 */
 .list-item.active .list-title {
@@ -800,6 +804,9 @@ button {
     border-left: 0px;
     border-top: 1px solid var(--background-border-color);
   }
+    .ebb ul {
+  animation: SlideSample 40s linear infinite;
+}
 
   main {
     grid-template-columns: none;
@@ -863,12 +870,15 @@ button {
     margin-bottom: 35px;
   }
 
+  .member{
+    margin-left: -15px;
+  }
   .peoples {
     margin-bottom: 35px;
   }
 
   .people {
-    margin-left: 5px;
+    margin-left: 0px;
     display: flex;
   }
 
@@ -883,13 +893,14 @@ button {
 
     height: 34px;
     line-height: 35px;
-    margin: 0 auto 0 0;
+    margin: 0 auto 0 23px;
     border-bottom: 1px solid var(--background-border-color);
+    
   }
 
-  .area-title-imagetext {
+  /* .area-title-imagetext {
     margin-left: 23px;
-  }
+  } */
 
   .area-title a {
     padding-left: 20px;
@@ -903,7 +914,7 @@ button {
   .list-container {
     width: 100%;
     height: 100%;
-    padding-left: 30px;
+    padding-left: 45px;
     padding-right: 10px;
 
   }
@@ -914,6 +925,8 @@ button {
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
   }
+
+
 
 
   .image-container {
@@ -930,7 +943,7 @@ button {
 
 
   .text-container {
-    padding: 0 10px 210px 40px;
+    padding: 0 20px 210px 40px;
   }
 
   .text-area p {
@@ -946,7 +959,7 @@ button {
 
   .lang-toggle-btn {
     top: 77px;
-    right: 30px;
+    right: 40px;
     color: var(--btn-color);
   }
 

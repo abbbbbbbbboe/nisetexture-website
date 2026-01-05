@@ -52,6 +52,7 @@ document.querySelectorAll('.menu button').forEach(btn => {
 // ================================
 // 📌 メニュークリック時のカテゴリ切替
 // ================================
+
 menuButtons.forEach(button => {
   button.addEventListener('click', () => {
     const category = button.dataset.category;
@@ -64,6 +65,8 @@ menuButtons.forEach(button => {
     window.location.hash = category;
 
     showCategory(category);
+
+    
   });
 });
 
@@ -358,13 +361,10 @@ function createScrollTopButton(container) {
       btn.style.left = '';
       btn.style.right = (window.innerWidth - rect.right + 30) + 'px';
     } else {
-      if (activeSection === 'list') {
-        btn.style.left = '';
-        btn.style.right = (window.innerWidth - rect.right + 7) + 'px';
-      } else {
+     
         btn.style.left = (rect.left + 7) + 'px';
         btn.style.right = '';
-      }
+   
     }
   }
 
@@ -390,6 +390,8 @@ function createScrollTopButton(container) {
     container.scrollTo({ top: 0 });
   });
 }
+
+
 
 
 

@@ -131,7 +131,21 @@ function updateNavButtons() {
       nextBtn.style.display = "none";
       prevBtn.style.display = "none";
     } else {
-      prevBtn.style.display = "none";
+      prevBtn.style.display = "block";
+      prevBtn.innerHTML = `↓ <span class="mobile-nav-btn-text">text</span>`;
+      prevBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
+      activeSection = "text";
+      updateMobileView();
+      applyRandomSpacingToListArea();
+      applyRandomSpacingToAreaTitles();
+      applyRandomSpacingToMobileAreaTitles();
+
+      const textContainer = document.querySelector('.text-container');
+      if (textContainer) {
+        textContainer.scrollTop = 0;
+      }
+    };
       nextBtn.style.display = "block";
       nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">image</span>`;
       nextBtn.onclick = () => {
@@ -178,7 +192,28 @@ function updateNavButtons() {
       applyRandomSpacingToListArea();
       applyRandomSpacingToMobileAreaTitles();
     };
-    nextBtn.style.display = "none";
+    nextBtn.style.display = "block";
+     nextBtn.innerHTML = `↑ <span class="mobile-nav-btn-text">list</span>`;
+     nextBtn.onclick = () => {
+      stopInertiaAndRound(imageContainer);
+      activeSection = "list";
+      updateMobileView();
+      applyRandomSpacingToListArea();
+      applyRandomSpacingToAreaTitles();
+      applyRandomSpacingToMobileAreaTitles();
+
+      // === activeを画面内にスクロール ===
+      setTimeout(() => {
+        const activeItem = listContainer.querySelector('.list-item.active');
+        if (activeItem) {
+          activeItem.scrollIntoView({
+            block: 'start',
+            behavior: 'instant' // "smooth" でもOK
+          });
+        }
+      }, 0);
+
+    };
   }
 }
 

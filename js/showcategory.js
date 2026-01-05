@@ -9,6 +9,8 @@ function showCategory(category, autoIndex = null, filterCategory = 'all', option
   const prevTextScroll = textsContainer ? textsContainer.scrollTop : 0;
   const forceScrollReset = options.forceScrollReset || false;
 
+  
+
   // 🟩 特殊処理: archiveカテゴリで個別作品を指定して表示する場合
   let shouldRenderFull = false;
   let itemToRender = null;
@@ -584,4 +586,7 @@ function showCategory(category, autoIndex = null, filterCategory = 'all', option
   }
   updateMobileView();
   updateNavButtons();
+ setTimeout(() => {
+  areaTitleTitleCss(category);
+}, 0);
 }

@@ -677,6 +677,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (listContainer) listContainer.style.visibility = 'visible';
   if (imageContainer) imageContainer.style.visibility = 'visible';
   if (textsContainer) textsContainer.style.visibility = 'visible';
+
+  areaTitleTitleCss(category);
 });
 
 
@@ -703,6 +705,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+function areaTitleTitleCss(category) {
+  const targetEl = document.querySelector('.area-title-title');
+  if (!targetEl) return;
+
+  if (category === 'archive' && currentIndex === null) {
+    targetEl.classList.add('area-title-title-css');
+  } else {
+    targetEl.classList.remove('area-title-title-css');
+  }
+}
 
 
 
@@ -759,6 +773,8 @@ function handleHashChange() {
           currentIndex = null;
           listContainer.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
 
+          areaTitleTitleCss(category);
+
           // ✅ ここから追加：URLから itemId を削除（suppress でループ防止）
           window.suppressHashRender = true;
           const baseHash = `#${category}`;
@@ -806,6 +822,8 @@ function handleHashChange() {
   }
 
   updateArchiveButtonStates();
+   areaTitleTitleCss(category); 
 
 
 }
+

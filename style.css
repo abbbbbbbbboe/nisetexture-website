@@ -52,6 +52,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+    -webkit-text-size-adjust: 100%; /* iOS Safari, Chrome for AndroidなどWebKit系ブラウザ */
+  text-size-adjust: 100%; /* 標準的な指定 */
 }
 
 
@@ -1117,6 +1119,10 @@ img.preview {
     border-top: 1px solid var(--background-border-color);
   }
 
+  .ebb ul {
+  animation: SlideSample 40s linear infinite;
+}
+
   .mobile-nav-wrapper {
     height: 100dvh;
   }
@@ -1213,11 +1219,16 @@ img.preview {
     margin: 0 auto 0 0;
     border-bottom: 1px solid var(--background-border-color);
     background: var(--backgroundcolor);
-  }
-
-  .area-title-imagetext {
     margin-left: 23px;
   }
+
+  .area-title-title-css{
+     margin-left: 0px;
+  }
+
+  /* .area-title-imagetext {
+    margin-left: 23px;
+  } */
 
   .page-top {
     height: calc(100dvh - 106px);
@@ -1227,7 +1238,7 @@ img.preview {
 
 
 
-  .page-top .area-title-imagetext {
+  .page-top .area-title {
     margin-left: 0px;
   }
 
@@ -1408,7 +1419,7 @@ img.preview {
   }
 
   .text-container {
-    padding: 0 10px 140px 30px;
+    padding: 0 20px 140px 30px;
   }
 
   .text-area p {
