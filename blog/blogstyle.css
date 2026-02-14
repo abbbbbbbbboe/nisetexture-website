@@ -52,6 +52,7 @@ body {
 }
 
 button,
+
 .list-item {
   color: var(--btn-color);
 }
@@ -386,6 +387,10 @@ main {
 .list-item .active .list-title,
 .list-item.active .list-meta {
   color: var(--color);
+}
+
+.list-writer{
+  font-style: italic;
 }
 
 /* リスト用 */
@@ -1182,7 +1187,7 @@ p.footnote {
   }
 
   .list-item-spacer {
-    height: 35px;
+    height: 36px;
   }
 
 
@@ -1223,6 +1228,20 @@ p.footnote {
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
     padding-left: 0px;
+  }
+
+  .mobile-list-image {
+    height: 69px;
+    width: 100%;
+    padding-right: 30px;
+  }
+
+  .mobile-list-image img {
+    border-left: 1px solid var(--background-border-color);
+    border-right: 1px solid var(--background-border-color);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   .list-item :hover {

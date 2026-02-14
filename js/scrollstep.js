@@ -364,3 +364,8 @@ function setupIframeStateListener(el, onDeactivate) {
     });
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  attachScrollStep();
+});
