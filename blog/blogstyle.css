@@ -618,6 +618,34 @@ img.preview {
   margin-left: auto;
 }
 
+.text-area h1 {
+  font-size: 1.1em;
+  line-height: 40px;
+  flex-shrink: 0;
+  transform: scale(0.9, 1);
+  letter-spacing: 0.3rem;
+  font-weight: var(--fontw6);
+  color: var(--link-color);
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-area h2 {
+  font-size: 1em;
+  line-height: 40px;
+  flex-shrink: 0;
+  transform: scale(0.9, 1);
+  letter-spacing: 0.3rem;
+  font-weight: var(--fontw5);
+  color: var(--link-color);
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+
 
 
 .inline-link {
@@ -747,6 +775,9 @@ img.preview {
   .text-area p {
     width: 100%;
   }
+  .text-area h1, .text-area h2 {
+    width: 100%;
+  }
 
   .image-area {
     padding: 0 10px;
@@ -782,10 +813,12 @@ img.preview {
 
 .large-space-2 {
   margin-bottom: 80px;
+  display: block;
 }
 
 .large-space-1 {
   margin-bottom: 40px;
+  display: block;
 }
 
 p.footnote {
@@ -809,10 +842,19 @@ p.footnote {
   height: 4px;
 }
 
-.index {
-  font-weight: var(--fontw4) !important;
-  color: var(--link-color) !important;
+.textlink{
+   text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--btn-color);
+  text-decoration-thickness: 1px;
+  /* -webkit-text-decoration: wavy underline 1px var(--btn-color); */
+  width: fit-content;
 }
+
+.textlink:hover{
+  text-decoration:  underline 1px var(--btn-color);
+}
+
 
 .text-links {
   display: flex;
@@ -1302,6 +1344,38 @@ p.footnote {
     width: 103%;
   }
 
+  .text-area h1 {
+
+    line-height: 35px;
+    letter-spacing: 0.08em;
+   
+    width: 103%;
+  
+
+  
+  font-weight: var(--fontw6);
+  }
+
+.text-area h2 {
+  
+    line-height: 35px;
+    letter-spacing: 0.08em;
+
+
+
+ 
+  letter-spacing: 0.3rem;
+  font-weight: var(--fontw5);
+  color: var(--link-color);
+  
+  margin-right: auto;
+  margin-left: auto;
+}
+
+ .textlink{
+  
+ }
+
   .link-list {
     line-height: 35px;
     transform: scale(1, 0.95);
@@ -1361,10 +1435,16 @@ p.footnote {
 
   .large-space-1 {
     margin-bottom: 35px;
+    display: block;
   }
 
   .large-space-2 {
     margin-bottom: 70px;
+    display: block;
+  }
+
+  .i{
+    font-style: italic;
   }
 
 

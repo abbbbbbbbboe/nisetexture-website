@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       displayText(post.textBlocks, post.images, post);
 
-      displayImages(post.images);
+      displayImages(post.images, post);
     }
   }
   applyRandomSpacingToMenu();
@@ -94,7 +94,7 @@ window.addEventListener("hashchange", () => {
 
   // 表示更新
   displayText(post.textBlocks, post.images, post);
-  displayImages(post.images);
+  displayImages(post.images, post);
   activateListItem(hash);
 });
 
@@ -117,7 +117,7 @@ function buildList(posts) {
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
       <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title, 1, 2.5)}&ensp;+</span></div>
       <div class="list-meta">
-        <span class="list-writer">by${post.writer || ''}</span>
+        <span style="font-size:0.8em; margin-right:5px;">by</span><span class="list-writer">${post.writer || ''}</span>
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
         
@@ -144,20 +144,20 @@ function buildList(posts) {
 
     if (isMobile()) {
 
-  const samune = post.samune;
+      const samune = post.samune;
 
-  if (samune) {
-    const mobileImg = document.createElement("div");
-    mobileImg.className = "mobile-list-image";
-    mobileImg.innerHTML = `<img src="${samune}" alt="">`;
+      if (samune) {
+        const mobileImg = document.createElement("div");
+        mobileImg.className = "mobile-list-image";
+        mobileImg.innerHTML = `<img src="${samune}" alt="">`;
 
-    const metaBlock = div.querySelector(".list-tag");
-    if (metaBlock) {
-      metaBlock.insertAdjacentElement("afterend", mobileImg);
+        const metaBlock = div.querySelector(".list-tag");
+        if (metaBlock) {
+          metaBlock.insertAdjacentElement("afterend", mobileImg);
+        }
+      }
+
     }
-  }
-
-}
 
 
     const spacer = document.createElement("div");
@@ -204,7 +204,7 @@ function setupClickHandler() {
     }
 
     displayText(post.textBlocks, post.images, post);
-    displayImages(post.images);
+    displayImages(post.images, post);
 
     // スクロールリセット
     if (textsContainer) textsContainer.scrollTop = 0;
@@ -362,6 +362,49 @@ function displayText(blocks, images, post) {
   blocks.forEach(block => {
 
     // --------------------------
+    // ▶ 見出し <h1>
+    // --------------------------
+    if (block.type === "h1") {
+      currentButtonGroup = null;
+
+      const h1 = document.createElement("h1");
+      h1.textContent = block.text;
+
+      // クラス追加
+      if (block.class) {
+        if (Array.isArray(block.class)) {
+          block.class.forEach(c => h1.classList.add(c));
+        } else {
+          h1.classList.add(block.class);
+        }
+      }
+
+      textsContainer.appendChild(h1);
+    }
+
+    // --------------------------
+    // ▶ 小見出し <h2>
+    // --------------------------
+    if (block.type === "h2") {
+      currentButtonGroup = null;
+
+      const h2 = document.createElement("h2");
+      h2.textContent = block.text;
+
+      // クラス追加
+      if (block.class) {
+        if (Array.isArray(block.class)) {
+          block.class.forEach(c => h2.classList.add(c));
+        } else {
+          h2.classList.add(block.class);
+        }
+      }
+
+      textsContainer.appendChild(h2);
+    }
+
+
+    // --------------------------
     // ▶ 通常の段落 <p>
     // --------------------------
     if (block.type === "p") {
@@ -376,7 +419,7 @@ function displayText(blocks, images, post) {
       const p = document.createElement("p");
       p.innerHTML = linked; // ← aタグ反映済みテキストを入れる
 
-    
+
       // クラス追加
       if (block.class) {
         if (Array.isArray(block.class)) {
@@ -416,33 +459,40 @@ function displayText(blocks, images, post) {
     // --------------------------
     // ▶ Aタグ
     // --------------------------
-    else if (block.type === "a") {
-      currentButtonGroup = null;
+ else if (block.type === "a") {
+  currentButtonGroup = null;
 
-      // 親となる <p> を作る
-      const p = document.createElement("p");
+  const p = document.createElement("p");
 
-      // <a> を作る
-      const a = document.createElement("a");
-      a.href = block.link || "#";
-      a.textContent = block.text || "";
-      a.target = "_blank";
+  // prefix がある場合は横並びに
+  if (block.prefix) {
+    p.style.display = "flex";
+    p.style.alignItems = "baseline";
+    
 
-      // class が配列にも単体にも対応
-      if (block.class) {
-        if (Array.isArray(block.class)) {
-          block.class.forEach(cls => a.classList.add(cls));
-        } else {
-          a.classList.add(block.class);
-        }
-      }
+    const prefix = document.createElement("span");
+    prefix.textContent = block.prefix;
+    p.appendChild(prefix);
+  }
 
-      // a を p の子要素に入れる
-      p.appendChild(a);
+  const a = document.createElement("a");
+  a.href = block.link || "#";
+  a.textContent = block.text || "";
+  a.target = "_blank";
 
-      // 最後に p を textsContainer に追加
-      textsContainer.appendChild(p);
+  if (block.class) {
+    if (Array.isArray(block.class)) {
+      block.class.forEach(cls => a.classList.add(cls));
+    } else {
+      a.classList.add(block.class);
     }
+  }
+
+  p.appendChild(a);
+  textsContainer.appendChild(p);
+}
+
+
 
     // --------------------------
     // ▶ 区切り線
@@ -472,7 +522,7 @@ function displayText(blocks, images, post) {
     // --------------------------
     // ▶ ボタン or メディア挿入位置
     // --------------------------
-    else if (block.type === "button") {
+    else if (block.type === "img-button") {
 
       const targetId = block.targetId;
       const matchedMedia = images.find(img => img.id == targetId);
@@ -507,7 +557,7 @@ function displayText(blocks, images, post) {
           const target = iframeWrapper.querySelector("iframe, video");
 
           if (target) {
-          
+
             requestAnimationFrame(() => {
               // 再生状態監視（必須）
               setupMediaIframe(target);
@@ -544,13 +594,13 @@ function displayText(blocks, images, post) {
 
       let label = block.label || matchedMedia?.caption || "";
 
-      const btn = document.createElement("button");
+      const btn = document.createElement("img-button");
       btn.className = "jump-btn";
       btn.dataset.targetId = targetId;
       btn.textContent = label + " →";
 
       currentButtonGroup.appendChild(btn);
-      console.log("button target", targetId);
+      console.log("img-button target", targetId);
 
     }
 
@@ -713,7 +763,7 @@ function jumpToJumpButton(textId) {
   }
 
   // ―― スクロール位置を計算 ――
-  const topPos = target.offsetTop -  49;
+  const topPos = target.offsetTop - 49;
 
   // smooth を使わず即座にスクロール
   textContainer.scrollTo({ top: topPos });
@@ -723,7 +773,7 @@ function jumpToJumpButton(textId) {
 // =========================================================
 //imageareaの画像表示の関数
 // =========================================================
-function displayImages(images) {
+function displayImages(images, post) {
 
   imageContainer.innerHTML = "";
 
@@ -751,13 +801,13 @@ function displayImages(images) {
     const wrapper = document.createElement("div");
     wrapper.className = "media-wrapper";
     wrapper.dataset.id = mediaId;
-    
+
     wrapper.style.position = "relative";
     wrapper.style.overflow = "hidden";
 
     let innerHTML = "";
 
-wrapper.insertAdjacentHTML("beforeend", innerHTML);
+    wrapper.insertAdjacentHTML("beforeend", innerHTML);
 
 
 
@@ -822,7 +872,7 @@ wrapper.insertAdjacentHTML("beforeend", innerHTML);
 
     // wrapper に追加
     wrapper.insertAdjacentHTML("beforeend", innerHTML);
-   
+
 
 
     // 直前に追加した要素を取得
@@ -843,23 +893,23 @@ wrapper.insertAdjacentHTML("beforeend", innerHTML);
     // コンテナに wrapper を追加
     imageContainer.appendChild(wrapper);
 
-   wrapper.style.cursor = "pointer";
+    wrapper.style.cursor = "pointer";
 
-// ⭐ wrapperクリック
-wrapper.addEventListener("click", () => {
-  
-  console.log("clicked image id:", wrapper.dataset.id);
-  jumpToJumpButton(wrapper.dataset.id);
-}, true);
+    // ⭐ wrapperクリック
+    wrapper.addEventListener("click", () => {
 
-// ⭐ img / iframe / video クリック
-wrapper.querySelectorAll("img, iframe, video").forEach(el => {
-  el.addEventListener("click", (e) => {
-    e.stopPropagation(); // 二重発火防止
-    console.log("media clicked:", wrapper.dataset.id);
-    jumpToJumpButton(wrapper.dataset.id);
-  });
-});
+      console.log("clicked image id:", wrapper.dataset.id);
+      jumpToJumpButton(wrapper.dataset.id);
+    }, true);
+
+    // ⭐ img / iframe / video クリック
+    wrapper.querySelectorAll("img, iframe, video").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation(); // 二重発火防止
+        console.log("media clicked:", wrapper.dataset.id);
+        jumpToJumpButton(wrapper.dataset.id);
+      });
+    });
 
     adjustMediaSizes();
     // --- キャプション ---
@@ -873,15 +923,24 @@ wrapper.querySelectorAll("img, iframe, video").forEach(el => {
   });
 
   // 余白
-  const extraSpace = document.createElement("div");
-  extraSpace.className = "scroll-extra";
-  extraSpace.style.height = "213px";
-  imageContainer.appendChild(extraSpace);
+const extraSpace = document.createElement("div");
+extraSpace.className = "scroll-extra";
+
+// 記事ごとの余白
+const extraHeight = parseInt(post?.imageExtraSpace) || 213;
+
+extraSpace.style.height = extraHeight + "px";
+
+imageContainer.appendChild(extraSpace);
+
+
+ 
+
 
 
   createScrollTopButton(imageContainer, imageArea);
 
-  
+
 
 }
 

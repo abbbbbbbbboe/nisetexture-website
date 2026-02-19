@@ -62,13 +62,14 @@ export const blogContents = {
       date: "2025-12-25",
       tag: ["about", "news"],
       samune:"img/rogo.webp",
+      imageExtraSpace: "510",
       images: [
         { src: "https://soundcloud.com/fcjjl5q21hqr/nisetexture_article-1223?si=04c01c1e486546849fbfb7cd0aaa02f5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "読み上げ音声", id: 1 },
         { src: "https://soundcloud.com/fcjjl5q21hqr/5c257989-e8ee-4e0a-a5a6-8563758ebe0f?si=ca87bca38de244dab530510726bb1646&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", caption: "説明音声", id: 2 }
       ],
       textBlocks: [
         { type: "skipbutton", id: "skip1", label: "読み上げ音声", mobile_label: "読" },
-        { type: "button", targetId: 1, label: "読み上げ音声" },
+        { type: "img-button", targetId: 1, label: "読み上げ音声" },
 
         { type: "p", text: `こんにちはニセテクスチャです。webサイトを立ち上げて、初回のニセテ通信ということで、今回は私たちニセテクスチャの主な活動である飲み会について紹介していきます。`, class: ["large-space-2"] },
 
@@ -135,17 +136,17 @@ export const blogContents = {
         { type: "divider" },
         { type: "p", text: `私たちは、飲み会だけでなくいかなる場面においてもハラスメントを許容しません。`, class: ["large-space-1"] },
         { type: "skipbutton", id: "skip6", label: "説明音声", mobile_label: "説" },
-        { type: "button", targetId: 2, label: "説明音声" },
+        { type: "img-button", targetId: 2, label: "説明音声" },
 
         { type: "skipbutton", id: "skip7", label: "link_list", mobile_label: "l" },
-        { type: "p", text: `【link_list】`, class: ["index"] },
+        { type: "h1", text: `【link_list】`},
         { type: "a", text: `酔うってどういうこと？|酔いの仕組みとアルコール代謝|サッポロホールディングス`, link: "https://www.sapporoholdings.jp/sustainability/alcohol/drunkenness-01.html", class: ["link-list"] },
         { type: "a", text: `アルコール｜厚生労働省`, link: "https://www.mhlw.go.jp/www1/topics/kenko21_11/b5.html", class: ["link-list"] },
         { type: "a", text: `ほんとうに「大丈夫」 | ことば（放送用語） - ことばウラ・オモテ | NHK放送文化研究所`, link: "https://www.nhk.or.jp/bunken/summary/kotoba/uraomote/101.html", class: ["link-list"] },
         { type: "a", text: `NAMIKIBASHI 日本の形「宴 」`, link: "https://youtu.be/LxFjc99HWRs?si=_J0dYEe8S0rGO1J9", class: ["link-list", "large-space-2"] },
 
         { type: "skipbutton", id: "skip8", label: "credit", mobile_label: "c" },
-        { type: "p", text: `【credit】`, class: ["index"] },
+        { type: "h1", text: `【credit】`},
         { type: "p", text: `声（朗読順）`, class: ["credit"] },
         { type: "p", text: `1.吉月ひさたか`, class: ["credit"] },
         { type: "p", text: `2.WAKO 西村多和子`, class: ["credit"] },
@@ -194,46 +195,45 @@ export const blogContents = {
         { type: "divider" },
 
         { type: "skipbutton", id: "skip1", label: "1.掲載場所", mobile_label: "1" },
-        { type: "p", text: `1.掲載場所`, class: "index" },
+        { type: "h1", text: `1.掲載場所` },
         { type: "p", text: `PC : ページの右上のスクロールテキストエリア` },
         { type: "p", text: `モバイル : ページ上部のスクロールテキストエリア`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip2", label: "2.料金", mobile_label: "2" },
-        { type: "p", text: `2.料金`, class: "index" },
+        { type: "h1", text: `2.料金`},
         { type: "p", text: `300円（税別）／月額`, class: "large-space-1" },
         { type: "p", text: `継続して掲載いただくとお得です！` },
         { type: "p", text: `1000円（税別）／6ヶ月` },
         { type: "p", text: `3000円（税別）／12ヶ月`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip3", label: "3.期間", mobile_label: "3" },
-        { type: "p", text: `3.期間`, class: "index" },
+        { type: "h1", text: `3.期間`},
         { type: "p", text: `1ヶ月（30日間）〜`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip4", label: "4.形式", mobile_label: "4" },
-        { type: "p", text: `4.形式`, class: "index" },
+        { type: "h1", text: `4.形式`},
         { type: "p", text: `形式 : テキスト` },
         { type: "p", text: `文字数<br>日本語 : 64文字丁度<br>英語 : 30単語丁度` },
         { type: "p", text: `*上記文字数、単語数ぴったりでお願いします。`, class: "footnote" },
         { type: "p", text: `*テキストにリンクをつけることも可能です。`, class: ["footnote", "large-space-2"] },
 
         { type: "skipbutton", id: "skip5", label: "5.掲載できないもの", mobile_label: "5" },
-        { type: "p", text: `5.掲載できないもの`, class: "index" },
+        { type: "h1", text: `5.掲載できないもの`},
         { type: "p", text: `公序良俗に反する内容<br>虚偽情報<br>差別的表現、差別を助長するもの<br>その他、不適切と判断した広告`, class: "large-space-1" },
         { type: "p", text: `掲載不可の内容についてはお申し込み時に判断いたします。`, class: "large-space-2" },
 
         { type: "skipbutton", id: "skip6", label: "6.申し込み方法", mobile_label: "6" },
-        { type: "p", text: `6.申し込み方法`, class: "index" },
+        { type: "h1", text: `6.申し込み方法`},
         { type: "p", text: `下記メールアドレス宛にご連絡ください。` },
         { type: "p", text: `nise.texture[a]gmail.com` },
         { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
         { type: "p", text: `お問い合わせの際、以下の内容も合わせてお送りください。` },
         { type: "p", text: `必要情報<br>1.お名前、団体名<br>2.リンク先URL<br>3.掲載テキスト<br>4.希望掲載期間`, class: "large-space-2" },
         { type: "skipbutton", id: "skip7", label: "広告募集要項PDF", mobile_label: "詳" },
-        { type: "p", text: `【詳細】`, class: ["index"] },
+        { type: "h1", text: `【詳細】`},
         { type: "a", text: `ニセテクスチャwebサイト広告募集要項PDF↗︎`, link: "https://drive.google.com/file/d/1E56T4v7xRcFfwSXOOytGW9yCiwL64jKI/view?usp=sharing", class: ["link-list"] },
 
       ],
-
       // ③ この投稿で使いたい global のセット
       hyperlinkGroups: ["basic"],
     }

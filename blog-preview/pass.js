@@ -1,4 +1,4 @@
-const PASSWORD = "ニセテ2026";
+const PASSWORD = "nisete_2026";
 
 let input = prompt("Enter password");
 
