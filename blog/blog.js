@@ -117,7 +117,7 @@ function buildList(posts) {
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
       <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title, 1, 2.5)}&ensp;+</span></div>
       <div class="list-meta">
-        <span style="font-size:0.8em; margin-right:5px;">by</span><span class="list-writer">${post.writer || ''}</span>
+        <span class="by" style="font-size:1em; margin-right:5px; font-weight: var(--fontw1);">by</span><span class="list-writer">${post.writer || ''}</span>
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
         

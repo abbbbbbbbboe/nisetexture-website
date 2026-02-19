@@ -1259,7 +1259,7 @@ p.footnote {
     width: 100%;
     height: 100%;
     padding-left: 30px;
-    padding-right: 10px;
+    padding-right: 30px;
     padding-bottom: 280px;
 
   }
@@ -1271,11 +1271,13 @@ p.footnote {
     letter-spacing: 0.3rem;
     padding-left: 0px;
   }
-
+.by{
+  line-height: 35px;
+}
   .mobile-list-image {
     height: 69px;
     width: 100%;
-    padding-right: 30px;
+    
   }
 
   .mobile-list-image img {
