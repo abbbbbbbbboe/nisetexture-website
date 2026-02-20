@@ -67,8 +67,8 @@ export const blogContents = {
         { src: "../blog_img/002/image_01.webp", caption: "エクストリームVJ合宿", id: 1 },
         { src: "../blog_img/002/image_02.webp", caption: "レイマーチングの説明を行うshima", id: 2 },
         { src: "../blog_img/002/image_03.webp", caption: "エクストリームVJ合宿修了証", id: 3 },
-        { src: "../blog_img/002/image_04.webp", caption: "合宿中の制作の様子", id: 4 },
-        { src: "../blog_img/002/image_05.webp", caption: "合宿中の講義の様子", id: 5 },
+        { src: "../blog_img/002/image_04.webp", caption: "合宿中の講義の様子", id: 4 },
+        { src: "../blog_img/002/image_05.webp", caption: "合宿中の制作の様子", id: 5 },
         { src: "../blog_img/002/image_06.webp", caption: "最終発表の様子", id: 6 },
         { src: "../blog_img/002/promotional_photo.webp", caption: "プロフィール写真", id: 7 },
       ],
@@ -123,7 +123,7 @@ export const blogContents = {
        
         { type: "h2", text: `「シェーダーは体で理解する」`},
         { type: "p", text: `三箇条の中でも、これは合宿の核に近い。レイマーチングを体験として先に通し、その体験をコードと対応づけて説明する。「光線（レイ）」になりきって、障害物の有無を判断するアナログなゲームだ。参加者に探検隊の隊員という役割を与え、ルールに従って障害物を探索する。体験を通じてレイマーチングの進行と障害物検出の仕組みを掴み、後でコードに戻る、という流れだ。`, class: ["large-space-2"] },
-        { type: "p", text: `また、合宿が単発で終わらないように、合宿後も継続できる環境を置く意図も当初からあった。オンラインの場（Discord）を設けて、情報共有や質問対応、活動報告ができるようにしている。。`, class: ["large-space-2"] },
+        { type: "p", text: `また、合宿が単発で終わらないように、合宿後も継続できる環境を置く意図も当初からあった。オンラインの場（Discord）を設けて、情報共有や質問対応、活動報告ができるようにしている。`, class: ["large-space-2"] },
 
         { type: "img-button", targetId: 4, label: "合宿中の講義の様子" },
 
