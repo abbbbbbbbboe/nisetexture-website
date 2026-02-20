@@ -149,7 +149,7 @@ function buildList(posts) {
       if (samune) {
         const mobileImg = document.createElement("div");
         mobileImg.className = "mobile-list-image";
-        mobileImg.innerHTML = `<img src="${samune}" alt="">`;
+        mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="69">`;
 
         const metaBlock = div.querySelector(".list-tag");
         if (metaBlock) {
@@ -1268,6 +1268,10 @@ function resizeMediaToFitArea(el, areaWidth) {
   // ================================
   // 適用
   // ================================
+  // HTML属性（CLS防止）
+el.setAttribute("width", newWidth);
+el.setAttribute("height", newHeight);
+
   el.style.width = `${newWidth}px`;
   el.style.height = `${newHeight}px`;
 
