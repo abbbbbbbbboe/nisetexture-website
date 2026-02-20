@@ -117,7 +117,8 @@ function buildList(posts) {
     <div class="list-category list-meta">【${post.category || ''}】</div><br>
       <div class="list-title"><span>+&ensp;${randomLetterSpacing(post.title, 1, 2.5)}&ensp;+</span></div>
       <div class="list-meta">
-        <span class="by" style="font-size:1em; margin-right:5px; font-weight: var(--fontw1);">by</span><span class="list-writer">${post.writer || ''}</span>
+        
+        <div class="list-writer"><div class="by">by</div><i>${post.writer || ''}</i></div>
         <span class="list-date">(${post.date || ''})</span>
       <div class="list-tag"></div>
         
@@ -325,12 +326,12 @@ function displayText(blocks, images, post) {
   // =========================================================
   if (isMobile()) {
 
-    const categoryP = document.createElement("p");
+    const categoryP = document.createElement("h2");
     categoryP.className = "mobile_text_category";
     categoryP.innerHTML = `【${post.category || ""}】`;
     textsContainer.appendChild(categoryP);
 
-    const titleP = document.createElement("p");
+    const titleP = document.createElement("h1");
     titleP.className = "mobile_text_title";
     titleP.innerHTML = `+&ensp;${post.title || ""}&ensp;+`;
     textsContainer.appendChild(titleP);
@@ -338,9 +339,9 @@ function displayText(blocks, images, post) {
 
 
     //"*" + post.category + "&emsp;" +"(" + post.date + ")" || ""
-    const dateP = document.createElement("p");
-    dateP.className = "mobile_text_data";
-    dateP.innerHTML = `(${post.date || ""}) `;
+    const dateP = document.createElement("div");
+    dateP.className = "mobile_text_meta";
+    dateP.innerHTML = `<div class="mobile_textarea_writer"><span style="margin-right:5px; font-size: 0.9em;">by</span><i>${post.writer || ""}</i></div><time>(${post.date || ""})</time> `;
     textsContainer.appendChild(dateP);
 
     const wrapper = document.createElement("p");
