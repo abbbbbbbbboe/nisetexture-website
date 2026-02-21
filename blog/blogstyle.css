@@ -411,8 +411,11 @@ main {
 
 .list-writer{
   font-size: 1em;
-  display: inline;
+  display: inline-block;
+  height: 40px;
 }
+
+
 .list-writer i{
   font-size: 1em;
   margin-left: 5px;
@@ -446,9 +449,7 @@ main {
   height: 160px;
 }
 
- .list-writer{
-    height: 40px;
-  }
+ 
 
 .by{
  
