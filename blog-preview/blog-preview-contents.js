@@ -74,7 +74,7 @@ export const blogContents = {
       ],
       textBlocks: [
         { type: "img-button", targetId: 1, label: "エクストリームVJ合宿" },
-        { type: "skipbutton", id: "skip0", label: "特集にあたって", mobile_label: "0" },
+        { type: "skipbutton", id: "skip0", label: "特集にあたって", mobile_label: "0", text: "section 0"  },
         { type: "h1", text: `特集にあたって`},
         { type: "p", text: `何かを続けるのはかなり難しい。しかし、続けることで改善や変化をすることができる。他の人がどのように続けながら活動をしているのか知りたい。それが私たちなりの方法を模索する助けになると思うからだ。`, class: ["large-space-1"] },
         { type: "p", text: `今回は、2024年から行なっている「エクストリームVJ合宿」について、主催しているshimaさんに合宿の運営を積み重ねながら変化したことや考えていることをまとめてもらった。`, class: ["large-space-1"] },
@@ -85,7 +85,7 @@ export const blogContents = {
 
         { type: "p", text: `エクストリームVJ合宿は、私の修士研究の一部として設計・実施し始めた試みだ。次回で6回目を迎える。5回の実施を経て、当初の設計と実際の景色がどう変わっていったのか。その変遷と言語化されていない価値についてまとめておきたい。`, class: ["large-space-2"] },
 
-        { type: "skipbutton", id: "skip1", label: "数学を手段にする", mobile_label: "1" },
+        { type: "skipbutton", id: "skip1", label: "数学を手段にする", mobile_label: "1", text: "section 1"  },
         { type: "h1", text: `数学を手段にする——設計の出発点`},
 
         { type: "p", text: `合宿は当初から、レイマーチングを取り上げ、Shaderの実装を扱い、最終的にVJパフォーマンスの制作に挑戦するワークショップとして設計していた。ここでいうShaderはGPU処理のプログラムを指す。
@@ -99,7 +99,7 @@ export const blogContents = {
         そこで、Shaderという「使いたい道具」が先にある状態を作れば、数学は目的ではなく手段になり、抵抗なく触れられるのではないか。Shaderを扱うために数学にもっと触れよう、という流れが自然に起きるのではないか。そういう仮説から出発した。
         `, class: ["large-space-2"] },
 
-        { type: "skipbutton", id: "skip2", label: "テーマパークと三箇条", mobile_label: "2" },
+        { type: "skipbutton", id: "skip2", label: "テーマパークと三箇条", mobile_label: "2", text: "section 2"  },
         { type: "h1", text: `テーマパークと三箇条——場の空気をどう作るか`},
         { type: "p", text: `この仮説に沿って、合宿は仕組みを学ぶ場というよりも、楽しい実践のための道具の使い方を教える場というスタンスで設計した。そこを空気づくりで支える方法をまとめてみる。`, class: ["large-space-1"] },
         { type: "img-button", targetId: 2, label: "レイマーチングの説明を行うshima" },
@@ -127,7 +127,7 @@ export const blogContents = {
 
         { type: "img-button", targetId: 4, label: "合宿中の講義の様子" },
 
-        { type: "skipbutton", id: "skip3", label: "合宿の「後」に価値が確定する", mobile_label: "3" },
+        { type: "skipbutton", id: "skip3", label: "合宿の「後」に価値が確定する", mobile_label: "3", text: "section 3"},
         { type: "h1", text: `合宿の「後」に価値が確定する`},
         { type: "p", text: `ここからが実施して変わった部分だ。`, class: ["large-space-1"] },
         { type: "p", text: `実施前の私は、価値の中心を「参加することでできるようになること」に置いていた。ややこしい数学もShaderの面白さと一緒に学べば理解が進むはずで、そこに参加価値がある、という気持ちが強かった。`, class: ["large-space-1"] },
@@ -149,7 +149,7 @@ export const blogContents = {
         { type: "p", text: `こういう出来事が起きたとき、参加者は「参加してよかった」私は「開催してよかった」が遅れて確定する感覚がある。コミュニティの成果とは、合宿が終わった後に行動の変容が起きることだ、と思うようになった。`, class: ["large-space-1"] },
 
 
-        { type: "skipbutton", id: "skip4", label: "つなぐための設計を磨く", mobile_label: "4" },
+        { type: "skipbutton", id: "skip4", label: "つなぐための設計を磨く", mobile_label: "4", text: "section 4"  },
         { type: "h1", text: `つなぐための設計を磨く`},
         { type: "p", text: `この合宿は、なるべく地方都市で開催しようという意図を持って運営している。東京では勉強会やコミュニティの選択肢が多いが、距離の問題があって地方の人は行きづらい。さらに勉強会は詳しい人が主役で、その話を皆で聞くスタイルになりやすい。私はそれより、参加者が主役でいてほしい。`, class: ["large-space-1"] },
         { type: "p", text: `エクストリームVJ合宿は、講義で正解を渡すより、参加者全員が同じ場に立って、過酷さと共通体験を抱えながら制作と発表まで走り切ることを重視している。運営は世界観と進行と安全を担うが、参加者を観客にはしない。既存の勉強会が「詳しい人の話を聞く場」だとすれば、こちらは「全員が当事者として走る場」だ。`, class: ["large-space-1"] },
@@ -165,7 +165,7 @@ export const blogContents = {
         { type: "p", text: `ここまでの改善のかなりの部分は、前述したそばやさんの存在なしには成立しなかった。そばやさんは初回の参加者で、それ以降は実施のたびに運営を手伝ってくれている。自己紹介の設計、資料の改善、Discordサーバーの提案、文章の整理はどれも合宿の質を一段上げた改善のアドバイスだった。参加者が運営に変わり、運営が次の参加者の体験を良くする。この循環が自然に起きたことが、コミュニティとしての合宿の現在地を象徴していると思う。`, class: ["large-space-2"] },
 
 
-        { type: "skipbutton", id: "skip5", label: "入口は固定し、深掘りは手放す", mobile_label: "5" },
+        { type: "skipbutton", id: "skip5", label: "入口は固定し、深掘りは手放す", mobile_label: "5", text: "section 5"  },
         { type: "h1", text: `入口は固定し、深掘りは手放す`},
         { type: "p", text: `最近の私は、交流と継続を最大化するために、全員に求める学習内容は入口として固定し、理解の深掘りは必須にしない、と割り切っている。サポートの責任範囲は「ShaderでVJ発表ができるところまで」で、全員に原理の理解を完了させることをゴールにしていない。`, class: ["large-space-1"] },
         { type: "p", text: `もちろん、これはあくまで「最低ライン」の話だ。質問が出れば時間の許す限りどこまでも深く解説するし、マニアックな実装の話も歓迎する。上限は設けていない。ただ、全員がそこまで到達しなくても、発表ができればそれで良しとするスタンスだ。`, class: ["large-space-1"] },
@@ -173,7 +173,7 @@ export const blogContents = {
         { type: "p", text: `その先で、心理的安全性が担保された発表空間をどう広げられるか。合宿の外側で起きる行動変容をどう増やせるか。そういう関心へ、エクストリームVJ合宿は少しずつ重心を移してきた。`, class: ["large-space-2"] },
 
         { type: "img-button", targetId: 6, label: "最終発表の様子" },
-        { type: "skipbutton", id: "skip6", label: "続けるための課題——お金と持続性", mobile_label: "6" },
+        { type: "skipbutton", id: "skip6", label: "続けるための課題——お金と持続性", mobile_label: "6", text: "section 6"  },
         { type: "h1", text: `続けるための課題——お金と持続性`},
         { type: "p", text: `一方で、ここまで来ると綺麗事では済まない課題も見えている。`, class: ["large-space-1"] },
         { type: "p", text: `合宿は来れば誰でも仲間になれる入口として機能させたいという思想があり、参加費を大きく上げにくい。その一方で、会場費など参加人数に関係なく先に発生する固定費があり、売上は参加者数に連動して変動する。結果として損益分岐点付近で採算が揺れやすく、黒字になっても余剰が薄い状態が続いている。そのため、DJやそばやさんなどサポートメンバーへの謝金を十分に確保できていない。`, class: ["large-space-1"] },
@@ -182,7 +182,7 @@ export const blogContents = {
 
         { type: "divider" },
 
-        { type: "skipbutton", id: "skip7", label: "これまでの開催情報", mobile_label: "7" },
+        { type: "skipbutton", id: "skip7", label: "これまでの開催情報", mobile_label: "7", text: "section 7"  },
         { type: "h1", text: `これまでの開催情報`},
         { type: "p", text: `第1回`},
         { type: "p", text: `⚫︎2024年10月19日〜20日`},
@@ -209,7 +209,7 @@ export const blogContents = {
         
 
 
-        { type: "skipbutton", id: "skip8", label: "第6回開催情報", mobile_label: "8" },
+        { type: "skipbutton", id: "skip8", label: "第6回開催情報", mobile_label: "8", text: "section 8"  },
         { type: "h1", text: `第6回開催情報`},
         { type: "p", text: `エクストリームVJ合宿 at Creative Center Osaka`},
         { type: "p", text: `⚫︎日時：2026年2月28日（土）〜3月1日（日`},
@@ -222,16 +222,22 @@ export const blogContents = {
         { type: "p", text: `公開型イベントとして場所をご提供いただく形のほか、社内向け・学内向けプログラムとして実施することも可能です。`, class: ["large-space-1"] },
         { type: "p", text: `開催について関心をお持ちいただける場合は、ご連絡ください。`, class: ["large-space-1"] },
         { type: "p", text: `エクストリームVJ合宿に関するお問い合わせはこちら`},
-        { type: "a", text: `xアカウント`, link:"https://x.com/ExtremeVJCamp" ,class: ["textlink"] },
-        { type: "a", text: `Instagramアカウント`, link:"https://www.instagram.com/extremevjcamp/",class: ["large-space-2","textlink"] },
+        { type: "a", text: `xアカウント`, link:"https://x.com/ExtremeVJCamp" ,class: ["textlink"], prefix: "→" },
+        { type: "a", text: `Instagramアカウント`, link:"https://www.instagram.com/extremevjcamp/",class: ["large-space-2","textlink"], prefix: "→" },
 
         { type: "divider" },
 
-        { type: "skipbutton", id: "skip9", label: "著者プロフィール", mobile_label: "9" },
+        { type: "skipbutton", id: "skip9", label: "著者プロフィール", mobile_label: "9", text: "section 9"  },
         { type: "h1", text: `著者プロフィール`},
         { type: "img-button", targetId: 7, label: "プロフィール写真" },
         { type: "p", text: `shima`},
-        { type: "p", text: `岐阜生まれ岐阜育ち。CG／Shaderを道具にライブやインスタレーションを制作。IAMAS修了。`}
+        { type: "p", text: `岐阜生まれ岐阜育ち。CG／Shaderを道具にライブやインスタレーションを制作。IAMAS修了。`, class: ["large-space-2"] },
+
+        { type: "divider" },
+
+        { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
+        { type: "p", text: `nise.texture[a]gmail.com` },
+        { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
 
       ],
 
