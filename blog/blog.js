@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       displayText(post.textBlocks, post.images, post);
 
       displayImages(post.images, post);
-      adjustMediaSizes();
+     
     }
   }
   applyRandomSpacingToMenu();
@@ -96,7 +96,7 @@ window.addEventListener("hashchange", () => {
   // 表示更新
   displayText(post.textBlocks, post.images, post);
   displayImages(post.images, post);
-  adjustMediaSizes();
+  
 
 });
 
@@ -1330,11 +1330,11 @@ function adjustMediaSizes() {
           // 取得できるまで最大15回再試行（45ms）
           let retry = 0;
           const timer = setInterval(() => {
-            if (tryApply() || retry > 15) {
+            if (tryApply() || retry > 50) {
               clearInterval(timer);
             }
             retry++;
-          }, 3);
+          }, 20);
         }
       } else if (el.tagName.toLowerCase() === 'video') {
 
