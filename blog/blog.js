@@ -97,7 +97,7 @@ window.addEventListener("hashchange", () => {
   displayText(post.textBlocks, post.images, post);
   displayImages(post.images, post);
   adjustMediaSizes();
-  activateListItem(hash);
+
 });
 
 
