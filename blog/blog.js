@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       displayText(post.textBlocks, post.images, post);
 
       displayImages(post.images, post);
+      adjustMediaSizes();
     }
   }
   applyRandomSpacingToMenu();
