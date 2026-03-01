@@ -97,9 +97,9 @@ text_credit: ``,
     "　"
       ],
       text_jp: `やまなしメディア芸術アワード2025-26に応募しましたが、残念ながら入選には至りませんでした。<br>
-<a href="./#archive/hyperlog">展覧会「hyperLOG」</a>で展示した<a href="./#archive/LRTK1">『リビングルーム・トレーニング キッチン#1』</a>を応募しました。
+<a href="https://nisetexture.com/#archive/hyperlog">展覧会「hyperLOG」</a>で展示した<a href="https://nisetexture.com/#archive/LRTK1">『リビングルーム・トレーニング キッチン#1』</a>を応募しました。
 応募資料を公開します。`,
-      text_en: `I submitted an entry to the Yamanashi Media Arts Award 2025-26, but unfortunately it was not selected. I submitted<a href="./#archive/LRTK1"> ‘Living Room Training Kitchen #1’</a>, which was exhibited at <a href="./#archive/hyperlog">the ‘hyperLOG’ exhibition</a>. I am making the submission materials publicly available.<br>
+      text_en: `I submitted an entry to the Yamanashi Media Arts Award 2025-26, but unfortunately it was not selected. I submitted<a href="https://nisetexture.com/#archive/LRTK1"> ‘Living Room Training Kitchen #1’</a>, which was exhibited at <a href="https://nisetexture.com/#archive/hyperlog">the ‘hyperLOG’ exhibition</a>. I am making the submission materials publicly available.<br>
 English translation by AI`,
 
        links: {
