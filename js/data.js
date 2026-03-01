@@ -1,6 +1,51 @@
 const contents = {
   archive: [
-    
+    {
+      id: "LRTK1",
+      title: "『リビングルーム・トレーニング キッチン #1』",
+      title_en: "<Living Room Training: Kitchen #1>",
+      date: "2025",
+      category: "work",
+      place: "",
+      media: [
+        "https://youtu.be/uLCjUMLY1Co?si=MGhJ-a8kjz7owYDe",
+        "workimg/lrtk1/Living_Room_Training_Kitchen_1.webp",
+        "workimg/lrtk1/Living_Room_Training_Kitchen_1_structure diagram.jpg"
+      ],
+      captions: [
+        "『リビングルーム・トレーニング キッチン#1』全編映像",
+        "『リビングルーム・トレーニング キッチン#1』キャプチャ画像",
+        "『リビングルーム・トレーニング キッチン#1』構造図(copy)"
+  ],
+      text_jp: `日常における何気ない行為のひとつである皿洗いをモチーフに、ジェスチャー、撮影、鑑賞、録音、模倣、それぞれが入れ子構造になるように行いながら、それらすべてを素材として重ね、映像とした作品です。
+<br>
+まず、皿洗いの動作を観察し、そこから一部を取り出します。取り出された動作を、キッチンではない場所に持ち出し、繰り返し演じます。その様子をビデオカメラで撮影します。そして、第三者にその映像の鑑賞と食事をしながら会話をしてもらいます。その際に、行われたおしゃべりを録音し、その内容をメンバーで真似て演じます。演じられた音声を録音し、撮影された映像と重ね、一つの映像にします。
+<br>
+さらに、配信というレイヤーも作品構造の中に加えました。会場に設置したビデオカメラで「リビングルーム・トレーニング1」の様子を撮影し、リアルタイムで遠隔地にて視聴します。そして、その視聴している様子をライブ配信しました。
+<br>
+作品そのものや、鑑賞者、配信をみている人も、作品の構造のひとつとして取り込みます。
+<br>
+作品の構造を示した図(copy)も公開します。`,
+text_en: `This work uses dishwashing—a mundane daily activity—as its motif. It involves performing gestures, filming, viewing, recording, and imitation in a nested structure, then layering all these elements as material to create a video piece.
+<br>
+First, the dishwashing actions are observed, and a specific part is extracted. This extracted action is then taken to a location outside the kitchen and performed repeatedly. This performance is filmed with a video camera. Next, a third party is asked to view this footage while eating and conversing. The conversation that occurs during this viewing is recorded. The members then mimic and perform the content of this recorded conversation. The performed audio is recorded and layered with the filmed footage to create a single video.
+<br>
+Furthermore, we added a streaming layer to the work's structure. We filmed the “Living Room Training 1” session with a video camera installed at the venue and viewed it remotely in real time. We then live-streamed the act of watching this footage.
+<br>
+The work itself, the viewers, and the people watching the stream are all incorporated as part of the work's structure.
+<br>
+We also publish a diagram illustrating the work's structure.
+<br>
+Translated with DeepL.com (free version)
+<br><br>
+English translation by AI`,
+text_credit: ``,
+       links: {
+    "全編映像": "https://youtu.be/uLCjUMLY1Co?si=MGhJ-a8kjz7owYDe",
+    "Livestream": "https://youtu.be/FvWRGIJsiaE",
+    "構造図(copy)": "https://miro.com/app/board/uXjVGLULSgI=/?share_link_id=96865327622"
+  }
+},
    {
       id: "openWebsite",
       title: "webサイト公開",
@@ -71,7 +116,7 @@ English translation by AI`,
       media: [
         "workimg/competition/competition_samune-no_a.png",
         "https://youtu.be/ZJcfGl9oPQs",
-        
+         "workimg/competition/competition_samune-no_a.png",
         
       ],
       captions: [
