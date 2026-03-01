@@ -37,7 +37,31 @@ text_credit: ``,
      "Tshirt": "https://suzuri.jp/ota_sora/sections/24389",
  
   }
-},{
+},
+{
+      id: "YMAA2025",
+      title: `【落選】やまなしメディア芸術アワード2025-26`,
+      title_en: "[Failed]Yamanashi Media Arts Award2025-26",
+      date: "2025.11.20",
+      category: "competition",
+      place: "",
+      media: [
+        "workimg/competition/competition_samune-no_b.png",
+      ],
+      captions: [
+    "　"
+      ],
+      text_jp: `やまなしメディア芸術アワード2025-26に応募しましたが、残念ながら入選には至りませんでした。<br>
+<a href="./#archive/hyperlog">展覧会「hyperLOG」</a>で展示した<a href="./#archive/LRTK1">『リビングルーム・トレーニング キッチン#1』</a>を応募しました。
+応募資料を公開します。`,
+      text_en: `I submitted an entry to the Yamanashi Media Arts Award 2025-26, but unfortunately it was not selected. I submitted<a href="./#archive/LRTK1"> ‘Living Room Training Kitchen #1’</a>, which was exhibited at <a href="./#archive/hyperlog">the ‘hyperLOG’ exhibition</a>. I am making the submission materials publicly available.<br>
+English translation by AI`,
+
+       links: {
+        "提出資料": "https://5884017.notion.site/nisetexture",
+  }
+},
+{
       id: "psemac2025",
       title: `【不採択】令和7年度国内クリエイター発表支援プログラム`,
       title_en: "[Rejected]Project to Support Emerging Media Arts Creators",
