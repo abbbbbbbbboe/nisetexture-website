@@ -546,26 +546,38 @@ main {
 
 
 .caption {
+  
   font-size: 0.8em;
   color: var(--caption-color);
-  line-height: 40px;
-  margin-bottom: 45px;
-  transform: scale(1, 0.9);
-  letter-spacing: 0.25rem;
-  margin-top: -5px;
+  height: 40px;
+  margin-bottom: 43px;
   text-align: center;
+  
+}
+
+.caption p{
+ text-align: center;
+transform: scale(1, 0.9);
+  letter-spacing: 0.25rem;
+  height: 111%;
+  line-height: 22px;
+  margin-top: -3px;
+  
 }
 
 
 
 .image-area img,
 .image-area video,
-.image-area iframe {
+.image-area iframe{
   border: var(--border);
   background-color: var(--backgroundcolor);
   display: block;
   margin: -1px auto 0px auto;
 }
+
+
+
 
 .image-area img {
   display: block;
@@ -605,6 +617,9 @@ main {
   z-index: 10;
 }
 
+.media-iframe-wrapper{
+  margin-bottom: 1px;
+}
 
 
 /* ホバー用プレビュー画像 */
@@ -1402,14 +1417,22 @@ img.preview {
 
 
   .caption {
-    font-size: 0.8em;
-    color: #b4b4b4;
-    line-height: 35px;
-    margin-bottom: 40px;
-    transform: scale(1, 0.9);
-    letter-spacing: 0.1rem;
-    margin-top: -5px;
+    font-size: 0.75em;
+  color: var(--caption-color);
+  height: 35px;
+  margin-bottom: 37px;
+  text-align: center;
+  
   }
+
+  .caption p{
+ text-align: center;
+transform: scale(1, 0.9);
+  letter-spacing: 0.25rem;
+ height: 111%;
+  line-height: 18px;
+  margin-top: -2px;
+}
 
   /* 最後のエリアは右のボーダーなし */
 

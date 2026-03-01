@@ -230,12 +230,16 @@ function showCategory(category, autoIndex = null, filterCategory = 'all', option
 
 
       // キャプション
-      if (data.captions && data.captions[i]) {
-        const caption = document.createElement('div');
-        caption.className = 'caption';
-        caption.textContent = data.captions[i];
-        imageContainer.appendChild(caption);
-      }
+     if (data.captions && data.captions[i]) {
+  const caption = document.createElement('div');
+  caption.className = 'caption';
+
+  const p = document.createElement('p');
+  p.textContent = data.captions[i];
+
+  caption.appendChild(p);
+  imageContainer.appendChild(caption);
+}
     });
 
     // ✅ 余白を追加
