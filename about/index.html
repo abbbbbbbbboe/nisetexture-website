@@ -108,5 +108,10 @@
      <script src="../js/scrollstep.js"></script>
      <script src="about.js"></script>
      <script src="../js/windowoverlay.js"></script>
+     <script>
+        preloadImages(idleImages).then(() => {
+          enableIdleOverlay(idleImages, topImage, 15000);
+        });
+     </script>
 </body>
 </html>

@@ -236,9 +236,7 @@ const topImage = applyBaseToFile("img/rogo_side.svg");
 const idleImages = isMobile() ? mobileImages : pcImages;
 
 // 先にプリロード
-preloadImages(idleImages).then(() => {
-  enableIdleOverlay(idleImages, topImage, 15000);
-});
+
 
 //  clockElement.textContent = `〔${h}:${m}:${s}〕`;
 
