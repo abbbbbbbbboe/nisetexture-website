@@ -150,7 +150,6 @@ function buildList(posts) {
 
       const samune = post.samune;
 
-    
         const mobileImg = document.createElement("div");
         mobileImg.className = "mobile-list-image";
 
@@ -160,13 +159,11 @@ function buildList(posts) {
           mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="104">`;
         }
         
-
         const metaBlock = div.querySelector(".list-tag");
         if (metaBlock) {
           metaBlock.insertAdjacentElement("afterend", mobileImg);
         }
    
-
     }
 
 
