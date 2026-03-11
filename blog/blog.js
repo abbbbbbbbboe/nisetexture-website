@@ -109,6 +109,7 @@ window.addEventListener("hashchange", () => {
 
 function buildList(posts) {
 
+
   listContainer.innerHTML = "";
   createScrollTopButton(listContainer, listArea);
   posts.forEach(post => {
@@ -149,16 +150,22 @@ function buildList(posts) {
 
       const samune = post.samune;
 
-      if (samune) {
+    
         const mobileImg = document.createElement("div");
         mobileImg.className = "mobile-list-image";
-        mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="69">`;
+
+        if (samune === ""){
+          mobileImg.innerHTML = `<img src="../blog_img/blog_thumbnail.webp" alt="thumbnail" height="104">`;
+        } else {
+          mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="104">`;
+        }
+        
 
         const metaBlock = div.querySelector(".list-tag");
         if (metaBlock) {
           metaBlock.insertAdjacentElement("afterend", mobileImg);
         }
-      }
+   
 
     }
 
@@ -603,7 +610,7 @@ function displayText(blocks, images, post) {
       btn.textContent = label + " →";
 
       currentButtonGroup.appendChild(btn);
-      console.log("img-button target", targetId);
+     
 
     }
 
@@ -901,7 +908,7 @@ function displayImages(images, post) {
     // ⭐ wrapperクリック
     wrapper.addEventListener("click", () => {
 
-      console.log("clicked image id:", wrapper.dataset.id);
+     
       jumpToJumpButton(wrapper.dataset.id);
     }, true);
 
@@ -909,7 +916,7 @@ function displayImages(images, post) {
     wrapper.querySelectorAll("img, iframe, video").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation(); // 二重発火防止
-        console.log("media clicked:", wrapper.dataset.id);
+     
         jumpToJumpButton(wrapper.dataset.id);
       });
     });

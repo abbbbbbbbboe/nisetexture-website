@@ -710,6 +710,21 @@ img.preview {
   border-bottom: 3px double var(--backgroundcolor);
 }
 
+.large-space-2 {
+  margin-bottom: 80px;
+  display: block;
+}
+
+.large-space-1 {
+  margin-bottom: 40px;
+  display: block;
+}
+
+.indent-1 {
+		padding-left:1em;
+		text-indent:-1.3em;
+	}
+
 .link-list {
   position: relative;
   display: inline-block;
@@ -834,15 +849,7 @@ img.preview {
 
 
 
-.large-space-2 {
-  margin-bottom: 80px;
-  display: block;
-}
 
-.large-space-1 {
-  margin-bottom: 40px;
-  display: block;
-}
 
 p.footnote {
   font-size: 0.9em;
@@ -1289,7 +1296,7 @@ p.footnote {
 
   .list-item {
     line-height: 35px;
-    margin-bottom: 35px;
+    margin-bottom: 70px;
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
     padding-left: 0px;
@@ -1419,9 +1426,6 @@ p.footnote {
   margin-left: auto;
 }
 
- .textlink{
-  
- }
 
   .link-list {
     line-height: 35px;
@@ -1489,6 +1493,11 @@ p.footnote {
     margin-bottom: 70px;
     display: block;
   }
+
+  .indent-1 {
+		padding-left:1em;
+		text-indent:-1.1em;
+	}
 
   .i{
     font-style: italic;
