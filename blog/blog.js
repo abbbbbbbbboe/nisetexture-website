@@ -525,6 +525,7 @@ function displayText(blocks, images, post) {
 
     }
 
+   
 
     // --------------------------
     // ▶ ボタン or メディア挿入位置

@@ -720,6 +720,10 @@ img.preview {
   display: block;
 }
 
+.i{
+    font-style: italic;
+  }
+
 .indent-1 {
 		padding-left:1em;
 		text-indent:-1.3em;
@@ -734,6 +738,7 @@ img.preview {
   color: var(--color);
   text-decoration: none;
   font-style: italic;
+  margin-left: 20px !important;
 }
 
 .link-list::before {
@@ -770,9 +775,7 @@ img.preview {
   width: 100%;
 }
 
-.link-list {
-  margin-left: 20px !important;
-}
+
 
 .button-group {
   width: 700px;
@@ -877,7 +880,6 @@ p.footnote {
   text-decoration-style: wavy;
   text-decoration-color: var(--btn-color);
   text-decoration-thickness: 1px;
-  /* -webkit-text-decoration: wavy underline 1px var(--btn-color); */
   width: fit-content;
 }
 
@@ -926,14 +928,7 @@ p.footnote {
   padding-bottom: 40px;
 }
 
-.text-credit {
-  margin-bottom: 80px;
-  color: var(--color);
-}
 
-.text-credit a {
-  color: var(--color);
-}
 
 .preview-text {
   margin-top: 0px;
@@ -1499,9 +1494,7 @@ p.footnote {
 		text-indent:-1.1em;
 	}
 
-  .i{
-    font-style: italic;
-  }
+  
 
 
   .divider-line {
@@ -1538,9 +1531,7 @@ p.footnote {
     letter-spacing: 0.2rem;
   }
 
-  .text-credit {
-    margin-top: 35px;
-  }
+  
 
   .mobile-jp-title {
     font-weight: var(--fontw4) !important;
