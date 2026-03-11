@@ -44,7 +44,7 @@ export const globalHyperlinks = {
 { word: "ロイヤルホスト", href: "https://youtu.be/Z7-RDg4KL1g?si=UfSGtUeHQkReJ0Hn" },
 { word: "高等温泉", href: "https://note.com/traveling_hi/n/n98ed47f70d64" },
 { word: "竹瓦温泉", href: "https://www.takegawara-onsen.com/" },
-{ word: "ちりんシーガイア", href: "https://www2s.biglobe.ne.jp/~t_aoyagi/train/seagaia.htm" },
+{ word: "にちりんシーガイア", href: "https://www2s.biglobe.ne.jp/~t_aoyagi/train/seagaia.htm" },
 { word: "イメージ", href: "https://keyword.japancreativity.jp/basics/image/" },
 { word: "寺の標語", href: "https://www.bdk.or.jp/kagayake2018/publication.html" },
 { word: "うんこ座り", href: "https://iwata-akatombo.com/blog/?p=3619" },
