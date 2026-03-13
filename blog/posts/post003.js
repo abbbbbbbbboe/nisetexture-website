@@ -38,7 +38,7 @@ export default
       { type: "p", text: `・メンバーがそれぞれ時間軸に沿って飲み会の流れを記述する。`, class: ["indent-1"] },
       { type: "p", text: `・それぞれが記述した内容を一つの時間軸になるように組み合わせる。`, class: ["indent-1"] },
       { type: "p", text: `・まとめた文章のはじめに日時場所をまとめる。`, class: ["indent-1"] },
-      { type: "p", text: `・文中に日時時間を記述する必要はない。`, class: ["large-space-2", "indent-1"] },
+      { type: "p", text: `・文中に日時場所を記述する必要はない。`, class: ["large-space-2", "indent-1"] },
       { type: "divider" },
       { type: "p", text: `2026/02/09 21:00 ~ 02/10 21:00` },
       { type: "p", text: `福岡県 北九州市、行橋市、別府市`, class: ["large-space-2"] },
