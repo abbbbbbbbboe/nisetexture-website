@@ -31,28 +31,26 @@ window.addEventListener('resize', setVh);
 window.addEventListener('orientationchange', setVh);
 
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  // if (document.querySelector(".list-container")) {
-  //   initBlog();
-  //   attachScrollStep();
-  // }
-
+document.addEventListener("DOMContentLoaded", async () => {
   const hash = location.hash.replace("#", "");
   if (hash) {
-    const post = contents.posts.find(p => p.id === hash);
+    const post = await loadPostDate(hash);
     if (post) {
-
-      // attachJumpHandlers();
       const targetItem = listContainer.querySelector(`.list-item[data-post-id="${hash}"]`);
       if (targetItem) {
         const allItems = listContainer.querySelectorAll(".list-item");
         allItems.forEach(el => el.classList.remove("active"));
         targetItem.classList.add("active");
+
+        requestAnimationFrame(() => {
+          targetItem.scrollIntoView({
+            block: "start",
+            behavior: "instant"
+          })
+        })
       }
 
       displayText(post.textBlocks, post.images, post);
-
       displayImages(post.images, post);
      
     }
@@ -79,7 +77,7 @@ function clearContentAreas() {
 }
 
 
-window.addEventListener("hashchange", () => {
+window.addEventListener("hashchange", async () => {
   const hash = location.hash.replace("#", "");
 
   // ハッシュなし → active解除 + エリアクリア
@@ -90,7 +88,7 @@ window.addEventListener("hashchange", () => {
   }
 
   // 対応する記事を探す
-  const post = contents.posts.find(p => p.id === hash);
+  const post = await loadPostDate(hash);
   if (!post) return;
 
   // 表示更新
@@ -171,35 +169,33 @@ function buildList(posts) {
     spacer.className = "list-item-spacer";
     listContainer.appendChild(spacer);
   });
-
-
-  // === activeを画面内にスクロール ===
-  setTimeout(() => {
-    const activeItem = listContainer.querySelector('.list-item.active');
-    if (activeItem) {
-      activeItem.scrollIntoView({
-        block: 'start',
-        behavior: 'instant'
-      });
-    }
-  }, 0);
 }
 
+async function loadPostDate(id) {
+  const module = await import(`./posts/post${id}.js`);
+  return module.default;
+}
 
 function setupClickHandler() {
-  listContainer.addEventListener("click", (e) => {
+  listContainer.addEventListener("click", async (e) => {
     const item = e.target.closest(".list-item");
     if (!item) return;
 
     const postId = item.dataset.postId;
-    const post = contents.posts.find(p => p.id === postId);
 
+    const post = await loadPostDate(postId);
 
     // active 切り替え
     listContainer.querySelectorAll(".list-item")
       .forEach(el => el.classList.remove("active"));
     item.classList.add("active");
 
+    requestAnimationFrame(() => {
+      item.scrollIntoView({
+        block: "start",
+        behavior: "instant"
+      });
+    });
 
 
 

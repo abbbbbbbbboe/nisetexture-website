@@ -1,14 +1,43 @@
-import post000 from "./post000.js";
-import post001 from "./post001.js";
-import post002 from "./post002.js";
-import post003 from "./post003.js";
-
-
 
 export const posts = [
   // 新しいのは上に記入
-  post003,
-  post002,
-  post001,
-  post000,
+  {
+    id: "003",
+    category: "飲み会",
+    title: '立春！飲み会の記録',
+    writer: "ニセテクスチャ",
+    date: "2026-03-07",
+    tag: ["飲み会"],
+    samune: "../blog_img/003/post003-samune.JPG",
+  },
+  {
+    id: "002",
+      category: "特集",
+      title: '合宿の価値は、合宿の後に確定する——エクストリームVJ合宿 5回を終えて',
+      writer: "shima",
+      date: "2026-02-21",
+      tag: ["EVC", "news"],
+      samune: "../blog_img/002/image_01.webp",
+  },
+  {
+    id: "001",
+      category: "特集",
+      title: "私たちの活動について",
+      writer: "ニセテクスチャ",
+      date: "2025-12-25",
+      tag: ["about", "news"],
+      samune: "",
+  },
+  {
+    id: "000",
+      category: "告知",
+      title: "広告募集",
+      writer: "ニセテクスチャ",
+      date: "2025-11-22",
+      tag: ["news"],
+      images: [
+        {},
+      ],
+      samune: ""
+  }
 ];
