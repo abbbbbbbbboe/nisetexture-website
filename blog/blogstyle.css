@@ -1298,9 +1298,6 @@ p.footnote {
     width: 100%;
   }
 
-  /* .list-meta {
-    transform: scale(0.9, 1);
-  } */
 
   .list-writer{
     height: 35px;
@@ -1323,7 +1320,7 @@ p.footnote {
     border-right: 1px solid var(--background-border-color);
     transform: scale(calc(10 / 9), 1);
     /* width: 100%; */
-    width: 280px;
+    width: 282px;
     object-fit: cover;
     margin-left: 15px;
   }
