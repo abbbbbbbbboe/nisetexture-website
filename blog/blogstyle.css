@@ -1291,12 +1291,16 @@ p.footnote {
 
   .list-item {
     line-height: 35px;
-    margin-bottom: 70px;
+    margin-bottom: 35px;
     transform: scale(0.9, 1);
     letter-spacing: 0.3rem;
     padding-left: 0px;
     width: 100%;
   }
+
+  /* .list-meta {
+    transform: scale(0.9, 1);
+  } */
 
   .list-writer{
     height: 35px;
@@ -1309,17 +1313,19 @@ p.footnote {
   display: inline;
 }
   .mobile-list-image {
-   height: 69px;
-
+   height: 104px;
+    width: 280px;
     
   }
 
   .mobile-list-image img {
     border-left: 1px solid var(--background-border-color);
     border-right: 1px solid var(--background-border-color);
-   
-    width: 100%;
+    transform: scale(calc(10 / 9), 1);
+    /* width: 100%; */
+    width: 280px;
     object-fit: cover;
+    margin-left: 15px;
   }
 
   .list-item :hover {

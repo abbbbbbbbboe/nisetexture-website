@@ -156,7 +156,7 @@ function buildList(posts) {
         if (samune === ""){
           mobileImg.innerHTML = `<img src="../blog_img/blog_thumbnail.webp" alt="thumbnail" height="104">`;
         } else {
-          mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="104">`;
+          mobileImg.innerHTML = `<img src="${samune}" alt="thumbnail" height="104" width="280">`;
         }
         
         const metaBlock = div.querySelector(".list-tag");
