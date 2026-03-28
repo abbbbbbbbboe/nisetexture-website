@@ -191,7 +191,7 @@ header {
   margin: 0;
   padding-left: 100%;
   white-space: nowrap;
-  animation: SlideSample 30s linear infinite;
+  animation: Slide 30s linear infinite;
 }
 
 .ebb ul li {
@@ -216,7 +216,7 @@ header {
 }
 
 /* スクロールさせるアニメーション */
-@keyframes SlideSample {
+@keyframes Slide {
   0% {
     transform: translateX(0)
   }
@@ -805,7 +805,7 @@ button {
     border-top: 1px solid var(--background-border-color);
   }
     .ebb ul {
-  animation: SlideSample 40s linear infinite;
+  animation: Slide 40s linear infinite;
 }
 
   main {

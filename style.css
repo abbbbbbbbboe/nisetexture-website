@@ -177,7 +177,7 @@ header {
   margin: 0;
   padding-left: 100%;
   white-space: nowrap;
-  animation: SlideSample 30s linear infinite;
+  animation: Slide 30s linear infinite;
 }
 
 .ebb ul li {
@@ -202,7 +202,7 @@ header {
 }
 
 /* スクロールさせるアニメーション */
-@keyframes SlideSample {
+@keyframes Slide {
   0% {
     transform: translateX(0)
   }
@@ -1135,7 +1135,7 @@ img.preview {
   }
 
   .ebb ul {
-  animation: SlideSample 40s linear infinite;
+  animation: Slide 40s linear infinite;
 }
 
   .mobile-nav-wrapper {
