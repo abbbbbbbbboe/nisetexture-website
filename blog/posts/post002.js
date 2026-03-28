@@ -48,7 +48,6 @@ export default
 
         { type: "divider" },
 
-
         { type: "p", text: `エクストリームVJ合宿は、私の修士研究の一部として設計・実施し始めた試みだ。次回で6回目を迎える。5回の実施を経て、当初の設計と実際の景色がどう変わっていったのか。その変遷と言語化されていない価値についてまとめておきたい。`, class: ["large-space-2"] },
 
         { type: "skipbutton", id: "skip1", label: "数学を手段にする", mobile_label: "1", text: "section 1" },
