@@ -30,12 +30,12 @@ export default
     samune: "../blog_img/sleep-soundly/sleepSoundly_samune.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/sleep-soundly/sleepSoundly_samune.webp", caption: "thumbnail", id: 1 },
+        { src: "../blog_img/sleep-soundly/sleepSoundly_samune.webp", caption: "サムネイル", id: 1 },
         { src: "../blog_img/sleep-soundly/icon.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
     {type: "skipbutton", text: `top`, id: "1", label: "top", mobile_label: "1"},
-    {type: "img-button", label: "thumbnail", targetId: "1"},
+    {type: "img-button", label: "サムネイル", targetId: "1"},
     {type: "p", text: `時々眠れなくなる。「死」のことを考え始めたとき。死ぬと何もなくなってしまってその先を想像できないこと、そのものに対して怖くなる。死にたくない。できるだけ生きていたい。自分以外の死、つまり友達や両親や兄弟や飼い猫の死を想像しても恐ろしい。少し前にかわいい飼い猫は死んでしまって、画面越しにみた最後のすがたを忘れられない。思い出すと悲しくて眠れない。悲しいので、眉間に力が入ってしまい顔のパーツはだんだん眉間に寄ってきて、肩に力も入って近づいてくる。そうしている間に精神は覚醒して、また眠れなくなる。眠れないから死について考えてしまうのだろうし、同時に、死を考えるから眠れなくなる。`, class: ["large-space-2"]},
     {type: "p", text: `別に、これからの文章で死について考えていくわけではない。だけど、死がついてまわることをこれから時間をかけて考えていきたい。すぐに何か結論とか答えを見つけることはしないし、できない。だからといって考えないわけにはいかないこと。戦争について。`, class: ["large-space-1"]},
     {type: "p", text: `戦争について考えたいと思った理由はいくつかあって、まずはそれをまとめてみたい。`, class: ["large-space-1"]},
