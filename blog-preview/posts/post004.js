@@ -31,6 +31,7 @@ export default
     imageExtraSpace: "600",
     images: [
         { src: "../blog_img/sleep-soundly/sleepSoundly_samune.webp", caption: "thumbnail", id: 1 },
+        { src: "../blog_img/sleep-soundly/icon.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
     {type: "skipbutton", text: `top`, id: "1", label: "top", mobile_label: "1"},
