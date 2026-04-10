@@ -30,11 +30,11 @@ export default
     samune: "../blog_img/sleep-soundly/sleepSoundly_samune.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/sleep-soundly/sleepSoundly_samune.webp", caption: "サムネイル", id: 1 },
-        { src: "../blog_img/sleep-soundly/icon.webp", caption: "プロフィール写真", id: 2 },
+        { src: "../blog_img/sleep-soundly/sleepSoundly_samune.webp", caption: "　", id: 1 },
+        { src: "../blog_img/sleep-soundly/icon.JPG", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
-    {type: "skipbutton", text: `top`, id: "1", label: "top", mobile_label: "1"},
+    {type: "skipbutton", text: ``, id: "1", label: "top", mobile_label: "1"},
     {type: "img-button", label: "サムネイル", targetId: "1"},
     {type: "p", text: `時々眠れなくなる。「死」のことを考え始めたとき。死ぬと何もなくなってしまってその先を想像できないこと、そのものに対して怖くなる。死にたくない。できるだけ生きていたい。自分以外の死、つまり友達や両親や兄弟や飼い猫の死を想像しても恐ろしい。少し前にかわいい飼い猫は死んでしまって、画面越しにみた最後のすがたを忘れられない。思い出すと悲しくて眠れない。悲しいので、眉間に力が入ってしまい顔のパーツはだんだん眉間に寄ってきて、肩に力も入って近づいてくる。そうしている間に精神は覚醒して、また眠れなくなる。眠れないから死について考えてしまうのだろうし、同時に、死を考えるから眠れなくなる。`, class: ["large-space-2"]},
     {type: "p", text: `別に、これからの文章で死について考えていくわけではない。だけど、死がついてまわることをこれから時間をかけて考えていきたい。すぐに何か結論とか答えを見つけることはしないし、できない。だからといって考えないわけにはいかないこと。戦争について。`, class: ["large-space-1"]},
@@ -51,9 +51,11 @@ export default
     {type: "p", text: `少し前に、ロシアによるウクライナ侵攻で攻撃された（されている）街で暮らす人々が書いた日記をまとめた本を読んだ。何か言葉にすることで不安を和らげようとする人々の言葉がそこにたくさん書かれていた。攻撃された街ではいつまた攻撃があるか分からない。生きていたとしても、その日の夜も、次の日の夜も、いつまでももう決して安心して眠ることはできなくなってしまう。`},
     {type: "p", text: `この文章を書くことはごく個人的なことだ。しかし、突然住んでいる部屋が攻撃されて何もかも失ってしまうことがあり得てしまう現実の中で、誰の眠りも奪わないために、誰もが安心して眠るためにこれから続けていく。`, class: ["large-space-1"]},
     {type: "divider"},
-    {type: "skipbutton", text: `筆者プロフィール`, id: "2", label: "筆者プロフィール", mobile_label: "2"},
+  
+    {type: "skipbutton", text: ``, id: "2", label: "筆者プロフィール", mobile_label: "2"},
+    { type: "h1", text: `筆者プロフィール` },
     {type: "img-button", label: "プロフィール写真", targetId: "2"},
-    {type: "p", text: `筆者：オオタソラ`},
+    {type: "p", text: `オオタソラ`},
     {type: "p", text: `ニセテクスチャ（メディア・チーム）のメンバーでこのサイトの運営をしている。ニセテクスチャはチームで作品制作を行う。作品は映像だったり、音声だったり、図だったりする。モチーフは皿洗い、洗濯、掃除といった生活の動作を主に扱っている。まだ始めたばかりだけどこれからもできるだけ続けてみる。飲み会と言うと、いやな感じになってしまうかもしれないが、飲み会が好きだ。よくメンバーや友達と飲み会を催す。メディア・チームが何なのかはまだわからない。自分たちでもよくわからない肩書を背負っている。このチームの活動の一つとして月に一回webサイトにメンバー各々の興味があることを書いていくことになった。なので、これからテーマを持って文章を書いていく。`, class: ["large-space-1"]},
     ],
 
