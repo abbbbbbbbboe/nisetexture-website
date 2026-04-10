@@ -27,11 +27,11 @@ export default
     writer: "新",
     date: "2026-04-13",
     tag: ["連載", "日記"],
-    samune: "../blog_img/koborechauyo/thumbnail.webp",
+    samune: "../blog_img/spillover/thumbnail.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/koborechauyo/thumbnail.webp", caption: "　", id: 1 },
-        { src: "../blog_img/koborechauyo/arata_profile.webp", caption: "プロフィール写真", id: 2 },
+        { src: "../blog_img/spillover/thumbnail.webp", caption: "　", id: 1 },
+        { src: "../blog_img/spillover/arata_profile.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
         {type: "img-button", label: "サムネイル", targetId: "1"},
@@ -71,6 +71,7 @@ export default
         { word: "スパイ", href: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%91%E3%82%A4" },
         { word: "アンサンブル", href: "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB_(%E6%9B%96%E6%98%A7%E3%81%95%E5%9B%9E%E9%81%BF)" },
         { word: "ボンボンドロップシール", href: "https://www.instagram.com/bonbon_drop_seal?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+        { word: "ドトール", href: "https://www.doutor.co.jp/dcs/" },
         { word: "期間限定ミラノサンド 牛カルビ ねぎ塩レモン", href: "https://www.doutor.co.jp/news/newsrelease/detail/20250611165021.html" },
         { word: "ホットサンド 大豆のミート ～チーズ＆トマト～", href: "https://www.doutor.co.jp/dcs/menu/detail/20250912133152.html" },
         { word: "和梨と葡萄のグリーンティー", href: "https://x.com/DoutorCoffee_co/status/1971434601395654939?s=20" },
