@@ -2,6 +2,15 @@
 export const posts = [
   // 新しいのは上に記入
   {
+ id: "005",
+    category: "日記",
+    title: 'こぼれちゃうよ',
+    writer: "新",
+    date: "2026-04-13",
+    tag: ["連載", "日記"],
+    samune: "../blog_img/spillover/thumbnail.webp",
+  },
+  {
     id: "004",
     category: "sleep soundly 安心して眠る",
     title: '#1　安心して眠る方法',
