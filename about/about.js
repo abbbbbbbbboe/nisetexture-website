@@ -7,8 +7,12 @@ const contents = {
       title_en: "Profile",
       media: ["nise"],
       media_mobile: ["mobile_nise"],
-      text_jp: `単純・退屈で繰り返される日常の行為や生活の作業を、ニセテクスチャ（物や事における偽物の質感、手触り、表面の様子）によって覆い隠す・反転させることを目的に、2024年より活動を開始したメディア・チーム。<br><br>オオタソラと小林玲衣奈が参加。主な活動は飲み会をした後にその街を一晩中歩くこと。<br>趣味は街にある木材が本物か確認すること。`,
-      text_en: `A media team that began its activities in 2024 with the aim of concealing and reversing simple, monotonous, and repetitive everyday actions and routines through “nisetexture” — simulated surfaces, sensations, and appearances of things and situations. <br><br>The members are Sora Oota and Reina Kobayashi. Their main activity is walking around the city all night after having a drink together. Their hobby is checking whether the wooden materials found in the city are real or not.`,
+      text_jp: `単純・退屈で繰り返される日常の行為や生活の作業を、ニセテクスチャ（物や事における偽物の質感、手触り、表面の様子）によって覆い隠す・反転させることを目的に、2024年より活動を開始したメディア・チーム。<br><br>オオタソラと小林玲衣奈が参加。主な活動は飲み会をした後にその街を一晩中歩くこと。<br>趣味は街にある木材が本物か確認すること。<br><br>
+      e-mail: nise.texture[a]gmail.com<br>
+      *[a]は@に変更してください。`,
+      text_en: `A media team that began its activities in 2024 with the aim of concealing and reversing simple, monotonous, and repetitive everyday actions and routines through “nisetexture” — simulated surfaces, sensations, and appearances of things and situations. <br><br>The members are Sora Oota and Reina Kobayashi. Their main activity is walking around the city all night after having a drink together. Their hobby is checking whether the wooden materials found in the city are real or not.<br><br>
+      e-mail: nise.texture[a]gmail.com<br>
+      *Replace [a] with @.`,
       links: {
         "YouTube": "https://youtube.com/@nisetexture?si=XRcAyUBKGoHIAxTG"
       }
