@@ -56,7 +56,15 @@ export default
     { type: "h1", text: `筆者プロフィール` },
     {type: "img-button", label: "プロフィール写真", targetId: "2"},
     {type: "p", text: `オオタソラ`},
+    { type: "a", text: `webサイト`, link: "https://otasora.website/", class: ["link-list"] },
+
     {type: "p", text: `ニセテクスチャ（メディア・チーム）のメンバーでこのサイトの運営をしている。ニセテクスチャはチームで作品制作を行う。作品は映像だったり、音声だったり、図だったりする。モチーフは皿洗い、洗濯、掃除といった生活の動作を主に扱っている。まだ始めたばかりだけどこれからもできるだけ続けてみる。飲み会と言うと、いやな感じになってしまうかもしれないが、飲み会が好きだ。よくメンバーや友達と飲み会を催す。メディア・チームが何なのかはまだわからない。自分たちでもよくわからない肩書を背負っている。このチームの活動の一つとして月に一回webサイトにメンバー各々の興味があることを書いていくことになった。なので、これからテーマを持って文章を書いていく。`, class: ["large-space-1"]},
+    {type: "p", text: `banner design: オオタソラ`, class: ["footnote","large-space-1"]},
+    
+    { type: "divider" },
+    { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
+    { type: "p", text: `nise.texture[a]gmail.com` },
+    { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
     ],
 
     postHyperlinks: [

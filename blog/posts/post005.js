@@ -62,8 +62,15 @@ export default
         {type: "h1", text: `筆者プロフィール`},
         {type: "img-button", label: "プロフィール写真", targetId: "2"},
         {type: "p", text: `新`},
+        { type: "a", text: `webサイト`, link: "https://arata-new.jp/", class: ["link-list"] },
+
         {type: "p", text: `グラフィックデザイナー`},
         {type: "p", text: `1998年岩手県生まれ。武蔵野美術大学基礎デザイン学科卒業。岡本健デザイン事務所を経て、現在はロゴデザイン、ブランディング、美術やファッション領域のグラフィックデザインワークを主に行う。パピコが好き。`, class: ["large-space-1"]},
+        {type: "p", text: `banner design: 新`, class: ["footnote","large-space-1"]},
+        { type: "divider" },
+        { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
+        { type: "p", text: `nise.texture[a]gmail.com` },
+        { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
     ],
 
     postHyperlinks: [

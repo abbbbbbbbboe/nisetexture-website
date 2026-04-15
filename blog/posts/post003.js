@@ -512,6 +512,11 @@ export default
       { type: "p", text: `・ホテルを選んでいた時は、資さんうどんも近いし一人で食べに出かけるのもありかもしれないとか悠長なことを考えていたが、いざチェックインするとそんな気持ちは完全になくなり、サロンパスを足にたくさん貼って即座に寝た。`, class: ["indent-1", "large-space-1"] },
       { type: "divider" },
       { type: "p", text: `私たちは、飲み会だけでなくいかなる場面においてもハラスメントを許容しません。`, class: ["large-space-1"] },
+      
+      { type: "divider" },
+      { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
+      { type: "p", text: `nise.texture[a]gmail.com` },
+      { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
     ],
 
     postHyperlinks: [
