@@ -1328,6 +1328,7 @@ p.footnote {
     width: 282px;
     object-fit: cover;
     margin-left: 15px;
+    background-color: var(--backgroundcolor);
   }
 
   .list-item :hover {
