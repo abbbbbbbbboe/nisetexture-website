@@ -81,6 +81,23 @@ export const globalHyperlinks = {
       { word: "忘年会", href: "https://kurahiro.tepco.co.jp/life/32963/index.html" },
       { word: "福沢諭吉", href: "https://fukuzawakyukyo.com/access/" },
      ],
+    owgk_kobalinks:[
+      { word: "メンバー", href: "https://www.huffingtonpost.jp/entry/tatsuya-yamaguchi_jp_5c5d6a76e4b0974f75b25a1c" },
+      { word: "日記", href: "http://www.isc.senshu-u.ac.jp/~thn0438/files/jssp2004.pdf" },
+      { word: "カギ", href: "https://cheezburger.com/69893/drive-it-like-you-stole-it" },
+      { word: "多幸感", href: "https://www.cosme.net/beautist/article/2703993" },
+      { word: "塩梅", href: "https://www.onigiri-japan.com/archives/6274" },
+      { word: "マヌケ", href: "https://zukan.pokemon.co.jp/detail/0079" },
+      { word: "那覇市", href: "https://tenki.jp/forecast/10/50/9110/47201/1hour.html" },
+      { word: "ピント", href: "https://share.google/7fZoXilQ7rRtJ28FB" },
+      { word: "小石", href: "https://gogo.wildmind.jp/feed/howto/155" },
+      { word: "甲子園", href: "https://koshien.hanshin.co.jp/highschool/spring2026/schedule_20260326.html" },
+      { word: "ドライブ", href: "https://milkygalacticuniverse.com/#original" },
+      { word: "基地", href: "https://www.city.ginowan.lg.jp/topics/13527.html" },
+      { word: "3月", href: "https://ja.wikipedia.org/wiki/%E4%B8%89%E6%9C%88%E3%81%AE%E3%83%91%E3%83%B3%E3%82%BF%E3%82%B7%E3%82%A2" },
+      { word: "琵琶湖", href: "https://www.kkr.mlit.go.jp/shiga/live/index.html" },
+      { word: "右折", href: "https://www.dc.ogb.go.jp/nankoku/topix/kisya/kisya_ameku.html" },
+    ],
     musicLinks: [
 
     ]

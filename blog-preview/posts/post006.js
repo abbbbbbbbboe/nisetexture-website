@@ -81,9 +81,15 @@ export default
     ],
 
     postHyperlinks: [
-      
+        { word: "新", href: "https://arata-new.jp/" },
+        { word: "立春！飲み会の記録", href: "https://nisetexture.com/blog/#003" },
+        { word: "新しそうな道", href: "https://www.dc.ogb.go.jp/nahakou/kihon/rinkoudouro.html" },
+        { word: "おじゃましま〜す", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1344329078" },
+        { word: "白いハイエース", href: "https://www.google.com/search?sca_esv=1706ac29faa211ec&rlz=1C5OZZY_enJP1128JP1160&sxsrf=ANbL-n64p9CpsNIWpe5drTjDUzfWXLYa9A:1776443924751&udm=2&fbs=ADc_l-ZhZwqRfIRNTFz1njGTSUZt_WHSGYjcjLhdJT2TZdYW6yflDhv1zgC3cJSwvVJ-xSgN_2_ioiGrSspnYUHPIls7z8YFV6N8Hy_KWQOGku5NETLXZ1QyhoE9h57L6NBVYFG8bqa7iN9zQz0mJ31M7zbXwVxdg0F0UTMqpDM-rrSVRx9UsqtCPPzIjjIBYisxmo8NEFJtLtX4OmHug4ud_FoCCnJHHC2bZjTm-1E12OKlACZAdww&q=%E3%83%8F%E3%82%A4%E3%82%A8%E3%83%BC%E3%82%B9%E3%80%80%E7%99%BD&sa=X&ved=2ahUKEwiPnOSoqfWTAxW8gK8BHWPADgYQtKgLegQIHhAB&biw=1311&bih=933&dpr=2" },
+        { word: "銀色のセレナ", href: "https://www.google.com/search?q=%E3%82%BB%E3%83%AC%E3%83%8A%E3%80%80%E9%8A%80&sca_esv=1706ac29faa211ec&rlz=1C5OZZY_enJP1128JP1160&udm=2&biw=1311&bih=933&sxsrf=ANbL-n7Foi5XUqUpbXqG9mzQCXCy9IpNHg%3A1776443978201&ei=SmLiafT6C5HmosUP6Nyh4Aw&ved=0ahUKEwj0x6LCqfWTAxURs6gCHWhuCMwQ4dUDCBI&uact=5&oq=%E3%82%BB%E3%83%AC%E3%83%8A%E3%80%80%E9%8A%80&gs_lp=Egtnd3Mtd2l6LWltZyIP44K744Os44OK44CA6YqAMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIEEAAYHjIEEAAYHjIGEAAYBRgeMgYQABgFGB4yBhAAGAgYHjIGEAAYCBgeSJEbUDJY9QlwAXgAkAEAmAGBAaAB7QOqAQM0LjG4AQPIAQD4AQGYAgSgApMCwgIGEAAYBxgewgIIEAAYgAQYsQPCAgsQABiABBixAxiDAcICBxAAGIAEGASYAwCIBgGSBwE0oAfMDrIHATO4B5ECwgcFMC4zLjHIBweACAE&sclient=gws-wiz-img" },
+
     ],
 
     // ③ この投稿で使いたい global のセット
-    hyperlinkGroups: ["basic"],
+    hyperlinkGroups: ["basic","owgk_kobalinks"],
   };
