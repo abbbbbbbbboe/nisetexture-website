@@ -92,11 +92,12 @@ export const globalHyperlinks = {
       { word: "ピント", href: "https://share.google/7fZoXilQ7rRtJ28FB" },
       { word: "小石", href: "https://gogo.wildmind.jp/feed/howto/155" },
       { word: "甲子園", href: "https://koshien.hanshin.co.jp/highschool/spring2026/schedule_20260326.html" },
-      { word: "ドライブ", href: "https://milkygalacticuniverse.com/#original" },
+      { word: "ドライブ", href: "https://youtu.be/AYJrRakUyvg?si=ju6XEtZH2SXtmT-0" },
       { word: "基地", href: "https://www.city.ginowan.lg.jp/topics/13527.html" },
       { word: "3月", href: "https://ja.wikipedia.org/wiki/%E4%B8%89%E6%9C%88%E3%81%AE%E3%83%91%E3%83%B3%E3%82%BF%E3%82%B7%E3%82%A2" },
       { word: "琵琶湖", href: "https://www.kkr.mlit.go.jp/shiga/live/index.html" },
       { word: "右折", href: "https://www.dc.ogb.go.jp/nankoku/topix/kisya/kisya_ameku.html" },
+      { word: "じめじめ", href: "https://www.kanjipedia.jp/kotoba/0002934900" },
     ],
     musicLinks: [
 
