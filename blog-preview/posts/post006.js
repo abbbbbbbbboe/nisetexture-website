@@ -74,6 +74,7 @@ export default
         { type: "a", text: `webサイト`, link: "https://kobayashireina.com", class: ["link-list"] },
         {type: "p", text: `ニセテクスチャメンバー`},
         {type: "p", text: `日記を続けられた覚えがなく日記に対して憧れはあるが苦手意識がある。4月からは会計の仕事をしている。`, class: ["large-space-1"]},
+        {type: "p", text: `banner design: 新`, class: ["footnote","large-space-1"]},
         { type: "divider" },
         { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
         { type: "p", text: `nise.texture[a]gmail.com` },
