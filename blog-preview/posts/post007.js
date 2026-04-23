@@ -80,7 +80,6 @@ export default
         {type: "p", text: `岸政彦, 2025,『生活史の方法』筑摩新書.`},
         {type: "p", text: `津野海太郎・宮田文久編,2025『編集の明暗』黒鳥社.`, class: ["large-space-1"]},
         { type: "divider" },
-        {type: "skipbutton", id: "5", label: "次回について", mobile_label: "5"},
         {type: "h1", text: `筆者プロフィール`},
         {type: "img-button", label: "プロフィール写真", targetId: "3"},
         {type: "p", text: `小林玲衣奈`},
