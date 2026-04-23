@@ -6,6 +6,6 @@ export const posts = [
     writer: "小林玲衣奈",
     date: "2026-04-25",
     tag: ["連載"],
-    samune: "　",
+    samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
   }
 ];
