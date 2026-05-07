@@ -35,7 +35,7 @@ export default
     ],
     textBlocks: [
     {type: "skipbutton", id: "1", label: "top", mobile_label: "1"},
-    {type: "img-button", label: "thumbnail", targetId: "1"},
+    {type: "img-button", label: "サムネイル", targetId: "1"},
     {type: "p", text: `ベットの横のカーテンの隙間から強い光が入ってくる。夜更かしした目が開かない。もう10時になっていた。`},
     {type: "p", text: `父は外で生垣に生えた艶やかな赤芽を切って、汗だく。私はなんとか起きて顔をごしごし擦って眠気を落とす。着替えて、道に落ちた赤芽をゴミ袋に入れるのを手伝う。切った枝はそのままでは袋に入りきらなくて、数回折り曲げて袋に押し込む。つるつるしていて、柔らかくみずみずしい赤芽はパキッと折れることなく折り曲げることができる。袋のなかで手を離すと折りたたんだ枝のテンションは弾けて膨らむ。ぱつぱつに膨らんだゴミ袋はどんどん増えていき、足りなくなってしまって近所のホームセンターに歩いて買いに行った。`},
     {type: "p", text: `日差しと呼べるくらいに太陽の光は熱く強い。風は服と皮膚の間を通り抜けて気持ちいい。`, class: ["large-space-1"]},
@@ -61,8 +61,15 @@ export default
     {type: "skipbutton", id: "3", label: "筆者プロフィール", mobile_label: "3"},
     {type: "img-button", label: "プロフィール写真", targetId: "2"},
     {type: "p", text: `筆者：オオタソラ`},
+    { type: "a", text: `webサイト`, link: "https://otasora.website/", class: ["link-list"] },
     {type: "p", text: `ニセテクスチャメンバー。引っ越しました。新居での生活を始めております。すぐに暑くなるので、ロンTを着れる季節ってすごく短いですよね。`, class: ["large-space-1"]},
-    ],
+    {type: "p", text: `banner design: オオタソラ`, class: ["footnote","large-space-1"]},
+
+    { type: "divider" },
+    { type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。` },
+    { type: "p", text: `nise.texture[a]gmail.com` },
+    { type: "p", text: `*[a]は@に変更してください。`, class: ["footnote", "large-space-1"] },
+  ],
 
     postHyperlinks: [
       { word: "生垣", href: "https://ueki-dr.com/column/hedge/" },
