@@ -34,8 +34,6 @@ export default
         { src: "../blog_img/spillover/arata_profile.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
-       
- 
         {type: "img-button", targetId: "1"},
         {type: "skipbutton", id: "1", label: "ルール", mobile_label: "1"},
         {type: "h1", text: `ルール`},
@@ -60,6 +58,9 @@ export default
         {type: "p", text: `途中、世田谷区立下馬図書館にも寄った。人が少なくて、こういう場所があると暇なとき助かるよね、と話す。入り口すぐの壁面には江戸時代のこのあたりの地図が貼られていた。田んぼが多いね、と指でなぞる。いまカフェやマンションが並ぶ場所はかつて、水が張られ、風が通っていた時間がある。`},
         {type: "p", text: `三茶の一面を知れたところで、そのまま別の街まで歩いてみようとなった。下北沢を経由し、駒場東大前、渋谷まで歩く。途中、フレッシュネスバーガー 1号店の前を通り、「また食べる？」と聞かれた。さすがに1日2バーガーは結構です、と断った。`},
         {type: "p", text: `生活はすでに始まっている。歩いた道や、気づいたこと、冗談混じりの会話のなかで、いつの間にか息は白くなっていた。それはもう本格的だった。`, class: ["large-space-2"]},
+
+        {type: "h2", text: `バックナンバー`},
+         {type: "a", text: `こぼれちゃうよ (2026-04-13)`, class: ["link-list","large-space-1"], link: "../blog/#005"},
 
         {type: "divider"},
         {type: "skipbutton", id: "4", label: "筆者プロフィール", mobile_label: "4"},
