@@ -30,11 +30,11 @@ export default
     samune: "../blog_img/spillover/thumbnail.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/spillover/thumbnail.webp", caption: "サムネイル", id: 1 },
+        { src: "../blog_img/spillover/thumbnail.webp", caption: "　", id: 1 },
         { src: "../blog_img/spillover/arata_profile.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
-        {type: "img-button", targetId: "1"},
+        {type: "img-button", label: "サムネイル", targetId: "1"},
         {type: "skipbutton", id: "1", label: "ルール", mobile_label: "1"},
         {type: "h1", text: `ルール`},
         {type: "p", text: `・過去の記録から二日だけ選択し、並置する`, class: ["indent-1"]},
