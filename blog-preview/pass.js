@@ -7,7 +7,7 @@
 
 
 
-const PASSWORD = "2026";
+const PASSWORD = "0517";
 const MAX_ATTEMPTS = 10;
 
 let input;
