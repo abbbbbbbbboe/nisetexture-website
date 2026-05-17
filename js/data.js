@@ -146,9 +146,7 @@ English translation by AI`,
       place: "",
       media: [
         "workimg/competition/competition_samune-no_a.png",
-        "https://youtu.be/ZJcfGl9oPQs",
-        "workimg/competition/competition_samune-no_a.png",
-
+        "https://youtu.be/ZJcfGl9oPQs"
       ],
       captions: [
         "　",
