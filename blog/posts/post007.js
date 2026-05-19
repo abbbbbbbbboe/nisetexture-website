@@ -81,9 +81,8 @@ export default
         { type: "divider" },
         {type: "h1", text: `筆者プロフィール`},
         {type: "img-button", label: "プロフィール写真", targetId: "3"},
-        {type: "a", text: `webサイト`, class: ["link-list"], link: "https://kobayashireina.com/"},
         {type: "p", text: `小林玲衣奈`},
-        // { type: "a", text: `webサイト`, link: "https://kobayashireina.com", class: ["link-list"] },
+        { type: "a", text: `webサイト`, link: "https://kobayashireina.com", class: ["link-list"] },
         {type: "p", text: `ニセテクスチャメンバー`},
 
         { type: "divider" },
