@@ -60,7 +60,7 @@ export default
         {type: "skipbutton", id: "3", label: "参考文献", mobile_label: "3"},
         {type: "h1", text: `参考文献`},
         {type: "p", text: `津野海太郎・宮田文久編,2025『編集の明暗』黒鳥社.`},
-        {type: "p", text: `岸政彦, 2025,『生活史の方法』筑摩新書.`},
+        {type: "p", text: `岸政彦, 2025,『生活史の方法』筑摩新書.`, class: ["large-space-1"]},
         {type: "p", text: `図：小林玲衣奈`, class: ["footnote","large-space-1"]},
 
         {type: "h2", text: `バックナンバー`},
