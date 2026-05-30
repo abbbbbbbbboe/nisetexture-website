@@ -8,10 +8,11 @@
   width: 1px;
 
 }
+@media (hover: hover) {
+  .scroll-container:hover::-webkit-scrollbar {
+    width: 1px;
 
-.scroll-container:hover::-webkit-scrollbar {
-  width: 1px;
-
+  }
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
@@ -20,10 +21,12 @@
 
 }
 
-.scroll-container:hover::-webkit-scrollbar-thumb {
-  background: var(--scrollbar);
-  min-height: 40px;
+@media (hover: hover) {
+  .scroll-container:hover::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+    min-height: 40px;
 
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -70,9 +73,11 @@ button,
   color: var(--btn-color);
 }
 
-.menu button:hover,
-.btn:hover {
-  color: var(--color);
+@media (hover: hover) {
+  .menu button:hover,
+  .btn:hover {
+    color: var(--color);
+  }
 }
 
 .scroll-top-btn {
@@ -80,8 +85,10 @@ button,
   border: 1px dotted var(--btn-color);
 }
 
-.scroll-top-btn:hover {
-  border: 1px solid var(--btn-color);
+@media (hover: hover) {
+  .scroll-top-btn:hover {
+    border: 1px solid var(--btn-color);
+  }
 }
 
 
@@ -116,14 +123,16 @@ header {
 
 }
 
-.rogo:hover {
-  height: 30px;
-  margin-top: 5px;
-  margin-left: 37px;
-  stroke-width: 3px;
-  background: url('../img/rogo_2.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+@media (hover: hover) {
+  .rogo:hover {
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 37px;
+    stroke-width: 3px;
+    background: url('../img/rogo_2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
 
 .rogoyoko {
@@ -154,10 +163,12 @@ header {
   font-size: 1em;
 }
 
-.youtube a:hover {
-  color: var(--backgroundcolor);
-  background-color: var(--color);
-  border: var(--border-light);
+@media (hover: hover) {
+  .youtube a:hover {
+    color: var(--backgroundcolor);
+    background-color: var(--color);
+    border: var(--border-light);
+  }
 }
 
 /* 電光掲示板css↓ */
@@ -252,9 +263,11 @@ button {
   font-weight: var(--fontw4);
 }
 
-.btn:hover,
-.menu button:hover {
-  font-weight: var(--fontw4);
+@media (hover: hover) {
+  .btn:hover,
+  .menu button:hover {
+    font-weight: var(--fontw4);
+  }
 }
 
 .menu span {
@@ -317,8 +330,10 @@ button {
   letter-spacing: -0.02em !important;
 }
 
-.archive-filter-reset:hover {
-  border: 1px solid var(--btn-color);
+@media (hover: hover) {
+  .archive-filter-reset:hover {
+    border: 1px solid var(--btn-color);
+  }
 }
 
 .archive-filter-reset span {
@@ -344,8 +359,10 @@ button {
   font-weight: var(--fontw3);
 }
 
-.list-item:hover {
-  color: var(--color);
+@media (hover: hover) {
+  .list-item:hover {
+    color: var(--color);
+  }
 }
 
 /* リスト用 */
@@ -669,12 +686,13 @@ img.preview {
 
 }
 
-.lang-toggle-btn:hover {
-  color: var(--btn-color);
-  background-color: var(--backgroundcolor);
-  border: 1px solid var(--btn-color);
+@media (hover: hover) {
+  .lang-toggle-btn:hover {
+    color: var(--btn-color);
+    background-color: var(--backgroundcolor);
+    border: 1px solid var(--btn-color);
+  }
 }
-
 
 .page-top .lang-toggle-btn {
   top: 50px;
@@ -720,17 +738,18 @@ img.preview {
   z-index: 1;
 }
 
-.text-container a:hover {
-  color: var(--backgroundcolor);
-  font-weight: var(--fontw3);
-  z-index: 2;
-}
-
-.text-container a:hover::before {
-  background: var(--color);
-  color: var(--backgroundcolor);
-  border: 1px solid var(--color);
-  z-index: -1;
+@media (hover: hover) {
+  .text-container a:hover {
+    color: var(--backgroundcolor);
+    font-weight: var(--fontw3);
+    z-index: 2;
+  }
+  .text-container a:hover::before {
+    background: var(--color);
+    color: var(--backgroundcolor);
+    border: 1px solid var(--color);
+    z-index: -1;
+  }
 }
 
 
@@ -859,10 +878,11 @@ img.preview {
   cursor: pointer;
 }
 
-.list-item.sub:hover {
-  opacity: 1;
+@media (hover: hover) {
+  .list-item.sub:hover {
+    opacity: 1;
+  }
 }
-
 
 
 
@@ -1039,16 +1059,17 @@ img.preview {
     background-size: contain;
   }
 
-
-  .rogo:hover {
-    height: 27px;
-    width: 160px;
-    margin-top: 6px;
-    margin-left: 15px;
-    stroke-width: 3px;
-    background: url('../img/rogo_1.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
+  @media (hover: hover) {
+    .rogo:hover {
+      height: 27px;
+      width: 160px;
+      margin-top: 6px;
+      margin-left: 15px;
+      stroke-width: 3px;
+      background: url('../img/rogo_1.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
   }
 
   .rogoyoko {
@@ -1080,12 +1101,13 @@ img.preview {
     font-size: 15px;
   }
 
-  .youtube a:hover {
-    color: var(--backgroundcolor);
-    background-color: var(--color);
-    border: 1px solid var(--color);
+  @media (hover: hover) {
+    .youtube a:hover {
+      color: var(--backgroundcolor);
+      background-color: var(--color);
+      border: 1px solid var(--color);
+    }
   }
-
 
 
   .menu {
@@ -1164,10 +1186,11 @@ img.preview {
     margin-top: 0px;
   }
 
-  .scroll-top-btn:hover {
-    border: 1px dotted var(--btn-color);
+  @media (hover: hover) {
+    .scroll-top-btn:hover {
+      border: 1px dotted var(--btn-color);
+    }
   }
-
 
   .list-area,
   .image-area,
@@ -1209,8 +1232,10 @@ img.preview {
     margin-bottom: 35px;
   }
 
-  .list-item:hover {
-    color: var(--btn-color);
+  @media (hover: hover) {
+    .list-item:hover {
+      color: var(--btn-color);
+    }
   }
 
   .list-title {
@@ -1477,10 +1502,11 @@ transform: scale(1, 0.9);
     z-index: 999;
   }
 
-  .lang-toggle-btn:hover {
-    border: 1px dotted var(--btn-color);
+  @media (hover: hover) {
+    .lang-toggle-btn:hover {
+      border: 1px dotted var(--btn-color);
+    }
   }
-
 
   .page-top .lang-toggle-btn {
     top: 7px;
