@@ -1,0 +1,149 @@
+// blogcontents.js
+//テキストレギュレーション
+//テキストテンプレ　
+// { type: "p", text: "これは最初の段落です。" class:""},
+//class: ["large-space-1"]一段開ける　class: "large-space-2"二段開ける
+//イメージテンプレ
+//{ src: "https://youtu.be/ciqWFm4FjbQ?si=rLsYED3PpLmLdTTU", caption: "写真2", id: 2 },
+//src:リンク(外部リンクOR相対リンク)| caption:写真の下に表示されるテキスト| id:ボタンと関連つけるための数字
+//ボタンテンプレ  
+// { "type": "button", "targetId": 5, "label": "写真3" }, 
+// ここにPC版はイメージエリアの写真をスクロールするためのボタンが入る。モバイル版はここに写真が入る
+//targetId:表示させるimagesのid | label:ボタンに表示するテキスト。書かなければimegesのcaptionが入る
+
+
+//ハイパーリンク
+//globalHyperlinks:は汎用的に使える。各post内のhyperlinkGroups:にセット名 ["basic"],を書くと反映される。他にもセットを作れば切り替え可能、複数割り当ても可能
+//各ポスト内のpostHyperlinks:にリンクを設定するとこのポスト内でのみリンクが反映される。
+
+
+
+
+export default
+  {
+    id: "012",
+    category: "特集",
+    title: '音のストリートビュー 【sound traces】について',
+    writer: "松井 美緒",
+    date: "2026-06-06",
+    tag: ["sound"],
+    samune: "../blog_img/012/sound-traces_thumbnail.webp",
+    imageExtraSpace: "600",
+    images: [
+        { src: "../blog_img/012/sound-traces_thumbnail.webp", caption: "　", id: 1 },
+        { src: "../blog_img/012/image_1.webp", caption: "録音開始", id: 2 },
+        { src: "../blog_img/012/image_2.webp", caption: "スマホ画面", id: 3 },
+        { src: "../blog_img/012/image_3.png", caption: "デスクトップ画面", id: 4 },
+        { src: "../blog_img/012/mastuimio_profile.webp", caption: "プロフィール写真", id: 5 },
+        
+    ],
+    textBlocks: [
+      {type: "img-button", label: "サムネイル", targetId: "1"},
+      {type: "p", text: `《Sound Traces》は、スマホで自分の位置情報を記録しながら、同時に周囲の音を録音することで、流動的なフィールド録音を蓄積していく試みです。`},
+      {type: "a", text: `https://miomiomi.org/soundmap`, class: ["large-space-2"], link: "https://miomiomi.org/soundmap"},
+      {type: "skipbutton", id: "1", label: "操作手順", mobile_label: "1"},
+      {type: "h2", text: `操作手順`},
+      {type: "p", text: `①スマホでサイトを開き、開始ボタンを押す。スマホの位置情報とマイクをオンにした状態でまちを移動する。`},
+      {type: "img-button", label: "録音開始", targetId: "2"},
+      {type: "p", text: `②完了したら、自分の移動の軌跡が地図上にランやサイクリングのトラッカーのように表示される。`, class: ["large-space-1"]},
+      {type: "p", text: `③録音データは、その再生位置が移動の軌跡と同期した状態で確認できる。つまり、どんな音を・どの地点で・どんな速度で移動しながら録っていたのかがわかる。`},
+      {type: "img-button", label: "スマホ画面", targetId: "3"},
+      {type: "img-button", label: "デスクトップ画面", targetId: "4"},
+      {type: "p", text: `例えるなら、「音のストリートビュー」といえるかもしれない。`},
+      {type: "p", text: `ただし、Sound Tracesは既存の地図サービスの聴覚版という枠組みには収まらないところを目指している。その可能性について書く。`, class: ["large-space-2"]},
+      {type: "skipbutton", id: "2", label: "フィールドレコーディングとは何か", mobile_label: "2"},
+      {type: "h2", text: `フィールドレコーディングとは何か`},
+      {type: "p", text: `そもそも、フィールドレコーディングとはどんな、なんのための試みだろう。ひとつは、綺麗に、クリアに、良い音を記録すること。アーカイブの手段。もう一つは、レコーダーを介して音を聴くことで知覚が変化する面白さがある。知覚の変化とはどういうことかというと、例えばリアルタイムでレコーダーの音をモニタリングする場合は、自分の耳が拡張されたような感覚になる。モニタリングしていなくても、「録音している」という条件が耳を澄ませる装置として働く。行為としてのフィールドレコーディングは、そうした面白さを持っている。`, class: ["large-space-2"]},
+      {type: "p", text: `一方で、フィールドレコーディングは退屈だ、とも思う。`},
+      {type: "p", text: `録音する行為と、それに伴う知覚の変化という「実践としてのフィールドレコーディング」を面白いと感じている反面、いざ記録を持って帰ると、長尺の中から何か美しいハプニングが起きたところだけを切り取ってしまう自分に矛盾を感じていた。`},
+      {type: "p", text: `音だけでは何が起きているのか判別できず、退屈に感じてしまうのだ。だけど、だからこそこちらに想像させてくれる自由さを持っているとも思う。`, class: ["large-space-1"]},
+      {type: "p", text: `風のノイズも、雑音も、全部そのまま愛してみたい。長すぎること、変化がないこと、感動的でないこと、全部受け止めてみたい。`, class: ["large-space-2"]},
+      {type: "skipbutton", id: "3", label: "再現から合成へ", mobile_label: "3"},
+      {type: "h2", text: `再現から合成へ`},
+      {type: "p", text: `音響技術は年々進化し、驚くほどリアルな音を記録・再生できるようになった。そうした表現を受容したとき、「これは録音なのか現実なのか？」という区別が揺らぐ。自分の聴覚がどう働いているのか気づく瞬間が生まれうる。`},
+      {type: "p", text: `すなわち、高精度な再現技術には、知覚を意識化させる可能性がある。`, class: ["large-space-1"]},
+      {type: "p", text: `たとえば、音響技術を駆使し、表現者が音を極限までリアルに作り込むと、聞き手は録音なのか、本物の音なのかと一瞬戸惑うことになる。この揺らぎは、自分の耳が普段どのように音を感じ取っているのかを、改めて客観的に意識するきっかけになる。`},
+      {type: "p", text: `そして、再現が再現だと気づかないほどのレベルに達した時、「どれくらいリアルか」はもはや問題ではなくなり、「そもそもリアルとは何か」という問いが生じる※1。`, class: ["large-space-1"]},
+      {type: "p", text: `しかし、表現があまりに滑らかで完璧すぎると、人は戸惑うことすらなくなる。`},
+      {type: "p", text: `技術があまりに滑らかだと、聴く人の感覚はその揺らぎに気づく前に馴らされてしまい、問いそのものが生まれなくなる。`},
+      {type: "p", text: `師である前林明次はこの行き止まりを「閉じたループ」と呼んだ※1※2。再現の精度を上げるほど、逆に人間の感覚が介在する余地がなくなっていく、技術表現の行き止まりにはいってしまう、という指摘だ。`},
+      {type: "p", text: `前林はこのことを意識して以降、再現の追求ではなく、「人の想像力によって場所との関係を都度生成していく」こととしての「合成」へと向かった※3。`},
+      {type: "p", text: `聞き手の想像力を引き出す「合成」という表現は、例えば、聞き手が自らの経験や今の場所と音を結びつけ、頭の中で風景を主体的に組み立てるとき、その音は単なる録音データを超えた実感を伴うようになる。`, class: ["large-space-1"]},
+      {type: "p", text: `それがリアルかどうかを決めているのは、実は音の精度ではなく、聴く人自身の状況や想像力の側にあるのではないか。`},
+      {type: "p", text: `Sound Tracesはこの考えの延長にある。スマホで録った不完全な音に、地図が場所の手がかりを添える。完璧ではないからこそ、聴く人の想像が動き出す。再現ではなく、合成が起きる場をつくりたい。`, class: ["large-space-1"]},
+      {type: "a", text: `前林明次「『場所をつくる旅』について」、『情報科学芸術大学院大学紀要』、第9巻、2018年、187。`, link: "https://www.iamas.ac.jp/iamasbooks/journal/journal_of_iamas_vol-9/", prefix: "※1", class: ["textlink"],},
+      {type: "a", text: `前林明次「閉じたループの外へ」、『OS10：ICCオープン・スペース10年の記録 2006–2015』、NTTインターコミュニケーション・センター［ICC`, link: "https://www.ntticc.or.jp/ja/feature/os10/2009/#a-piece-for-metronome-andanechoic-room_column", prefix: "※2", class: ["textlink"],},
+      {type: "a", text: `長谷川新ほか「『場所を作る旅』再論」、『情報科学芸術大学院大学紀要』、第9巻、2018年、200。`, link: "https://www.iamas.ac.jp/iamasbooks/journal/journal_of_iamas_vol-9/", class: ["large-space-2", "textlink"], prefix: "※3"},
+      {type: "skipbutton", id: "4", label: "点から線へ", mobile_label: "4"},
+      {type: "h2", text: `点から線へ`},
+      {type: "p", text: `フィールドレコーディングの伝統は基本的に「定点」だ。ある場所にマイクを据えて、じっと息を潜める。`},
+      {type: "p", text: `でも、人は本来動いている。音環境は連続的に変化する。`},
+      {type: "p", text: `Sound Tracesは、「線としての場所の体験を記録するメディア」をめざす。音質面の技術を追求しないかわりに、「携帯性」という技術を積極的に取り入れる。`},
+      {type: "p", text: `また、移動しながら録ることには、録音者の身体性が否応なく入り込むという面白さがある。これらは通常、ノイズとして排除されるが、録音者がそこにいた証拠だ。`, class: ["large-space-1"]},
+      {type: "p", text: `「人々の往来がなければ、そこは場所 place ではあり得ないだろう。」`},
+      {type: "a", text: `ティム・インゴルド『ラインズ 線の文化史』、工藤晋訳、左右社、2014年、19`, class: ["large-space-2", "textlink"], link: "https://sayusha.com/books/-/isbn9784865281019"},
+      {type: "skipbutton", id: "5", label: "地図をインターフェースとした解決の模索", mobile_label: "5"},
+      {type: "h2", text: `地図をインターフェースとした解決の模索`},
+      {type: "p", text: `フィールドレコーディングの最大の問題は「後から聴き返しづらい」ことだ。長尺で、音だけでは時間的な手がかりがなく、再生バーのシークも一苦労だ。だから結局、聴かずに放置してしまうものもあった。`},
+      {type: "p", text: `しかし、地図上の軌跡と紐づけることで、「音に空間的な目次をつける」ことができる。地図と音を同期させることで、何も起きていないように感じられる区間にも意味が付く。`, class: ["large-space-1"]},
+
+      {type: "p", text: `フィールドレコーディングと地図を組み合わせたもの（Sound Mapと呼ばれる）はすでにいくつか存在する。代表的なものを挙げる。`, class: ["large-space-1"]},
+      {type: "a", text: `radio aporee`, link: "https://aporee.org/maps/", class: ["link-list"]},
+      {type: "p", text: `　おそらく世界最大のユーザー参加型サウンドマップ。`, class: ["large-space-1", "indent-1"]},
+      {type: "a", text: `Nature Soundmap`, link: "https://earth.fm/nature-soundmap/", class: ["link-list"]},
+      {type: "p", text: `　90名以上の録音家が世界中の自然音を投稿するサウンドマップ。`, class: ["large-space-1", "indent-1"]},
+      {type: "a", text: `Global Sounds`, link: "https://jpn.pioneer/ja/support/pcperipherals/app/iapp_globalsounds/jp.html", class: ["link-list"]},
+      {type: "p", text: `　誰でもスマホで録音し、1枚の写真とともに投稿できる。その中からPioneerがセレクトしたものが地図上に掲載される。`, class: ["large-space-1", "indent-1"]},
+      {type: "p", text: `上記3例は、`},
+      {type: "a", text: `柳沢英輔「フィールド・レコーディング入門 響きのなかで世界と出会う」フィルムアート社、2022`, link: "https://www.filmart.co.jp/books/978-4-8459-2124-9/", class: ["textlink"]},
+      {type: "p", text: `にて紹介されており、それぞれまとめられている。`, class: ["large-space-1"]},
+      {type: "p", text: `これらに共通するのは、アーカイブやコレクションとしての性格が強いこと、そしてマップピンのように定点で記録されることだ。`, class: ["large-space-1"]},
+
+      {type: "p", text: `Sound Tracesは、これらのサウンドマップとは異なる動機を持つ。音は必ずしも「綺麗」である必要はない。さらに、定点ではなく、録音しながらまちを移動するという時間的・身体的な行為に重きを置く。個別の音風景の保存ではなく、集合的な都市の記述を積み上げていくことを目指す。`, class: ["large-space-1"]},
+      {type: "p", text: `私にとっては「音の地図をつくる」が本質ではなく、「フィールドレコーディングという実践とそれによる合成にどう向き合うか？」が軸にあり、そのために地図が必要だった。`, class: ["large-space-2"]},
+      {type: "skipbutton", id: "6", label: "3つの体験", mobile_label: "6"},
+      {type: "h2", text: `3つの体験`},
+      {type: "p", text: `Sound Tracesは、現段階で体験を3つに分けて説明できる。`},
+      {type: "p", text: `なお、Sound Tracesにおける「録音者」と「聞き手」は同一人物のこともあれば、別人のこともある。`, class: ["large-space-1"]},
+      {type: "p", text: `①行為としての「フィールドレコーディング」。`},
+      {type: "p", text: `録音中という意識が知覚を変え、周りの音に耳を澄ます体験。`, class: ["large-space-1"]},
+      {type: "p", text: `②地図上で再生する。`},
+      {type: "p", text: `「フィールドレコーディング」を作品として鑑賞する体験がこれにあたる。地図上で再生することで、音に地図という記号が結びつき、聞き手にその場所の経験を合成することを促す。自分の録音を聴くときは、記憶もトリガーになる。他者の録音を聴くときは、音と軌跡をもとに間接的に場所を経験することができる※4。`, class: ["large-space-1"]},
+      {type: "p", text: `③録音と現実を重ねて聴く体験。`},
+      {type: "p", text: `過去の録音と、いま自分の目の前にある風景が、ズレを持ちながらも重なり合う体験がこれにあたる。地図と同期しているからこそ、他の録音者(または過去の自分)の録音を聴きながら、まったく同じ道を同じ速度で歩くことができる。例えば、昼間の賑わう竹下通りを歩いた録音を、ほとんど人がおらずがらんとした夜の竹下通りで聴くと、その場所に透明なレイヤーが重なったような感覚が生まれる。「再現」と「現実」の区別が宙吊りになる。`, class: ["large-space-1"]},
+      {type: "p", text: `※4 エドワード・レルフ は「代償的内側性」として、「間接的、代償的な方法で場所を経験することも可能である。つまり、実際にそこに行かなくても、深く心に残るかかわりを経験することがありうる。」と説明している。Relph Edward C.ほか『場所の現象学』、ちくま学芸文庫（筑摩書房、1999）、95。`, class: ["large-space-2"]},
+      {type: "skipbutton", id: "7", label: "現状のまとめ", mobile_label: "7"},
+      {type: "h2", text: `現状のまとめ`},
+      {type: "p", text: `●現在の収集データ`},
+      {type: "p", text: `既に10人程が協力メンバーとして参加。2026/4/25時点では日本国内に17件の公開データがある。不特定多数が投稿するSNSとしての整備はできていないため、投稿権限は知人に絞っている。また、管理人である私以外からは匿名での投稿となっている。`, class: ["large-space-1"]},
+      {type: "p", text: `●当初想定していなかった発見`},
+      {type: "p", text: `　・移動中の土地に関する雑談を収録することで、地図が目次として機能するPodcast的コンテンツになりうる`, class: ["indent-1"]},
+      {type: "p", text: `　・時間帯による繁華街の通りの音の対比`},
+      {type: "p", text: `　・知らない誰かの散歩ルートを辿るのが面白い`},
+      {type: "p", text: `　・一部ブラウザの仕様上、かなり強いノイズ低減が避けられないため、ノイズキャンセリングされたまちの音が記録される。それはそれで面白い。`, class: ["large-space-2", "indent-1"]},
+      {type: "skipbutton", id: "8", label: "これからの展望", mobile_label: "8"},
+      {type: "h2", text: `これからの展望`},
+      {type: "p", text: `Sound Tracesはまだ未知数だが、これまで自分が考えてきた「再現から合成へ」というテーマと強く結びつく予感があり、しばらく続けてみたいと思っている。協力者からの投稿の中には、当初想定していなかった発見もあり、進めながら見えてくるものが多そうだ。`},
+      {type: "p", text: `一方で、音質の扱いについてはもう少し考える必要があると感じている。ここまで「高音質を追求しない」「不完全さや退屈さも受け止めたい」というスタンスで進めてきたが、実際に運用してみると、端末やブラウザの設定によって音質が大きくばらつく。特に一部のブラウザの仕様上、強いノイズリダクションが避けられず、音がほぼ消えた状態で記録されてしまうことがある。これは「不完全さの受容」という当初のスタンスからすれば、想定外の面白い揺らぎとも言える。ただ他方で、スマホが本来拾える音のレベルである程度揃えたほうが、まちの記述としての連続性は出やすいかもしれない、とも思う。揃えるべきか、ばらつきをそのまま許容したほうが豊かなのか、まだ答えは出ていない。`},
+      {type: "p", text: `差し当たり、ブラウザ側の制約から自由になるためにアプリ版の開発を進めている。そのなかで、音質の扱いについても引き続き模索していきたい。`, class: ["large-space-2"]},
+      {type: "divider"},
+      {type: "p", text: `本文章における「フィールド録音」と「フィールドレコーディング」の呼び分けについて、ジャンル・実践・伝統の話をしているときは「フィールドレコーディング」を用い、音そのもの・録音物・録音という行為の話をしているときは「フィールド録音」を用いる。`, class: ["large-space-1"]},
+      {type: "divider"},
+      {type: "skipbutton", id: "9", label: "筆者プロフィール", mobile_label: "9"},
+      {type: "h1", text: `筆者プロフィール`},
+      {type: "img-button", label: "プロフィール写真", targetId: "5"},
+      {type: "p", text: `松井 美緒 mio matsui`},
+      {type: "a", text: `webサイト`, class: ["link-list"], link: "https://miomiomi.org/"},
+      {type: "p", text: `2000年生まれ。2025年、IAMAS修了。 身体と場所の関係に興味をもち、音をきっかけに想像力を喚起するための作品を制作している。`, class: ["large-space-1"]},
+      {type: "divider"},
+      {type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。`},
+      {type: "p", text: `nise.texture[a]gmail.com`},
+      {type: "p", text: `*[a]は@に変更してください。`, class: ["footnote","large-space-1"]},    
+    ],
+
+    postHyperlinks: [
+    ],
+
+    // ③ この投稿で使いたい global のセット
+    hyperlinkGroups: [""],
+  };
