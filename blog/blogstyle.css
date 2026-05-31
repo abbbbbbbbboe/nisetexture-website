@@ -764,6 +764,7 @@ img.preview {
   text-decoration: none;
   font-style: italic;
   margin-left: 20px !important;
+  width: fit-content;
 }
 
 .link-list::before {
@@ -1516,7 +1517,7 @@ p.footnote {
       border: 1px solid var(--btn-color);
     }
   }
-  
+
   .large-space-1 {
     margin-bottom: 35px;
     display: block;
