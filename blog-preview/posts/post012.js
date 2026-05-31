@@ -30,7 +30,7 @@ export default
     samune: "../blog_img/012/sound-traces_thumbnail.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/012/sound-traces_thumbnail.webp", caption: "　", id: 1 },
+        { src: "../blog_img/012/sound-traces_thumbnail.webp", caption: "スマホを持って外を歩く", id: 1 },
         { src: "../blog_img/012/image_1.webp", caption: "録音開始", id: 2 },
         { src: "../blog_img/012/image_2.webp", caption: "スマホ画面", id: 3 },
         { src: "../blog_img/012/image_3.png", caption: "デスクトップ画面", id: 4 },
@@ -38,7 +38,7 @@ export default
         
     ],
     textBlocks: [
-      {type: "img-button", label: "サムネイル", targetId: "1"},
+      {type: "img-button", label: "スマホを持って外を歩く", targetId: "1"},
       {type: "p", text: `《Sound Traces》は、スマホで自分の位置情報を記録しながら、同時に周囲の音を録音することで、流動的なフィールド録音を蓄積していく試みです。`},
       {type: "a", text: `《Sound Traces》`, class: ["large-space-2", "link-list"], link: "https://miomiomi.org/soundmap"},
       {type: "skipbutton", id: "1", label: "操作手順", mobile_label: "1"},
@@ -86,7 +86,7 @@ export default
       {type: "h2", text: `地図をインターフェースとした解決の模索`},
       {type: "p", text: `フィールドレコーディングの最大の問題は「後から聴き返しづらい」ことだ。長尺で、音だけでは時間的な手がかりがなく、再生バーのシークも一苦労だ。だから結局、聴かずに放置してしまうものもあった。`},
       {type: "p", text: `しかし、地図上の軌跡と紐づけることで、「音に空間的な目次をつける」ことができる。地図と音を同期させることで、何も起きていないように感じられる区間にも意味が付く。`, class: ["large-space-1"]},
-
+      {type: "p", text: `- 既存のSound Map -`},
       {type: "p", text: `フィールドレコーディングと地図を組み合わせたもの（Sound Mapと呼ばれる）はすでにいくつか存在する。代表的なものを挙げる。`, class: ["large-space-1"]},
       {type: "a", text: `radio aporee`, link: "https://aporee.org/maps/", class: ["link-list"]},
       {type: "p", text: `　おそらく世界最大のユーザー参加型サウンドマップ。`, class: ["large-space-1", "indent-1"]},
@@ -98,7 +98,7 @@ export default
       {type: "a", text: `柳沢英輔「フィールド・レコーディング入門 響きのなかで世界と出会う」フィルムアート社、2022`, link: "https://www.filmart.co.jp/books/978-4-8459-2124-9/", class: ["textlink"]},
       {type: "p", text: `にて紹介されており、それぞれまとめられている。`, class: ["large-space-1"]},
       {type: "p", text: `これらに共通するのは、アーカイブやコレクションとしての性格が強いこと、そしてマップピンのように定点で記録されることだ。`, class: ["large-space-1"]},
-
+      {type: "p", text: `- Sound Tracesの立ち位置 -`},
       {type: "p", text: `Sound Tracesは、これらのサウンドマップとは異なる動機を持つ。音は必ずしも「綺麗」である必要はない。さらに、定点ではなく、録音しながらまちを移動するという時間的・身体的な行為に重きを置く。個別の音風景の保存ではなく、集合的な都市の記述を積み上げていくことを目指す。`, class: ["large-space-1"]},
       {type: "p", text: `私にとっては「音の地図をつくる」が本質ではなく、「フィールドレコーディングという実践とそれによる合成にどう向き合うか？」が軸にあり、そのために地図が必要だった。`, class: ["large-space-2"]},
       {type: "skipbutton", id: "6", label: "3つの体験", mobile_label: "6"},
