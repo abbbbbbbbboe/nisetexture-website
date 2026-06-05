@@ -2,6 +2,15 @@
 export const posts = [
   // 新しいのは上に記入
   {
+    id: "012",
+    category: "特集",
+    title: '音のストリートビュー 【sound traces】について',
+    writer: "松井 美緒",
+    date: "2026-06-06",
+    tag: ["sound"],
+    samune: "../blog_img/012/sound-traces_thumbnail.webp",
+  },
+  {
     id: "011",
     category: "ぬるい言葉マップ",
     title: '第2回　世界と時間を持っている',
