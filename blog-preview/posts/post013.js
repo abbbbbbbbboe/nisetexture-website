@@ -72,6 +72,13 @@ export default
     ],
 
     postHyperlinks: [
+      { word: "区全域の地図", href: "https://www.city.setagaya.lg.jp/documents/7720/zennzuomote2025.pdf" },
+      { word: "自衛隊病院", href: "https://www.mod.go.jp/gsdf/chosp/index.html" },
+      { word: "補充隊", href: "https://ja.wikipedia.org/wiki/%E8%A3%9C%E5%85%85%E9%9A%8A" },
+      { word: "下馬図書館", href: "https://libweb.city.setagaya.tokyo.jp/contents?1&pid=55" },
+      { word: "ぜいぜい", href: "https://kotobank.jp/word/%E7%B2%BE%E7%B2%BE-545613" },
+      { word: "前回の文章", href: "https://nisetexture.com/blog/#008" },
+      { word: "近衛野砲兵聯隊史", href: "https://ci.nii.ac.jp/ncid/BN15217522" },
     ],
 
     // ③ この投稿で使いたい global のセット
