@@ -1,5 +1,5 @@
 export const globalHyperlinks = {
-  basic: [
+   basic: [
     { word: "ニセ", href: "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/241218/02.html" },
     { word: "テクスチャ", href: "https://www.token.co.jp/estate/useful/archipedia/word.php?jid=00016&wid=00266&wdid=01" },
     { word: "通信", href: "https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/s54/html/s54a01020202.html" },
