@@ -63,6 +63,7 @@ export default
         {type: "h1", text: `筆者プロフィール`},
         {type: "img-button", label: "プロフィール写真", targetId: "5"},
         {type: "p", text: `小林玲衣奈`},
+        { type: "a", text: `webサイト`, link: "https://kobayashireina.com", class: ["link-list"] },
         {type: "p", text: `ニセテクスチャメンバー`},
         {type: "p", text: `日記は続いた覚えがないが、毎月自分のためにApple Musicでプレイリストを作るのは2020年11月から続いている。年が下の人に「Apple Music使ってるって年代でますよね」って言われた時の衝撃をいまだに引きずっている。`, class: ["large-space-1"]},
         {type: "p", text: `banner design: 新`, class: ["footnote","large-space-1"]},

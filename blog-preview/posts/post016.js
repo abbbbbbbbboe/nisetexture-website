@@ -59,7 +59,9 @@ export default
         {type: "h1", text: `筆者プロフィール`},
         {type: "img-button", label: "プロフィール写真", targetId: "2"},
         {type: "p", text: `小林玲衣奈`},
-        {type: "p", text: `ニセテクスチャメンバー`},
+        { type: "a", text: `webサイト`, link: "https://kobayashireina.com", class: ["link-list"] },
+        {type: "p", text: `ニセテクスチャメンバー`, class: ["large-space-1"]},
+
         {type: "divider"},
         {type: "p", text: `本記事、本サイトについてのお問い合わせは以下にお願いします。`},
         {type: "p", text: `nise.texture[a]gmail.com`},
@@ -74,5 +76,5 @@ export default
     ],
 
     // ③ この投稿で使いたい global のセット
-    hyperlinkGroups: ["basic"],
+    hyperlinkGroups: [""],
   };
