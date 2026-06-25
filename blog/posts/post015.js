@@ -26,7 +26,7 @@ export default
     title: 'もらったカギで開ける',
     writer: "小林玲衣奈",
     date: "2026-06-22",
-    tag: ["連載"],
+    tag: ["連載", "日記"],
     samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
     imageExtraSpace: "600",
     images: [
@@ -57,7 +57,7 @@ export default
         {type: "p", text: `隣のマンションのベランダには洗濯物が干されていたり、人工芝を敷いているベランダがあったり。9階よりも低いビルの屋上やそこにあるタンクを眺めたり、少し向こうにあるアパートの形を見たり。じっくり見る時間もないから、何回か息を大きく吸って吐いて、扉を閉めて自分のデスクに戻る。`, class: ["large-space-2"]},
         {type: "h1", text: `バックナンバー`},
         {type: "a", text: `もらったカギで開ける　2026-05-18`, class: ["link-list"], link: "https://nisetexture.com/blog/#010"},
-        {type: "a", text: `もらったカギで開ける　2026-04-20`, class: ["link-list","large-space-1"], link: "https://nisetexture.com/blog/#007"},
+        {type: "a", text: `もらったカギで開ける　2026-04-20`, class: ["link-list","large-space-1"], link: "https://nisetexture.com/blog/#006"},
         {type: "divider"},
         {type: "skipbutton", id: "1", label: "筆者プロフィール", mobile_label: "2"},
         {type: "h1", text: `筆者プロフィール`},
