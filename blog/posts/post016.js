@@ -30,14 +30,14 @@ export default
     samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/thinking-in-lukewarm-words/tlw3.webp", caption: "マップ1:マップに書き込みを入れた", id: 1 },
+        { src: "../blog_img/thinking-in-lukewarm-words/tlw3.webp", caption: "マップに書き込みを入れる", id: 1 },
         { src: "../blog_img/opening-with-a-given-key/koba_prof.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
         {type: "p", text: `今回は自分の中ではぼんやりと関係しているようにみえることをいくつか取り上げてみる。マップのまとめ方ももっとなんとかならないかと考えてはいるがどうするのが良いか…。`},
         {type: "p", text: `まとまらないいくつかのことを、まとめないままにマップに放り投げてみることにした。`},
         {type: "a", text: `マップ（PDF）`,  class: ["link-list"], link: "https://drive.google.com/file/d/1kFpt8mZlRZp5t7fNZc2lFkzMgD6j942s/view?usp=drive_link"},
-        {type: "img-button", label: "マップに書き込みを入れた", targetId: "1"},
+        {type: "img-button", label: "マップに書き込みを入れる", targetId: "1"},
         {type: "skipbutton", id: "1", label: "遠くの／音・声", mobile_label: "1"},
         {type: "h1", text: `遠くの／音・声`},
         {type: "p", text: `インタビュー、対話、会話、というところを考えていたけど、最近職場で電話応対が始まって、電話についてもぼんやりと考える。かかってくる電話の中には、絶対これAI代行サービスだろうというものがある。会話（のようなもの）は成り立つけど、本当に数秒だけテンポが悪くてとても奇妙な感じになる。`},
