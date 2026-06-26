@@ -30,7 +30,7 @@ export default
     samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
     imageExtraSpace: "600",
     images: [
-        { src: "../blog_img/thinking-in-lukewarm-words/tlw3.webp", caption: "マップ1:キーワードを配置", id: 1 },
+        { src: "../blog_img/thinking-in-lukewarm-words/tlw3.webp", caption: "マップ1:マップに書き込みを入れた", id: 1 },
         { src: "../blog_img/opening-with-a-given-key/koba_prof.webp", caption: "プロフィール写真", id: 2 },
     ],
     textBlocks: [
