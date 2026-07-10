@@ -1,7 +1,16 @@
 
 export const posts = [
   // 新しいのは上に記入
-    {
+  {
+    id: "017",
+    category: "sleep soundly 安心して眠る",
+    title: '#4　馬魂碑',
+    writer: "オオタソラ",
+    date: "2026-07-11",
+    tag: ["連載"],
+    samune: "../blog_img/sleep-soundly/sleepSoundly_samune.webp",
+  },
+  {
     id: "016",
     category: "ぬるい言葉マップ",
     title: '第3回　見えない・聞こえない・分からない',
@@ -10,7 +19,7 @@ export const posts = [
     tag: ["連載"],
     samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
   },
-    {
+  {
     id: "015",
     category: "日記",
     title: 'もらったカギで開ける',
