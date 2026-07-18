@@ -47,7 +47,7 @@ export default
         {type: "h1", text: `バックナンバー`},
         {type: "a", text: `もらったカギで開ける　2026-06-22`, class: ["link-list"], link: "../blog/#015"},
         {type: "a", text: `もらったカギで開ける　2026-05-18`, class: ["link-list"], link: "../blog/#010"},
-        {type: "a", text: `もらったカギで開ける　2026-04-20`, class: ["link-list"], link: "../blog/#007"},
+        {type: "a", text: `もらったカギで開ける　2026-04-20`, class: ["link-list"], link: "../blog/#006"},
         {type: "divider"},
         {type: "skipbutton", id: "2", label: "筆者プロフィール", mobile_label: "2"},
         {type: "h1", text: `筆者プロフィール`},
