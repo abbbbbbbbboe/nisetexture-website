@@ -103,5 +103,7 @@ export const globalHyperlinks = {
     { word: "ベランダ", href: "https://share.google/Olqky1DT3z7yjDhp7" },
     { word: "時間", href: "https://www.nict.go.jp/JST/JST5.html" },
     { word: "扉", href: "https://co-bonno.com/heavensdoormask/" },
+    { word: "世田谷線", href: "https://setagaya-line.com/" },
+    { word: "梅酒", href: "https://www.sirogohan.com/recipe/umeshu/" },
   ],
 };

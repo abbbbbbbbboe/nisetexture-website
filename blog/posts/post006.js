@@ -92,5 +92,5 @@ export default
     ],
 
     // ③ この投稿で使いたい global のセット
-    hyperlinkGroups: ["basic","owgk_kobalinks"],
+    hyperlinkGroups: ["basic","owgk"],
   };
