@@ -8,7 +8,7 @@ export const posts = [
     writer: "オオタソラ",
     date: "2026-07-20",
     tag: ["連載", "日記"],
-    samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
+    samune: "../blog_img/opening-with-a-given-key/thumbnail.webp",
   },
   {
     id: "018",
