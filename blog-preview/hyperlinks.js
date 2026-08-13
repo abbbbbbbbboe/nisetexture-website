@@ -1,5 +1,5 @@
 export const globalHyperlinks = {
-  basic: [
+   basic: [
     { word: "ニセ", href: "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/241218/02.html" },
     { word: "テクスチャ", href: "https://www.token.co.jp/estate/useful/archipedia/word.php?jid=00016&wid=00266&wdid=01" },
     { word: "通信", href: "https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/s54/html/s54a01020202.html" },
@@ -105,5 +105,12 @@ export const globalHyperlinks = {
     { word: "扉", href: "https://co-bonno.com/heavensdoormask/" },
     { word: "世田谷線", href: "https://setagaya-line.com/" },
     { word: "梅酒", href: "https://www.sirogohan.com/recipe/umeshu/" },
+    { word: "夜", href: "https://meigennavi.net/today/yoru/0813.htm" },
+    { word: "月", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q121648822?__ysp=5aSc56We5pyI" },
+    { word: "ハンディファン", href: "https://faq-jp.jal.co.jp/ja/s/article/jdsp000000R0000000030768dom" },
+    { word: "賞味期限", href: "https://www.maff.go.jp/j/syokuiku/kodomo_navi/featured/abc2.html" },
+    { word: "特産品", href: "https://secure02.red.shared-server.net/www.jsapa.or.jp/tokusan/mister/kenbetu/kenbetu.html" },
+    { word: "スケジュール", href: "https://chouseisan.com/" },
+    { word: "花", href: "https://www.joysound.com/web/search/song/52352" },
   ],
 };

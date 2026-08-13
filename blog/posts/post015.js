@@ -27,7 +27,7 @@ export default
     writer: "小林玲衣奈",
     date: "2026-06-22",
     tag: ["連載", "日記"],
-    samune: "../blog_img/thinking-in-lukewarm-words/thumbnail2_tlw.webp",
+    samune:  "../blog_img/opening-with-a-given-key/thumbnail.webp",
     imageExtraSpace: "600",
     images: [
         { src: "../blog_img/opening-with-a-given-key/thumbnail.webp", caption: "　", id: 1 },
