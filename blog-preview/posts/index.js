@@ -1,6 +1,6 @@
 export const posts = [
   {
-    id: "023",
+    id: "024",
     category: "日記",
     title: 'こぼれちゃうよ',
     writer: "新",
