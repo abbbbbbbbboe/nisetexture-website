@@ -2,6 +2,15 @@
 export const posts = [
   // 新しいのは上に記入
   {
+    id: "026",
+    category: "sleep soundly 安心して眠る",
+    title: '#6　馬の話',
+    writer: "オオタソラ",
+    date: "2026-09-19",
+    tag: ["連載"],
+    samune: "../blog_img/sleep-soundly/sleepSoundly_samune.webp",
+  },
+  {
     id: "025",
     category: "日記",
     title: 'こぼれちゃうよ',
