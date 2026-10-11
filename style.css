@@ -189,9 +189,9 @@ header {
   padding-left: 100%;
   white-space: nowrap;
   /* 1広告 */
-  /* animation: Slide 45s linear infinite; */
+  animation: Slide 45s linear infinite;
   /* 2広告 */
-  animation: Slide 60s linear infinite;
+  /* animation: Slide 60s linear infinite; */
 }
 
 .ebb ul li {
@@ -1161,9 +1161,9 @@ img.preview {
 
   .ebb ul {
     /* 1広告 */
-    /* animation: Slide 60s linear infinite; */
+    animation: Slide 60s linear infinite;
     /* 2広告 */
-    animation: Slide 75s linear infinite;
+    /* animation: Slide 75s linear infinite; */
   }
 
   .mobile-nav-wrapper {
