@@ -2,6 +2,15 @@
 export const posts = [
   // 新しいのは上に記入
   {
+    id: "029",
+    category: "日記",
+    title: 'こぼれちゃうよ',
+    writer: "新",
+    date: "2026-10-12",
+    tag: ["連載", "日記"],
+    samune: "../blog_img/spillover/thumbnail.webp",
+  },
+  {
     id: "028",
     category: "sleep soundly 安心して眠る",
     title: '#7　軍馬の展示',
