@@ -111,5 +111,6 @@ export const globalHyperlinks = {
     { word: "特産品", href: "https://secure02.red.shared-server.net/www.jsapa.or.jp/tokusan/mister/kenbetu/kenbetu.html" },
     { word: "スケジュール", href: "https://chouseisan.com/" },
     { word: "花", href: "https://www.joysound.com/web/search/song/52352" },
+    { word: "塩", href: "https://ja.wikipedia.org/wiki/%E5%9C%B0%E3%81%AE%E5%A1%A9%E3%80%81%E4%B8%96%E3%81%AE%E5%85%89" },
   ],
 };
