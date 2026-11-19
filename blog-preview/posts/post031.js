@@ -82,7 +82,7 @@ export default
         { word: "我々は宇宙人", href: "https://youtu.be/YLqfyrQ56yY?si=jJG0g0QsG9OGZpNy" },
         { word: "赤い通知", href: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14295813054" },
         { word: "宇宙のかたち", href: "https://yomeruba.com/hiroba/learn/tenmonnozukan/entry-44758.html" },
-        { word: "むせているとき、人は孤独。", href: "https://youtu.be/rArlDsd_XLQ?si=HUiqR5tzL8Rqw8os" },
+        { word: "むせているとき人は孤独。", href: "https://youtu.be/rArlDsd_XLQ?si=HUiqR5tzL8Rqw8os" },
     ],
 
     // ③ この投稿で使いたい global のセット
